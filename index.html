@@ -1,1411 +1,841 @@
 <!DOCTYPE html>
-<html lang="ms" data-lang="ms">
+<html lang="ms">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PerioDiabetes — Diabetes &amp; Kesihatan Gusi | Diabetes &amp; Gum Health</title>
-  <meta name="description" content="Laman kesedaran awam mengenai Diabetes Mellitus Jenis 2 dan Penyakit Periodontal (gusi), berdasarkan garis panduan klinikal KKM. Public awareness site on Type 2 Diabetes and gum disease." />
-  <meta name="theme-color" content="#0f766e" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>PerioDiabetes — Portal Diabetes &amp; Kesihatan Gusi</title>
+  <meta name="description" content="PerioDiabetes: portal kesedaran awam mengenai Diabetes Mellitus Jenis 2 dan penyakit gusi (periodontal)." />
+  <meta name="theme-color" content="#dff3f5" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦷</text></svg>" />
-  <!-- Atkinson Hyperlegible: designed for low-vision readers. Falls back to system fonts offline. -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
     /* =========================================================
-       DESIGN TOKENS
+       TOKEN REKA BENTUK
        ========================================================= */
     :root {
-      --scale: 1;                 /* changed by the A- / A / A+ controls */
-      --ink: #1f2a37;
-      --ink-soft: #3d4b5c;
-      --primary: #0f766e;
-      --primary-dark: #0b5952;
-      --primary-soft: #ccfbf1;
-      --mint: #d1fae5;
-      --sky: #dbeafe;
-      --lavender: #ede9fe;
-      --peach: #ffedd5;
-      --rose: #ffe4e6;
-      --lemon: #fef9c3;
-      --glass: rgba(255, 255, 255, 0.62);
-      --glass-strong: rgba(255, 255, 255, 0.82);
-      --glass-border: rgba(255, 255, 255, 0.75);
-      --shadow: 0 10px 30px -12px rgba(15, 50, 70, 0.25);
-      --radius: 1.25rem;
-      --radius-sm: 0.75rem;
-      --nav-h: 8.5rem;
-      --maxw: 72rem;
-      --font: "Atkinson Hyperlegible", "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+      --ink: #0f2a3d;
+      --ink-soft: #4a6274;
+      --accent: #0e7490;
+      --accent-2: #0f9f8f;
+
+      --glass-bg: rgba(255, 255, 255, 0.38);
+      --glass-bg-strong: rgba(255, 255, 255, 0.55);
+      --glass-border: 1px solid rgba(255, 255, 255, 0.45);
+      --glass-blur: blur(20px) saturate(160%);
+      --radius: 22px;
+      --radius-lg: 24px;
+
+      /* Bayang-bayang lembut berlapis */
+      --shadow:
+        0 1px 1px rgba(15, 42, 61, 0.04),
+        0 4px 8px rgba(15, 42, 61, 0.05),
+        0 12px 24px rgba(15, 42, 61, 0.07),
+        0 24px 48px -12px rgba(14, 116, 144, 0.16);
+      --shadow-hover:
+        0 2px 2px rgba(15, 42, 61, 0.05),
+        0 8px 16px rgba(15, 42, 61, 0.07),
+        0 20px 36px rgba(15, 42, 61, 0.09),
+        0 36px 64px -16px rgba(14, 116, 144, 0.26);
+      /* Kilauan dalaman pada tepi kaca */
+      --inner-glow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.85),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.25);
+
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --font: "Plus Jakarta Sans", "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
 
-    html {
-      font-size: calc(112.5% * var(--scale)); /* 18px base for legibility */
-      scroll-behavior: smooth;
-      scroll-padding-top: var(--nav-h);
-      -webkit-text-size-adjust: 100%;
-    }
+    html { -webkit-text-size-adjust: 100%; }
 
     body {
       margin: 0;
-      font-family: var(--font);
-      line-height: 1.65;
-      color: var(--ink);
-      background: #f4fbfa;
       min-height: 100vh;
+      min-height: 100dvh;
+      font-family: var(--font);
+      color: var(--ink);
+      line-height: 1.6;
+      background: #eef7f8;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* Soft pastel background blobs behind the glass cards */
-    body::before {
-      content: "";
+    /* =========================================================
+       LATAR BELAKANG: GRADIEN MESH CECAIR
+       ========================================================= */
+    .ambient {
       position: fixed;
       inset: 0;
       z-index: -1;
+      overflow: hidden;
       background:
-        radial-gradient(38rem 38rem at 8% 10%, #c7f0e6 0%, transparent 60%),
-        radial-gradient(34rem 34rem at 95% 18%, #e3dcff 0%, transparent 60%),
-        radial-gradient(40rem 40rem at 85% 85%, #ffe3d3 0%, transparent 60%),
-        radial-gradient(34rem 34rem at 10% 90%, #d7e9ff 0%, transparent 60%),
-        #f6fbfb;
+        radial-gradient(60% 50% at 10% 0%, #d6ecff 0%, transparent 70%),
+        radial-gradient(55% 45% at 100% 10%, #d4f7ec 0%, transparent 70%),
+        radial-gradient(70% 60% at 50% 100%, #e3f1ff 0%, transparent 70%),
+        linear-gradient(160deg, #fbfdff 0%, #eef8f7 50%, #f4f9ff 100%);
+    }
+    .ambient span {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.75;
+      animation: drift 26s ease-in-out infinite alternate;
+    }
+    .ambient .b1 { width: 46vmax; height: 46vmax; left: -12vmax; top: -10vmax; background: #b9dcff; }
+    .ambient .b2 { width: 40vmax; height: 40vmax; right: -12vmax; top: 18vh;  background: #b5f0dc; animation-duration: 32s; animation-delay: -6s; }
+    .ambient .b3 { width: 36vmax; height: 36vmax; left: 22vw;  bottom: -16vmax; background: #cfe6ff; animation-duration: 38s; animation-delay: -12s; }
+    .ambient .b4 { width: 22vmax; height: 22vmax; left: 8vw;   bottom: 12vh;  background: #fdfbff; opacity: 0.9; animation-duration: 30s; }
+
+    @keyframes drift {
+      0%   { transform: translate3d(0, 0, 0) scale(1); }
+      50%  { transform: translate3d(4vmax, 3vmax, 0) scale(1.08); }
+      100% { transform: translate3d(-3vmax, 5vmax, 0) scale(0.96); }
     }
 
-    /* Language switching: hide the inactive language */
-    html[data-lang="ms"] [data-l="en"],
-    html[data-lang="en"] [data-l="ms"] { display: none !important; }
+    /* =========================================================
+       ASAS
+       ========================================================= */
+    .shell {
+      width: min(100% - 2rem, 64rem);
+      margin-inline: auto;
+      padding: max(1.25rem, env(safe-area-inset-top)) 0 2.5rem;
+    }
 
-    img, svg { max-width: 100%; display: block; }
-    a { color: var(--primary-dark); }
-    h1, h2, h3, h4 { line-height: 1.25; margin: 0 0 0.6em; color: #12303a; }
-    h1 { font-size: clamp(2rem, 5vw, 3.1rem); letter-spacing: -0.01em; }
-    h2 { font-size: clamp(1.6rem, 3.6vw, 2.25rem); }
-    h3 { font-size: 1.25rem; }
-    p { margin: 0 0 1em; }
-    ul { padding-left: 1.2em; }
-    li { margin-bottom: 0.35em; }
-    strong { color: #10262e; }
+    h1, h2, h3 { margin: 0; line-height: 1.2; letter-spacing: -0.02em; }
+    p { margin: 0; }
+    a { color: inherit; }
 
     :focus-visible {
-      outline: 3px solid #f59e0b;
+      outline: 3px solid rgba(14, 116, 144, 0.55);
       outline-offset: 3px;
-      border-radius: 6px;
     }
 
-    .skip-link {
-      position: absolute;
-      left: 1rem; top: -4rem;
-      background: var(--primary);
-      color: #fff;
-      padding: 0.7rem 1rem;
-      border-radius: 0.5rem;
-      z-index: 1000;
-      text-decoration: none;
-      font-weight: 700;
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
     }
-    .skip-link:focus { top: 1rem; }
 
-    .container { width: min(100% - 2.5rem, var(--maxw)); margin-inline: auto; }
-
-    /* =========================================================
-       GLASS CARD
-       ========================================================= */
+    /* Kaca cecair — gaya asas yang dikongsi */
     .glass {
-      background: var(--glass);
-      border: 1px solid var(--glass-border);
+      position: relative;
+      background: var(--glass-bg);
+      border: var(--glass-border);
       border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      -webkit-backdrop-filter: blur(14px) saturate(140%);
-      backdrop-filter: blur(14px) saturate(140%);
+      -webkit-backdrop-filter: var(--glass-blur);
+      backdrop-filter: var(--glass-blur);
+      box-shadow: var(--inner-glow), var(--shadow);
+      isolation: isolate;
+    }
+    /* Pantulan cahaya lembut di bahagian atas kaca */
+    .glass::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(160deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0.08) 38%, rgba(255, 255, 255, 0) 60%);
+      pointer-events: none;
+      z-index: -1;
     }
 
     /* =========================================================
-       HEADER / NAV
+       PAPARAN (VIEW) — SPA
        ========================================================= */
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(255, 255, 255, 0.78);
-      -webkit-backdrop-filter: blur(16px) saturate(160%);
-      backdrop-filter: blur(16px) saturate(160%);
-      border-bottom: 1px solid rgba(15, 118, 110, 0.12);
+    .view { animation: viewIn 0.5s var(--ease) both; }
+    .view[hidden] { display: none; }
+
+    @keyframes viewIn {
+      from { opacity: 0; transform: translateY(14px) scale(0.99); }
+      to   { opacity: 1; transform: none; }
     }
 
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.75rem;
-      padding: 0.6rem 0;
+    /* =========================================================
+       PAPARAN UTAMA: HERO
+       ========================================================= */
+    .hero {
+      text-align: center;
+      padding: 1.75rem 1.25rem 1.6rem;
+      margin-bottom: 1.25rem;
+      border-radius: var(--radius-lg);
     }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.55rem;
-      text-decoration: none;
-      color: #12303a;
-      font-weight: 700;
-      font-size: 1.2rem;
-    }
-    .brand-logo {
-      display: grid;
+    .brand-mark {
+      display: inline-grid;
       place-items: center;
-      width: 2.4rem; height: 2.4rem;
-      border-radius: 0.8rem;
-      background: linear-gradient(135deg, #99f6e4, #c4b5fd);
-      font-size: 1.3rem;
-    }
-    .brand small { display: block; font-size: 0.7rem; font-weight: 400; color: var(--ink-soft); }
-
-    .controls { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; justify-content: flex-end; }
-
-    .pill-group {
-      display: inline-flex;
-      background: rgba(15, 118, 110, 0.08);
-      border-radius: 999px;
-      padding: 0.2rem;
-    }
-    .pill-group button {
-      font: inherit;
-      font-size: 0.85rem;
-      font-weight: 700;
-      border: 0;
-      background: transparent;
-      color: var(--primary-dark);
-      min-width: 2.6rem;
-      min-height: 2.4rem;
-      padding: 0 0.6rem;
-      border-radius: 999px;
-      cursor: pointer;
-    }
-    .pill-group button[aria-pressed="true"] {
-      background: var(--primary);
-      color: #fff;
-      box-shadow: 0 2px 8px rgba(15, 118, 110, 0.35);
-    }
-
-    .menu-toggle {
-      display: none;
-      font: inherit;
-      font-weight: 700;
-      border: 0;
-      border-radius: 0.8rem;
-      background: var(--primary);
-      color: #fff;
-      min-height: 2.6rem;
-      padding: 0 0.9rem;
-      cursor: pointer;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .main-nav ul {
-      list-style: none;
-      margin: 0;
-      padding: 0 0 0.6rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-      justify-content: center;
-    }
-    .main-nav li { margin: 0; }
-    .main-nav a {
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-      text-decoration: none;
-      color: var(--ink);
-      font-weight: 700;
-      font-size: 0.9rem;
-      padding: 0.45rem 0.85rem;
-      border-radius: 999px;
-      transition: background 0.2s, color 0.2s;
-    }
-    .main-nav a .num {
-      display: grid; place-items: center;
-      width: 1.5rem; height: 1.5rem;
-      border-radius: 50%;
-      background: var(--primary-soft);
-      color: var(--primary-dark);
-      font-size: 0.75rem;
-    }
-    .main-nav a:hover { background: rgba(15, 118, 110, 0.08); }
-    .main-nav a.active { background: var(--primary); color: #fff; }
-    .main-nav a.active .num { background: #fff; }
-
-    /* =========================================================
-       SECTIONS
-       ========================================================= */
-    section { padding: 4.5rem 0; }
-    .section-head { text-align: center; max-width: 46rem; margin: 0 auto 2.5rem; }
-    .eyebrow {
-      display: inline-block;
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--primary-dark);
-      background: var(--primary-soft);
-      padding: 0.3rem 0.8rem;
-      border-radius: 999px;
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 18px;
       margin-bottom: 0.9rem;
+      color: #fff;
+      background: linear-gradient(145deg, #38bdf8 0%, #14b8a6 100%);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        0 10px 24px -8px rgba(14, 116, 144, 0.55);
     }
-    .lead { font-size: 1.12rem; color: var(--ink-soft); }
+    .brand-mark svg { width: 1.9rem; height: 1.9rem; }
 
-    .grid { display: grid; gap: 1.25rem; }
-    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); }
-    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); }
-    .grid-4 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); }
-
-    .card { padding: 1.6rem; }
-    .icon-badge {
-      display: grid; place-items: center;
-      width: 3.2rem; height: 3.2rem;
-      border-radius: 1rem;
-      font-size: 1.6rem;
-      margin-bottom: 0.9rem;
-    }
-    .bg-mint { background: var(--mint); }
-    .bg-sky { background: var(--sky); }
-    .bg-lav { background: var(--lavender); }
-    .bg-peach { background: var(--peach); }
-    .bg-rose { background: var(--rose); }
-    .bg-lemon { background: var(--lemon); }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font: inherit;
-      font-weight: 700;
-      text-decoration: none;
-      border: 0;
-      cursor: pointer;
-      min-height: 3rem;
-      padding: 0.7rem 1.3rem;
-      border-radius: 999px;
-      transition: transform 0.15s, box-shadow 0.15s;
-    }
-    .btn:hover { transform: translateY(-2px); }
-    .btn-primary { background: var(--primary); color: #fff; box-shadow: 0 8px 20px -8px rgba(15, 118, 110, 0.7); }
-    .btn-ghost { background: var(--glass-strong); color: var(--primary-dark); border: 2px solid rgba(15, 118, 110, 0.25); }
-
-    .callout {
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-      padding: 1.3rem 1.5rem;
-      border-radius: var(--radius);
-      border-left: 6px solid var(--primary);
-      background: rgba(204, 251, 241, 0.75);
-    }
-    .callout .ico { font-size: 1.8rem; line-height: 1; }
-    .callout p:last-child { margin-bottom: 0; }
-    .callout.warn { background: rgba(255, 237, 213, 0.85); border-left-color: #c2410c; }
-
-    /* =========================================================
-       1. HERO / OVERVIEW
-       ========================================================= */
-    .hero { padding-top: 3.5rem; }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 2rem;
-      align-items: center;
-    }
-    .hero h1 .accent {
-      background: linear-gradient(90deg, #0f766e, #6d28d9);
+    .hero h1 {
+      font-size: clamp(1.9rem, 7vw, 3rem);
+      font-weight: 800;
+      background: linear-gradient(100deg, #0c4a6e 0%, #0e7490 45%, #0f9f8f 100%);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
-
-    .hero-visual { padding: 1.8rem; text-align: center; }
-    .hero-visual .duo {
-      display: flex; justify-content: center; align-items: center; gap: 0.8rem;
-      font-size: 3.6rem;
+    .hero p {
+      margin-top: 0.5rem;
+      font-size: clamp(0.92rem, 2.6vw, 1.08rem);
+      color: var(--ink-soft);
+      font-weight: 500;
     }
-    .hero-visual .duo .plus {
-      font-size: 1.6rem;
-      color: var(--primary);
-      font-weight: 700;
-      background: var(--primary-soft);
-      width: 2.8rem; height: 2.8rem;
-      border-radius: 50%;
-      display: grid; place-items: center;
-    }
-    .hero-visual p { margin: 1rem 0 0; color: var(--ink-soft); }
 
-    .stats { margin-top: 2.5rem; }
-    .stat { padding: 1.3rem; text-align: center; }
-    .stat .big {
-      display: block;
-      font-size: 2.1rem;
-      font-weight: 700;
-      color: var(--primary-dark);
-      line-height: 1.1;
-      margin-bottom: 0.35rem;
-    }
-    .stat span:last-child { font-size: 0.95rem; color: var(--ink-soft); }
-
-    .overview-cards { margin-top: 3rem; }
-
-    /* =========================================================
-       2. TWO-WAY LINK
-       ========================================================= */
-    .link-diagram {
-      display: grid;
-      grid-template-columns: 1fr 1.3fr 1fr;
+    .section-label {
+      display: flex;
       align-items: center;
-      gap: 1rem;
-      padding: 2rem;
-      margin-bottom: 2rem;
+      gap: 0.6rem;
+      margin: 0 0.25rem 0.85rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
     }
-    .node {
-      aspect-ratio: 1;
-      max-width: 13rem;
-      width: 100%;
-      margin-inline: auto;
-      border-radius: 50%;
-      display: grid;
-      place-content: center;
-      text-align: center;
-      padding: 1rem;
-      box-shadow: inset 0 0 0 6px rgba(255, 255, 255, 0.7), var(--shadow);
+    .section-label::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(14, 116, 144, 0.3), transparent);
     }
-    .node .emo { font-size: 3rem; line-height: 1; }
-    .node strong { display: block; margin-top: 0.4rem; font-size: 1.05rem; }
-    .node-dm { background: linear-gradient(145deg, #fecdd3, #fde68a); }
-    .node-gum { background: linear-gradient(145deg, #a7f3d0, #bfdbfe); }
-
-    .arrows { display: grid; gap: 1rem; }
-    .arrow {
-      position: relative;
-      padding: 0.8rem 1rem;
-      border-radius: var(--radius-sm);
-      background: var(--glass-strong);
-      font-size: 0.95rem;
-      text-align: center;
-      border: 2px solid transparent;
-    }
-    .arrow .dir { display: block; font-size: 1.6rem; font-weight: 700; line-height: 1; margin-bottom: 0.25rem; }
-    .arrow.fwd { border-color: #fda4af; }
-    .arrow.fwd .dir { color: #be123c; }
-    .arrow.back { border-color: #6ee7b7; }
-    .arrow.back .dir { color: #047857; }
-
-    .good-news {
-      margin-top: 2rem;
-      padding: 2rem;
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 1.5rem;
-      align-items: center;
-      background: linear-gradient(135deg, rgba(209, 250, 229, 0.85), rgba(219, 234, 254, 0.85));
-    }
-    .good-news .figure {
-      text-align: center;
-      background: #fff;
-      border-radius: var(--radius);
-      padding: 1.2rem 1.4rem;
-      box-shadow: var(--shadow);
-    }
-    .good-news .figure .big { display: block; font-size: 2rem; font-weight: 700; color: #047857; line-height: 1.1; }
-    .good-news .figure small { color: var(--ink-soft); }
 
     /* =========================================================
-       3. WARNING SIGNS
+       GRID KAD TAJUK (2 lajur telefon, 3 lajur tablet/desktop)
        ========================================================= */
-    .sign { padding: 1.5rem; text-align: center; }
-    .sign .icon-badge { margin-inline: auto; width: 4rem; height: 4rem; font-size: 2rem; border-radius: 50%; }
-    .sign h3 { font-size: 1.1rem; }
-    .sign p { font-size: 0.95rem; color: var(--ink-soft); margin: 0; }
-
-    .selfcheck { margin-top: 2.5rem; padding: 2rem; }
-    .selfcheck fieldset { border: 0; padding: 0; margin: 0; }
-    .selfcheck legend { font-weight: 700; font-size: 1.2rem; margin-bottom: 1rem; color: #12303a; }
-    .check-list { display: grid; gap: 0.6rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); }
-    .check {
-      display: flex; align-items: center; gap: 0.75rem;
-      padding: 0.85rem 1rem;
-      background: var(--glass-strong);
-      border: 2px solid rgba(15, 118, 110, 0.15);
-      border-radius: var(--radius-sm);
-      cursor: pointer;
-      transition: border-color 0.2s, background 0.2s;
-    }
-    .check:hover { border-color: rgba(15, 118, 110, 0.45); }
-    .check input { width: 1.5rem; height: 1.5rem; accent-color: var(--primary); flex-shrink: 0; }
-    .check:has(input:checked) { border-color: #c2410c; background: #fff7ed; }
-
-    .result {
-      margin-top: 1.25rem;
-      padding: 1rem 1.25rem;
-      border-radius: var(--radius-sm);
-      font-weight: 700;
-      background: var(--mint);
-      color: #065f46;
-    }
-    .result.alert { background: #ffedd5; color: #9a3412; }
-
-    /* =========================================================
-       4. BPE
-       ========================================================= */
-    .bpe-intro { padding: 1.8rem; margin-bottom: 2rem; display: grid; grid-template-columns: 1fr auto; gap: 1.5rem; align-items: center; }
-    .sextants {
+    .topic-grid {
+      list-style: none;
+      margin: 0;
+      padding: 0;
       display: grid;
-      grid-template-columns: repeat(3, 3.4rem);
-      gap: 0.35rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
     }
-    .sextants span {
-      height: 2.6rem;
-      display: grid; place-items: center;
-      background: var(--primary-soft);
-      border-radius: 0.6rem;
-      font-weight: 700;
-      color: var(--primary-dark);
-      font-size: 0.85rem;
-    }
-    .sextants-caption { text-align: center; font-size: 0.8rem; color: var(--ink-soft); margin-top: 0.4rem; }
+    .topic-grid li { min-width: 0; }
 
-    .bpe-scale { display: grid; gap: 1rem; grid-template-columns: repeat(5, 1fr); }
-    .bpe-card {
-      padding: 1.4rem 1.2rem;
-      border-top: 8px solid;
+    .topic-card {
+      --tint: #e0f2fe;
+      --tint-ink: #0369a1;
       display: flex;
       flex-direction: column;
-    }
-    .bpe-card .score {
-      width: 3.4rem; height: 3.4rem;
-      border-radius: 50%;
-      display: grid; place-items: center;
-      font-size: 1.7rem;
-      font-weight: 700;
-      margin-bottom: 0.8rem;
-    }
-    .bpe-card h3 { font-size: 1.1rem; margin-bottom: 0.3rem; }
-    .bpe-card .tag {
-      display: inline-block;
-      font-size: 0.8rem;
-      font-weight: 700;
-      padding: 0.2rem 0.65rem;
-      border-radius: 999px;
-      margin-bottom: 0.7rem;
-      align-self: flex-start;
-    }
-    .bpe-card p { font-size: 0.95rem; color: var(--ink-soft); margin-bottom: 0; }
-    .s0 { border-top-color: #34d399; } .s0 .score, .s0 .tag { background: #d1fae5; color: #065f46; }
-    .s1 { border-top-color: #a3e635; } .s1 .score, .s1 .tag { background: #ecfccb; color: #3f6212; }
-    .s2 { border-top-color: #facc15; } .s2 .score, .s2 .tag { background: #fef9c3; color: #854d0e; }
-    .s3 { border-top-color: #fb923c; } .s3 .score, .s3 .tag { background: #ffedd5; color: #9a3412; }
-    .s4 { border-top-color: #f43f5e; } .s4 .score, .s4 .tag { background: #ffe4e6; color: #9f1239; }
-
-    .bpe-bar {
-      height: 0.7rem;
-      border-radius: 999px;
-      margin: 1.5rem 0 0.4rem;
-      background: linear-gradient(90deg, #34d399, #a3e635, #facc15, #fb923c, #f43f5e);
-    }
-    .bpe-bar-labels { display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--ink-soft); font-weight: 700; }
-    .footnote { font-size: 0.88rem; color: var(--ink-soft); margin-top: 1.25rem; }
-
-    /* =========================================================
-       5. REFERRAL PATHWAY
-       ========================================================= */
-    .pathway {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 2rem;
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 1rem;
-      counter-reset: step;
-    }
-    .pathway li {
-      position: relative;
-      margin: 0;
-      padding: 1.4rem 1.1rem 1.3rem;
-      text-align: center;
-    }
-    .pathway li::before {
-      counter-increment: step;
-      content: counter(step);
-      position: absolute;
-      top: -0.9rem; left: 50%;
-      transform: translateX(-50%);
-      width: 2rem; height: 2rem;
-      border-radius: 50%;
-      background: var(--primary);
-      color: #fff;
-      font-weight: 700;
-      font-size: 0.95rem;
-      display: grid; place-items: center;
-      box-shadow: 0 0 0 4px #f4fbfa;
-    }
-    .pathway li:not(:last-child)::after {
-      content: "➜";
-      position: absolute;
-      right: -0.95rem; top: 50%;
-      transform: translateY(-50%);
-      color: var(--primary);
-      font-size: 1.2rem;
-      z-index: 2;
-    }
-    .pathway .emo { font-size: 2.2rem; display: block; margin: 0.4rem 0 0.5rem; }
-    .pathway h3 { font-size: 1.02rem; margin-bottom: 0.35rem; }
-    .pathway p { font-size: 0.92rem; color: var(--ink-soft); margin: 0; }
-    .loop-note { text-align: center; font-weight: 700; color: var(--primary-dark); margin: -0.5rem 0 2rem; }
-
-    .docs { display: flex; flex-wrap: wrap; gap: 1rem; }
-    .doc-chip {
-      display: flex; align-items: center; gap: 0.7rem;
-      padding: 0.9rem 1.2rem;
-      border-radius: var(--radius-sm);
-      font-weight: 700;
-    }
-    .doc-chip .book {
-      width: 2.4rem; height: 3rem;
-      border-radius: 0.3rem 0.5rem 0.5rem 0.3rem;
-      background: linear-gradient(90deg, #15803d 0 18%, #22c55e 18%);
-      box-shadow: inset -3px 0 0 rgba(0,0,0,0.12);
-      flex-shrink: 0;
-    }
-    .doc-chip .slip {
-      width: 2.4rem; height: 3rem;
-      border-radius: 0.3rem;
-      background: repeating-linear-gradient(#fff 0 0.45rem, #cbd5e1 0.45rem 0.55rem);
-      border: 2px solid #94a3b8;
-      flex-shrink: 0;
-    }
-
-    /* =========================================================
-       6. ACTION PLAN
-       ========================================================= */
-    .plate-card {
-      padding: 2rem;
-      display: grid;
-      grid-template-columns: minmax(14rem, 18rem) 1fr;
-      gap: 2rem;
-      align-items: center;
-      margin-bottom: 1.5rem;
-    }
-    .plate-wrap { position: relative; }
-    .plate-wrap svg { width: 100%; height: auto; filter: drop-shadow(0 10px 18px rgba(15, 50, 70, 0.18)); }
-    .legend { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: 0.8rem; }
-    .legend li { display: flex; gap: 0.8rem; align-items: flex-start; margin: 0; }
-    .legend .sw {
-      flex-shrink: 0;
-      width: 3.2rem; height: 2.2rem;
-      border-radius: 0.6rem;
-      display: grid; place-items: center;
-      font-weight: 700;
-      font-size: 0.95rem;
-    }
-    .sw-veg { background: #86efac; color: #14532d; }
-    .sw-pro { background: #fdba74; color: #7c2d12; }
-    .sw-carb { background: #fde047; color: #713f12; }
-
-    .action-card h3 { display: flex; align-items: center; gap: 0.6rem; }
-    .action-card .icon-badge { margin-bottom: 0.7rem; }
-    .action-card ul { margin: 0; }
-
-    .exercise-week { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.3rem; margin: 0.9rem 0; }
-    .exercise-week span {
-      text-align: center;
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 0.45rem 0;
-      border-radius: 0.5rem;
-      background: rgba(148, 163, 184, 0.2);
-      color: var(--ink-soft);
-    }
-    .exercise-week span.on { background: #bfdbfe; color: #1e3a8a; }
-
-    .daily { margin-top: 1.5rem; padding: 2rem; }
-    .daily-head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem; }
-    .daily-head h3 { margin: 0; }
-
-    /* =========================================================
-       FOOTER
-       ========================================================= */
-    footer { padding: 3rem 0 2.5rem; }
-    .footer-inner { padding: 2rem; }
-    .footer-inner h2 { font-size: 1.2rem; }
-    .footer-inner p, .footer-inner li { font-size: 0.92rem; color: var(--ink-soft); }
-    .copyright { text-align: center; font-size: 0.85rem; color: var(--ink-soft); margin-top: 1.5rem; }
-
-    .to-top {
-      position: fixed;
-      right: 1.2rem; bottom: 1.2rem;
-      width: 3.2rem; height: 3.2rem;
-      border-radius: 50%;
-      border: 0;
-      background: var(--primary);
-      color: #fff;
-      font-size: 1.3rem;
+      justify-content: space-between;
+      gap: 0.9rem;
+      height: 100%;
+      min-height: 9.75rem;
+      padding: 1rem 0.95rem 1.05rem;
+      text-decoration: none;
+      overflow: hidden;
       cursor: pointer;
-      box-shadow: 0 8px 20px -6px rgba(15, 118, 110, 0.7);
+      -webkit-tap-highlight-color: transparent;
+      transition:
+        transform 0.45s var(--ease),
+        box-shadow 0.45s var(--ease),
+        background-color 0.45s var(--ease);
+      animation: cardIn 0.6s var(--ease) backwards;
+      animation-delay: calc(var(--i, 0) * 60ms);
+    }
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    /* Kilauan cahaya yang menyapu kad semasa hover */
+    .topic-card::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -60%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(105deg, transparent 0%, rgba(255, 255, 255, 0.65) 50%, transparent 100%);
+      transform: skewX(-18deg);
       opacity: 0;
       pointer-events: none;
-      transform: translateY(10px);
-      transition: opacity 0.25s, transform 0.25s;
-      z-index: 90;
+      transition: left 0.8s var(--ease), opacity 0.3s;
     }
-    .to-top.show { opacity: 1; pointer-events: auto; transform: none; }
 
-    /* Gentle reveal on scroll */
-    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    .reveal.in { opacity: 1; transform: none; }
+    @media (hover: hover) {
+      .topic-card:hover {
+        transform: translateY(-3px) scale(1.02);
+        background-color: var(--glass-bg-strong);
+        box-shadow: var(--inner-glow), var(--shadow-hover);
+      }
+      .topic-card:hover::after { left: 120%; opacity: 1; }
+      .topic-card:hover .topic-icon { transform: scale(1.06) rotate(-3deg); }
+      .topic-card:hover .topic-go { transform: translateX(3px); background: var(--accent); color: #fff; }
+    }
+    .topic-card:active { transform: scale(0.98); transition-duration: 0.15s; }
 
-    .sr-only {
-      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-      overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    .topic-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+    .topic-icon {
+      display: grid;
+      place-items: center;
+      width: 2.75rem;
+      height: 2.75rem;
+      flex-shrink: 0;
+      border-radius: 14px;
+      color: var(--tint-ink);
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), var(--tint));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 6px 14px -6px rgba(15, 42, 61, 0.25);
+      transition: transform 0.45s var(--ease);
+    }
+    .topic-icon svg { width: 1.4rem; height: 1.4rem; }
+
+    .topic-num {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--ink-soft);
+      background: rgba(255, 255, 255, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+    }
+
+    .topic-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--ink);
+      overflow-wrap: break-word;
+      hyphens: auto;
+    }
+    .topic-title small {
+      display: block;
+      margin-bottom: 0.2rem;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--tint-ink);
+    }
+
+    .topic-foot {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+    .topic-go {
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      width: 1.9rem;
+      height: 1.9rem;
+      border-radius: 50%;
+      color: var(--accent);
+      background: rgba(255, 255, 255, 0.7);
+      transition: transform 0.45s var(--ease), background 0.3s, color 0.3s;
+    }
+    .topic-go svg { width: 1rem; height: 1rem; }
+
+    /* Warna tona setiap topik */
+    .t1 { --tint: #dbeafe; --tint-ink: #1d4ed8; }
+    .t2 { --tint: #ccfbf1; --tint-ink: #0f766e; }
+    .t3 { --tint: #ffe4e6; --tint-ink: #be123c; }
+    .t4 { --tint: #e0e7ff; --tint-ink: #4338ca; }
+    .t5 { --tint: #cffafe; --tint-ink: #0e7490; }
+    .t6 { --tint: #dcfce7; --tint-ink: #15803d; }
+
+    .site-foot {
+      margin-top: 1.75rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--ink-soft);
     }
 
     /* =========================================================
-       RESPONSIVE
+       HALAMAN SUBTOPIK (DEDICATED PAGE VIEW)
        ========================================================= */
-    @media (max-width: 1100px) {
-      .bpe-scale { grid-template-columns: repeat(3, 1fr); }
-      .pathway { grid-template-columns: repeat(3, 1fr); row-gap: 2rem; }
-      .pathway li:nth-child(3)::after { display: none; }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      min-height: 2.75rem;
+      padding: 0.55rem 1.1rem 0.55rem 0.8rem;
+      margin-bottom: 1.25rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--ink);
+      text-decoration: none;
+      border-radius: 999px;
+      -webkit-tap-highlight-color: transparent;
+      transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), background-color 0.4s var(--ease);
     }
-
-    @media (max-width: 860px) {
-      :root { --nav-h: 4.8rem; }
-      .menu-toggle { display: inline-flex; }
-      .main-nav {
-        display: none;
-        border-top: 1px solid rgba(15, 118, 110, 0.12);
-        max-height: calc(100vh - 4.5rem);
-        overflow-y: auto;
+    .back-btn .arrow {
+      display: grid;
+      place-items: center;
+      width: 1.8rem;
+      height: 1.8rem;
+      border-radius: 50%;
+      color: #fff;
+      background: linear-gradient(145deg, #38bdf8, #14b8a6);
+      box-shadow: 0 4px 10px -4px rgba(14, 116, 144, 0.6);
+      transition: transform 0.4s var(--ease);
+    }
+    .back-btn .arrow svg { width: 1rem; height: 1rem; }
+    @media (hover: hover) {
+      .back-btn:hover {
+        transform: scale(1.02);
+        background-color: var(--glass-bg-strong);
+        box-shadow: var(--inner-glow), var(--shadow-hover);
       }
-      .main-nav.open { display: block; }
-      .main-nav ul { flex-direction: column; padding: 0.6rem 0 1rem; }
-      .main-nav a { font-size: 1rem; padding: 0.8rem 1rem; border-radius: var(--radius-sm); }
-      .brand small { display: none; }
+      .back-btn:hover .arrow { transform: translateX(-3px); }
+    }
+    .back-btn:active { transform: scale(0.97); }
 
-      .hero-grid { grid-template-columns: 1fr; }
-      .link-diagram { grid-template-columns: 1fr; padding: 1.5rem; }
-      .node { max-width: 10rem; }
-      .arrow .dir { transform: rotate(90deg); display: inline-block; }
-      .good-news { grid-template-columns: 1fr; text-align: center; }
-      .bpe-intro { grid-template-columns: 1fr; justify-items: center; }
-      .plate-card { grid-template-columns: 1fr; justify-items: center; }
-      .plate-wrap { max-width: 17rem; }
+    .page-head {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      padding: 1.25rem;
+      border-radius: var(--radius-lg);
+    }
+    .page-head .topic-icon {
+      width: 3.6rem;
+      height: 3.6rem;
+      border-radius: 18px;
+    }
+    .page-head .topic-icon svg { width: 1.8rem; height: 1.8rem; }
+    .page-head .eyebrow {
+      display: block;
+      margin-bottom: 0.25rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--tint-ink);
+    }
+    .page-head h2 {
+      font-size: clamp(1.25rem, 4.6vw, 1.9rem);
+      font-weight: 800;
+      overflow-wrap: break-word;
+    }
+    .page-head h2:focus { outline: none; }
+
+    /* Kad placeholder — gantikan kandungan di dalamnya kemudian */
+    .content-card {
+      padding: 1.25rem;
+      border-radius: var(--radius-lg);
+      min-height: 16rem;
+    }
+    .placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.9rem;
+      min-height: 14rem;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      border-radius: 18px;
+      border: 1.5px dashed rgba(14, 116, 144, 0.25);
+      background: rgba(255, 255, 255, 0.25);
+    }
+    .placeholder .pulse {
+      position: relative;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #bae6fd, #99f6e4);
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+    }
+    .placeholder .pulse::after {
+      content: "";
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 2px solid rgba(14, 116, 144, 0.25);
+      animation: ring 2s var(--ease) infinite;
+    }
+    .placeholder .pulse svg { width: 1.4rem; height: 1.4rem; }
+    @keyframes ring {
+      from { transform: scale(0.85); opacity: 1; }
+      to   { transform: scale(1.35); opacity: 0; }
+    }
+    .placeholder p { font-weight: 600; color: var(--ink-soft); }
+
+    .skeleton { width: min(100%, 22rem); display: grid; gap: 0.5rem; margin-top: 0.4rem; }
+    .skeleton i {
+      display: block;
+      height: 0.6rem;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(14, 116, 144, 0.08) 0%, rgba(255, 255, 255, 0.8) 50%, rgba(14, 116, 144, 0.08) 100%);
+      background-size: 200% 100%;
+      animation: shimmer 1.8s linear infinite;
+    }
+    .skeleton i:nth-child(2) { width: 86%; margin-inline: auto; }
+    .skeleton i:nth-child(3) { width: 64%; margin-inline: auto; }
+    @keyframes shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+
+    /* =========================================================
+       RESPONSIF
+       ========================================================= */
+    @media (max-width: 359px) {
+      .topic-grid { gap: 0.6rem; }
+      .topic-card { padding: 0.85rem 0.8rem; min-height: 9rem; }
+      .topic-title { font-size: 0.82rem; }
+      .topic-icon { width: 2.4rem; height: 2.4rem; }
     }
 
-    @media (max-width: 640px) {
-      section { padding: 3.2rem 0; }
-      .container { width: min(100% - 1.75rem, var(--maxw)); }
-      .bpe-scale { grid-template-columns: 1fr; }
-      .pathway { grid-template-columns: 1fr; row-gap: 2rem; }
-      .pathway li::after { display: none !important; }
-      .card, .selfcheck, .daily, .plate-card { padding: 1.3rem; }
-      .controls .label-text { display: none; }
-      .brand-text { font-size: 1.05rem; }
+    @media (min-width: 640px) {
+      .shell { width: min(100% - 3rem, 64rem); padding-top: 2.5rem; }
+      .topic-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.1rem; }
+      .topic-card { min-height: 12.5rem; padding: 1.35rem 1.3rem 1.4rem; }
+      .topic-title { font-size: 1.05rem; }
+      .topic-title small { font-size: 0.72rem; }
+      .topic-icon { width: 3.1rem; height: 3.1rem; border-radius: 16px; }
+      .topic-icon svg { width: 1.55rem; height: 1.55rem; }
+      .hero { padding: 2.5rem 2rem 2.25rem; margin-bottom: 1.75rem; }
+      .page-head { padding: 1.6rem 1.75rem; gap: 1.25rem; }
+      .page-head .topic-icon { width: 4.25rem; height: 4.25rem; border-radius: 20px; }
+      .page-head .topic-icon svg { width: 2.1rem; height: 2.1rem; }
+      .content-card { padding: 1.75rem; min-height: 20rem; }
+      .placeholder { min-height: 17rem; }
+    }
+
+    @media (min-width: 1024px) {
+      .topic-card { min-height: 13.5rem; }
+      .topic-title { font-size: 1.12rem; }
+    }
+
+    /* Penyemak imbas tanpa sokongan backdrop-filter */
+    @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+      .glass { background: rgba(255, 255, 255, 0.82); }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { transition: none !important; animation: none !important; }
-      .reveal { opacity: 1; transform: none; }
-    }
-
-    @media print {
-      body::before, .site-header, .to-top, .hero-actions, .btn { display: none !important; }
-      .glass { background: #fff; box-shadow: none; border: 1px solid #ccc; backdrop-filter: none; }
-      .reveal { opacity: 1; transform: none; }
-      section { padding: 1.5rem 0; break-inside: avoid; }
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+      }
     }
   </style>
 </head>
 
 <body>
-  <a class="skip-link" href="#main">
-    <span data-l="ms">Langkau ke kandungan</span><span data-l="en">Skip to content</span>
-  </a>
+  <div class="ambient" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span><span class="b4"></span></div>
 
-  <!-- ======================= HEADER ======================= -->
-  <header class="site-header">
-    <div class="container">
-      <div class="topbar">
-        <a href="#pengenalan" class="brand" aria-label="PerioDiabetes">
-          <span class="brand-logo" aria-hidden="true">🦷</span>
-          <span class="brand-text">PerioDiabetes
-            <small>
-              <span data-l="ms">Gusi Sihat, Gula Terkawal</span>
-              <span data-l="en">Healthy Gums, Controlled Sugar</span>
-            </small>
-          </span>
-        </a>
+  <!-- Ikon SVG dikongsi (gaya garisan) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-tooth" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M7 3C4.8 3 3 4.8 3 7.2c0 2 .8 3.3 1.4 4.8.6 1.6.8 3.5 1.2 5.6.3 1.7.9 3.4 2.1 3.4 1.5 0 1.6-2.4 2.1-4.2.3-1.1.9-1.8 2.2-1.8s1.9.7 2.2 1.8c.5 1.8.6 4.2 2.1 4.2 1.2 0 1.8-1.7 2.1-3.4.4-2.1.6-4 1.2-5.6.6-1.5 1.4-2.8 1.4-4.8C21 4.8 19.2 3 17 3c-1.8 0-2.9 1-5 1S8.8 3 7 3z"/>
+      </symbol>
+      <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/>
+      </symbol>
+      <symbol id="i-cycle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/>
+      </symbol>
+      <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/>
+      </symbol>
+      <symbol id="i-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/>
+      </symbol>
+      <symbol id="i-route" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/>
+      </symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/>
+      </symbol>
+      <symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>
+      </symbol>
+      <symbol id="i-arrow-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5"/><path d="m11 18-6-6 6-6"/>
+      </symbol>
+      <symbol id="i-edit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 20h9"/><path d="M16.4 3.6a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/>
+      </symbol>
+    </defs>
+  </svg>
 
-        <div class="controls">
-          <div class="pill-group" role="group" aria-label="Bahasa / Language">
-            <button type="button" data-set-lang="ms" aria-pressed="true" title="Bahasa Melayu">BM</button>
-            <button type="button" data-set-lang="en" aria-pressed="false" title="English">EN</button>
-          </div>
-          <div class="pill-group" role="group" aria-label="Saiz teks / Text size">
-            <button type="button" data-scale="1" aria-pressed="true" aria-label="Teks biasa / Normal text">A</button>
-            <button type="button" data-scale="1.15" aria-pressed="false" aria-label="Teks besar / Large text" style="font-size:1rem">A+</button>
-            <button type="button" data-scale="1.3" aria-pressed="false" aria-label="Teks sangat besar / Extra large text" style="font-size:1.12rem">A++</button>
-          </div>
-          <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="main-nav">
-            <span aria-hidden="true">☰</span>
-            <span class="label-text"><span data-l="ms">Menu</span><span data-l="en">Menu</span></span>
-          </button>
-        </div>
-      </div>
+  <main class="shell" id="app">
 
-      <nav class="main-nav" id="main-nav" aria-label="Navigasi utama / Main navigation">
-        <ul>
-          <li><a href="#pengenalan"><span class="num">1</span><span data-l="ms">Pengenalan</span><span data-l="en">Overview</span></a></li>
-          <li><a href="#kaitan"><span class="num">2</span><span data-l="ms">Kaitan 2 Hala</span><span data-l="en">The 2-Way Link</span></a></li>
-          <li><a href="#tanda"><span class="num">3</span><span data-l="ms">Tanda-Tanda Amaran</span><span data-l="en">Warning Signs</span></a></li>
-          <li><a href="#bpe"><span class="num">4</span><span data-l="ms">Saringan BPE</span><span data-l="en">Dental Screening Simplified</span></a></li>
-          <li><a href="#rujukan"><span class="num">5</span><span data-l="ms">Laluan Rujukan KK ke KP</span><span data-l="en">KKM Referral Pathway</span></a></li>
-          <li><a href="#pelan"><span class="num">6</span><span data-l="ms">Pelan Tindakan Harian</span><span data-l="en">Patient Action Plan</span></a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+    <!-- =====================================================
+         PAPARAN UTAMA (HOME VIEW)
+         ===================================================== -->
+    <section class="view" id="view-utama" data-title="PerioDiabetes — Portal Diabetes &amp; Kesihatan Gusi" aria-labelledby="h-utama">
+      <header class="glass hero">
+        <span class="brand-mark" aria-hidden="true"><svg><use href="#i-tooth" /></svg></span>
+        <h1 id="h-utama">PerioDiabetes</h1>
+        <p>Gusi sihat, gula terkawal — panduan ringkas diabetes dan kesihatan gusi.</p>
+      </header>
 
-  <main id="main">
+      <h2 class="section-label">Pilih Topik</h2>
 
-    <!-- ======================= 1. OVERVIEW ======================= -->
-    <section id="pengenalan" class="hero" aria-labelledby="h-pengenalan">
-      <div class="container">
-        <div class="hero-grid">
-          <div class="reveal">
-            <span class="eyebrow">
-              <span data-l="ms">Kesedaran Kesihatan Awam</span><span data-l="en">Public Health Awareness</span>
-            </span>
-            <h1 id="h-pengenalan">
-              <span data-l="ms">Diabetes &amp; Gusi: <span class="accent">Jaga Satu, Bantu Yang Lain</span></span>
-              <span data-l="en">Diabetes &amp; Gums: <span class="accent">Care for One, Help the Other</span></span>
-            </h1>
-            <p class="lead" data-l="ms">
-              Diabetes Mellitus Jenis 2 dan penyakit gusi (penyakit periodontal) saling berkait rapat.
-              Gula darah yang tinggi merosakkan gusi, dan gusi yang dijangkiti menjadikan gula darah lebih sukar dikawal.
-              Berita baiknya — merawat gusi boleh membantu mengawal diabetes anda.
-            </p>
-            <p class="lead" data-l="en">
-              Type 2 Diabetes Mellitus and gum disease (periodontal disease) are closely linked.
-              High blood sugar damages the gums, and infected gums make blood sugar harder to control.
-              The good news — treating your gums can help you control your diabetes.
-            </p>
-            <div class="hero-actions">
-              <a class="btn btn-primary" href="#tanda">
-                <span data-l="ms">Semak Tanda Amaran</span><span data-l="en">Check Warning Signs</span> <span aria-hidden="true">→</span>
-              </a>
-              <a class="btn btn-ghost" href="#pelan">
-                <span data-l="ms">Pelan Tindakan Saya</span><span data-l="en">My Action Plan</span>
-              </a>
+      <ul class="topic-grid">
+        <li>
+          <a class="glass topic-card t1" href="#/pengenalan" data-topic="pengenalan" style="--i:0">
+            <div class="topic-top">
+              <span class="topic-icon" aria-hidden="true"><svg><use href="#i-book" /></svg></span>
+              <span class="topic-num">01</span>
             </div>
-          </div>
+            <div class="topic-foot">
+              <h3 class="topic-title"><small>Pengenalan</small>Kenali Diabetes &amp; Penyakit Gusi</h3>
+              <span class="topic-go" aria-hidden="true"><svg><use href="#i-arrow-right" /></svg></span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a class="glass topic-card t2" href="#/hubungan" data-topic="hubungan" style="--i:1">
+            <div class="topic-top">
+              <span class="topic-icon" aria-hidden="true"><svg><use href="#i-cycle" /></svg></span>
+              <span class="topic-num">02</span>
+            </div>
+            <div class="topic-foot">
+              <h3 class="topic-title"><small>Hubungan Dua Hala</small>Diabetes &amp; Penyakit Gusi</h3>
+              <span class="topic-go" aria-hidden="true"><svg><use href="#i-arrow-right" /></svg></span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a class="glass topic-card t3" href="#/tanda" data-topic="tanda" style="--i:2">
+            <div class="topic-top">
+              <span class="topic-icon" aria-hidden="true"><svg><use href="#i-alert" /></svg></span>
+              <span class="topic-num">03</span>
+            </div>
+            <div class="topic-foot">
+              <h3 class="topic-title"><small>Tanda Amaran</small>Tanda-Tanda Penyakit Gusi</h3>
+              <span class="topic-go" aria-hidden="true"><svg><use href="#i-arrow-right" /></svg></span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a class="glass topic-card t4" href="#/bpe" data-topic="bpe" style="--i:3">
+            <div class="topic-top">
+              <span class="topic-icon" aria-hidden="true"><svg><use href="#i-clipboard" /></svg></span>
+              <span class="topic-num">04</span>
+            </div>
+            <div class="topic-foot">
+              <h3 class="topic-title"><small>Saringan</small>Apa Itu Saringan BPE?</h3>
+              <span class="topic-go" aria-hidden="true"><svg><use href="#i-arrow-right" /></svg></span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a class="glass topic-card t5" href="#/rujukan" data-topic="rujukan" style="--i:4">
+            <div class="topic-top">
+              <span class="topic-icon" aria-hidden="true"><svg><use href="#i-route" /></svg></span>
+              <span class="topic-num">05</span>
+            </div>
+            <div class="topic-foot">
+              <h3 class="topic-title"><small>Proses Rujukan</small>Klinik Kesihatan (KK) ke Klinik Pergigian (KP)</h3>
+              <span class="topic-go" aria-hidden="true"><svg><use href="#i-arrow-right" /></svg></span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a class="glass topic-card t6" href="#/jaga" data-topic="jaga" style="--i:5">
+            <div class="topic-top">
+              <span class="topic-icon" aria-hidden="true"><svg><use href="#i-shield" /></svg></span>
+              <span class="topic-num">06</span>
+            </div>
+            <div class="topic-foot">
+              <h3 class="topic-title"><small>Pelan Tindakan</small>Jaga Gusi, Jaga Kesihatan</h3>
+              <span class="topic-go" aria-hidden="true"><svg><use href="#i-arrow-right" /></svg></span>
+            </div>
+          </a>
+        </li>
+      </ul>
 
-          <div class="glass hero-visual reveal" aria-hidden="true">
-            <div class="duo"><span>🩸</span><span class="plus">⇄</span><span>🦷</span></div>
-            <p>
-              <strong data-l="ms">Gula darah &amp; kesihatan gusi bergerak bersama.</strong>
-              <strong data-l="en">Blood sugar &amp; gum health move together.</strong>
-            </p>
-          </div>
-        </div>
-
-        <!-- Key numbers -->
-        <div class="grid grid-4 stats">
-          <div class="glass stat reveal">
-            <span class="big">3×</span>
-            <span data-l="ms">risiko penyakit gusi teruk jika gula darah tinggi</span>
-            <span data-l="en">higher risk of severe gum disease with high blood sugar</span>
-          </div>
-          <div class="glass stat reveal">
-            <span class="big">0.27–0.48%</span>
-            <span data-l="ms">penurunan HbA1c selepas rawatan gusi</span>
-            <span data-l="en">drop in HbA1c after gum treatment</span>
-          </div>
-          <div class="glass stat reveal">
-            <span class="big">150 min</span>
-            <span data-l="ms">senaman sederhana setiap minggu</span>
-            <span data-l="en">of moderate exercise every week</span>
-          </div>
-          <div class="glass stat reveal">
-            <span class="big">1× <small style="font-size:0.5em">/ <span data-l="ms">tahun</span><span data-l="en">year</span></small></span>
-            <span data-l="ms">pemeriksaan gusi di Klinik Pergigian</span>
-            <span data-l="en">gum check at a Dental Clinic</span>
-          </div>
-        </div>
-
-        <!-- What is... -->
-        <div class="grid grid-3 overview-cards">
-          <article class="glass card reveal">
-            <div class="icon-badge bg-rose" aria-hidden="true">🩸</div>
-            <h3><span data-l="ms">Apa itu Diabetes Jenis 2?</span><span data-l="en">What is Type 2 Diabetes?</span></h3>
-            <p data-l="ms">Keadaan di mana paras gula dalam darah kekal tinggi kerana badan tidak menggunakan insulin dengan berkesan. Jika tidak dikawal, ia boleh merosakkan jantung, buah pinggang, mata, saraf — dan juga gusi.</p>
-            <p data-l="en">A condition where blood sugar stays high because the body does not use insulin properly. If uncontrolled, it can damage the heart, kidneys, eyes, nerves — and the gums.</p>
-          </article>
-          <article class="glass card reveal">
-            <div class="icon-badge bg-mint" aria-hidden="true">🦷</div>
-            <h3><span data-l="ms">Apa itu Penyakit Periodontal?</span><span data-l="en">What is Periodontal Disease?</span></h3>
-            <p data-l="ms">Jangkitan kronik pada gusi dan tulang yang menyokong gigi. Ia bermula dengan gusi berdarah (gingivitis) dan, jika dibiarkan, boleh menyebabkan gigi goyang dan tercabut (periodontitis).</p>
-            <p data-l="en">A long-term infection of the gums and the bone that hold your teeth. It starts with bleeding gums (gingivitis) and, if left untreated, can lead to loose teeth and tooth loss (periodontitis).</p>
-          </article>
-          <article class="glass card reveal">
-            <div class="icon-badge bg-lav" aria-hidden="true">💡</div>
-            <h3><span data-l="ms">Kenapa Ia Penting?</span><span data-l="en">Why Does It Matter?</span></h3>
-            <p data-l="ms">Penyakit gusi selalunya <strong>tidak sakit</strong> pada peringkat awal. Ramai pesakit diabetes tidak sedar gusi mereka dijangkiti sehingga gigi mula goyang. Pemeriksaan awal dapat mencegahnya.</p>
-            <p data-l="en">Gum disease is often <strong>painless</strong> in its early stages. Many people with diabetes don't realise their gums are infected until teeth start to loosen. Early checks can prevent this.</p>
-          </article>
-        </div>
-      </div>
+      <footer class="site-foot">
+        © <span id="year">2026</span> PerioDiabetes · Maklumat untuk pendidikan kesihatan awam
+      </footer>
     </section>
 
-    <!-- ======================= 2. TWO-WAY LINK ======================= -->
-    <section id="kaitan" aria-labelledby="h-kaitan">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow"><span data-l="ms">Bahagian 2</span><span data-l="en">Section 2</span></span>
-          <h2 id="h-kaitan"><span data-l="ms">Kaitan 2 Hala</span><span data-l="en">The 2-Way Link</span></h2>
-          <p class="lead" data-l="ms">Diabetes memburukkan penyakit gusi — dan penyakit gusi memburukkan diabetes. Ia satu kitaran.</p>
-          <p class="lead" data-l="en">Diabetes worsens gum disease — and gum disease worsens diabetes. It's a cycle.</p>
-        </div>
+    <!-- =====================================================
+         HALAMAN SUBTOPIK
+         Untuk menambah kandungan: gantikan blok <div class="placeholder">…</div>
+         di dalam setiap <article class="content-card"> dengan teks anda.
+         ===================================================== -->
 
-        <div class="glass link-diagram reveal" role="img"
-             aria-label="Gula darah tinggi meningkatkan risiko penyakit gusi 3 kali ganda; radang gusi menaikkan HbA1c. High blood sugar triples gum disease risk; gum inflammation raises HbA1c.">
-          <div class="node node-dm">
-            <span class="emo" aria-hidden="true">🩸</span>
-            <strong><span data-l="ms">Diabetes Jenis 2</span><span data-l="en">Type 2 Diabetes</span></strong>
-          </div>
-          <div class="arrows">
-            <div class="arrow fwd">
-              <span class="dir" aria-hidden="true">➜</span>
-              <span data-l="ms">Gula tinggi → <strong>3× risiko</strong> penyakit gusi teruk</span>
-              <span data-l="en">High sugar → <strong>3× risk</strong> of severe gum disease</span>
-            </div>
-            <div class="arrow back">
-              <span class="dir" aria-hidden="true" style="display:inline-block">⬅</span>
-              <span data-l="ms">Radang gusi → <strong>HbA1c naik</strong></span>
-              <span data-l="en">Gum inflammation → <strong>HbA1c rises</strong></span>
-            </div>
-          </div>
-          <div class="node node-gum">
-            <span class="emo" aria-hidden="true">🦷</span>
-            <strong><span data-l="ms">Penyakit Gusi</span><span data-l="en">Gum Disease</span></strong>
-          </div>
+    <!-- 1. PENGENALAN -->
+    <section class="view t1" id="view-pengenalan" data-title="Pengenalan — PerioDiabetes" aria-labelledby="h-pengenalan" hidden>
+      <a class="glass back-btn" href="#/"><span class="arrow" aria-hidden="true"><svg><use href="#i-arrow-left" /></svg></span>Kembali ke Menu Utama</a>
+      <header class="glass page-head">
+        <span class="topic-icon" aria-hidden="true"><svg><use href="#i-book" /></svg></span>
+        <div>
+          <span class="eyebrow">Topik 01 · Pengenalan</span>
+          <h2 id="h-pengenalan" tabindex="-1">Kenali Diabetes &amp; Penyakit Gusi</h2>
         </div>
-
-        <div class="grid grid-2">
-          <article class="glass card reveal">
-            <div class="icon-badge bg-rose" aria-hidden="true">📈</div>
-            <h3><span data-l="ms">Gula Tinggi Merosakkan Gusi</span><span data-l="en">High Sugar Harms Your Gums</span></h3>
-            <p data-l="ms">Paras gula darah yang tinggi melemahkan daya tahan badan terhadap kuman dan melambatkan penyembuhan. Akibatnya, risiko mendapat penyakit gusi yang teruk meningkat <strong>sehingga 3 kali ganda</strong>.</p>
-            <p data-l="en">High blood sugar weakens your body's defence against germs and slows healing. As a result, the risk of severe gum disease rises <strong>up to 3 times</strong>.</p>
-          </article>
-          <article class="glass card reveal">
-            <div class="icon-badge bg-peach" aria-hidden="true">🔥</div>
-            <h3><span data-l="ms">Jangkitan Gusi Menaikkan Gula</span><span data-l="en">Gum Infection Raises Sugar</span></h3>
-            <p data-l="ms">Gusi yang dijangkiti membebaskan bahan radang (inflamasi) ke dalam aliran darah. Ini menjadikan insulin kurang berkesan, lalu <strong>HbA1c meningkat</strong> dan diabetes lebih sukar dikawal.</p>
-            <p data-l="en">Infected gums release inflammatory substances into the bloodstream. This makes insulin work less well, so <strong>HbA1c goes up</strong> and diabetes becomes harder to control.</p>
-          </article>
+      </header>
+      <article class="glass content-card">
+        <!-- ▼ MASUKKAN KANDUNGAN TOPIK 1 DI SINI ▼ -->
+        <div class="placeholder">
+          <span class="pulse" aria-hidden="true"><svg><use href="#i-edit" /></svg></span>
+          <p>Kandungan sedang dikemas kini...</p>
+          <div class="skeleton" aria-hidden="true"><i></i><i></i><i></i></div>
         </div>
-
-        <div class="glass good-news reveal">
-          <div class="figure">
-            <span class="big">↓ 0.27–0.48%</span>
-            <small>HbA1c</small>
-          </div>
-          <div>
-            <h3><span data-l="ms">✅ Berita Baik: Rawat Gusi, Bantu Gula</span><span data-l="en">✅ Good News: Treat Gums, Help Sugar</span></h3>
-            <p data-l="ms">Rawatan gusi seperti <strong>penskaleran (scaling)</strong> dan <strong>pembersihan permukaan akar (root surface debridement)</strong> boleh menurunkan HbA1c sebanyak <strong>0.27% hingga 0.48%</strong>. Setiap penurunan HbA1c membantu mengurangkan risiko komplikasi diabetes.</p>
-            <p data-l="en">Gum treatment such as <strong>scaling</strong> and <strong>root surface debridement</strong> can lower HbA1c by <strong>0.27% to 0.48%</strong>. Every drop in HbA1c helps reduce the risk of diabetes complications.</p>
-            <p style="margin:0; font-size:0.92rem; color:var(--ink-soft)">
-              <span data-l="ms"><strong>HbA1c</strong> ialah ujian darah yang menunjukkan purata paras gula anda dalam 2–3 bulan yang lalu.</span>
-              <span data-l="en"><strong>HbA1c</strong> is a blood test that shows your average blood sugar over the past 2–3 months.</span>
-            </p>
-          </div>
-        </div>
-      </div>
+        <!-- ▲ TAMAT KANDUNGAN TOPIK 1 ▲ -->
+      </article>
     </section>
 
-    <!-- ======================= 3. WARNING SIGNS ======================= -->
-    <section id="tanda" aria-labelledby="h-tanda">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow"><span data-l="ms">Bahagian 3</span><span data-l="en">Section 3</span></span>
-          <h2 id="h-tanda"><span data-l="ms">Tanda-Tanda Amaran</span><span data-l="en">Warning Signs</span></h2>
-          <p class="lead" data-l="ms">Jika anda menghidap diabetes, perhatikan tanda-tanda ini. Jangan tunggu sehingga sakit.</p>
-          <p class="lead" data-l="en">If you have diabetes, look out for these signs. Don't wait until it hurts.</p>
+    <!-- 2. HUBUNGAN DUA HALA -->
+    <section class="view t2" id="view-hubungan" data-title="Hubungan Dua Hala — PerioDiabetes" aria-labelledby="h-hubungan" hidden>
+      <a class="glass back-btn" href="#/"><span class="arrow" aria-hidden="true"><svg><use href="#i-arrow-left" /></svg></span>Kembali ke Menu Utama</a>
+      <header class="glass page-head">
+        <span class="topic-icon" aria-hidden="true"><svg><use href="#i-cycle" /></svg></span>
+        <div>
+          <span class="eyebrow">Topik 02 · Hubungan Dua Hala</span>
+          <h2 id="h-hubungan" tabindex="-1">Hubungan Dua Hala: Diabetes &amp; Penyakit Gusi</h2>
         </div>
-
-        <div class="grid grid-3">
-          <article class="glass sign reveal">
-            <div class="icon-badge bg-rose" aria-hidden="true">🩸</div>
-            <h3><span data-l="ms">Gusi Berdarah</span><span data-l="en">Bleeding Gums</span></h3>
-            <p data-l="ms">Gusi berdarah semasa memberus gigi atau ketika makan.</p>
-            <p data-l="en">Gums bleed when brushing your teeth or while eating.</p>
-          </article>
-          <article class="glass sign reveal">
-            <div class="icon-badge bg-peach" aria-hidden="true">🦷</div>
-            <h3><span data-l="ms">Gigi Goyang</span><span data-l="en">Loose Teeth</span></h3>
-            <p data-l="ms">Gigi terasa longgar atau bergerak apabila disentuh atau semasa mengunyah.</p>
-            <p data-l="en">Teeth feel loose or move when touched or while chewing.</p>
-          </article>
-          <article class="glass sign reveal">
-            <div class="icon-badge bg-lav" aria-hidden="true">😮‍💨</div>
-            <h3><span data-l="ms">Nafas Berbau</span><span data-l="en">Bad Breath</span></h3>
-            <p data-l="ms">Bau mulut yang berterusan walaupun selepas memberus gigi.</p>
-            <p data-l="en">Bad breath that won't go away even after brushing.</p>
-          </article>
-          <article class="glass sign reveal">
-            <div class="icon-badge bg-sky" aria-hidden="true">↔️</div>
-            <h3><span data-l="ms">Gigi Beralih</span><span data-l="en">Shifting Teeth</span></h3>
-            <p data-l="ms">Kedudukan gigi berubah atau celah antara gigi semakin besar.</p>
-            <p data-l="en">Teeth change position or gaps between teeth get bigger.</p>
-          </article>
-          <article class="glass sign reveal">
-            <div class="icon-badge bg-lemon" aria-hidden="true">⚠️</div>
-            <h3><span data-l="ms">Nanah dari Gusi</span><span data-l="en">Pus Discharge</span></h3>
-            <p data-l="ms">Nanah keluar dari celah antara gigi dan gusi.</p>
-            <p data-l="en">Pus coming out from between the teeth and gums.</p>
-          </article>
-          <article class="glass sign reveal" style="background:rgba(204,251,241,0.7)">
-            <div class="icon-badge" style="background:#fff" aria-hidden="true">🩺</div>
-            <h3><span data-l="ms">Ada Salah Satu?</span><span data-l="en">Have Any of These?</span></h3>
-            <p data-l="ms">Segera ke Klinik Pergigian dan beritahu doktor gigi bahawa anda menghidap diabetes.</p>
-            <p data-l="en">Visit a Dental Clinic soon and tell the dentist that you have diabetes.</p>
-          </article>
+      </header>
+      <article class="glass content-card">
+        <!-- ▼ MASUKKAN KANDUNGAN TOPIK 2 DI SINI ▼ -->
+        <div class="placeholder">
+          <span class="pulse" aria-hidden="true"><svg><use href="#i-edit" /></svg></span>
+          <p>Kandungan sedang dikemas kini...</p>
+          <div class="skeleton" aria-hidden="true"><i></i><i></i><i></i></div>
         </div>
-
-        <!-- Interactive self-check -->
-        <form class="glass selfcheck reveal" id="selfcheck" onsubmit="return false;">
-          <fieldset>
-            <legend>
-              <span data-l="ms">📝 Semakan Kendiri Ringkas — tandakan apa yang anda alami:</span>
-              <span data-l="en">📝 Quick Self-Check — tick what you experience:</span>
-            </legend>
-            <div class="check-list">
-              <label class="check"><input type="checkbox" /> <span><span data-l="ms">Gusi berdarah semasa memberus / makan</span><span data-l="en">Bleeding gums when brushing / eating</span></span></label>
-              <label class="check"><input type="checkbox" /> <span><span data-l="ms">Gigi goyang</span><span data-l="en">Loose teeth</span></span></label>
-              <label class="check"><input type="checkbox" /> <span><span data-l="ms">Nafas berbau</span><span data-l="en">Bad breath</span></span></label>
-              <label class="check"><input type="checkbox" /> <span><span data-l="ms">Gigi beralih kedudukan</span><span data-l="en">Shifting teeth</span></span></label>
-              <label class="check"><input type="checkbox" /> <span><span data-l="ms">Nanah keluar dari gusi</span><span data-l="en">Pus from the gums</span></span></label>
-            </div>
-          </fieldset>
-          <div class="result" id="selfcheck-result" role="status" aria-live="polite">
-            <span data-l="ms">Tiada tanda ditanda. Teruskan menjaga kebersihan mulut dan buat pemeriksaan gusi setahun sekali. 👍</span>
-            <span data-l="en">No signs ticked. Keep up good oral care and have your gums checked once a year. 👍</span>
-          </div>
-        </form>
-      </div>
+        <!-- ▲ TAMAT KANDUNGAN TOPIK 2 ▲ -->
+      </article>
     </section>
 
-    <!-- ======================= 4. BPE SCREENING ======================= -->
-    <section id="bpe" aria-labelledby="h-bpe">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow"><span data-l="ms">Bahagian 4</span><span data-l="en">Section 4</span></span>
-          <h2 id="h-bpe"><span data-l="ms">Saringan BPE — Mudah Difahami</span><span data-l="en">BPE Dental Screening — Simplified</span></h2>
-          <p class="lead" data-l="ms">Fahami maksud skor gusi anda supaya anda tahu langkah seterusnya.</p>
-          <p class="lead" data-l="en">Understand what your gum score means so you know what happens next.</p>
+    <!-- 3. TANDA-TANDA -->
+    <section class="view t3" id="view-tanda" data-title="Tanda-Tanda Penyakit Gusi — PerioDiabetes" aria-labelledby="h-tanda" hidden>
+      <a class="glass back-btn" href="#/"><span class="arrow" aria-hidden="true"><svg><use href="#i-arrow-left" /></svg></span>Kembali ke Menu Utama</a>
+      <header class="glass page-head">
+        <span class="topic-icon" aria-hidden="true"><svg><use href="#i-alert" /></svg></span>
+        <div>
+          <span class="eyebrow">Topik 03 · Tanda Amaran</span>
+          <h2 id="h-tanda" tabindex="-1">Tanda-Tanda Penyakit Gusi</h2>
         </div>
-
-        <div class="glass bpe-intro reveal">
-          <div>
-            <h3><span data-l="ms">Apa itu BPE?</span><span data-l="en">What is BPE?</span></h3>
-            <p data-l="ms"><strong>BPE (Basic Periodontal Examination)</strong> ialah pemeriksaan gusi yang ringkas. Doktor gigi menggunakan alat pengukur kecil yang lembut untuk memeriksa celah antara gigi dan gusi. Mulut dibahagikan kepada <strong>6 bahagian</strong>, dan setiap bahagian diberi skor <strong>0 hingga 4</strong>.</p>
-            <p data-l="en"><strong>BPE (Basic Periodontal Examination)</strong> is a quick gum check. The dentist uses a small, gentle measuring probe to check the space between your teeth and gums. Your mouth is divided into <strong>6 sections</strong>, and each section gets a score from <strong>0 to 4</strong>.</p>
-            <p style="margin:0" data-l="ms">⏱️ Cepat &nbsp;•&nbsp; 🙂 Biasanya tidak sakit &nbsp;•&nbsp; 📋 Hasil terus diketahui</p>
-            <p style="margin:0" data-l="en">⏱️ Quick &nbsp;•&nbsp; 🙂 Usually painless &nbsp;•&nbsp; 📋 Results right away</p>
-          </div>
-          <div aria-hidden="true">
-            <div class="sextants">
-              <span>1</span><span>2</span><span>3</span>
-              <span>6</span><span>5</span><span>4</span>
-            </div>
-            <div class="sextants-caption"><span data-l="ms">6 bahagian mulut</span><span data-l="en">6 mouth sections</span></div>
-          </div>
+      </header>
+      <article class="glass content-card">
+        <!-- ▼ MASUKKAN KANDUNGAN TOPIK 3 DI SINI ▼ -->
+        <div class="placeholder">
+          <span class="pulse" aria-hidden="true"><svg><use href="#i-edit" /></svg></span>
+          <p>Kandungan sedang dikemas kini...</p>
+          <div class="skeleton" aria-hidden="true"><i></i><i></i><i></i></div>
         </div>
-
-        <div class="bpe-scale">
-          <article class="glass bpe-card s0 reveal">
-            <div class="score">0</div>
-            <h3><span data-l="ms">Gusi Sihat</span><span data-l="en">Healthy Gums</span></h3>
-            <span class="tag"><span data-l="ms">Tiada rawatan</span><span data-l="en">No treatment</span></span>
-            <p data-l="ms">Tahniah! Teruskan memberus gigi 2 kali sehari dan datang untuk pemeriksaan tahunan.</p>
-            <p data-l="en">Well done! Keep brushing twice a day and come back for your yearly check.</p>
-          </article>
-          <article class="glass bpe-card s1 reveal">
-            <div class="score">1</div>
-            <h3><span data-l="ms">Gusi Berdarah Sedikit</span><span data-l="en">Mild Bleeding</span></h3>
-            <span class="tag"><span data-l="ms">Pembersihan diperlukan</span><span data-l="en">Cleaning needed</span></span>
-            <p data-l="ms">Gusi berdarah apabila diperiksa. Perlu pembersihan dan tunjuk ajar cara memberus yang betul.</p>
-            <p data-l="en">Gums bleed when checked. You need a cleaning and tips on brushing properly.</p>
-          </article>
-          <article class="glass bpe-card s2 reveal">
-            <div class="score">2</div>
-            <h3><span data-l="ms">Karang Gigi</span><span data-l="en">Tartar Build-up</span></h3>
-            <span class="tag"><span data-l="ms">Pembersihan diperlukan</span><span data-l="en">Cleaning needed</span></span>
-            <p data-l="ms">Terdapat karang gigi (tartar). Perlu pembersihan (penskaleran) oleh pasukan pergigian.</p>
-            <p data-l="en">Hard tartar is present. You need a professional cleaning (scaling) by the dental team.</p>
-          </article>
-          <article class="glass bpe-card s3 reveal">
-            <div class="score">3</div>
-            <h3><span data-l="ms">Poket Gusi Sederhana</span><span data-l="en">Moderate Gum Pockets</span></h3>
-            <span class="tag"><span data-l="ms">Pembersihan mendalam</span><span data-l="en">Deep cleaning</span></span>
-            <p data-l="ms">Gusi mula terpisah dari gigi. Perlu pembersihan mendalam di bawah gusi / rawatan permukaan akar.</p>
-            <p data-l="en">Gums are starting to pull away from teeth. You need deep cleaning under the gums / root surface treatment.</p>
-          </article>
-          <article class="glass bpe-card s4 reveal">
-            <div class="score">4</div>
-            <h3><span data-l="ms">Poket Gusi Dalam</span><span data-l="en">Deep Gum Pockets</span></h3>
-            <span class="tag"><span data-l="ms">Rawatan pakar</span><span data-l="en">Specialist care</span></span>
-            <p data-l="ms">Penyakit gusi yang teruk. Anda mungkin dirujuk kepada pakar periodontik (pakar gusi).</p>
-            <p data-l="en">Advanced gum disease. You may be referred to a periodontist (gum specialist).</p>
-          </article>
-        </div>
-
-        <div class="bpe-bar" aria-hidden="true"></div>
-        <div class="bpe-bar-labels" aria-hidden="true">
-          <span data-l="ms">Sihat</span><span data-l="en">Healthy</span>
-          <span data-l="ms">Perlu rawatan pakar</span><span data-l="en">Needs specialist</span>
-        </div>
-
-        <p class="footnote" data-l="ms">ℹ️ Penerangan ini dipermudahkan untuk orang awam. Pelan rawatan sebenar akan ditentukan oleh doktor gigi anda berdasarkan pemeriksaan penuh.</p>
-        <p class="footnote" data-l="en">ℹ️ This explanation is simplified for the public. Your actual treatment plan will be decided by your dentist after a full examination.</p>
-      </div>
+        <!-- ▲ TAMAT KANDUNGAN TOPIK 3 ▲ -->
+      </article>
     </section>
 
-    <!-- ======================= 5. REFERRAL PATHWAY ======================= -->
-    <section id="rujukan" aria-labelledby="h-rujukan">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow"><span data-l="ms">Bahagian 5</span><span data-l="en">Section 5</span></span>
-          <h2 id="h-rujukan"><span data-l="ms">Laluan Rujukan KK ke KP</span><span data-l="en">KKM Referral Pathway: KK to KP</span></h2>
-          <p class="lead" data-l="ms">Doktor di <strong>Klinik Kesihatan (KK)</strong> akan merujuk anda ke <strong>Klinik Pergigian (KP)</strong> untuk pemeriksaan gusi tahunan.</p>
-          <p class="lead" data-l="en">Doctors at the <strong>Klinik Kesihatan (KK, Health Clinic)</strong> will refer you to the <strong>Klinik Pergigian (KP, Dental Clinic)</strong> for a yearly gum check.</p>
+    <!-- 4. SARINGAN BPE -->
+    <section class="view t4" id="view-bpe" data-title="Saringan BPE — PerioDiabetes" aria-labelledby="h-bpe" hidden>
+      <a class="glass back-btn" href="#/"><span class="arrow" aria-hidden="true"><svg><use href="#i-arrow-left" /></svg></span>Kembali ke Menu Utama</a>
+      <header class="glass page-head">
+        <span class="topic-icon" aria-hidden="true"><svg><use href="#i-clipboard" /></svg></span>
+        <div>
+          <span class="eyebrow">Topik 04 · Saringan</span>
+          <h2 id="h-bpe" tabindex="-1">Apa Itu Saringan BPE?</h2>
         </div>
-
-        <ol class="pathway">
-          <li class="glass reveal">
-            <span class="emo" aria-hidden="true">🏥</span>
-            <h3><span data-l="ms">Lawatan ke KK</span><span data-l="en">Visit the KK</span></h3>
-            <p data-l="ms">Hadir ke temujanji susulan diabetes anda di Klinik Kesihatan.</p>
-            <p data-l="en">Attend your diabetes follow-up appointment at the Health Clinic.</p>
-          </li>
-          <li class="glass reveal">
-            <span class="emo" aria-hidden="true">👩‍⚕️</span>
-            <h3><span data-l="ms">Doktor Merujuk</span><span data-l="en">Doctor Refers You</span></h3>
-            <p data-l="ms">Doktor menulis rujukan dalam <strong>Buku Hijau NCD</strong> atau <strong>Slip 1/BPE</strong>.</p>
-            <p data-l="en">The doctor writes a referral in your <strong>Green NCD Book</strong> or on <strong>Slip 1/BPE</strong>.</p>
-          </li>
-          <li class="glass reveal">
-            <span class="emo" aria-hidden="true">🚶</span>
-            <h3><span data-l="ms">Pergi ke KP</span><span data-l="en">Go to the KP</span></h3>
-            <p data-l="ms">Bawa buku atau slip rujukan ke Klinik Pergigian berdekatan.</p>
-            <p data-l="en">Bring the book or referral slip to your nearest Dental Clinic.</p>
-          </li>
-          <li class="glass reveal">
-            <span class="emo" aria-hidden="true">🦷</span>
-            <h3><span data-l="ms">Saringan BPE</span><span data-l="en">BPE Screening</span></h3>
-            <p data-l="ms">Doktor gigi memeriksa gusi anda dan memberi rawatan yang diperlukan.</p>
-            <p data-l="en">The dentist checks your gums and provides any treatment needed.</p>
-          </li>
-          <li class="glass reveal">
-            <span class="emo" aria-hidden="true">🔁</span>
-            <h3><span data-l="ms">Maklum Balas &amp; Ulang</span><span data-l="en">Feedback &amp; Repeat</span></h3>
-            <p data-l="ms">Keputusan direkodkan untuk doktor KK. Ulang pemeriksaan setiap tahun.</p>
-            <p data-l="en">Results are recorded for your KK doctor. Repeat the check every year.</p>
-          </li>
-        </ol>
-        <p class="loop-note reveal">
-          <span data-l="ms">🔁 Kitaran ini berulang <u>setiap tahun</u> — walaupun gusi anda nampak sihat.</span>
-          <span data-l="en">🔁 This cycle repeats <u>every year</u> — even if your gums look healthy.</span>
-        </p>
-
-        <div class="grid grid-2">
-          <article class="glass card reveal">
-            <h3><span data-l="ms">🎒 Apa Perlu Dibawa ke KP</span><span data-l="en">🎒 What to Bring to the KP</span></h3>
-            <div class="docs" style="margin-bottom:1rem">
-              <div class="doc-chip bg-mint"><span class="book" aria-hidden="true"></span><span data-l="ms">Buku Hijau NCD</span><span data-l="en">Green NCD Book</span></div>
-              <div class="doc-chip bg-sky"><span class="slip" aria-hidden="true"></span><span>Slip 1/BPE</span></div>
-            </div>
-            <ul data-l="ms">
-              <li>Kad pengenalan (MyKad)</li>
-              <li>Senarai ubat-ubatan semasa</li>
-              <li>Keputusan HbA1c terkini (jika ada)</li>
-            </ul>
-            <ul data-l="en">
-              <li>Identity card (MyKad)</li>
-              <li>List of your current medicines</li>
-              <li>Your latest HbA1c result (if available)</li>
-            </ul>
-          </article>
-          <div class="callout reveal" style="align-self:start">
-            <span class="ico" aria-hidden="true">💬</span>
-            <div>
-              <h3 style="margin-bottom:0.4rem"><span data-l="ms">Belum Dirujuk?</span><span data-l="en">Not Referred Yet?</span></h3>
-              <p data-l="ms">Jangan segan untuk bertanya kepada doktor anda:<br /><strong>“Doktor, boleh rujuk saya ke Klinik Pergigian untuk pemeriksaan gusi?”</strong></p>
-              <p data-l="en">Don't be shy to ask your doctor:<br /><strong>“Doctor, can you refer me to the Dental Clinic for a gum check?”</strong></p>
-              <p data-l="ms">Sentiasa bawa Buku Hijau NCD anda pada <strong>setiap</strong> lawatan ke KK dan KP.</p>
-              <p data-l="en">Always bring your Green NCD Book to <strong>every</strong> KK and KP visit.</p>
-            </div>
-          </div>
+      </header>
+      <article class="glass content-card">
+        <!-- ▼ MASUKKAN KANDUNGAN TOPIK 4 DI SINI ▼ -->
+        <div class="placeholder">
+          <span class="pulse" aria-hidden="true"><svg><use href="#i-edit" /></svg></span>
+          <p>Kandungan sedang dikemas kini...</p>
+          <div class="skeleton" aria-hidden="true"><i></i><i></i><i></i></div>
         </div>
-      </div>
+        <!-- ▲ TAMAT KANDUNGAN TOPIK 4 ▲ -->
+      </article>
     </section>
 
-    <!-- ======================= 6. ACTION PLAN ======================= -->
-    <section id="pelan" aria-labelledby="h-pelan">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow"><span data-l="ms">Bahagian 6</span><span data-l="en">Section 6</span></span>
-          <h2 id="h-pelan"><span data-l="ms">Pelan Tindakan Harian</span><span data-l="en">Patient Action Plan</span></h2>
-          <p class="lead" data-l="ms">Langkah kecil setiap hari untuk gula darah yang terkawal dan gusi yang sihat.</p>
-          <p class="lead" data-l="en">Small daily steps for controlled blood sugar and healthy gums.</p>
+    <!-- 5. PROSES RUJUKAN -->
+    <section class="view t5" id="view-rujukan" data-title="Proses Rujukan KK ke KP — PerioDiabetes" aria-labelledby="h-rujukan" hidden>
+      <a class="glass back-btn" href="#/"><span class="arrow" aria-hidden="true"><svg><use href="#i-arrow-left" /></svg></span>Kembali ke Menu Utama</a>
+      <header class="glass page-head">
+        <span class="topic-icon" aria-hidden="true"><svg><use href="#i-route" /></svg></span>
+        <div>
+          <span class="eyebrow">Topik 05 · Proses Rujukan</span>
+          <h2 id="h-rujukan" tabindex="-1">Proses Rujukan Klinik Kesihatan (KK) ke Klinik Pergigian (KP)</h2>
         </div>
-
-        <!-- Malaysian Healthy Plate -->
-        <article class="glass plate-card reveal">
-          <div class="plate-wrap">
-            <svg viewBox="0 0 220 220" role="img" aria-labelledby="plate-title">
-              <title id="plate-title">Pinggan Sihat Malaysia: separuh sayur dan buah, suku protein, suku karbohidrat kompleks / Malaysian Healthy Plate: half vegetables and fruits, quarter protein, quarter complex carbohydrates</title>
-              <circle cx="110" cy="110" r="106" fill="#ffffff" stroke="#e2e8f0" stroke-width="2" />
-              <path d="M110,18 A92,92 0 0 0 110,202 Z" fill="#86efac" />
-              <path d="M110,110 L110,18 A92,92 0 0 1 202,110 Z" fill="#fdba74" />
-              <path d="M110,110 L202,110 A92,92 0 0 1 110,202 Z" fill="#fde047" />
-              <line x1="110" y1="18" x2="110" y2="202" stroke="#fff" stroke-width="4" />
-              <line x1="110" y1="110" x2="202" y2="110" stroke="#fff" stroke-width="4" />
-              <text x="62" y="104" text-anchor="middle" font-size="26" font-weight="700" fill="#14532d" font-family="inherit">½</text>
-              <text x="62" y="132" text-anchor="middle" font-size="22">🥦🍎</text>
-              <text x="148" y="72" text-anchor="middle" font-size="20" font-weight="700" fill="#7c2d12" font-family="inherit">¼</text>
-              <text x="148" y="96" text-anchor="middle" font-size="18">🐟</text>
-              <text x="148" y="146" text-anchor="middle" font-size="20" font-weight="700" fill="#713f12" font-family="inherit">¼</text>
-              <text x="148" y="170" text-anchor="middle" font-size="18">🍚</text>
-            </svg>
-          </div>
-          <div>
-            <span class="eyebrow" style="margin-bottom:0.5rem">Suku-Suku Separuh</span>
-            <h3><span data-l="ms">🍽️ Pinggan Sihat Malaysia</span><span data-l="en">🍽️ Malaysian Healthy Plate</span></h3>
-            <p data-l="ms">Gunakan konsep <strong>“Suku-Suku Separuh”</strong> untuk setiap hidangan utama:</p>
-            <p data-l="en">Use the <strong>“Quarter-Quarter-Half”</strong> concept for every main meal:</p>
-            <ul class="legend">
-              <li>
-                <span class="sw sw-veg">½</span>
-                <span data-l="ms"><strong>Separuh: Sayur-sayuran &amp; buah-buahan</strong> — sayur hijau, ulam, kubis, timun, buah segar.</span>
-                <span data-l="en"><strong>Half: Vegetables &amp; fruits</strong> — leafy greens, ulam, cabbage, cucumber, fresh fruit.</span>
-              </li>
-              <li>
-                <span class="sw sw-pro">¼</span>
-                <span data-l="ms"><strong>Suku: Protein</strong> — ikan, ayam tanpa kulit, telur, tauhu, tempe, kekacang.</span>
-                <span data-l="en"><strong>Quarter: Protein</strong> — fish, skinless chicken, eggs, tofu, tempeh, legumes.</span>
-              </li>
-              <li>
-                <span class="sw sw-carb">¼</span>
-                <span data-l="ms"><strong>Suku: Karbohidrat kompleks</strong> — nasi perang, roti gandum penuh, oat, ubi.</span>
-                <span data-l="en"><strong>Quarter: Complex carbohydrates</strong> — brown rice, wholemeal bread, oats, sweet potato.</span>
-              </li>
-            </ul>
-            <p style="margin:1rem 0 0; font-size:0.95rem; color:var(--ink-soft)">
-              <span data-l="ms">💧 Pilih air kosong. Kurangkan minuman manis, kuih manis dan makanan bergoreng.</span>
-              <span data-l="en">💧 Choose plain water. Cut down on sweet drinks, sweet kuih and fried food.</span>
-            </p>
-          </div>
-        </article>
-
-        <div class="grid grid-3">
-          <article class="glass card action-card reveal">
-            <div class="icon-badge bg-sky" aria-hidden="true">🚶‍♀️</div>
-            <h3><span data-l="ms">Senaman 150 Minit Seminggu</span><span data-l="en">Exercise 150 Minutes a Week</span></h3>
-            <p data-l="ms">Contohnya, <strong>30 minit sehari, 5 hari seminggu</strong>.</p>
-            <p data-l="en">For example, <strong>30 minutes a day, 5 days a week</strong>.</p>
-            <div class="exercise-week" aria-hidden="true">
-              <span class="on" data-l="ms">Isn</span><span class="on" data-l="ms">Sel</span><span class="on" data-l="ms">Rab</span><span class="on" data-l="ms">Kha</span><span class="on" data-l="ms">Jum</span><span data-l="ms">Sab</span><span data-l="ms">Ahd</span>
-              <span class="on" data-l="en">Mon</span><span class="on" data-l="en">Tue</span><span class="on" data-l="en">Wed</span><span class="on" data-l="en">Thu</span><span class="on" data-l="en">Fri</span><span data-l="en">Sat</span><span data-l="en">Sun</span>
-            </div>
-            <ul data-l="ms">
-              <li>Jalan pantas, berbasikal, berenang atau berkebun</li>
-              <li>Berbincang dengan doktor sebelum memulakan senaman baharu</li>
-            </ul>
-            <ul data-l="en">
-              <li>Brisk walking, cycling, swimming or gardening</li>
-              <li>Talk to your doctor before starting a new exercise routine</li>
-            </ul>
-          </article>
-
-          <article class="glass card action-card reveal">
-            <div class="icon-badge bg-rose" aria-hidden="true">🚭</div>
-            <h3><span data-l="ms">Berhenti Merokok</span><span data-l="en">Quit Smoking</span></h3>
-            <p data-l="ms">Merokok memburukkan penyakit gusi, melambatkan penyembuhan dan menyukarkan kawalan gula darah.</p>
-            <p data-l="en">Smoking worsens gum disease, slows healing and makes blood sugar harder to control.</p>
-            <ul data-l="ms">
-              <li>Dapatkan bantuan percuma di perkhidmatan berhenti merokok (<strong>mQuit</strong>) di Klinik Kesihatan</li>
-              <li>Termasuk vape dan rokok elektronik</li>
-            </ul>
-            <ul data-l="en">
-              <li>Get free help from quit-smoking services (<strong>mQuit</strong>) at the Health Clinic</li>
-              <li>This includes vapes and e-cigarettes</li>
-            </ul>
-          </article>
-
-          <article class="glass card action-card reveal">
-            <div class="icon-badge bg-mint" aria-hidden="true">🪥</div>
-            <h3><span data-l="ms">Jaga Gigi &amp; Gusi</span><span data-l="en">Care for Teeth &amp; Gums</span></h3>
-            <p data-l="ms"><strong>Lawatan pergigian sekurang-kurangnya setahun sekali</strong> — walaupun tiada sakit.</p>
-            <p data-l="en"><strong>Visit the dentist at least once a year</strong> — even without pain.</p>
-            <ul data-l="ms">
-              <li>Berus gigi 2 kali sehari selama 2 minit dengan ubat gigi berfluorida</li>
-              <li>Bersihkan celah gigi dengan flos atau berus interdental</li>
-              <li>Ambil ubat diabetes seperti yang diarahkan</li>
-            </ul>
-            <ul data-l="en">
-              <li>Brush twice a day for 2 minutes with fluoride toothpaste</li>
-              <li>Clean between teeth with floss or interdental brushes</li>
-              <li>Take your diabetes medicines as prescribed</li>
-            </ul>
-          </article>
+      </header>
+      <article class="glass content-card">
+        <!-- ▼ MASUKKAN KANDUNGAN TOPIK 5 DI SINI ▼ -->
+        <div class="placeholder">
+          <span class="pulse" aria-hidden="true"><svg><use href="#i-edit" /></svg></span>
+          <p>Kandungan sedang dikemas kini...</p>
+          <div class="skeleton" aria-hidden="true"><i></i><i></i><i></i></div>
         </div>
-
-        <!-- Daily checklist -->
-        <div class="glass daily reveal">
-          <div class="daily-head">
-            <h3><span data-l="ms">✅ Senarai Semak Harian Saya</span><span data-l="en">✅ My Daily Checklist</span></h3>
-            <button type="button" class="btn btn-ghost" id="print-btn">
-              🖨️ <span data-l="ms">Cetak</span><span data-l="en">Print</span>
-            </button>
-          </div>
-          <div class="check-list">
-            <label class="check"><input type="checkbox" /> <span><span data-l="ms">Makan ikut Pinggan Sihat (Suku-Suku Separuh)</span><span data-l="en">Ate using the Healthy Plate (Quarter-Quarter-Half)</span></span></label>
-            <label class="check"><input type="checkbox" /> <span><span data-l="ms">Bersenam 30 minit</span><span data-l="en">Exercised for 30 minutes</span></span></label>
-            <label class="check"><input type="checkbox" /> <span><span data-l="ms">Berus gigi pagi &amp; malam</span><span data-l="en">Brushed teeth morning &amp; night</span></span></label>
-            <label class="check"><input type="checkbox" /> <span><span data-l="ms">Bersihkan celah gigi</span><span data-l="en">Cleaned between teeth</span></span></label>
-            <label class="check"><input type="checkbox" /> <span><span data-l="ms">Ambil ubat diabetes</span><span data-l="en">Took diabetes medicine</span></span></label>
-            <label class="check"><input type="checkbox" /> <span><span data-l="ms">Bebas rokok hari ini</span><span data-l="en">Smoke-free today</span></span></label>
-          </div>
-        </div>
-      </div>
+        <!-- ▲ TAMAT KANDUNGAN TOPIK 5 ▲ -->
+      </article>
     </section>
+
+    <!-- 6. JAGA GUSI, JAGA KESIHATAN -->
+    <section class="view t6" id="view-jaga" data-title="Jaga Gusi, Jaga Kesihatan — PerioDiabetes" aria-labelledby="h-jaga" hidden>
+      <a class="glass back-btn" href="#/"><span class="arrow" aria-hidden="true"><svg><use href="#i-arrow-left" /></svg></span>Kembali ke Menu Utama</a>
+      <header class="glass page-head">
+        <span class="topic-icon" aria-hidden="true"><svg><use href="#i-shield" /></svg></span>
+        <div>
+          <span class="eyebrow">Topik 06 · Pelan Tindakan</span>
+          <h2 id="h-jaga" tabindex="-1">Jaga Gusi, Jaga Kesihatan</h2>
+        </div>
+      </header>
+      <article class="glass content-card">
+        <!-- ▼ MASUKKAN KANDUNGAN TOPIK 6 DI SINI ▼ -->
+        <div class="placeholder">
+          <span class="pulse" aria-hidden="true"><svg><use href="#i-edit" /></svg></span>
+          <p>Kandungan sedang dikemas kini...</p>
+          <div class="skeleton" aria-hidden="true"><i></i><i></i><i></i></div>
+        </div>
+        <!-- ▲ TAMAT KANDUNGAN TOPIK 6 ▲ -->
+      </article>
+    </section>
+
   </main>
 
-  <!-- ======================= FOOTER ======================= -->
-  <footer>
-    <div class="container">
-      <div class="glass footer-inner">
-        <div class="grid grid-2">
-          <div>
-            <h2><span data-l="ms">⚠️ Penafian</span><span data-l="en">⚠️ Disclaimer</span></h2>
-            <p data-l="ms">Maklumat di laman ini adalah untuk tujuan pendidikan awam sahaja dan tidak menggantikan nasihat, diagnosis atau rawatan daripada doktor atau doktor gigi anda. Sila dapatkan nasihat profesional kesihatan untuk sebarang kebimbangan.</p>
-            <p data-l="en">The information on this site is for public education only and does not replace advice, diagnosis or treatment from your doctor or dentist. Please consult a healthcare professional about any concerns.</p>
-          </div>
-          <div>
-            <h2><span data-l="ms">📚 Rujukan</span><span data-l="en">📚 References</span></h2>
-            <ul>
-              <li><span data-l="ms">Kementerian Kesihatan Malaysia (KKM) — Garis Panduan Amalan Klinikal (CPG) berkaitan pengurusan penyakit periodontal dalam pesakit Diabetes Mellitus Jenis 2.</span><span data-l="en">Ministry of Health Malaysia (KKM) — Clinical Practice Guidelines (CPG) on the management of periodontal disease in Type 2 Diabetes Mellitus.</span></li>
-              <li>CPG Management of Type 2 Diabetes Mellitus (6th Edition), KKM.</li>
-              <li><span data-l="ms">Pinggan Sihat Malaysia — Bahagian Pemakanan, KKM.</span><span data-l="en">Malaysian Healthy Plate — Nutrition Division, KKM.</span></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <p class="copyright">© <span id="year">2026</span> PerioDiabetes ·
-        <span data-l="ms">Gusi Sihat, Gula Terkawal</span><span data-l="en">Healthy Gums, Controlled Sugar</span>
-      </p>
-    </div>
-  </footer>
-
-  <button type="button" class="to-top" id="to-top" aria-label="Kembali ke atas / Back to top">↑</button>
-
-  <!-- ======================= MINIMAL JS ======================= -->
+  <!-- =========================================================
+       PENGHALA SPA (HASH ROUTER) — vanilla JS
+       #/          → Paparan Utama
+       #/<topik>   → Halaman subtopik (cth. #/bpe)
+       Butang "Back" pelayar turut berfungsi.
+       ========================================================= -->
   <script>
     (function () {
-      var root = document.documentElement;
-      var store = {
-        get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
-        set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
-      };
+      var views = document.querySelectorAll('.view');
+      var lastTopic = null;
+      var firstLoad = true;
 
-      /* ---- Language toggle ---- */
-      var langBtns = document.querySelectorAll('[data-set-lang]');
-      function setLang(lang) {
-        root.setAttribute('data-lang', lang);
-        root.setAttribute('lang', lang);
-        langBtns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.setLang === lang)); });
-        store.set('pd-lang', lang);
-      }
-      langBtns.forEach(function (b) { b.addEventListener('click', function () { setLang(b.dataset.setLang); }); });
-      setLang(store.get('pd-lang') || 'ms');
+      function route() {
+        var id = location.hash.replace(/^#\/?/, '') || 'utama';
+        var target = document.getElementById('view-' + id);
+        if (!target) { id = 'utama'; target = document.getElementById('view-utama'); }
 
-      /* ---- Text size ---- */
-      var scaleBtns = document.querySelectorAll('[data-scale]');
-      function setScale(s) {
-        root.style.setProperty('--scale', s);
-        scaleBtns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.scale === s)); });
-        store.set('pd-scale', s);
-      }
-      scaleBtns.forEach(function (b) { b.addEventListener('click', function () { setScale(b.dataset.scale); }); });
-      setScale(store.get('pd-scale') || '1');
+        views.forEach(function (v) { v.hidden = (v !== target); });
+        document.title = target.getAttribute('data-title').replace('&amp;', '&');
+        window.scrollTo(0, 0);
 
-      /* ---- Mobile menu ---- */
-      var toggle = document.querySelector('.menu-toggle');
-      var nav = document.getElementById('main-nav');
-      function closeMenu() { nav.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); }
-      toggle.addEventListener('click', function () {
-        var open = nav.classList.toggle('open');
-        toggle.setAttribute('aria-expanded', String(open));
-      });
-      nav.addEventListener('click', function (e) { if (e.target.closest('a')) closeMenu(); });
-      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
-
-      /* ---- Scroll spy + reveal ---- */
-      var links = nav.querySelectorAll('a');
-      if ('IntersectionObserver' in window) {
-        var spy = new IntersectionObserver(function (entries) {
-          entries.forEach(function (en) {
-            if (en.isIntersecting) {
-              links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + en.target.id); });
-            }
-          });
-        }, { rootMargin: '-45% 0px -50% 0px' });
-        document.querySelectorAll('main section[id]').forEach(function (s) { spy.observe(s); });
-
-        var rev = new IntersectionObserver(function (entries) {
-          entries.forEach(function (en) {
-            if (en.isIntersecting) { en.target.classList.add('in'); rev.unobserve(en.target); }
-          });
-        }, { threshold: 0.08 });
-        document.querySelectorAll('.reveal').forEach(function (el) { rev.observe(el); });
-      } else {
-        document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
-      }
-
-      /* ---- Warning-sign self-check ---- */
-      var form = document.getElementById('selfcheck');
-      var result = document.getElementById('selfcheck-result');
-      form.addEventListener('change', function () {
-        var n = form.querySelectorAll('input:checked').length;
-        if (n === 0) {
-          result.className = 'result';
-          result.innerHTML =
-            '<span data-l="ms">Tiada tanda ditanda. Teruskan menjaga kebersihan mulut dan buat pemeriksaan gusi setahun sekali. 👍</span>' +
-            '<span data-l="en">No signs ticked. Keep up good oral care and have your gums checked once a year. 👍</span>';
-        } else {
-          result.className = 'result alert';
-          result.innerHTML =
-            '<span data-l="ms">⚠️ Anda mempunyai ' + n + ' tanda amaran. Sila dapatkan pemeriksaan di Klinik Pergigian secepat mungkin dan beritahu doktor gigi bahawa anda menghidap diabetes.</span>' +
-            '<span data-l="en">⚠️ You have ' + n + ' warning sign' + (n > 1 ? 's' : '') + '. Please get checked at a Dental Clinic as soon as possible and tell the dentist you have diabetes.</span>';
+        if (!firstLoad) {
+          if (id === 'utama') {
+            // Kembalikan fokus ke kad yang dibuka sebelum ini
+            var card = lastTopic && document.querySelector('[data-topic="' + lastTopic + '"]');
+            if (card) card.focus({ preventScroll: true });
+          } else {
+            var h = target.querySelector('h2');
+            if (h) h.focus({ preventScroll: true });
+          }
         }
-      });
+        if (id !== 'utama') lastTopic = id;
+        firstLoad = false;
+      }
 
-      /* ---- Print, back-to-top, year ---- */
-      document.getElementById('print-btn').addEventListener('click', function () { window.print(); });
-      var toTop = document.getElementById('to-top');
-      window.addEventListener('scroll', function () { toTop.classList.toggle('show', window.scrollY > 600); }, { passive: true });
-      toTop.addEventListener('click', function () { window.scrollTo({ top: 0 }); document.querySelector('.brand').focus(); });
+      window.addEventListener('hashchange', route);
+      route();
+
       document.getElementById('year').textContent = new Date().getFullYear();
     })();
   </script>
