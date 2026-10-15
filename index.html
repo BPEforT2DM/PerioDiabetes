@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>PerioDiabetes — Portal Diabetes &amp; Kesihatan Gusi</title>
-  <meta name="description" content="PerioDiabetes: portal kesedaran awam mengenai Diabetes Mellitus Jenis 2 dan penyakit gusi (periodontal)." />
-  <meta name="theme-color" content="#dff3f5" />
+  <title>PerioDiabetes — Kenali Hubungan Diabetes dan Penyakit Gusi</title>
+  <meta name="description" content="PerioDiabetes: Kenali Hubungan Diabetes dan Penyakit Gusi, Lindungi Kesihatan Anda. Portal kesedaran kesihatan awam." />
+  <meta name="theme-color" content="#e6fbfb" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦷</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,40 +16,32 @@
        TOKEN REKA BENTUK
        ========================================================= */
     :root {
-      --ink: #0f2a3d;
-      --ink-soft: #4a6274;
-      --accent: #0e7490;
-      --accent-2: #0f9f8f;
+      --ink: #0d2b3e;
+      --ink-soft: #46606f;
+      --accent: #0891b2;
 
-      --glass-bg: rgba(255, 255, 255, 0.38);
-      --glass-bg-strong: rgba(255, 255, 255, 0.55);
-      --glass-border: 1px solid rgba(255, 255, 255, 0.45);
-      --glass-blur: blur(20px) saturate(160%);
+      /* Liquid Glass */
+      --glass-bg: rgba(255, 255, 255, 0.45);
+      --glass-bg-hover: rgba(255, 255, 255, 0.6);
+      --glass-border: rgba(255, 255, 255, 0.55);
+      --glass-border-hover: rgba(255, 255, 255, 0.95);
+      --glass-blur: blur(20px) saturate(170%);
       --radius: 22px;
-      --radius-lg: 24px;
+      --radius-lg: 26px;
 
-      /* Bayang-bayang lembut berlapis */
+      /* Bayang-bayang terapung berlapis */
       --shadow:
-        0 1px 1px rgba(15, 42, 61, 0.04),
-        0 4px 8px rgba(15, 42, 61, 0.05),
-        0 12px 24px rgba(15, 42, 61, 0.07),
-        0 24px 48px -12px rgba(14, 116, 144, 0.16);
-      --shadow-hover:
-        0 2px 2px rgba(15, 42, 61, 0.05),
-        0 8px 16px rgba(15, 42, 61, 0.07),
-        0 20px 36px rgba(15, 42, 61, 0.09),
-        0 36px 64px -16px rgba(14, 116, 144, 0.26);
-      /* Kilauan dalaman pada tepi kaca */
-      --inner-glow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.85),
-        inset 0 -1px 0 rgba(255, 255, 255, 0.25);
+        0 1px 2px rgba(13, 43, 62, 0.04),
+        0 6px 12px rgba(13, 43, 62, 0.05),
+        0 16px 32px -8px rgba(13, 43, 62, 0.08),
+        0 28px 56px -20px rgba(8, 145, 178, 0.18);
+      --edge: inset 0 1px 0 rgba(255, 255, 255, 0.95), inset 0 -1px 0 rgba(255, 255, 255, 0.2);
 
       --ease: cubic-bezier(0.22, 1, 0.36, 1);
       --font: "Plus Jakarta Sans", "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
-
     html { -webkit-text-size-adjust: 100%; }
 
     body {
@@ -59,13 +51,18 @@
       font-family: var(--font);
       color: var(--ink);
       line-height: 1.6;
-      background: #eef7f8;
+      background: #f2fbfb;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
 
+    h1, h2, h3, p, figure { margin: 0; }
+    a { color: inherit; }
+    :focus-visible { outline: 3px solid rgba(8, 145, 178, 0.6); outline-offset: 3px; }
+
     /* =========================================================
-       LATAR BELAKANG: GRADIEN MESH CECAIR
+       LATAR: GRADIEN MESH CECAIR DINAMIK
+       (cyan pastel bercahaya · pudina segar · koral/ros lembut)
        ========================================================= */
     .ambient {
       position: fixed;
@@ -73,145 +70,231 @@
       z-index: -1;
       overflow: hidden;
       background:
-        radial-gradient(60% 50% at 10% 0%, #d6ecff 0%, transparent 70%),
-        radial-gradient(55% 45% at 100% 10%, #d4f7ec 0%, transparent 70%),
-        radial-gradient(70% 60% at 50% 100%, #e3f1ff 0%, transparent 70%),
-        linear-gradient(160deg, #fbfdff 0%, #eef8f7 50%, #f4f9ff 100%);
+        radial-gradient(55% 45% at 0% 0%, #c9f7ff 0%, transparent 70%),
+        radial-gradient(50% 45% at 100% 5%, #ffe0ea 0%, transparent 70%),
+        radial-gradient(60% 55% at 100% 100%, #cdfbe6 0%, transparent 70%),
+        radial-gradient(55% 50% at 0% 100%, #ece4ff 0%, transparent 70%),
+        linear-gradient(165deg, #fbffff 0%, #effcfa 45%, #fdf6f9 100%);
     }
     .ambient span {
       position: absolute;
       border-radius: 50%;
-      filter: blur(60px);
-      opacity: 0.75;
-      animation: drift 26s ease-in-out infinite alternate;
+      filter: blur(70px);
+      will-change: transform;
+      animation: drift 28s ease-in-out infinite alternate;
     }
-    .ambient .b1 { width: 46vmax; height: 46vmax; left: -12vmax; top: -10vmax; background: #b9dcff; }
-    .ambient .b2 { width: 40vmax; height: 40vmax; right: -12vmax; top: 18vh;  background: #b5f0dc; animation-duration: 32s; animation-delay: -6s; }
-    .ambient .b3 { width: 36vmax; height: 36vmax; left: 22vw;  bottom: -16vmax; background: #cfe6ff; animation-duration: 38s; animation-delay: -12s; }
-    .ambient .b4 { width: 22vmax; height: 22vmax; left: 8vw;   bottom: 12vh;  background: #fdfbff; opacity: 0.9; animation-duration: 30s; }
+    .ambient .b1 { width: 48vmax; height: 48vmax; left: -14vmax; top: -14vmax; background: #a5f3fc; opacity: 0.7; }
+    .ambient .b2 { width: 40vmax; height: 40vmax; right: -14vmax; top: 6vh; background: #fecdd3; opacity: 0.65; animation-duration: 34s; animation-delay: -8s; }
+    .ambient .b3 { width: 44vmax; height: 44vmax; right: 4vw; bottom: -20vmax; background: #a7f3d0; opacity: 0.65; animation-duration: 40s; animation-delay: -14s; }
+    .ambient .b4 { width: 30vmax; height: 30vmax; left: -6vmax; bottom: 4vh; background: #e9d5ff; opacity: 0.55; animation-duration: 36s; animation-delay: -4s; }
+    .ambient .b5 { width: 24vmax; height: 24vmax; left: 38vw; top: 30vh; background: #ffffff; opacity: 0.8; animation-duration: 30s; }
 
     @keyframes drift {
       0%   { transform: translate3d(0, 0, 0) scale(1); }
-      50%  { transform: translate3d(4vmax, 3vmax, 0) scale(1.08); }
-      100% { transform: translate3d(-3vmax, 5vmax, 0) scale(0.96); }
+      50%  { transform: translate3d(5vmax, 4vmax, 0) scale(1.1); }
+      100% { transform: translate3d(-4vmax, 6vmax, 0) scale(0.95); }
     }
 
     /* =========================================================
-       ASAS
+       KACA CECAIR (LIQUID GLASS) — ASAS
        ========================================================= */
-    .shell {
-      width: min(100% - 2rem, 64rem);
-      margin-inline: auto;
-      padding: max(1.25rem, env(safe-area-inset-top)) 0 2.5rem;
-    }
-
-    h1, h2, h3 { margin: 0; line-height: 1.2; letter-spacing: -0.02em; }
-    p { margin: 0; }
-    a { color: inherit; }
-
-    :focus-visible {
-      outline: 3px solid rgba(14, 116, 144, 0.55);
-      outline-offset: 3px;
-    }
-
-    .sr-only {
-      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-      overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
-    }
-
-    /* Kaca cecair — gaya asas yang dikongsi */
     .glass {
       position: relative;
       background: var(--glass-bg);
-      border: var(--glass-border);
+      border: 1px solid var(--glass-border);
       border-radius: var(--radius);
       -webkit-backdrop-filter: var(--glass-blur);
       backdrop-filter: var(--glass-blur);
-      box-shadow: var(--inner-glow), var(--shadow);
+      box-shadow: var(--edge), var(--shadow);
       isolation: isolate;
     }
-    /* Pantulan cahaya lembut di bahagian atas kaca */
+    /* Pantulan berkilat di tepi atas kaca */
     .glass::before {
       content: "";
       position: absolute;
-      inset: 0;
+      top: 0; left: 0; right: 0;
+      height: 55%;
       border-radius: inherit;
-      background: linear-gradient(160deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0.08) 38%, rgba(255, 255, 255, 0) 60%);
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.18) 45%, rgba(255, 255, 255, 0) 100%);
       pointer-events: none;
       z-index: -1;
     }
 
-    /* =========================================================
-       PAPARAN (VIEW) — SPA
-       ========================================================= */
-    .view { animation: viewIn 0.5s var(--ease) both; }
-    .view[hidden] { display: none; }
+    @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+      .glass { background: rgba(255, 255, 255, 0.85); }
+    }
 
+    /* =========================================================
+       KERANGKA & PAPARAN SPA
+       ========================================================= */
+    .shell {
+      width: min(100% - 1.75rem, 66rem);
+      margin-inline: auto;
+      padding: max(1rem, env(safe-area-inset-top)) 0 2.5rem;
+    }
+    .view { animation: viewIn 0.55s var(--ease) backwards; }
+    .view[hidden] { display: none; }
     @keyframes viewIn {
-      from { opacity: 0; transform: translateY(14px) scale(0.99); }
+      from { opacity: 0; transform: translateY(16px) scale(0.99); }
       to   { opacity: 1; transform: none; }
     }
 
     /* =========================================================
-       PAPARAN UTAMA: HERO
+       HERO
        ========================================================= */
     .hero {
-      text-align: center;
-      padding: 1.75rem 1.25rem 1.6rem;
-      margin-bottom: 1.25rem;
+      display: grid;
+      gap: 1.25rem;
+      padding: 1.6rem 1.15rem 1.35rem;
+      margin-bottom: 1.4rem;
       border-radius: var(--radius-lg);
+      text-align: center;
+      overflow: hidden;
     }
-    .brand-mark {
-      display: inline-grid;
-      place-items: center;
-      width: 3.5rem;
-      height: 3.5rem;
-      border-radius: 18px;
-      margin-bottom: 0.9rem;
-      color: #fff;
-      background: linear-gradient(145deg, #38bdf8 0%, #14b8a6 100%);
-      box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.6),
-        0 10px 24px -8px rgba(14, 116, 144, 0.55);
-    }
-    .brand-mark svg { width: 1.9rem; height: 1.9rem; }
 
-    .hero h1 {
-      font-size: clamp(1.9rem, 7vw, 3rem);
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.3rem 0.8rem;
+      margin-bottom: 0.8rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #0e7490;
+      background: rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      border-radius: 999px;
+      box-shadow: 0 4px 12px -6px rgba(8, 145, 178, 0.35);
+    }
+    .eyebrow::before {
+      content: "";
+      width: 0.45rem; height: 0.45rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #22d3ee, #f472b6);
+      box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.2);
+    }
+
+    .brand-title {
+      font-size: clamp(2.4rem, 11vw, 4.2rem);
       font-weight: 800;
-      background: linear-gradient(100deg, #0c4a6e 0%, #0e7490 45%, #0f9f8f 100%);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      background: linear-gradient(110deg, #0e7490 0%, #06b6d4 22%, #a5f3fc 34%, #14b8a6 48%, #ec4899 74%, #0e7490 100%);
+      background-size: 220% auto;
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      filter: drop-shadow(0 6px 14px rgba(8, 145, 178, 0.22));
+      animation: sheen 9s linear infinite;
     }
-    .hero p {
-      margin-top: 0.5rem;
-      font-size: clamp(0.92rem, 2.6vw, 1.08rem);
+    @keyframes sheen { to { background-position: -220% center; } }
+
+    .slogan {
+      margin-top: 0.75rem;
+      max-width: 30rem;
+      margin-inline: auto;
+      font-size: clamp(0.98rem, 3.6vw, 1.2rem);
+      font-weight: 600;
+      line-height: 1.5;
       color: var(--ink-soft);
-      font-weight: 500;
+      text-wrap: balance;
+    }
+    .slogan strong { color: #be185d; font-weight: 700; }
+
+    /* Ilustrasi klinikal */
+    .hero-figure { position: relative; }
+    .art-frame {
+      position: relative;
+      padding: 0.6rem;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      box-shadow: inset 0 1px 0 #fff, 0 18px 40px -18px rgba(225, 29, 72, 0.35);
+      animation: float 7s ease-in-out infinite;
+    }
+    .art-frame::after { /* cahaya ros di belakang */
+      content: "";
+      position: absolute;
+      inset: 18% 8% -6%;
+      z-index: -1;
+      border-radius: 50%;
+      background: radial-gradient(closest-side, rgba(251, 113, 133, 0.35), transparent);
+      filter: blur(14px);
+    }
+    .hero-art { width: 100%; height: auto; display: block; border-radius: 18px; }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+
+    .hero-art .pulse-ring { transform-box: fill-box; transform-origin: center; animation: ring 2.4s var(--ease) infinite; }
+    .hero-art .drip { transform-box: fill-box; transform-origin: top; animation: drip 2.8s ease-in infinite; }
+    @keyframes ring { 0% { transform: scale(0.7); opacity: 0.9; } 100% { transform: scale(1.5); opacity: 0; } }
+    @keyframes drip {
+      0%, 30% { transform: translateY(0) scale(0.6); opacity: 0; }
+      45% { transform: translateY(0) scale(1); opacity: 1; }
+      85% { transform: translateY(14px) scale(1); opacity: 1; }
+      100% { transform: translateY(20px) scale(0.9); opacity: 0; }
     }
 
+    .art-legend {
+      list-style: none;
+      margin: 0.85rem 0 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.45rem;
+    }
+    .art-legend li {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.3rem 0.7rem 0.3rem 0.35rem;
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      border-radius: 999px;
+    }
+    .art-legend .n {
+      display: grid; place-items: center;
+      width: 1.3rem; height: 1.3rem;
+      border-radius: 50%;
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .n1 { background: #e11d48; }
+    .n2 { background: #f97316; }
+    .n3 { background: #b7791f; }
+
+    /* =========================================================
+       GRID 6 KAD SUBTOPIK
+       ========================================================= */
     .section-label {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
-      margin: 0 0.25rem 0.85rem;
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
+      justify-content: center;
+      gap: 0.75rem;
+      margin: 0 0 0.95rem;
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: #0e7490;
     }
-    .section-label::after {
+    .section-label::before, .section-label::after {
       content: "";
       flex: 1;
+      max-width: 7rem;
       height: 1px;
-      background: linear-gradient(90deg, rgba(14, 116, 144, 0.3), transparent);
+      background: linear-gradient(90deg, transparent, rgba(8, 145, 178, 0.4));
     }
+    .section-label::after { transform: scaleX(-1); }
 
-    /* =========================================================
-       GRID KAD TAJUK (2 lajur telefon, 3 lajur tablet/desktop)
-       ========================================================= */
     .topic-grid {
       list-style: none;
       margin: 0;
@@ -220,305 +303,314 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 0.8rem;
     }
-    .topic-grid li { min-width: 0; }
+    .topic-grid li { min-width: 0; display: flex; }
 
     .topic-card {
-      --tint: #e0f2fe;
-      --tint-ink: #0369a1;
+      --orb-a: #e0f2fe; --orb-b: #fce7f3;
+      --tint: #0e7490;
+      --glow: rgba(8, 145, 178, 0.35);
+
+      flex: 1;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      gap: 0.9rem;
-      height: 100%;
-      min-height: 9.75rem;
-      padding: 1rem 0.95rem 1.05rem;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 0.55rem;
+      min-height: 11.5rem;
+      padding: 1.3rem 0.75rem 1.15rem;
       text-decoration: none;
       overflow: hidden;
       cursor: pointer;
       -webkit-tap-highlight-color: transparent;
       transition:
-        transform 0.45s var(--ease),
-        box-shadow 0.45s var(--ease),
-        background-color 0.45s var(--ease);
-      animation: cardIn 0.6s var(--ease) backwards;
-      animation-delay: calc(var(--i, 0) * 60ms);
+        transform 0.5s var(--ease),
+        box-shadow 0.5s var(--ease),
+        border-color 0.5s var(--ease),
+        background-color 0.5s var(--ease);
+      animation: cardIn 0.65s var(--ease) backwards;
+      animation-delay: calc(var(--i, 0) * 70ms + 120ms);
     }
     @keyframes cardIn {
-      from { opacity: 0; transform: translateY(16px); }
+      from { opacity: 0; transform: translateY(18px) scale(0.98); }
       to   { opacity: 1; transform: none; }
     }
 
-    /* Kilauan cahaya yang menyapu kad semasa hover */
+    /* Kilauan cahaya yang menyapu kad */
     .topic-card::after {
       content: "";
       position: absolute;
-      top: 0;
-      left: -60%;
-      width: 50%;
-      height: 100%;
-      background: linear-gradient(105deg, transparent 0%, rgba(255, 255, 255, 0.65) 50%, transparent 100%);
+      top: -10%;
+      left: -70%;
+      width: 55%;
+      height: 120%;
+      background: linear-gradient(105deg, transparent 0%, rgba(255, 255, 255, 0.7) 50%, transparent 100%);
       transform: skewX(-18deg);
       opacity: 0;
       pointer-events: none;
-      transition: left 0.8s var(--ease), opacity 0.3s;
+      transition: left 0.9s var(--ease), opacity 0.3s;
     }
 
-    @media (hover: hover) {
-      .topic-card:hover {
-        transform: translateY(-3px) scale(1.02);
-        background-color: var(--glass-bg-strong);
-        box-shadow: var(--inner-glow), var(--shadow-hover);
-      }
-      .topic-card:hover::after { left: 120%; opacity: 1; }
-      .topic-card:hover .topic-icon { transform: scale(1.06) rotate(-3deg); }
-      .topic-card:hover .topic-go { transform: translateX(3px); background: var(--accent); color: #fff; }
+    /* Mikro-interaksi: hover (tetikus) & sentuhan (telefon) */
+    .topic-card:hover,
+    .topic-card:focus-visible,
+    .topic-card:active {
+      transform: translateY(-6px);
+      background-color: var(--glass-bg-hover);
+      border-color: var(--glass-border-hover);
+      box-shadow:
+        inset 0 1px 0 #fff,
+        inset 0 0 0 1px rgba(255, 255, 255, 0.6),
+        0 0 0 1px rgba(255, 255, 255, 0.55),
+        0 0 22px rgba(255, 255, 255, 0.6),
+        0 22px 44px -14px var(--glow),
+        0 36px 70px -28px var(--glow);
     }
-    .topic-card:active { transform: scale(0.98); transition-duration: 0.15s; }
-
-    .topic-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 0.5rem;
-    }
-    .topic-icon {
-      display: grid;
-      place-items: center;
-      width: 2.75rem;
-      height: 2.75rem;
-      flex-shrink: 0;
-      border-radius: 14px;
-      color: var(--tint-ink);
-      background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), var(--tint));
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 6px 14px -6px rgba(15, 42, 61, 0.25);
-      transition: transform 0.45s var(--ease);
-    }
-    .topic-icon svg { width: 1.4rem; height: 1.4rem; }
+    .topic-card:hover::after,
+    .topic-card:focus-visible::after,
+    .topic-card:active::after { left: 125%; opacity: 1; }
 
     .topic-num {
-      font-size: 0.72rem;
-      font-weight: 700;
+      position: absolute;
+      top: 0.65rem;
+      left: 0.7rem;
+      font-size: 0.66rem;
+      font-weight: 800;
       letter-spacing: 0.06em;
-      color: var(--ink-soft);
-      background: rgba(255, 255, 255, 0.55);
-      border: 1px solid rgba(255, 255, 255, 0.7);
-      padding: 0.15rem 0.5rem;
-      border-radius: 999px;
+      color: var(--tint);
+      opacity: 0.75;
     }
 
+    .icon-orb {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 4.4rem;
+      height: 4.4rem;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0) 45%),
+        linear-gradient(145deg, var(--orb-a), var(--orb-b));
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow:
+        inset 0 -6px 12px rgba(255, 255, 255, 0.5),
+        inset 0 2px 0 rgba(255, 255, 255, 0.9),
+        0 10px 22px -10px var(--glow);
+      transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+    }
+    .icon-orb svg { width: 74%; height: 74%; overflow: visible; }
+    .topic-card:hover .icon-orb,
+    .topic-card:focus-visible .icon-orb,
+    .topic-card:active .icon-orb {
+      transform: scale(1.07);
+      box-shadow: inset 0 -6px 12px rgba(255, 255, 255, 0.5), inset 0 2px 0 #fff, 0 14px 28px -10px var(--glow);
+    }
+
+    .topic-kicker {
+      margin-top: 0.2rem;
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--tint);
+      line-height: 1.3;
+    }
     .topic-title {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 700;
       line-height: 1.3;
+      letter-spacing: -0.01em;
       color: var(--ink);
       overflow-wrap: break-word;
       hyphens: auto;
-    }
-    .topic-title small {
-      display: block;
-      margin-bottom: 0.2rem;
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--tint-ink);
+      text-wrap: balance;
     }
 
-    .topic-foot {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 0.5rem;
-    }
-    .topic-go {
-      display: grid;
-      place-items: center;
-      flex-shrink: 0;
-      width: 1.9rem;
-      height: 1.9rem;
-      border-radius: 50%;
-      color: var(--accent);
-      background: rgba(255, 255, 255, 0.7);
-      transition: transform 0.45s var(--ease), background 0.3s, color 0.3s;
-    }
-    .topic-go svg { width: 1rem; height: 1rem; }
+    /* Tona warna setiap subtopik */
+    .t1 { --orb-a: #ffe4e6; --orb-b: #ede9fe; --tint: #be123c; --glow: rgba(244, 63, 94, 0.32); }
+    .t2 { --orb-a: #cffafe; --orb-b: #ffe4e6; --tint: #0e7490; --glow: rgba(6, 182, 212, 0.34); }
+    .t3 { --orb-a: #ffedd5; --orb-b: #ffe4e6; --tint: #c2410c; --glow: rgba(249, 115, 22, 0.3); }
+    .t4 { --orb-a: #e0e7ff; --orb-b: #cffafe; --tint: #4338ca; --glow: rgba(99, 102, 241, 0.3); }
+    .t5 { --orb-a: #dcfce7; --orb-b: #cffafe; --tint: #15803d; --glow: rgba(34, 197, 94, 0.3); }
+    .t6 { --orb-a: #ccfbf1; --orb-b: #fce7f3; --tint: #0f766e; --glow: rgba(20, 184, 166, 0.34); }
 
-    /* Warna tona setiap topik */
-    .t1 { --tint: #dbeafe; --tint-ink: #1d4ed8; }
-    .t2 { --tint: #ccfbf1; --tint-ink: #0f766e; }
-    .t3 { --tint: #ffe4e6; --tint-ink: #be123c; }
-    .t4 { --tint: #e0e7ff; --tint-ink: #4338ca; }
-    .t5 { --tint: #cffafe; --tint-ink: #0e7490; }
-    .t6 { --tint: #dcfce7; --tint-ink: #15803d; }
+    /* ---------- Animasi ikon interaktif ---------- */
+    .ic * { transform-box: fill-box; transform-origin: center; }
+    .ic-wobble { transform-origin: 50% 100% !important; }
+
+    .topic-card:is(:hover, :focus-visible, :active) .ic-bug, .is-live .ic-bug { animation: wiggle 1.3s ease-in-out infinite; }
+    .topic-card:is(:hover, :focus-visible, :active) .ic-bug.b2, .is-live .ic-bug.b2 { animation-delay: -0.45s; }
+    .topic-card:is(:hover, :focus-visible, :active) .ic-bug.b3, .is-live .ic-bug.b3 { animation-delay: -0.9s; }
+    .topic-card:is(:hover, :focus-visible, :active) .ic-flow, .is-live .ic-flow { stroke-dasharray: 6 4; animation: flow 0.9s linear infinite; }
+    .topic-card:is(:hover, :focus-visible, :active) .ic-pulse, .is-live .ic-pulse { animation: beat 1.2s ease-in-out infinite; }
+    .topic-card:is(:hover, :focus-visible, :active) .ic-wobble, .is-live .ic-wobble { animation: wobble 0.8s ease-in-out infinite; }
+    .topic-card:is(:hover, :focus-visible, :active) .ic-drip, .is-live .ic-drip { animation: dripIc 1.4s ease-in infinite; }
+    .topic-card:is(:hover, :focus-visible, :active) .ic-probe, .is-live .ic-probe { animation: probe 1.5s var(--ease) infinite; }
+    .topic-card:is(:hover, :focus-visible, :active) .ic-book, .is-live .ic-book { animation: bob 1.3s ease-in-out infinite; }
+    .topic-card:is(:hover, :focus-visible, :active) .ic-spark, .is-live .ic-spark { animation: twinkle 1.4s ease-in-out infinite; }
+    .topic-card:is(:hover, :focus-visible, :active) .ic-spark.s2, .is-live .ic-spark.s2 { animation-delay: -0.5s; }
+    .topic-card:is(:hover, :focus-visible, :active) .ic-spark.s3, .is-live .ic-spark.s3 { animation-delay: -0.9s; }
+
+    @keyframes wiggle { 0%, 100% { transform: translate(0, 0) rotate(0); } 25% { transform: translate(1px, -1.5px) rotate(10deg); } 75% { transform: translate(-1px, 1px) rotate(-10deg); } }
+    @keyframes flow { to { stroke-dashoffset: -20; } }
+    @keyframes beat { 0%, 100% { transform: scale(1); } 40% { transform: scale(1.12); } }
+    @keyframes wobble { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
+    @keyframes dripIc { 0% { transform: translateY(-2px); opacity: 0; } 30% { opacity: 1; } 100% { transform: translateY(5px); opacity: 0; } }
+    @keyframes probe { 0%, 100% { transform: translate(0, 0); } 45%, 60% { transform: translate(-1.5px, 3px); } }
+    @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+    @keyframes twinkle { 0%, 100% { transform: scale(0.6) rotate(0); opacity: 0.5; } 50% { transform: scale(1.25) rotate(45deg); opacity: 1; } }
 
     .site-foot {
-      margin-top: 1.75rem;
+      margin-top: 1.6rem;
       text-align: center;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--ink-soft);
     }
 
     /* =========================================================
-       HALAMAN SUBTOPIK (DEDICATED PAGE VIEW)
+       HALAMAN SUBTOPIK
        ========================================================= */
     .back-btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.55rem;
-      min-height: 2.75rem;
-      padding: 0.55rem 1.1rem 0.55rem 0.8rem;
-      margin-bottom: 1.25rem;
+      gap: 0.6rem;
+      min-height: 2.8rem;
+      padding: 0.45rem 1.15rem 0.45rem 0.5rem;
+      margin-bottom: 1.1rem;
       font-size: 0.9rem;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--ink);
       text-decoration: none;
       border-radius: 999px;
       -webkit-tap-highlight-color: transparent;
-      transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), background-color 0.4s var(--ease);
+      transition: transform 0.45s var(--ease), box-shadow 0.45s var(--ease), border-color 0.45s, background-color 0.45s;
     }
     .back-btn .arrow {
       display: grid;
       place-items: center;
-      width: 1.8rem;
-      height: 1.8rem;
+      width: 1.95rem;
+      height: 1.95rem;
       border-radius: 50%;
       color: #fff;
-      background: linear-gradient(145deg, #38bdf8, #14b8a6);
-      box-shadow: 0 4px 10px -4px rgba(14, 116, 144, 0.6);
-      transition: transform 0.4s var(--ease);
+      font-size: 1rem;
+      background: linear-gradient(145deg, #22d3ee, #14b8a6);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 6px 14px -6px rgba(8, 145, 178, 0.7);
+      transition: transform 0.45s var(--ease);
     }
-    .back-btn .arrow svg { width: 1rem; height: 1rem; }
-    @media (hover: hover) {
-      .back-btn:hover {
-        transform: scale(1.02);
-        background-color: var(--glass-bg-strong);
-        box-shadow: var(--inner-glow), var(--shadow-hover);
-      }
-      .back-btn:hover .arrow { transform: translateX(-3px); }
+    .back-btn:hover, .back-btn:focus-visible, .back-btn:active {
+      transform: translateY(-2px);
+      background-color: var(--glass-bg-hover);
+      border-color: var(--glass-border-hover);
+      box-shadow: inset 0 1px 0 #fff, 0 0 18px rgba(255, 255, 255, 0.6), 0 16px 32px -14px rgba(8, 145, 178, 0.4);
     }
-    .back-btn:active { transform: scale(0.97); }
+    .back-btn:hover .arrow { transform: translateX(-3px); }
 
     .page-head {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.25rem;
-      padding: 1.25rem;
+      text-align: center;
+      gap: 0.8rem;
+      padding: 1.6rem 1.2rem 1.5rem;
+      margin-bottom: 1.1rem;
       border-radius: var(--radius-lg);
     }
-    .page-head .topic-icon {
-      width: 3.6rem;
-      height: 3.6rem;
-      border-radius: 18px;
-    }
-    .page-head .topic-icon svg { width: 1.8rem; height: 1.8rem; }
-    .page-head .eyebrow {
-      display: block;
-      margin-bottom: 0.25rem;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--tint-ink);
-    }
+    .page-head .icon-orb { width: 5rem; height: 5rem; }
+    .page-head .topic-kicker { font-size: 0.7rem; margin: 0; }
     .page-head h2 {
-      font-size: clamp(1.25rem, 4.6vw, 1.9rem);
+      font-size: clamp(1.3rem, 5vw, 2rem);
       font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      text-wrap: balance;
       overflow-wrap: break-word;
     }
     .page-head h2:focus { outline: none; }
 
-    /* Kad placeholder — gantikan kandungan di dalamnya kemudian */
-    .content-card {
-      padding: 1.25rem;
-      border-radius: var(--radius-lg);
-      min-height: 16rem;
-    }
+    .content-card { padding: 1.15rem; border-radius: var(--radius-lg); }
     .placeholder {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 0.9rem;
-      min-height: 14rem;
+      min-height: 15rem;
       padding: 1.5rem 1rem;
       text-align: center;
       border-radius: 18px;
-      border: 1.5px dashed rgba(14, 116, 144, 0.25);
-      background: rgba(255, 255, 255, 0.25);
+      border: 1.5px dashed rgba(8, 145, 178, 0.28);
+      background: rgba(255, 255, 255, 0.3);
     }
-    .placeholder .pulse {
+    .placeholder .dot {
       position: relative;
-      width: 3rem;
-      height: 3rem;
+      width: 3rem; height: 3rem;
       border-radius: 50%;
-      background: linear-gradient(145deg, #bae6fd, #99f6e4);
-      display: grid;
-      place-items: center;
-      color: var(--accent);
+      display: grid; place-items: center;
+      background: linear-gradient(145deg, #a5f3fc, #fbcfe8);
+      color: #0e7490;
+      font-size: 1.3rem;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
     }
-    .placeholder .pulse::after {
+    .placeholder .dot::after {
       content: "";
       position: absolute;
       inset: -6px;
       border-radius: 50%;
-      border: 2px solid rgba(14, 116, 144, 0.25);
-      animation: ring 2s var(--ease) infinite;
-    }
-    .placeholder .pulse svg { width: 1.4rem; height: 1.4rem; }
-    @keyframes ring {
-      from { transform: scale(0.85); opacity: 1; }
-      to   { transform: scale(1.35); opacity: 0; }
+      border: 2px solid rgba(8, 145, 178, 0.28);
+      animation: ring 2.2s var(--ease) infinite;
     }
     .placeholder p { font-weight: 600; color: var(--ink-soft); }
-
-    .skeleton { width: min(100%, 22rem); display: grid; gap: 0.5rem; margin-top: 0.4rem; }
+    .skeleton { width: min(100%, 22rem); display: grid; gap: 0.5rem; margin-top: 0.3rem; }
     .skeleton i {
       display: block;
       height: 0.6rem;
       border-radius: 999px;
-      background: linear-gradient(90deg, rgba(14, 116, 144, 0.08) 0%, rgba(255, 255, 255, 0.8) 50%, rgba(14, 116, 144, 0.08) 100%);
+      background: linear-gradient(90deg, rgba(8, 145, 178, 0.08) 0%, rgba(255, 255, 255, 0.9) 50%, rgba(8, 145, 178, 0.08) 100%);
       background-size: 200% 100%;
       animation: shimmer 1.8s linear infinite;
     }
     .skeleton i:nth-child(2) { width: 86%; margin-inline: auto; }
-    .skeleton i:nth-child(3) { width: 64%; margin-inline: auto; }
+    .skeleton i:nth-child(3) { width: 62%; margin-inline: auto; }
     @keyframes shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
 
     /* =========================================================
-       RESPONSIF
+       RESPONSIF (mobile-first)
        ========================================================= */
     @media (max-width: 359px) {
       .topic-grid { gap: 0.6rem; }
-      .topic-card { padding: 0.85rem 0.8rem; min-height: 9rem; }
-      .topic-title { font-size: 0.82rem; }
-      .topic-icon { width: 2.4rem; height: 2.4rem; }
+      .topic-card { min-height: 10.5rem; padding: 1.2rem 0.55rem 1rem; }
+      .icon-orb { width: 3.8rem; height: 3.8rem; }
+      .topic-title { font-size: 0.8rem; }
     }
 
     @media (min-width: 640px) {
-      .shell { width: min(100% - 3rem, 64rem); padding-top: 2.5rem; }
+      .shell { width: min(100% - 3rem, 66rem); padding-top: 2rem; }
       .topic-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.1rem; }
-      .topic-card { min-height: 12.5rem; padding: 1.35rem 1.3rem 1.4rem; }
-      .topic-title { font-size: 1.05rem; }
-      .topic-title small { font-size: 0.72rem; }
-      .topic-icon { width: 3.1rem; height: 3.1rem; border-radius: 16px; }
-      .topic-icon svg { width: 1.55rem; height: 1.55rem; }
-      .hero { padding: 2.5rem 2rem 2.25rem; margin-bottom: 1.75rem; }
-      .page-head { padding: 1.6rem 1.75rem; gap: 1.25rem; }
-      .page-head .topic-icon { width: 4.25rem; height: 4.25rem; border-radius: 20px; }
-      .page-head .topic-icon svg { width: 2.1rem; height: 2.1rem; }
-      .content-card { padding: 1.75rem; min-height: 20rem; }
-      .placeholder { min-height: 17rem; }
+      .topic-card { min-height: 14rem; padding: 1.8rem 1.2rem 1.6rem; gap: 0.7rem; }
+      .topic-num { top: 0.9rem; left: 1rem; font-size: 0.72rem; }
+      .icon-orb { width: 5.4rem; height: 5.4rem; }
+      .topic-kicker { font-size: 0.68rem; }
+      .topic-title { font-size: 1.04rem; }
+      .hero { padding: 2.2rem 2rem 2rem; }
+      .page-head { padding: 2rem 2rem 1.8rem; }
+      .page-head .icon-orb { width: 6rem; height: 6rem; }
+      .content-card { padding: 1.6rem; }
+      .placeholder { min-height: 18rem; }
     }
 
-    @media (min-width: 1024px) {
-      .topic-card { min-height: 13.5rem; }
-      .topic-title { font-size: 1.12rem; }
-    }
-
-    /* Penyemak imbas tanpa sokongan backdrop-filter */
-    @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-      .glass { background: rgba(255, 255, 255, 0.82); }
+    @media (min-width: 900px) {
+      .hero {
+        grid-template-columns: 1.05fr 1fr;
+        align-items: center;
+        gap: 2.25rem;
+        padding: 2.6rem 2.6rem;
+        text-align: left;
+      }
+      .slogan { margin-inline: 0; }
+      .art-legend { justify-content: flex-start; }
+      .topic-card { min-height: 15rem; }
+      .topic-title { font-size: 1.1rem; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -532,41 +624,24 @@
 </head>
 
 <body>
-  <div class="ambient" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span><span class="b4"></span></div>
+  <div class="ambient" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span><span class="b4"></span><span class="b5"></span></div>
 
-  <!-- Ikon SVG dikongsi (gaya garisan) -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <!-- Gradien SVG global (sentiasa dipaparkan supaya ikon di semua halaman kekal berwarna) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <defs>
-      <symbol id="i-tooth" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M7 3C4.8 3 3 4.8 3 7.2c0 2 .8 3.3 1.4 4.8.6 1.6.8 3.5 1.2 5.6.3 1.7.9 3.4 2.1 3.4 1.5 0 1.6-2.4 2.1-4.2.3-1.1.9-1.8 2.2-1.8s1.9.7 2.2 1.8c.5 1.8.6 4.2 2.1 4.2 1.2 0 1.8-1.7 2.1-3.4.4-2.1.6-4 1.2-5.6.6-1.5 1.4-2.8 1.4-4.8C21 4.8 19.2 3 17 3c-1.8 0-2.9 1-5 1S8.8 3 7 3z"/>
-      </symbol>
-      <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/>
-      </symbol>
-      <symbol id="i-cycle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/>
-      </symbol>
-      <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/>
-      </symbol>
-      <symbol id="i-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/>
-      </symbol>
-      <symbol id="i-route" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/>
-      </symbol>
-      <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/>
-      </symbol>
-      <symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>
-      </symbol>
-      <symbol id="i-arrow-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M19 12H5"/><path d="m11 18-6-6 6-6"/>
-      </symbol>
-      <symbol id="i-edit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 20h9"/><path d="M16.4 3.6a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/>
-      </symbol>
+      <linearGradient id="g-tooth" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e2e8f0"/></linearGradient>
+      <linearGradient id="g-rose" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fda4af"/><stop offset="1" stop-color="#e11d48"/></linearGradient>
+      <linearGradient id="g-gum-soft" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fecdd3"/><stop offset="1" stop-color="#fb7185"/></linearGradient>
+      <linearGradient id="g-blood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fb7185"/><stop offset="1" stop-color="#be123c"/></linearGradient>
+      <linearGradient id="g-cyan" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#67e8f9"/><stop offset="1" stop-color="#0891b2"/></linearGradient>
+      <linearGradient id="g-coral" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fdba74"/><stop offset="1" stop-color="#f43f5e"/></linearGradient>
+      <linearGradient id="g-violet" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ddd6fe"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient>
+      <linearGradient id="g-lime" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d9f99d"/><stop offset="1" stop-color="#65a30d"/></linearGradient>
+      <linearGradient id="g-amber" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fde68a"/><stop offset="1" stop-color="#f59e0b"/></linearGradient>
+      <linearGradient id="g-book" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#86efac"/><stop offset="1" stop-color="#16a34a"/></linearGradient>
+      <linearGradient id="g-steel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f1f5f9"/><stop offset="1" stop-color="#64748b"/></linearGradient>
+      <linearGradient id="g-shield" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d1fae5"/><stop offset="1" stop-color="#5eead4"/></linearGradient>
+      <linearGradient id="g-mint" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6ee7b7"/><stop offset="1" stop-color="#059669"/></linearGradient>
     </defs>
   </svg>
 
@@ -575,115 +650,304 @@
     <!-- =====================================================
          PAPARAN UTAMA (HOME VIEW)
          ===================================================== -->
-    <section class="view" id="view-utama" data-title="PerioDiabetes — Portal Diabetes &amp; Kesihatan Gusi" aria-labelledby="h-utama">
+    <section class="view" id="view-utama" data-title="PerioDiabetes — Kenali Hubungan Diabetes dan Penyakit Gusi" aria-labelledby="h-utama">
+
       <header class="glass hero">
-        <span class="brand-mark" aria-hidden="true"><svg><use href="#i-tooth" /></svg></span>
-        <h1 id="h-utama">PerioDiabetes</h1>
-        <p>Gusi sihat, gula terkawal — panduan ringkas diabetes dan kesihatan gusi.</p>
+        <div class="hero-text">
+          <span class="eyebrow">Portal Kesedaran Kesihatan Awam</span>
+          <h1 class="brand-title" id="h-utama">PerioDiabetes</h1>
+          <p class="slogan">Kenali Hubungan <strong>Diabetes</strong> dan <strong>Penyakit Gusi</strong>, Lindungi Kesihatan Anda</p>
+        </div>
+
+        <!-- Ilustrasi klinikal: gusi kemerahan, bengkak/radang & gusi menyusut -->
+        <figure class="hero-figure">
+          <div class="art-frame">
+            <svg class="hero-art" viewBox="0 0 360 220" role="img" aria-labelledby="art-t art-d">
+              <title id="art-t">Ilustrasi penyakit gusi</title>
+              <desc id="art-d">Gigi hadapan atas dengan gusi yang kemerahan, bengkak dan meradang di celah gigi, berdarah, serta gusi yang menyusut sehingga akar gigi terdedah.</desc>
+              <defs>
+                <clipPath id="h-clip"><rect width="360" height="220" rx="18"/></clipPath>
+                <linearGradient id="h-bg" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#fff1f4"/><stop offset=".55" stop-color="#f3fdff"/><stop offset="1" stop-color="#ecfdf5"/>
+                </linearGradient>
+                <!-- Akar (kuning gading) di atas paras CEJ y≈100, enamel putih di bawah -->
+                <linearGradient id="h-tooth" x1="0" y1="40" x2="0" y2="200" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#e3c27d"/><stop offset=".37" stop-color="#f3e1ae"/>
+                  <stop offset=".375" stop-color="#ffffff"/><stop offset="1" stop-color="#e3eaf2"/>
+                </linearGradient>
+                <linearGradient id="h-gum" x1="0" y1="0" x2="0" y2="136" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#fecdd3"/><stop offset=".55" stop-color="#fb7185"/><stop offset="1" stop-color="#e11d48"/>
+                </linearGradient>
+                <radialGradient id="h-glow" cx=".5" cy=".5" r=".5">
+                  <stop offset="0" stop-color="#fb7185" stop-opacity=".55"/><stop offset="1" stop-color="#fb7185" stop-opacity="0"/>
+                </radialGradient>
+                <filter id="h-shadow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#9f1239" flood-opacity=".25"/>
+                </filter>
+              </defs>
+
+              <g clip-path="url(#h-clip)">
+                <rect width="360" height="220" fill="url(#h-bg)"/>
+                <ellipse cx="180" cy="118" rx="185" ry="42" fill="url(#h-glow)"/>
+
+                <!-- Gigi -->
+                <g stroke="#d3dce6" stroke-width="2" fill="url(#h-tooth)">
+                  <path d="M36 40H96Q102 40 102 48L100 178Q96 198 66 199Q36 198 32 178L30 48Q30 40 36 40Z"/>
+                  <path d="M114 40H174Q180 40 180 48L178 178Q174 198 144 199Q114 198 110 178L108 48Q108 40 114 40Z"/>
+                  <path d="M192 40H252Q258 40 258 48L256 178Q252 198 222 199Q192 198 188 178L186 48Q186 40 192 40Z"/>
+                  <path d="M270 40H330Q336 40 336 48L334 178Q330 198 300 199Q270 198 266 178L264 48Q264 40 270 40Z"/>
+                </g>
+                <!-- Kilauan enamel -->
+                <g stroke="#fff" stroke-width="5" stroke-linecap="round" fill="none" opacity=".85">
+                  <path d="M48 128Q46 152 50 176"/><path d="M126 118Q124 150 128 176"/>
+                  <path d="M204 118Q202 150 206 176"/><path d="M282 128Q280 152 284 176"/>
+                </g>
+                <!-- Paras gusi asal (sebelum menyusut) -->
+                <g stroke="#64748b" stroke-width="1.6" stroke-dasharray="4 4" fill="none" opacity=".55">
+                  <path d="M112 106Q144 96 176 106"/><path d="M190 106Q222 96 254 106"/>
+                </g>
+
+                <!-- Gusi meradang -->
+                <path d="M0 0H360V116C350 120 340 116 336 110Q300 96 264 110C270 122 266 134 261 134C256 134 252 118 258 98Q222 48 186 98C192 118 188 134 183 134C178 134 174 118 180 98Q144 44 108 98C114 118 110 134 105 134C100 134 96 120 102 110Q66 96 30 110C26 120 14 122 0 116Z" fill="url(#h-gum)"/>
+                <!-- Pinggir gusi merah gelap -->
+                <path d="M360 116C350 120 340 116 336 110Q300 96 264 110C270 122 266 134 261 134C256 134 252 118 258 98Q222 48 186 98C192 118 188 134 183 134C178 134 174 118 180 98Q144 44 108 98C114 118 110 134 105 134C100 134 96 120 102 110Q66 96 30 110C26 120 14 122 0 116" fill="none" stroke="#be123c" stroke-width="2.5" opacity=".55"/>
+                <!-- Kilauan & tekstur gusi -->
+                <path d="M18 20Q180 4 342 20" stroke="#fff" stroke-width="7" stroke-linecap="round" fill="none" opacity=".35"/>
+                <g fill="#fff" opacity=".5">
+                  <ellipse cx="105" cy="121" rx="3" ry="6"/><ellipse cx="183" cy="121" rx="3" ry="6"/><ellipse cx="261" cy="121" rx="3" ry="6"/>
+                </g>
+                <g fill="#fff" opacity=".25">
+                  <circle cx="60" cy="40" r="1.6"/><circle cx="78" cy="58" r="1.4"/><circle cx="140" cy="28" r="1.6"/><circle cx="210" cy="24" r="1.4"/><circle cx="300" cy="44" r="1.6"/><circle cx="320" cy="70" r="1.4"/><circle cx="250" cy="60" r="1.2"/>
+                </g>
+
+                <!-- Bengkak berdenyut & darah -->
+                <circle class="pulse-ring" cx="183" cy="122" r="15" fill="none" stroke="#f43f5e" stroke-width="2"/>
+                <path class="drip" d="M183 139C183 139 177.5 146 177.5 149.5A5.5 5.5 0 0 0 188.5 149.5C188.5 146 183 139 183 139Z" fill="#e11d48"/>
+
+                <!-- Penanda bernombor -->
+                <g filter="url(#h-shadow)" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-weight="800" font-size="12" text-anchor="middle">
+                  <circle cx="52" cy="46" r="11" fill="#fff" stroke="#e11d48" stroke-width="2.5"/>
+                  <text x="52" y="50.5" fill="#e11d48">1</text>
+
+                  <line x1="261" y1="137" x2="261" y2="148" stroke="#f97316" stroke-width="2"/>
+                  <circle cx="261" cy="159" r="11" fill="#fff" stroke="#f97316" stroke-width="2.5"/>
+                  <text x="261" y="163.5" fill="#f97316">2</text>
+
+                  <line x1="144" y1="92" x2="144" y2="124" stroke="#b7791f" stroke-width="2" stroke-dasharray="3 3"/>
+                  <circle cx="144" cy="86" r="3" fill="#b7791f"/>
+                  <circle cx="144" cy="135" r="11" fill="#fff" stroke="#b7791f" stroke-width="2.5"/>
+                  <text x="144" y="139.5" fill="#b7791f">3</text>
+                </g>
+              </g>
+            </svg>
+          </div>
+          <figcaption>
+            <ul class="art-legend">
+              <li><b class="n n1">1</b>Gusi kemerahan</li>
+              <li><b class="n n2">2</b>Bengkak &amp; radang</li>
+              <li><b class="n n3">3</b>Gusi menyusut</li>
+            </ul>
+          </figcaption>
+        </figure>
       </header>
 
       <h2 class="section-label">Pilih Topik</h2>
 
       <ul class="topic-grid">
+        <!-- 1. PENGENALAN: kuman plak & gusi meradang -->
         <li>
           <a class="glass topic-card t1" href="#/pengenalan" data-topic="pengenalan" style="--i:0">
-            <div class="topic-top">
-              <span class="topic-icon" aria-hidden="true"><svg><use href="#i-book" /></svg></span>
-              <span class="topic-num">01</span>
-            </div>
-            <div class="topic-foot">
-              <h3 class="topic-title"><small>Pengenalan</small>Kenali Diabetes &amp; Penyakit Gusi</h3>
-              <span class="topic-go" aria-hidden="true"><svg><use href="#i-arrow-right" /></svg></span>
-            </div>
+            <span class="topic-num" aria-hidden="true">01</span>
+            <span class="icon-orb" aria-hidden="true">
+              <svg class="ic" viewBox="0 0 64 64">
+                <path d="M20 13C20 7 26 5 32 8C38 5 44 7 44 13C44 21 42 27 41 35L40 46H24L23 35C22 27 20 21 20 13Z" fill="url(#g-tooth)" stroke="#94a3b8" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M25 13C25 11 27 10 29 11" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"/>
+                <path d="M5 44C9 39 14 43 18 40C21 38 24 39 26 42C29 45 35 45 38 42C40 39 44 37 47 40C51 43 55 39 59 44V54A6 6 0 0 1 53 60H11A6 6 0 0 1 5 54Z" fill="url(#g-rose)"/>
+                <ellipse cx="22" cy="43.5" rx="3" ry="1.3" fill="#fff" opacity=".6"/>
+                <ellipse cx="43" cy="43.5" rx="3" ry="1.3" fill="#fff" opacity=".6"/>
+                <path d="M9 36L7 33M13.5 34.5L13 31M55 36L57 33M50.5 34.5L51 31" stroke="#f43f5e" stroke-width="1.6" stroke-linecap="round"/>
+                <g class="ic-bug">
+                  <path d="M12 18.5V16.5M16.6 21.2L18 20M7.4 21.2L6 20M17.3 25.5H19.3M4.7 25.5H6.7M15.5 29.5L17 31M8.5 29.5L7 31" stroke="#8b5cf6" stroke-width="1.3" stroke-linecap="round"/>
+                  <circle cx="12" cy="25" r="4.6" fill="url(#g-violet)"/>
+                  <circle cx="10.4" cy="23.4" r="1.2" fill="#fff" opacity=".75"/>
+                </g>
+                <g class="ic-bug b2">
+                  <rect x="46" y="17" width="12" height="5.6" rx="2.8" transform="rotate(-28 52 19.8)" fill="url(#g-lime)"/>
+                  <circle cx="49.5" cy="20.5" r=".9" fill="#fff" opacity=".8"/>
+                </g>
+                <g class="ic-bug b3">
+                  <circle cx="49" cy="31" r="2.6" fill="url(#g-violet)"/>
+                  <circle cx="54.5" cy="29.5" r="2" fill="url(#g-violet)"/>
+                </g>
+              </svg>
+            </span>
+            <span class="topic-kicker">Pengenalan</span>
+            <h3 class="topic-title">Kenali Diabetes &amp; Penyakit Gusi</h3>
           </a>
         </li>
+
+        <!-- 2. HUBUNGAN DUA HALA: titisan darah glukosa ⇄ gusi -->
         <li>
           <a class="glass topic-card t2" href="#/hubungan" data-topic="hubungan" style="--i:1">
-            <div class="topic-top">
-              <span class="topic-icon" aria-hidden="true"><svg><use href="#i-cycle" /></svg></span>
-              <span class="topic-num">02</span>
-            </div>
-            <div class="topic-foot">
-              <h3 class="topic-title"><small>Hubungan Dua Hala</small>Diabetes &amp; Penyakit Gusi</h3>
-              <span class="topic-go" aria-hidden="true"><svg><use href="#i-arrow-right" /></svg></span>
-            </div>
+            <span class="topic-num" aria-hidden="true">02</span>
+            <span class="icon-orb" aria-hidden="true">
+              <svg class="ic" viewBox="0 0 64 64">
+                <path class="ic-flow" d="M19 15C27 7 37 7 45 15" fill="none" stroke="url(#g-cyan)" stroke-width="3" stroke-linecap="round"/>
+                <path d="M46.5 9.5V16.5H39.5" fill="none" stroke="#0891b2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <path class="ic-flow" d="M45 52C37 60 27 60 19 52" fill="none" stroke="url(#g-coral)" stroke-width="3" stroke-linecap="round"/>
+                <path d="M17.5 57.5V50.5H24.5" fill="none" stroke="#f43f5e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <g class="ic-pulse">
+                  <path d="M15 21C15 21 6 32 6 38A9 9 0 0 0 24 38C24 32 15 21 15 21Z" fill="url(#g-blood)"/>
+                  <path d="M10 36Q10 31.5 13 28" stroke="#fff" stroke-width="1.6" stroke-linecap="round" fill="none" opacity=".65"/>
+                  <polygon points="15,34 18.6,36 18.6,40 15,42 11.4,40 11.4,36" fill="none" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/>
+                </g>
+                <path d="M41 26C41 21 45 20 48 22C51 20 55 21 55 26C55 31 53.5 35 53 40L52 44H44L43 40C42.5 35 41 31 41 26Z" fill="url(#g-tooth)" stroke="#94a3b8" stroke-width="1.4" stroke-linejoin="round"/>
+                <path d="M38 40C41 37 44 41 48 38C52 41 55 37 58 40V44A4 4 0 0 1 54 48H42A4 4 0 0 1 38 44Z" fill="url(#g-rose)"/>
+                <ellipse cx="44" cy="40.5" rx="1.8" ry=".9" fill="#fff" opacity=".6"/>
+              </svg>
+            </span>
+            <span class="topic-kicker">Hubungan Dua Hala</span>
+            <h3 class="topic-title">Diabetes &amp; Penyakit Gusi</h3>
           </a>
         </li>
+
+        <!-- 3. TANDA-TANDA: gusi berdarah / gigi goyang -->
         <li>
           <a class="glass topic-card t3" href="#/tanda" data-topic="tanda" style="--i:2">
-            <div class="topic-top">
-              <span class="topic-icon" aria-hidden="true"><svg><use href="#i-alert" /></svg></span>
-              <span class="topic-num">03</span>
-            </div>
-            <div class="topic-foot">
-              <h3 class="topic-title"><small>Tanda Amaran</small>Tanda-Tanda Penyakit Gusi</h3>
-              <span class="topic-go" aria-hidden="true"><svg><use href="#i-arrow-right" /></svg></span>
-            </div>
+            <span class="topic-num" aria-hidden="true">03</span>
+            <span class="icon-orb" aria-hidden="true">
+              <svg class="ic" viewBox="0 0 64 64">
+                <path d="M14 18C12 22 12 26 14 30M10 20C8.6 23 8.6 26 10 29M50 18C52 22 52 26 50 30M54 20C55.4 23 55.4 26 54 29" stroke="#94a3b8" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+                <g transform="rotate(-6 32 44)">
+                  <g class="ic-wobble">
+                    <path d="M22 15C22 9 27 7 32 10C37 7 42 9 42 15C42 23 40 29 39 36L38 46H26L25 36C24 29 22 23 22 15Z" fill="url(#g-tooth)" stroke="#94a3b8" stroke-width="1.5" stroke-linejoin="round"/>
+                    <path d="M27 15C27 13 29 12 31 13" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"/>
+                  </g>
+                </g>
+                <path d="M5 44C9 39 14 43 18 40C21 38 24 39 26 42C29 45 35 45 38 42C40 39 44 37 47 40C51 43 55 39 59 44V54A6 6 0 0 1 53 60H11A6 6 0 0 1 5 54Z" fill="url(#g-gum-soft)"/>
+                <path d="M5 44C9 39 14 43 18 40C21 38 24 39 26 42C29 45 35 45 38 42C40 39 44 37 47 40C51 43 55 39 59 44" stroke="#e11d48" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+                <path d="M19 42C19 42 16 46 16 48A3 3 0 0 0 22 48C22 46 19 42 19 42Z" fill="url(#g-blood)"/>
+                <path class="ic-drip" d="M44 41C44 41 41.5 44.5 41.5 46A2.5 2.5 0 0 0 46.5 46C46.5 44.5 44 41 44 41Z" fill="#be123c"/>
+                <path class="ic-pulse" d="M54 2.5L61.5 15.5H46.5Z" fill="url(#g-amber)" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/>
+                <path d="M54 7V11" stroke="#78350f" stroke-width="1.8" stroke-linecap="round"/>
+                <circle cx="54" cy="13.2" r="1" fill="#78350f"/>
+              </svg>
+            </span>
+            <span class="topic-kicker">Tanda Amaran</span>
+            <h3 class="topic-title">Tanda-Tanda Penyakit Gusi</h3>
           </a>
         </li>
+
+        <!-- 4. SARINGAN BPE: prob pergigian -->
         <li>
           <a class="glass topic-card t4" href="#/bpe" data-topic="bpe" style="--i:3">
-            <div class="topic-top">
-              <span class="topic-icon" aria-hidden="true"><svg><use href="#i-clipboard" /></svg></span>
-              <span class="topic-num">04</span>
-            </div>
-            <div class="topic-foot">
-              <h3 class="topic-title"><small>Saringan</small>Apa Itu Saringan BPE?</h3>
-              <span class="topic-go" aria-hidden="true"><svg><use href="#i-arrow-right" /></svg></span>
-            </div>
+            <span class="topic-num" aria-hidden="true">04</span>
+            <span class="icon-orb" aria-hidden="true">
+              <svg class="ic" viewBox="0 0 64 64">
+                <path d="M11 15C11 9 16 7 21 10C26 7 31 9 31 15C31 23 29 29 28 36L27 46H15L14 36C13 29 11 23 11 15Z" fill="url(#g-tooth)" stroke="#94a3b8" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M16 15C16 13 18 12 20 13" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"/>
+                <path d="M3 42C7 39 11 43 15 40.5C18 39 20 41 21 42C23 43.5 26 43 28 41C31 38.5 35 41 39 41C43 41 45 43 45 46V52A4 4 0 0 1 41 56H7A4 4 0 0 1 3 52Z" fill="url(#g-gum-soft)"/>
+                <path d="M29.5 41.5V47" stroke="#be123c" stroke-width="1.4" stroke-linecap="round" opacity=".6"/>
+                <g class="ic-probe">
+                  <line x1="58" y1="5" x2="44.5" y2="21.5" stroke="url(#g-steel)" stroke-width="5.5" stroke-linecap="round"/>
+                  <path d="M54 8.5L56 10.5M51.5 11.5L53.5 13.5M49 14.5L51 16.5" stroke="#475569" stroke-width="1" stroke-linecap="round"/>
+                  <path d="M44.5 21.5L37 30Q34 33.5 34 37.5V44" stroke="#475569" stroke-width="2" stroke-linecap="round" fill="none"/>
+                  <path d="M34 38V41.5" stroke="#0f172a" stroke-width="2.8"/>
+                  <circle cx="34" cy="45" r="1.7" fill="#334155"/>
+                </g>
+                <circle class="ic-pulse" cx="54" cy="50" r="7.5" fill="url(#g-mint)" stroke="#fff" stroke-width="1.5"/>
+                <path d="M50.6 50.2L53 52.6L57.4 47.8" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </span>
+            <span class="topic-kicker">Saringan Klinikal</span>
+            <h3 class="topic-title">Apa Itu Saringan BPE?</h3>
           </a>
         </li>
+
+        <!-- 5. RUJUKAN KK → KP: buku rawatan & pertukaran rujukan -->
         <li>
           <a class="glass topic-card t5" href="#/rujukan" data-topic="rujukan" style="--i:4">
-            <div class="topic-top">
-              <span class="topic-icon" aria-hidden="true"><svg><use href="#i-route" /></svg></span>
-              <span class="topic-num">05</span>
-            </div>
-            <div class="topic-foot">
-              <h3 class="topic-title"><small>Proses Rujukan</small>Klinik Kesihatan (KK) ke Klinik Pergigian (KP)</h3>
-              <span class="topic-go" aria-hidden="true"><svg><use href="#i-arrow-right" /></svg></span>
-            </div>
+            <span class="topic-num" aria-hidden="true">05</span>
+            <span class="icon-orb" aria-hidden="true">
+              <svg class="ic" viewBox="0 0 64 64">
+                <path class="ic-flow" d="M13 19C21 9 43 9 51 19" fill="none" stroke="url(#g-cyan)" stroke-width="2.6" stroke-linecap="round"/>
+                <path d="M51.5 13.5V19.5H45.5" fill="none" stroke="#0891b2" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                <!-- Klinik Kesihatan -->
+                <path d="M2.5 30L12.5 22L22.5 30Z" fill="url(#g-cyan)"/>
+                <rect x="4.5" y="29" width="16" height="23" rx="1.5" fill="#fff" stroke="#67e8f9" stroke-width="1.4"/>
+                <path d="M12.5 33V40.5M8.75 36.75H16.25" stroke="#0891b2" stroke-width="2.6" stroke-linecap="round"/>
+                <rect x="10" y="45" width="5" height="7" rx="1" fill="#a5f3fc"/>
+                <!-- Klinik Pergigian -->
+                <path d="M41.5 30L51.5 22L61.5 30Z" fill="url(#g-rose)"/>
+                <rect x="43.5" y="29" width="16" height="23" rx="1.5" fill="#fff" stroke="#fda4af" stroke-width="1.4"/>
+                <path d="M48 34C48 32 49.5 31.5 51.5 32.5C53.5 31.5 55 32 55 34C55 36.5 54.3 38 54 40.5C53.8 42 53 42.5 52.5 42L51.5 39L50.5 42C50 42.5 49.2 42 49 40.5C48.7 38 48 36.5 48 34Z" fill="#fb7185"/>
+                <rect x="49" y="45" width="5" height="7" rx="1" fill="#fecdd3"/>
+                <!-- Buku Hijau NCD -->
+                <g class="ic-book">
+                  <rect x="24" y="30" width="16" height="21" rx="2" fill="url(#g-book)" stroke="#fff" stroke-width="1.2"/>
+                  <path d="M27.5 30.6V50.4" stroke="#15803d" stroke-width="1.6"/>
+                  <rect x="29.5" y="34.5" width="8" height="5" rx="1" fill="#fff" opacity=".92"/>
+                  <path d="M30 43H37M30 46H35" stroke="#dcfce7" stroke-width="1.3" stroke-linecap="round"/>
+                </g>
+                <path d="M2 53.5H62" stroke="#cbd5e1" stroke-width="1.4" stroke-linecap="round"/>
+                <path class="ic-flow" d="M46 59H19" stroke="#fb7185" stroke-width="2" stroke-linecap="round" stroke-dasharray="3 3"/>
+                <path d="M22 56L18.5 59L22 62" stroke="#fb7185" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </span>
+            <span class="topic-kicker">Proses Rujukan</span>
+            <h3 class="topic-title">Klinik Kesihatan (KK) ke Klinik Pergigian (KP)</h3>
           </a>
         </li>
+
+        <!-- 6. JAGA GUSI: berus gigi, floss & perisai -->
         <li>
           <a class="glass topic-card t6" href="#/jaga" data-topic="jaga" style="--i:5">
-            <div class="topic-top">
-              <span class="topic-icon" aria-hidden="true"><svg><use href="#i-shield" /></svg></span>
-              <span class="topic-num">06</span>
-            </div>
-            <div class="topic-foot">
-              <h3 class="topic-title"><small>Pelan Tindakan</small>Jaga Gusi, Jaga Kesihatan</h3>
-              <span class="topic-go" aria-hidden="true"><svg><use href="#i-arrow-right" /></svg></span>
-            </div>
+            <span class="topic-num" aria-hidden="true">06</span>
+            <span class="icon-orb" aria-hidden="true">
+              <svg class="ic" viewBox="0 0 64 64">
+                <g class="ic-pulse">
+                  <path d="M32 4L53 11.5V29C53 44 44 54.5 32 60C20 54.5 11 44 11 29V11.5Z" fill="url(#g-shield)" stroke="#fff" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="M16 14.5L32 8.8V24C26 24 20.5 26 16 30Z" fill="#fff" opacity=".4"/>
+                </g>
+                <g transform="rotate(-35 32 32)">
+                  <rect x="13" y="31" width="25" height="4.6" rx="2.3" fill="url(#g-cyan)"/>
+                  <rect x="37" y="29.4" width="12.5" height="7.8" rx="2.6" fill="#fff" stroke="#0891b2" stroke-width="1.2"/>
+                  <path d="M39.6 29V24.4M42.2 29V23.8M44.8 29V23.8M47.4 29V24.4" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"/>
+                </g>
+                <path d="M17 47C22 42 26 51 31.5 46S41 41 47 46" stroke="#fb7185" stroke-width="2" stroke-linecap="round" fill="none"/>
+                <path class="ic-spark" d="M55 3L56 7L60 8L56 9L55 13L54 9L50 8L54 7Z" fill="#fbbf24"/>
+                <path class="ic-spark s2" d="M8 46L8.8 48.2L11 49L8.8 49.8L8 52L7.2 49.8L5 49L7.2 48.2Z" fill="#f472b6"/>
+                <path class="ic-spark s3" d="M58 40.5L58.7 42.3L60.5 43L58.7 43.7L58 45.5L57.3 43.7L55.5 43L57.3 42.3Z" fill="#22d3ee"/>
+              </svg>
+            </span>
+            <span class="topic-kicker">Gaya Hidup Sihat</span>
+            <h3 class="topic-title">Jaga Gusi, Jaga Kesihatan</h3>
           </a>
         </li>
       </ul>
 
-      <footer class="site-foot">
-        © <span id="year">2026</span> PerioDiabetes · Maklumat untuk pendidikan kesihatan awam
-      </footer>
+      <footer class="site-foot">© <span id="year">2026</span> PerioDiabetes · Maklumat untuk pendidikan kesihatan awam</footer>
     </section>
 
     <!-- =====================================================
          HALAMAN SUBTOPIK
-         Untuk menambah kandungan: gantikan blok <div class="placeholder">…</div>
-         di dalam setiap <article class="content-card"> dengan teks anda.
+         Ikon di bahagian atas setiap halaman disalin secara automatik
+         daripada kad yang sepadan (lihat skrip di bawah).
+         Untuk menambah kandungan: gantikan blok <div class="placeholder">…</div>.
          ===================================================== -->
 
     <!-- 1. PENGENALAN -->
-    <section class="view t1" id="view-pengenalan" data-title="Pengenalan — PerioDiabetes" aria-labelledby="h-pengenalan" hidden>
-      <a class="glass back-btn" href="#/"><span class="arrow" aria-hidden="true"><svg><use href="#i-arrow-left" /></svg></span>Kembali ke Menu Utama</a>
+    <section class="view t1" id="view-pengenalan" data-topic="pengenalan" data-title="Pengenalan — PerioDiabetes" aria-labelledby="h-pengenalan" hidden>
+      <a class="glass back-btn" href="#/"><span class="arrow" aria-hidden="true">←</span>Kembali ke Menu Utama</a>
       <header class="glass page-head">
-        <span class="topic-icon" aria-hidden="true"><svg><use href="#i-book" /></svg></span>
-        <div>
-          <span class="eyebrow">Topik 01 · Pengenalan</span>
-          <h2 id="h-pengenalan" tabindex="-1">Kenali Diabetes &amp; Penyakit Gusi</h2>
-        </div>
+        <span class="icon-orb is-live" aria-hidden="true"></span>
+        <span class="topic-kicker">Topik 01 · Pengenalan</span>
+        <h2 id="h-pengenalan" tabindex="-1">Kenali Diabetes &amp; Penyakit Gusi</h2>
       </header>
       <article class="glass content-card">
         <!-- ▼ MASUKKAN KANDUNGAN TOPIK 1 DI SINI ▼ -->
         <div class="placeholder">
-          <span class="pulse" aria-hidden="true"><svg><use href="#i-edit" /></svg></span>
+          <span class="dot" aria-hidden="true">✎</span>
           <p>Kandungan sedang dikemas kini...</p>
           <div class="skeleton" aria-hidden="true"><i></i><i></i><i></i></div>
         </div>
@@ -692,19 +956,17 @@
     </section>
 
     <!-- 2. HUBUNGAN DUA HALA -->
-    <section class="view t2" id="view-hubungan" data-title="Hubungan Dua Hala — PerioDiabetes" aria-labelledby="h-hubungan" hidden>
-      <a class="glass back-btn" href="#/"><span class="arrow" aria-hidden="true"><svg><use href="#i-arrow-left" /></svg></span>Kembali ke Menu Utama</a>
+    <section class="view t2" id="view-hubungan" data-topic="hubungan" data-title="Hubungan Dua Hala — PerioDiabetes" aria-labelledby="h-hubungan" hidden>
+      <a class="glass back-btn" href="#/"><span class="arrow" aria-hidden="true">←</span>Kembali ke Menu Utama</a>
       <header class="glass page-head">
-        <span class="topic-icon" aria-hidden="true"><svg><use href="#i-cycle" /></svg></span>
-        <div>
-          <span class="eyebrow">Topik 02 · Hubungan Dua Hala</span>
-          <h2 id="h-hubungan" tabindex="-1">Hubungan Dua Hala: Diabetes &amp; Penyakit Gusi</h2>
-        </div>
+        <span class="icon-orb is-live" aria-hidden="true"></span>
+        <span class="topic-kicker">Topik 02 · Hubungan Dua Hala</span>
+        <h2 id="h-hubungan" tabindex="-1">Hubungan Dua Hala: Diabetes &amp; Penyakit Gusi</h2>
       </header>
       <article class="glass content-card">
         <!-- ▼ MASUKKAN KANDUNGAN TOPIK 2 DI SINI ▼ -->
         <div class="placeholder">
-          <span class="pulse" aria-hidden="true"><svg><use href="#i-edit" /></svg></span>
+          <span class="dot" aria-hidden="true">✎</span>
           <p>Kandungan sedang dikemas kini...</p>
           <div class="skeleton" aria-hidden="true"><i></i><i></i><i></i></div>
         </div>
@@ -712,20 +974,18 @@
       </article>
     </section>
 
-    <!-- 3. TANDA-TANDA -->
-    <section class="view t3" id="view-tanda" data-title="Tanda-Tanda Penyakit Gusi — PerioDiabetes" aria-labelledby="h-tanda" hidden>
-      <a class="glass back-btn" href="#/"><span class="arrow" aria-hidden="true"><svg><use href="#i-arrow-left" /></svg></span>Kembali ke Menu Utama</a>
+    <!-- 3. TANDA-TANDA PENYAKIT GUSI -->
+    <section class="view t3" id="view-tanda" data-topic="tanda" data-title="Tanda-Tanda Penyakit Gusi — PerioDiabetes" aria-labelledby="h-tanda" hidden>
+      <a class="glass back-btn" href="#/"><span class="arrow" aria-hidden="true">←</span>Kembali ke Menu Utama</a>
       <header class="glass page-head">
-        <span class="topic-icon" aria-hidden="true"><svg><use href="#i-alert" /></svg></span>
-        <div>
-          <span class="eyebrow">Topik 03 · Tanda Amaran</span>
-          <h2 id="h-tanda" tabindex="-1">Tanda-Tanda Penyakit Gusi</h2>
-        </div>
+        <span class="icon-orb is-live" aria-hidden="true"></span>
+        <span class="topic-kicker">Topik 03 · Tanda Amaran</span>
+        <h2 id="h-tanda" tabindex="-1">Tanda-Tanda Penyakit Gusi</h2>
       </header>
       <article class="glass content-card">
         <!-- ▼ MASUKKAN KANDUNGAN TOPIK 3 DI SINI ▼ -->
         <div class="placeholder">
-          <span class="pulse" aria-hidden="true"><svg><use href="#i-edit" /></svg></span>
+          <span class="dot" aria-hidden="true">✎</span>
           <p>Kandungan sedang dikemas kini...</p>
           <div class="skeleton" aria-hidden="true"><i></i><i></i><i></i></div>
         </div>
@@ -733,20 +993,18 @@
       </article>
     </section>
 
-    <!-- 4. SARINGAN BPE -->
-    <section class="view t4" id="view-bpe" data-title="Saringan BPE — PerioDiabetes" aria-labelledby="h-bpe" hidden>
-      <a class="glass back-btn" href="#/"><span class="arrow" aria-hidden="true"><svg><use href="#i-arrow-left" /></svg></span>Kembali ke Menu Utama</a>
+    <!-- 4. APA ITU SARINGAN BPE? -->
+    <section class="view t4" id="view-bpe" data-topic="bpe" data-title="Apa Itu Saringan BPE? — PerioDiabetes" aria-labelledby="h-bpe" hidden>
+      <a class="glass back-btn" href="#/"><span class="arrow" aria-hidden="true">←</span>Kembali ke Menu Utama</a>
       <header class="glass page-head">
-        <span class="topic-icon" aria-hidden="true"><svg><use href="#i-clipboard" /></svg></span>
-        <div>
-          <span class="eyebrow">Topik 04 · Saringan</span>
-          <h2 id="h-bpe" tabindex="-1">Apa Itu Saringan BPE?</h2>
-        </div>
+        <span class="icon-orb is-live" aria-hidden="true"></span>
+        <span class="topic-kicker">Topik 04 · Saringan Klinikal</span>
+        <h2 id="h-bpe" tabindex="-1">Apa Itu Saringan BPE?</h2>
       </header>
       <article class="glass content-card">
         <!-- ▼ MASUKKAN KANDUNGAN TOPIK 4 DI SINI ▼ -->
         <div class="placeholder">
-          <span class="pulse" aria-hidden="true"><svg><use href="#i-edit" /></svg></span>
+          <span class="dot" aria-hidden="true">✎</span>
           <p>Kandungan sedang dikemas kini...</p>
           <div class="skeleton" aria-hidden="true"><i></i><i></i><i></i></div>
         </div>
@@ -754,20 +1012,18 @@
       </article>
     </section>
 
-    <!-- 5. PROSES RUJUKAN -->
-    <section class="view t5" id="view-rujukan" data-title="Proses Rujukan KK ke KP — PerioDiabetes" aria-labelledby="h-rujukan" hidden>
-      <a class="glass back-btn" href="#/"><span class="arrow" aria-hidden="true"><svg><use href="#i-arrow-left" /></svg></span>Kembali ke Menu Utama</a>
+    <!-- 5. PROSES RUJUKAN KK KE KP -->
+    <section class="view t5" id="view-rujukan" data-topic="rujukan" data-title="Proses Rujukan KK ke KP — PerioDiabetes" aria-labelledby="h-rujukan" hidden>
+      <a class="glass back-btn" href="#/"><span class="arrow" aria-hidden="true">←</span>Kembali ke Menu Utama</a>
       <header class="glass page-head">
-        <span class="topic-icon" aria-hidden="true"><svg><use href="#i-route" /></svg></span>
-        <div>
-          <span class="eyebrow">Topik 05 · Proses Rujukan</span>
-          <h2 id="h-rujukan" tabindex="-1">Proses Rujukan Klinik Kesihatan (KK) ke Klinik Pergigian (KP)</h2>
-        </div>
+        <span class="icon-orb is-live" aria-hidden="true"></span>
+        <span class="topic-kicker">Topik 05 · Proses Rujukan</span>
+        <h2 id="h-rujukan" tabindex="-1">Proses Rujukan Klinik Kesihatan (KK) ke Klinik Pergigian (KP)</h2>
       </header>
       <article class="glass content-card">
         <!-- ▼ MASUKKAN KANDUNGAN TOPIK 5 DI SINI ▼ -->
         <div class="placeholder">
-          <span class="pulse" aria-hidden="true"><svg><use href="#i-edit" /></svg></span>
+          <span class="dot" aria-hidden="true">✎</span>
           <p>Kandungan sedang dikemas kini...</p>
           <div class="skeleton" aria-hidden="true"><i></i><i></i><i></i></div>
         </div>
@@ -776,19 +1032,17 @@
     </section>
 
     <!-- 6. JAGA GUSI, JAGA KESIHATAN -->
-    <section class="view t6" id="view-jaga" data-title="Jaga Gusi, Jaga Kesihatan — PerioDiabetes" aria-labelledby="h-jaga" hidden>
-      <a class="glass back-btn" href="#/"><span class="arrow" aria-hidden="true"><svg><use href="#i-arrow-left" /></svg></span>Kembali ke Menu Utama</a>
+    <section class="view t6" id="view-jaga" data-topic="jaga" data-title="Jaga Gusi, Jaga Kesihatan — PerioDiabetes" aria-labelledby="h-jaga" hidden>
+      <a class="glass back-btn" href="#/"><span class="arrow" aria-hidden="true">←</span>Kembali ke Menu Utama</a>
       <header class="glass page-head">
-        <span class="topic-icon" aria-hidden="true"><svg><use href="#i-shield" /></svg></span>
-        <div>
-          <span class="eyebrow">Topik 06 · Pelan Tindakan</span>
-          <h2 id="h-jaga" tabindex="-1">Jaga Gusi, Jaga Kesihatan</h2>
-        </div>
+        <span class="icon-orb is-live" aria-hidden="true"></span>
+        <span class="topic-kicker">Topik 06 · Gaya Hidup Sihat</span>
+        <h2 id="h-jaga" tabindex="-1">Jaga Gusi, Jaga Kesihatan</h2>
       </header>
       <article class="glass content-card">
         <!-- ▼ MASUKKAN KANDUNGAN TOPIK 6 DI SINI ▼ -->
         <div class="placeholder">
-          <span class="pulse" aria-hidden="true"><svg><use href="#i-edit" /></svg></span>
+          <span class="dot" aria-hidden="true">✎</span>
           <p>Kandungan sedang dikemas kini...</p>
           <div class="skeleton" aria-hidden="true"><i></i><i></i><i></i></div>
         </div>
@@ -799,9 +1053,9 @@
   </main>
 
   <!-- =========================================================
-       PENGHALA SPA (HASH ROUTER) — vanilla JS
-       #/          → Paparan Utama
-       #/<topik>   → Halaman subtopik (cth. #/bpe)
+       PENGHALA SPA (HASH ROUTER)
+       #/         → Paparan Utama
+       #/<topik>  → Halaman subtopik (cth. #/bpe)
        Butang "Back" pelayar turut berfungsi.
        ========================================================= -->
   <script>
@@ -810,19 +1064,25 @@
       var lastTopic = null;
       var firstLoad = true;
 
+      // Salin ikon kad ke bahagian atas halaman subtopik yang sepadan
+      document.querySelectorAll('.view[data-topic]').forEach(function (view) {
+        var src = document.querySelector('.topic-card[data-topic="' + view.dataset.topic + '"] .icon-orb svg');
+        var dest = view.querySelector('.page-head .icon-orb');
+        if (src && dest) dest.appendChild(src.cloneNode(true));
+      });
+
       function route() {
         var id = location.hash.replace(/^#\/?/, '') || 'utama';
         var target = document.getElementById('view-' + id);
         if (!target) { id = 'utama'; target = document.getElementById('view-utama'); }
 
         views.forEach(function (v) { v.hidden = (v !== target); });
-        document.title = target.getAttribute('data-title').replace('&amp;', '&');
+        document.title = target.getAttribute('data-title');
         window.scrollTo(0, 0);
 
         if (!firstLoad) {
           if (id === 'utama') {
-            // Kembalikan fokus ke kad yang dibuka sebelum ini
-            var card = lastTopic && document.querySelector('[data-topic="' + lastTopic + '"]');
+            var card = lastTopic && document.querySelector('.topic-card[data-topic="' + lastTopic + '"]');
             if (card) card.focus({ preventScroll: true });
           } else {
             var h = target.querySelector('h2');
@@ -835,6 +1095,9 @@
 
       window.addEventListener('hashchange', route);
       route();
+
+      // Membolehkan kesan :active (sentuhan) pada Safari iOS
+      document.addEventListener('touchstart', function () {}, { passive: true });
 
       document.getElementById('year').textContent = new Date().getFullYear();
     })();
