@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="ms">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>PerioDiabetes — Kenali Hubungan Diabetes dan Penyakit Gusi</title>
-  <meta name="description" content="PerioDiabetes: Kenali Hubungan Diabetes dan Penyakit Gusi, Lindungi Kesihatan Anda. Portal kesedaran kesihatan awam." />
+  <meta name="description"
+    content="PerioDiabetes: Kenali Hubungan Diabetes dan Penyakit Gusi, Lindungi Kesihatan Anda. Portal kesedaran kesihatan awam." />
   <meta name="theme-color" content="#e6fbfb" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦷</text></svg>" />
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦷</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
 
   <style>
     /* =========================================================
@@ -41,8 +45,15 @@
       --font: "Plus Jakarta Sans", "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
     }
 
-    *, *::before, *::after { box-sizing: border-box; }
-    html { -webkit-text-size-adjust: 100%; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+    }
 
     body {
       margin: 0;
@@ -56,9 +67,22 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    h1, h2, h3, p, figure { margin: 0; }
-    a { color: inherit; }
-    :focus-visible { outline: 3px solid rgba(8, 145, 178, 0.6); outline-offset: 3px; }
+    h1,
+    h2,
+    h3,
+    p,
+    figure {
+      margin: 0;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    :focus-visible {
+      outline: 3px solid rgba(8, 145, 178, 0.6);
+      outline-offset: 3px;
+    }
 
     /* =========================================================
        LATAR: GRADIEN MESH CECAIR DINAMIK
@@ -76,6 +100,7 @@
         radial-gradient(55% 50% at 0% 100%, #ece4ff 0%, transparent 70%),
         linear-gradient(165deg, #fbffff 0%, #effcfa 45%, #fdf6f9 100%);
     }
+
     .ambient span {
       position: absolute;
       border-radius: 50%;
@@ -83,16 +108,71 @@
       will-change: transform;
       animation: drift 28s ease-in-out infinite alternate;
     }
-    .ambient .b1 { width: 48vmax; height: 48vmax; left: -14vmax; top: -14vmax; background: #a5f3fc; opacity: 0.7; }
-    .ambient .b2 { width: 40vmax; height: 40vmax; right: -14vmax; top: 6vh; background: #fecdd3; opacity: 0.65; animation-duration: 34s; animation-delay: -8s; }
-    .ambient .b3 { width: 44vmax; height: 44vmax; right: 4vw; bottom: -20vmax; background: #a7f3d0; opacity: 0.65; animation-duration: 40s; animation-delay: -14s; }
-    .ambient .b4 { width: 30vmax; height: 30vmax; left: -6vmax; bottom: 4vh; background: #e9d5ff; opacity: 0.55; animation-duration: 36s; animation-delay: -4s; }
-    .ambient .b5 { width: 24vmax; height: 24vmax; left: 38vw; top: 30vh; background: #ffffff; opacity: 0.8; animation-duration: 30s; }
+
+    .ambient .b1 {
+      width: 48vmax;
+      height: 48vmax;
+      left: -14vmax;
+      top: -14vmax;
+      background: #a5f3fc;
+      opacity: 0.7;
+    }
+
+    .ambient .b2 {
+      width: 40vmax;
+      height: 40vmax;
+      right: -14vmax;
+      top: 6vh;
+      background: #fecdd3;
+      opacity: 0.65;
+      animation-duration: 34s;
+      animation-delay: -8s;
+    }
+
+    .ambient .b3 {
+      width: 44vmax;
+      height: 44vmax;
+      right: 4vw;
+      bottom: -20vmax;
+      background: #a7f3d0;
+      opacity: 0.65;
+      animation-duration: 40s;
+      animation-delay: -14s;
+    }
+
+    .ambient .b4 {
+      width: 30vmax;
+      height: 30vmax;
+      left: -6vmax;
+      bottom: 4vh;
+      background: #e9d5ff;
+      opacity: 0.55;
+      animation-duration: 36s;
+      animation-delay: -4s;
+    }
+
+    .ambient .b5 {
+      width: 24vmax;
+      height: 24vmax;
+      left: 38vw;
+      top: 30vh;
+      background: #ffffff;
+      opacity: 0.8;
+      animation-duration: 30s;
+    }
 
     @keyframes drift {
-      0%   { transform: translate3d(0, 0, 0) scale(1); }
-      50%  { transform: translate3d(5vmax, 4vmax, 0) scale(1.1); }
-      100% { transform: translate3d(-4vmax, 6vmax, 0) scale(0.95); }
+      0% {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+
+      50% {
+        transform: translate3d(5vmax, 4vmax, 0) scale(1.1);
+      }
+
+      100% {
+        transform: translate3d(-4vmax, 6vmax, 0) scale(0.95);
+      }
     }
 
     /* =========================================================
@@ -108,11 +188,14 @@
       box-shadow: var(--edge), var(--shadow);
       isolation: isolate;
     }
+
     /* Pantulan berkilat di tepi atas kaca */
     .glass::before {
       content: "";
       position: absolute;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       height: 55%;
       border-radius: inherit;
       border-bottom-left-radius: 0;
@@ -123,7 +206,9 @@
     }
 
     @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-      .glass { background: rgba(255, 255, 255, 0.85); }
+      .glass {
+        background: rgba(255, 255, 255, 0.85);
+      }
     }
 
     /* =========================================================
@@ -134,11 +219,25 @@
       margin-inline: auto;
       padding: max(1rem, env(safe-area-inset-top)) 0 2.5rem;
     }
-    .view { animation: viewIn 0.55s var(--ease) backwards; }
-    .view[hidden] { display: none; }
+
+    .view {
+      animation: viewIn 0.55s var(--ease) backwards;
+    }
+
+    .view[hidden] {
+      display: none;
+    }
+
     @keyframes viewIn {
-      from { opacity: 0; transform: translateY(16px) scale(0.99); }
-      to   { opacity: 1; transform: none; }
+      from {
+        opacity: 0;
+        transform: translateY(16px) scale(0.99);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
     }
 
     /* =========================================================
@@ -170,9 +269,11 @@
       border-radius: 999px;
       box-shadow: 0 4px 12px -6px rgba(8, 145, 178, 0.35);
     }
+
     .eyebrow::before {
       content: "";
-      width: 0.45rem; height: 0.45rem;
+      width: 0.45rem;
+      height: 0.45rem;
       border-radius: 50%;
       background: linear-gradient(135deg, #22d3ee, #f472b6);
       box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.2);
@@ -191,7 +292,12 @@
       filter: drop-shadow(0 6px 14px rgba(8, 145, 178, 0.22));
       animation: sheen 9s linear infinite;
     }
-    @keyframes sheen { to { background-position: -220% center; } }
+
+    @keyframes sheen {
+      to {
+        background-position: -220% center;
+      }
+    }
 
     .slogan {
       margin-top: 0.75rem;
@@ -203,10 +309,18 @@
       color: var(--ink-soft);
       text-wrap: balance;
     }
-    .slogan strong { color: #be185d; font-weight: 700; }
+
+    .slogan strong {
+      color: #be185d;
+      font-weight: 700;
+    }
 
     /* Bingkai Foto Klinikal Liquid Glass */
-    .hero-figure { position: relative; margin: 0; }
+    .hero-figure {
+      position: relative;
+      margin: 0;
+    }
+
     .clinical-card {
       position: relative;
       padding: 0.6rem;
@@ -223,6 +337,7 @@
       animation: float 7s ease-in-out infinite;
       overflow: hidden;
     }
+
     .clinical-card::after {
       content: "";
       position: absolute;
@@ -233,6 +348,7 @@
       filter: blur(16px);
       pointer-events: none;
     }
+
     .clinical-img {
       display: block;
       width: 100%;
@@ -242,7 +358,18 @@
       object-fit: cover;
       box-shadow: 0 4px 14px rgba(13, 43, 62, 0.08);
     }
-    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-5px);
+      }
+    }
 
     /* =========================================================
        GRID 6 KAD SUBTOPIK
@@ -259,14 +386,19 @@
       text-transform: uppercase;
       color: #0e7490;
     }
-    .section-label::before, .section-label::after {
+
+    .section-label::before,
+    .section-label::after {
       content: "";
       flex: 1;
       max-width: 7rem;
       height: 1px;
       background: linear-gradient(90deg, transparent, rgba(8, 145, 178, 0.4));
     }
-    .section-label::after { transform: scaleX(-1); }
+
+    .section-label::after {
+      transform: scaleX(-1);
+    }
 
     .topic-grid {
       list-style: none;
@@ -276,10 +408,15 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 0.8rem;
     }
-    .topic-grid li { min-width: 0; display: flex; }
+
+    .topic-grid li {
+      min-width: 0;
+      display: flex;
+    }
 
     .topic-card {
-      --orb-a: #e0f2fe; --orb-b: #fce7f3;
+      --orb-a: #e0f2fe;
+      --orb-b: #fce7f3;
       --tint: #0e7490;
       --glow: rgba(8, 145, 178, 0.35);
 
@@ -304,9 +441,17 @@
       animation: cardIn 0.65s var(--ease) backwards;
       animation-delay: calc(var(--i, 0) * 70ms + 120ms);
     }
+
     @keyframes cardIn {
-      from { opacity: 0; transform: translateY(18px) scale(0.98); }
-      to   { opacity: 1; transform: none; }
+      from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.98);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
     }
 
     /* Kilauan cahaya yang menyapu kad */
@@ -339,9 +484,13 @@
         0 22px 44px -14px var(--glow),
         0 36px 70px -28px var(--glow);
     }
+
     .topic-card:hover::after,
     .topic-card:focus-visible::after,
-    .topic-card:active::after { left: 125%; opacity: 1; }
+    .topic-card:active::after {
+      left: 125%;
+      opacity: 1;
+    }
 
     .topic-num {
       position: absolute;
@@ -372,7 +521,13 @@
         0 10px 22px -10px var(--glow);
       transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
     }
-    .icon-orb svg { width: 74%; height: 74%; overflow: visible; }
+
+    .icon-orb svg {
+      width: 74%;
+      height: 74%;
+      overflow: visible;
+    }
+
     .topic-card:hover .icon-orb,
     .topic-card:focus-visible .icon-orb,
     .topic-card:active .icon-orb {
@@ -389,6 +544,7 @@
       color: var(--tint);
       line-height: 1.3;
     }
+
     .topic-title {
       font-size: 0.88rem;
       font-weight: 700;
@@ -401,38 +557,219 @@
     }
 
     /* Tona warna setiap subtopik */
-    .t1 { --orb-a: #ffe4e6; --orb-b: #ede9fe; --tint: #be123c; --glow: rgba(244, 63, 94, 0.32); }
-    .t2 { --orb-a: #cffafe; --orb-b: #ffe4e6; --tint: #0e7490; --glow: rgba(6, 182, 212, 0.34); }
-    .t3 { --orb-a: #ffedd5; --orb-b: #ffe4e6; --tint: #c2410c; --glow: rgba(249, 115, 22, 0.3); }
-    .t4 { --orb-a: #e0e7ff; --orb-b: #cffafe; --tint: #4338ca; --glow: rgba(99, 102, 241, 0.3); }
-    .t5 { --orb-a: #dcfce7; --orb-b: #cffafe; --tint: #15803d; --glow: rgba(34, 197, 94, 0.3); }
-    .t6 { --orb-a: #ccfbf1; --orb-b: #fce7f3; --tint: #0f766e; --glow: rgba(20, 184, 166, 0.34); }
+    .t1 {
+      --orb-a: #ffe4e6;
+      --orb-b: #ede9fe;
+      --tint: #be123c;
+      --glow: rgba(244, 63, 94, 0.32);
+    }
+
+    .t2 {
+      --orb-a: #cffafe;
+      --orb-b: #ffe4e6;
+      --tint: #0e7490;
+      --glow: rgba(6, 182, 212, 0.34);
+    }
+
+    .t3 {
+      --orb-a: #ffedd5;
+      --orb-b: #ffe4e6;
+      --tint: #c2410c;
+      --glow: rgba(249, 115, 22, 0.3);
+    }
+
+    .t4 {
+      --orb-a: #e0e7ff;
+      --orb-b: #cffafe;
+      --tint: #4338ca;
+      --glow: rgba(99, 102, 241, 0.3);
+    }
+
+    .t5 {
+      --orb-a: #dcfce7;
+      --orb-b: #cffafe;
+      --tint: #15803d;
+      --glow: rgba(34, 197, 94, 0.3);
+    }
+
+    .t6 {
+      --orb-a: #ccfbf1;
+      --orb-b: #fce7f3;
+      --tint: #0f766e;
+      --glow: rgba(20, 184, 166, 0.34);
+    }
 
     /* ---------- Animasi ikon interaktif ---------- */
-    .ic * { transform-box: fill-box; transform-origin: center; }
-    .ic-wobble { transform-origin: 50% 100% !important; }
+    .ic * {
+      transform-box: fill-box;
+      transform-origin: center;
+    }
 
-    .topic-card:is(:hover, :focus-visible, :active) .ic-bug, .is-live .ic-bug { animation: wiggle 1.3s ease-in-out infinite; }
-    .topic-card:is(:hover, :focus-visible, :active) .ic-bug.b2, .is-live .ic-bug.b2 { animation-delay: -0.45s; }
-    .topic-card:is(:hover, :focus-visible, :active) .ic-bug.b3, .is-live .ic-bug.b3 { animation-delay: -0.9s; }
-    .topic-card:is(:hover, :focus-visible, :active) .ic-flow, .is-live .ic-flow { stroke-dasharray: 6 4; animation: flow 0.9s linear infinite; }
-    .topic-card:is(:hover, :focus-visible, :active) .ic-pulse, .is-live .ic-pulse { animation: beat 1.2s ease-in-out infinite; }
-    .topic-card:is(:hover, :focus-visible, :active) .ic-wobble, .is-live .ic-wobble { animation: wobble 0.8s ease-in-out infinite; }
-    .topic-card:is(:hover, :focus-visible, :active) .ic-drip, .is-live .ic-drip { animation: dripIc 1.4s ease-in infinite; }
-    .topic-card:is(:hover, :focus-visible, :active) .ic-probe, .is-live .ic-probe { animation: probe 1.5s var(--ease) infinite; }
-    .topic-card:is(:hover, :focus-visible, :active) .ic-book, .is-live .ic-book { animation: bob 1.3s ease-in-out infinite; }
-    .topic-card:is(:hover, :focus-visible, :active) .ic-spark, .is-live .ic-spark { animation: twinkle 1.4s ease-in-out infinite; }
-    .topic-card:is(:hover, :focus-visible, :active) .ic-spark.s2, .is-live .ic-spark.s2 { animation-delay: -0.5s; }
-    .topic-card:is(:hover, :focus-visible, :active) .ic-spark.s3, .is-live .ic-spark.s3 { animation-delay: -0.9s; }
+    .ic-wobble {
+      transform-origin: 50% 100% !important;
+    }
 
-    @keyframes wiggle { 0%, 100% { transform: translate(0, 0) rotate(0); } 25% { transform: translate(1px, -1.5px) rotate(10deg); } 75% { transform: translate(-1px, 1px) rotate(-10deg); } }
-    @keyframes flow { to { stroke-dashoffset: -20; } }
-    @keyframes beat { 0%, 100% { transform: scale(1); } 40% { transform: scale(1.12); } }
-    @keyframes wobble { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
-    @keyframes dripIc { 0% { transform: translateY(-2px); opacity: 0; } 30% { opacity: 1; } 100% { transform: translateY(5px); opacity: 0; } }
-    @keyframes probe { 0%, 100% { transform: translate(0, 0); } 45%, 60% { transform: translate(-1.5px, 3px); } }
-    @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
-    @keyframes twinkle { 0%, 100% { transform: scale(0.6) rotate(0); opacity: 0.5; } 50% { transform: scale(1.25) rotate(45deg); opacity: 1; } }
+    .topic-card:is(:hover, :focus-visible, :active) .ic-bug,
+    .is-live .ic-bug {
+      animation: wiggle 1.3s ease-in-out infinite;
+    }
+
+    .topic-card:is(:hover, :focus-visible, :active) .ic-bug.b2,
+    .is-live .ic-bug.b2 {
+      animation-delay: -0.45s;
+    }
+
+    .topic-card:is(:hover, :focus-visible, :active) .ic-bug.b3,
+    .is-live .ic-bug.b3 {
+      animation-delay: -0.9s;
+    }
+
+    .topic-card:is(:hover, :focus-visible, :active) .ic-flow,
+    .is-live .ic-flow {
+      stroke-dasharray: 6 4;
+      animation: flow 0.9s linear infinite;
+    }
+
+    .topic-card:is(:hover, :focus-visible, :active) .ic-pulse,
+    .is-live .ic-pulse {
+      animation: beat 1.2s ease-in-out infinite;
+    }
+
+    .topic-card:is(:hover, :focus-visible, :active) .ic-wobble,
+    .is-live .ic-wobble {
+      animation: wobble 0.8s ease-in-out infinite;
+    }
+
+    .topic-card:is(:hover, :focus-visible, :active) .ic-drip,
+    .is-live .ic-drip {
+      animation: dripIc 1.4s ease-in infinite;
+    }
+
+    .topic-card:is(:hover, :focus-visible, :active) .ic-probe,
+    .is-live .ic-probe {
+      animation: probe 1.5s var(--ease) infinite;
+    }
+
+    .topic-card:is(:hover, :focus-visible, :active) .ic-book,
+    .is-live .ic-book {
+      animation: bob 1.3s ease-in-out infinite;
+    }
+
+    .topic-card:is(:hover, :focus-visible, :active) .ic-spark,
+    .is-live .ic-spark {
+      animation: twinkle 1.4s ease-in-out infinite;
+    }
+
+    .topic-card:is(:hover, :focus-visible, :active) .ic-spark.s2,
+    .is-live .ic-spark.s2 {
+      animation-delay: -0.5s;
+    }
+
+    .topic-card:is(:hover, :focus-visible, :active) .ic-spark.s3,
+    .is-live .ic-spark.s3 {
+      animation-delay: -0.9s;
+    }
+
+    @keyframes wiggle {
+
+      0%,
+      100% {
+        transform: translate(0, 0) rotate(0);
+      }
+
+      25% {
+        transform: translate(1px, -1.5px) rotate(10deg);
+      }
+
+      75% {
+        transform: translate(-1px, 1px) rotate(-10deg);
+      }
+    }
+
+    @keyframes flow {
+      to {
+        stroke-dashoffset: -20;
+      }
+    }
+
+    @keyframes beat {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      40% {
+        transform: scale(1.12);
+      }
+    }
+
+    @keyframes wobble {
+
+      0%,
+      100% {
+        transform: rotate(-5deg);
+      }
+
+      50% {
+        transform: rotate(5deg);
+      }
+    }
+
+    @keyframes dripIc {
+      0% {
+        transform: translateY(-2px);
+        opacity: 0;
+      }
+
+      30% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(5px);
+        opacity: 0;
+      }
+    }
+
+    @keyframes probe {
+
+      0%,
+      100% {
+        transform: translate(0, 0);
+      }
+
+      45%,
+      60% {
+        transform: translate(-1.5px, 3px);
+      }
+    }
+
+    @keyframes bob {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-3px);
+      }
+    }
+
+    @keyframes twinkle {
+
+      0%,
+      100% {
+        transform: scale(0.6) rotate(0);
+        opacity: 0.5;
+      }
+
+      50% {
+        transform: scale(1.25) rotate(45deg);
+        opacity: 1;
+      }
+    }
 
     .site-foot {
       margin-top: 1.6rem;
@@ -459,6 +796,7 @@
       -webkit-tap-highlight-color: transparent;
       transition: transform 0.45s var(--ease), box-shadow 0.45s var(--ease), border-color 0.45s, background-color 0.45s;
     }
+
     .back-btn .arrow {
       display: grid;
       place-items: center;
@@ -471,13 +809,19 @@
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 6px 14px -6px rgba(8, 145, 178, 0.7);
       transition: transform 0.45s var(--ease);
     }
-    .back-btn:hover, .back-btn:focus-visible, .back-btn:active {
+
+    .back-btn:hover,
+    .back-btn:focus-visible,
+    .back-btn:active {
       transform: translateY(-2px);
       background-color: var(--glass-bg-hover);
       border-color: var(--glass-border-hover);
       box-shadow: inset 0 1px 0 #fff, 0 0 18px rgba(255, 255, 255, 0.6), 0 16px 32px -14px rgba(8, 145, 178, 0.4);
     }
-    .back-btn:hover .arrow { transform: translateX(-3px); }
+
+    .back-btn:hover .arrow {
+      transform: translateX(-3px);
+    }
 
     .page-head {
       display: flex;
@@ -489,8 +833,17 @@
       margin-bottom: 1.1rem;
       border-radius: var(--radius-lg);
     }
-    .page-head .icon-orb { width: 5rem; height: 5rem; }
-    .page-head .topic-kicker { font-size: 0.7rem; margin: 0; }
+
+    .page-head .icon-orb {
+      width: 5rem;
+      height: 5rem;
+    }
+
+    .page-head .topic-kicker {
+      font-size: 0.7rem;
+      margin: 0;
+    }
+
     .page-head h2 {
       font-size: clamp(1.3rem, 5vw, 2rem);
       font-weight: 800;
@@ -499,9 +852,16 @@
       text-wrap: balance;
       overflow-wrap: break-word;
     }
-    .page-head h2:focus { outline: none; }
 
-    .content-card { padding: 1.15rem; border-radius: var(--radius-lg); }
+    .page-head h2:focus {
+      outline: none;
+    }
+
+    .content-card {
+      padding: 1.15rem;
+      border-radius: var(--radius-lg);
+    }
+
     .placeholder {
       display: flex;
       flex-direction: column;
@@ -515,16 +875,20 @@
       border: 1.5px dashed rgba(8, 145, 178, 0.28);
       background: rgba(255, 255, 255, 0.3);
     }
+
     .placeholder .dot {
       position: relative;
-      width: 3rem; height: 3rem;
+      width: 3rem;
+      height: 3rem;
       border-radius: 50%;
-      display: grid; place-items: center;
+      display: grid;
+      place-items: center;
       background: linear-gradient(145deg, #a5f3fc, #fbcfe8);
       color: #0e7490;
       font-size: 1.3rem;
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
     }
+
     .placeholder .dot::after {
       content: "";
       position: absolute;
@@ -533,8 +897,19 @@
       border: 2px solid rgba(8, 145, 178, 0.28);
       animation: ring 2.2s var(--ease) infinite;
     }
-    .placeholder p { font-weight: 600; color: var(--ink-soft); }
-    .skeleton { width: min(100%, 22rem); display: grid; gap: 0.5rem; margin-top: 0.3rem; }
+
+    .placeholder p {
+      font-weight: 600;
+      color: var(--ink-soft);
+    }
+
+    .skeleton {
+      width: min(100%, 22rem);
+      display: grid;
+      gap: 0.5rem;
+      margin-top: 0.3rem;
+    }
+
     .skeleton i {
       display: block;
       height: 0.6rem;
@@ -543,33 +918,106 @@
       background-size: 200% 100%;
       animation: shimmer 1.8s linear infinite;
     }
-    .skeleton i:nth-child(2) { width: 86%; margin-inline: auto; }
-    .skeleton i:nth-child(3) { width: 62%; margin-inline: auto; }
-    @keyframes shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+
+    .skeleton i:nth-child(2) {
+      width: 86%;
+      margin-inline: auto;
+    }
+
+    .skeleton i:nth-child(3) {
+      width: 62%;
+      margin-inline: auto;
+    }
+
+    @keyframes shimmer {
+      from {
+        background-position: 200% 0;
+      }
+
+      to {
+        background-position: -200% 0;
+      }
+    }
 
     /* =========================================================
        RESPONSIF (mobile-first)
        ========================================================= */
     @media (max-width: 359px) {
-      .topic-grid { gap: 0.6rem; }
-      .topic-card { min-height: 10.5rem; padding: 1.2rem 0.55rem 1rem; }
-      .icon-orb { width: 3.8rem; height: 3.8rem; }
-      .topic-title { font-size: 0.8rem; }
+      .topic-grid {
+        gap: 0.6rem;
+      }
+
+      .topic-card {
+        min-height: 10.5rem;
+        padding: 1.2rem 0.55rem 1rem;
+      }
+
+      .icon-orb {
+        width: 3.8rem;
+        height: 3.8rem;
+      }
+
+      .topic-title {
+        font-size: 0.8rem;
+      }
     }
 
     @media (min-width: 640px) {
-      .shell { width: min(100% - 3rem, 66rem); padding-top: 2rem; }
-      .topic-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.1rem; }
-      .topic-card { min-height: 14rem; padding: 1.8rem 1.2rem 1.6rem; gap: 0.7rem; }
-      .topic-num { top: 0.9rem; left: 1rem; font-size: 0.72rem; }
-      .icon-orb { width: 5.4rem; height: 5.4rem; }
-      .topic-kicker { font-size: 0.68rem; }
-      .topic-title { font-size: 1.04rem; }
-      .hero { padding: 2.2rem 2rem 2rem; }
-      .page-head { padding: 2rem 2rem 1.8rem; }
-      .page-head .icon-orb { width: 6rem; height: 6rem; }
-      .content-card { padding: 1.6rem; }
-      .placeholder { min-height: 18rem; }
+      .shell {
+        width: min(100% - 3rem, 66rem);
+        padding-top: 2rem;
+      }
+
+      .topic-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.1rem;
+      }
+
+      .topic-card {
+        min-height: 14rem;
+        padding: 1.8rem 1.2rem 1.6rem;
+        gap: 0.7rem;
+      }
+
+      .topic-num {
+        top: 0.9rem;
+        left: 1rem;
+        font-size: 0.72rem;
+      }
+
+      .icon-orb {
+        width: 5.4rem;
+        height: 5.4rem;
+      }
+
+      .topic-kicker {
+        font-size: 0.68rem;
+      }
+
+      .topic-title {
+        font-size: 1.04rem;
+      }
+
+      .hero {
+        padding: 2.2rem 2rem 2rem;
+      }
+
+      .page-head {
+        padding: 2rem 2rem 1.8rem;
+      }
+
+      .page-head .icon-orb {
+        width: 6rem;
+        height: 6rem;
+      }
+
+      .content-card {
+        padding: 1.6rem;
+      }
+
+      .placeholder {
+        min-height: 18rem;
+      }
     }
 
     @media (min-width: 900px) {
@@ -580,13 +1028,730 @@
         padding: 2.6rem 2.6rem;
         text-align: left;
       }
-      .slogan { margin-inline: 0; }
-      .topic-card { min-height: 15rem; }
-      .topic-title { font-size: 1.1rem; }
+
+      .slogan {
+        margin-inline: 0;
+      }
+
+      .topic-card {
+        min-height: 15rem;
+      }
+
+      .topic-title {
+        font-size: 1.1rem;
+      }
+    }
+
+    /* =========================================================
+       GAYA KHUSUS: TOPIK 1 (PENGENALAN: LIQUID GLASS SLEEK)
+       ========================================================= */
+    .t1-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    /* Kad Kaca Cecair Sleek */
+    .card-glass-sleek {
+      position: relative;
+      background: rgba(255, 255, 255, 0.52);
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      border-radius: var(--radius);
+      -webkit-backdrop-filter: blur(20px) saturate(170%);
+      backdrop-filter: blur(20px) saturate(170%);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.95),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.2),
+        0 6px 20px -6px rgba(13, 43, 62, 0.06),
+        0 16px 36px -12px rgba(8, 145, 178, 0.12);
+      padding: 1.25rem 1.1rem;
+      overflow: hidden;
+      transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+    }
+
+    .card-glass-sleek:hover {
+      box-shadow:
+        inset 0 1px 0 #fff,
+        0 8px 26px -6px rgba(13, 43, 62, 0.08),
+        0 20px 44px -12px rgba(8, 145, 178, 0.18);
+    }
+
+    /* Imej Responsif */
+    .responsive-img {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      border-radius: 16px;
+      object-fit: cover;
+      box-shadow: 0 4px 14px rgba(13, 43, 62, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      background: #fff;
+    }
+
+    .img-box-glass {
+      padding: 0.5rem;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      box-shadow: inset 0 1px 0 #fff, 0 4px 16px rgba(13, 43, 62, 0.04);
+      margin-top: 0.85rem;
+    }
+
+    /* 1. STATISTIK DIABETES (RINGKAS & CATCHY) */
+    .tahukah-anda-banner {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.72) 0%, rgba(240, 253, 250, 0.55) 50%, rgba(255, 241, 242, 0.6) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      text-align: center;
+    }
+
+    .tag-kicker-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #be123c;
+      background: rgba(254, 205, 211, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      border-radius: 999px;
+      margin-bottom: 0.5rem;
+    }
+
+    .tag-kicker-pill::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #f43f5e;
+      box-shadow: 0 0 0 3px rgba(244, 63, 94, 0.25);
+    }
+
+    .tahukah-title {
+      font-size: clamp(1.4rem, 5.5vw, 2.1rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      background: linear-gradient(100deg, #be123c 0%, #f43f5e 40%, #0891b2 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .tahukah-text {
+      font-size: clamp(1rem, 3.8vw, 1.25rem);
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.45;
+      max-width: 32rem;
+      margin-inline: auto;
+      margin-bottom: 0.95rem;
+    }
+
+    .tahukah-text strong {
+      color: #be123c;
+    }
+
+    /* 6 Ikon Orang: 1 Orang Merah Menyerlah */
+    .ratio-people-strip {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 0.4rem;
+      max-width: 24rem;
+      margin-inline: auto;
+      margin-bottom: 0.85rem;
+    }
+
+    .person-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.2rem;
+      padding: 0.55rem 0.2rem;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+    }
+
+    .person-node svg {
+      width: 1.6rem;
+      height: 1.6rem;
+      fill: #94a3b8;
+      transition: fill 0.25s;
+    }
+
+    .person-node.active-red {
+      background: linear-gradient(135deg, #fff1f2, #ffe4e6);
+      border: 1.5px solid #f43f5e;
+      box-shadow: 0 0 14px rgba(244, 63, 94, 0.4), inset 0 1px 0 #fff;
+      animation: pulseCoral 2.2s infinite ease-in-out;
+    }
+
+    @keyframes pulseCoral {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.04);
+      }
+    }
+
+    .person-node.active-red svg {
+      fill: #e11d48;
+      filter: drop-shadow(0 2px 4px rgba(225, 29, 72, 0.35));
+    }
+
+    .person-node-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: var(--ink-soft);
+    }
+
+    .person-node.active-red .person-node-label {
+      color: #be123c;
+      font-weight: 800;
+    }
+
+    .ratio-badge-bubble {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: #be123c;
+      background: rgba(255, 241, 242, 0.95);
+      padding: 0.3rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(244, 63, 94, 0.35);
+    }
+
+    /* 2. KAD PENERANGAN T2DM */
+    .title-sec-h3 {
+      font-size: clamp(1.15rem, 4.2vw, 1.55rem);
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.25;
+      margin-bottom: 0.65rem;
+    }
+
+    .list-points-clean {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 0.85rem;
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    .list-points-clean li {
+      position: relative;
+      padding-left: 1.35rem;
+      font-size: 0.88rem;
+      line-height: 1.5;
+      color: #1e293b;
+    }
+
+    .list-points-clean li::before {
+      content: "•";
+      position: absolute;
+      left: 0.3rem;
+      top: 0;
+      color: #0891b2;
+      font-size: 1.3rem;
+      line-height: 1.2;
+    }
+
+    /* =========================================================
+       SEKSYEN SILUET TUBUH & HOTSPOT INTERAKTIF (LIQUID GLASS)
+       ========================================================= */
+    .body-interactive-stage {
+      position: relative;
+      width: 100%;
+      max-width: 320px;
+      margin: 1.1rem auto 0.4rem;
+      padding: 1.1rem 0.6rem 1.4rem;
+      border-radius: 22px;
+      background: radial-gradient(circle at 50% 25%, rgba(255, 255, 255, 0.85) 0%, rgba(240, 253, 250, 0.5) 60%, rgba(224, 242, 254, 0.35) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      backdrop-filter: blur(20px) saturate(180%);
+      box-shadow:
+        inset 0 1px 0 #fff,
+        inset 0 -1px 0 rgba(255, 255, 255, 0.3),
+        0 8px 24px -8px rgba(8, 145, 178, 0.12),
+        0 18px 40px -16px rgba(13, 43, 62, 0.08);
+      user-select: none;
+    }
+
+    .stage-instruction-pill {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      margin: 0 auto 0.85rem;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #0e7490;
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      border-radius: 999px;
+      box-shadow: 0 2px 8px rgba(8, 145, 178, 0.06);
+      width: fit-content;
+      text-align: center;
+    }
+
+    .silhouette-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 250px;
+      margin: 0 auto;
+      aspect-ratio: 280 / 480;
+    }
+
+    .silhouette-svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      filter: drop-shadow(0 6px 16px rgba(8, 145, 178, 0.1));
+    }
+
+    /* Hotspot Pin Element */
+    .body-pin {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      z-index: 20;
+    }
+
+    .pin-touch-btn {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.85);
+      border: 1.5px solid #fff;
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 12px rgba(8, 145, 178, 0.25), inset 0 1px 0 #fff;
+      cursor: pointer;
+      padding: 0;
+      color: inherit;
+      -webkit-tap-highlight-color: transparent;
+      transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+    }
+    .pin-touch-btn:hover, .pin-touch-btn:focus-visible {
+      transform: scale(1.15);
+      box-shadow: 0 6px 18px rgba(8, 145, 178, 0.35), inset 0 1px 0 #fff;
+    }
+
+    /* Gelombang Denyutan (Pulsing Ripple) */
+    .pin-pulse-wave {
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 2px solid #06b6d4;
+      animation: pinWave 2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+      pointer-events: none;
+    }
+    @keyframes pinWave {
+      0% { transform: scale(0.85); opacity: 0.9; }
+      100% { transform: scale(2.2); opacity: 0; }
+    }
+    .pin-glyph {
+      font-size: 0.92rem;
+      line-height: 1;
+      transform: translateY(-0.5px);
+    }
+
+    /* Khas: Pin Mulut / Gusi (UTAMA - DI-HIGHLIGHT MERAH/MERAH JAMBU DENGAN GLOW KETARA) */
+    .body-pin.pin-mulut-highlight {
+      z-index: 25;
+    }
+    .body-pin.pin-mulut-highlight .pin-touch-btn {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #fff1f2, #ffe4e6);
+      border: 2px solid #f43f5e;
+      box-shadow:
+        0 0 0 3px rgba(244, 63, 94, 0.2),
+        0 0 18px rgba(244, 63, 94, 0.55),
+        inset 0 1px 0 #fff;
+      animation: mouthBeat 1.8s ease-in-out infinite alternate;
+    }
+    @keyframes mouthBeat {
+      0%   { transform: scale(1); box-shadow: 0 0 0 3px rgba(244, 63, 94, 0.2), 0 0 12px rgba(244, 63, 94, 0.35); }
+      100% { transform: scale(1.1); box-shadow: 0 0 0 5px rgba(244, 63, 94, 0.35), 0 0 22px rgba(244, 63, 94, 0.65); }
+    }
+    .body-pin.pin-mulut-highlight .pin-pulse-wave {
+      border-color: #f43f5e;
+      animation-duration: 1.5s;
+    }
+
+    /* Kotak Bubble Terapung Liquid Glass */
+    .glass-bubble {
+      position: absolute;
+      width: max-content;
+      max-width: min(220px, 75vw);
+      padding: 0.6rem 0.8rem;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(255, 255, 255, 0.98);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      backdrop-filter: blur(16px) saturate(180%);
+      box-shadow:
+        0 10px 28px -4px rgba(13, 43, 62, 0.18),
+        0 4px 12px rgba(8, 145, 178, 0.12),
+        inset 0 1px 0 #fff;
+      z-index: 60;
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0.9) translateY(4px);
+      transition: opacity 0.22s var(--ease), transform 0.22s var(--ease), visibility 0.22s;
+      pointer-events: none;
+    }
+
+    /* Apabila Pin Aktif / Terbuka */
+    .body-pin.is-active {
+      z-index: 70;
+    }
+    .body-pin.is-active .pin-touch-btn {
+      transform: scale(1.15);
+      border-color: #0891b2;
+      box-shadow: 0 0 0 4px rgba(8, 145, 178, 0.3), 0 6px 18px rgba(8, 145, 178, 0.35);
+    }
+    .body-pin.pin-mulut-highlight.is-active .pin-touch-btn {
+      border-color: #be123c;
+      box-shadow: 0 0 0 4px rgba(244, 63, 94, 0.4), 0 8px 24px rgba(244, 63, 94, 0.6);
+    }
+    .body-pin.is-active .glass-bubble {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1) translateY(0);
+      pointer-events: auto;
+    }
+
+    /* Kedudukan Pintar Bubble */
+    .bubble-pos-bottom {
+      top: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%) scale(0.9);
+      transform-origin: top center;
+    }
+    .body-pin.is-active .bubble-pos-bottom {
+      transform: translateX(-50%) scale(1);
+    }
+
+    .bubble-pos-top {
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%) scale(0.9);
+      transform-origin: bottom center;
+    }
+    .body-pin.is-active .bubble-pos-top {
+      transform: translateX(-50%) scale(1);
+    }
+
+    .bubble-pos-left {
+      top: 50%;
+      right: calc(100% + 8px);
+      transform: translateY(-50%) scale(0.9);
+      transform-origin: center right;
+    }
+    .body-pin.is-active .bubble-pos-left {
+      transform: translateY(-50%) scale(1);
+    }
+
+    .bubble-pos-right {
+      top: 50%;
+      left: calc(100% + 8px);
+      transform: translateY(-50%) scale(0.9);
+      transform-origin: center left;
+    }
+    .body-pin.is-active .bubble-pos-right {
+      transform: translateY(-50%) scale(1);
+    }
+
+    /* Kandungan Bubble */
+    .bubble-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.2rem;
+    }
+    .bubble-title {
+      font-size: 0.74rem;
+      font-weight: 800;
+      color: #0e7490;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .bubble-close-btn {
+      display: grid;
+      place-items: center;
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      background: rgba(15, 23, 42, 0.07);
+      border: none;
+      font-size: 0.62rem;
+      font-weight: 800;
+      color: var(--ink-soft);
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.2s, color 0.2s;
+    }
+    .bubble-close-btn:hover {
+      background: rgba(244, 63, 94, 0.15);
+      color: #be123c;
+    }
+    .bubble-complication {
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+
+    /* Penyesuaian Khas Bubble Mulut (Utama) */
+    .body-pin.pin-mulut-highlight .glass-bubble {
+      background: linear-gradient(145deg, #ffffff 0%, #fff1f2 100%);
+      border: 1.5px solid #f43f5e;
+      box-shadow:
+        0 12px 32px -4px rgba(244, 63, 94, 0.3),
+        0 4px 14px rgba(244, 63, 94, 0.18),
+        inset 0 1px 0 #fff;
+    }
+    .body-pin.pin-mulut-highlight .bubble-title {
+      color: #be123c;
+    }
+    .badge-utama-pill {
+      display: inline-block;
+      font-size: 0.55rem;
+      font-weight: 800;
+      color: #fff;
+      background: #be123c;
+      padding: 0.08rem 0.38rem;
+      border-radius: 999px;
+      letter-spacing: 0.04em;
+    }
+    .body-pin.pin-mulut-highlight .bubble-complication {
+      color: #9f1239;
+    }
+
+    /* 3. KAD STATISTIK PENYAKIT GUSI BERKEMBAR */
+    .stats-pair-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+
+    @media (min-width: 600px) {
+      .stats-pair-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .stat-chip-card {
+      padding: 1.15rem 1rem;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .stat-chip-card.teal {
+      background: linear-gradient(145deg, rgba(240, 253, 250, 0.75), rgba(255, 255, 255, 0.55));
+      border-color: rgba(45, 212, 191, 0.4);
+    }
+
+    .stat-chip-card.rose {
+      background: linear-gradient(145deg, rgba(255, 241, 242, 0.75), rgba(255, 255, 255, 0.55));
+      border-color: rgba(251, 113, 133, 0.4);
+    }
+
+    .percent-number-lg {
+      font-size: 2.1rem;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+
+    .percent-number-lg.teal-text {
+      color: #0f766e;
+    }
+
+    .percent-number-lg.rose-text {
+      color: #be123c;
+    }
+
+    .stat-chip-text {
+      font-size: 0.88rem;
+      font-weight: 700;
+      line-height: 1.35;
+      color: var(--ink);
+    }
+
+    /* 4. APA ITU PENYAKIT GUSI & CARTA PROGRESI */
+    .compare-gums-split {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.65rem;
+      margin: 0.75rem 0 1rem;
+    }
+
+    @media (min-width: 600px) {
+      .compare-gums-split {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .gums-subcard {
+      padding: 0.9rem;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+    }
+
+    .gums-subcard.gingivitis {
+      border-left: 4px solid #f59e0b;
+    }
+
+    .gums-subcard.periodontitis {
+      border-left: 4px solid #be123c;
+    }
+
+    .gums-subcard h4 {
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 0.25rem;
+    }
+
+    .gums-subcard p {
+      font-size: 0.8rem;
+      color: #334155;
+      line-height: 1.45;
+    }
+
+    /* Senarai 5 Peringkat Ringkas */
+    .stages-numbered-list {
+      display: grid;
+      gap: 0.4rem;
+      margin: 0.75rem 0;
+    }
+
+    .stage-item-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.55rem 0.8rem;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .stage-badge-dot {
+      width: 1.45rem;
+      height: 1.45rem;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 0.7rem;
+      font-weight: 800;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, #cffafe, #a5f3fc);
+      color: #0e7490;
+      border: 1px solid #fff;
+    }
+
+    .stage-item-pill:last-child .stage-badge-dot {
+      background: linear-gradient(135deg, #ffe4e6, #fecdd3);
+      color: #be123c;
+    }
+
+    /* Perbandingan Klinikal Sebenar: Gusi Sihat vs Penyakit Gusi */
+    .clinical-labels-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+      font-size: 0.74rem;
+      font-weight: 800;
+      padding: 0 0.25rem;
+    }
+
+    .label-healthy {
+      color: #059669;
+    }
+
+    .label-disease {
+      color: #be123c;
+    }
+
+    /* Butang Navigasi */
+    .nav-actions-bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      margin-top: 0.85rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid rgba(8, 145, 178, 0.15);
+    }
+
+    @media (min-width: 600px) {
+      .nav-actions-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
+    .btn-next-step {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      min-height: 2.8rem;
+      padding: 0.55rem 1.4rem;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+      box-shadow: 0 6px 18px -4px rgba(8, 145, 178, 0.45);
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .btn-next-step:hover,
+    .btn-next-step:active {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px -6px rgba(8, 145, 178, 0.6);
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
+
+      *,
+      *::before,
+      *::after {
         animation-duration: 0.001ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.001ms !important;
@@ -596,24 +1761,64 @@
 </head>
 
 <body>
-  <div class="ambient" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span><span class="b4"></span><span class="b5"></span></div>
+  <div class="ambient" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span><span
+      class="b4"></span><span class="b5"></span></div>
 
   <!-- Gradien SVG global (sentiasa dipaparkan supaya ikon di semua halaman kekal berwarna) -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <defs>
-      <linearGradient id="g-tooth" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e2e8f0"/></linearGradient>
-      <linearGradient id="g-rose" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fda4af"/><stop offset="1" stop-color="#e11d48"/></linearGradient>
-      <linearGradient id="g-gum-soft" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fecdd3"/><stop offset="1" stop-color="#fb7185"/></linearGradient>
-      <linearGradient id="g-blood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fb7185"/><stop offset="1" stop-color="#be123c"/></linearGradient>
-      <linearGradient id="g-cyan" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#67e8f9"/><stop offset="1" stop-color="#0891b2"/></linearGradient>
-      <linearGradient id="g-coral" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fdba74"/><stop offset="1" stop-color="#f43f5e"/></linearGradient>
-      <linearGradient id="g-violet" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ddd6fe"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient>
-      <linearGradient id="g-lime" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d9f99d"/><stop offset="1" stop-color="#65a30d"/></linearGradient>
-      <linearGradient id="g-amber" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fde68a"/><stop offset="1" stop-color="#f59e0b"/></linearGradient>
-      <linearGradient id="g-book" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#86efac"/><stop offset="1" stop-color="#16a34a"/></linearGradient>
-      <linearGradient id="g-steel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f1f5f9"/><stop offset="1" stop-color="#64748b"/></linearGradient>
-      <linearGradient id="g-shield" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d1fae5"/><stop offset="1" stop-color="#5eead4"/></linearGradient>
-      <linearGradient id="g-mint" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6ee7b7"/><stop offset="1" stop-color="#059669"/></linearGradient>
+      <linearGradient id="g-tooth" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#ffffff" />
+        <stop offset="1" stop-color="#e2e8f0" />
+      </linearGradient>
+      <linearGradient id="g-rose" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#fda4af" />
+        <stop offset="1" stop-color="#e11d48" />
+      </linearGradient>
+      <linearGradient id="g-gum-soft" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#fecdd3" />
+        <stop offset="1" stop-color="#fb7185" />
+      </linearGradient>
+      <linearGradient id="g-blood" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#fb7185" />
+        <stop offset="1" stop-color="#be123c" />
+      </linearGradient>
+      <linearGradient id="g-cyan" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#67e8f9" />
+        <stop offset="1" stop-color="#0891b2" />
+      </linearGradient>
+      <linearGradient id="g-coral" x1="1" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#fdba74" />
+        <stop offset="1" stop-color="#f43f5e" />
+      </linearGradient>
+      <linearGradient id="g-violet" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#ddd6fe" />
+        <stop offset="1" stop-color="#8b5cf6" />
+      </linearGradient>
+      <linearGradient id="g-lime" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#d9f99d" />
+        <stop offset="1" stop-color="#65a30d" />
+      </linearGradient>
+      <linearGradient id="g-amber" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#fde68a" />
+        <stop offset="1" stop-color="#f59e0b" />
+      </linearGradient>
+      <linearGradient id="g-book" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#86efac" />
+        <stop offset="1" stop-color="#16a34a" />
+      </linearGradient>
+      <linearGradient id="g-steel" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#f1f5f9" />
+        <stop offset="1" stop-color="#64748b" />
+      </linearGradient>
+      <linearGradient id="g-shield" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#d1fae5" />
+        <stop offset="1" stop-color="#5eead4" />
+      </linearGradient>
+      <linearGradient id="g-mint" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#6ee7b7" />
+        <stop offset="1" stop-color="#059669" />
+      </linearGradient>
     </defs>
   </svg>
 
@@ -622,24 +1827,23 @@
     <!-- =====================================================
          PAPARAN UTAMA (HOME VIEW)
          ===================================================== -->
-    <section class="view" id="view-utama" data-title="PerioDiabetes — Kenali Hubungan Diabetes dan Penyakit Gusi" aria-labelledby="h-utama">
+    <section class="view" id="view-utama" data-title="PerioDiabetes — Kenali Hubungan Diabetes dan Penyakit Gusi"
+      aria-labelledby="h-utama">
 
       <header class="glass hero">
         <div class="hero-text">
           <span class="eyebrow">Portal Kesedaran Kesihatan Awam</span>
           <h1 class="brand-title" id="h-utama">PerioDiabetes</h1>
-          <p class="slogan">Kenali Hubungan <strong>Diabetes</strong> dan <strong>Penyakit Gusi</strong>, Lindungi Kesihatan Anda</p>
+          <p class="slogan">Kenali Hubungan <strong>Diabetes</strong> dan <strong>Penyakit Gusi</strong>, Lindungi
+            Kesihatan Anda</p>
         </div>
 
         <!-- Foto klinikal sebenar: Perbandingan Gusi Sihat vs Penyakit Gusi -->
         <figure class="hero-figure">
           <div class="clinical-card">
-            <img
-              src="healthy-vs-gum-disease.jpg"
+            <img src="healthy-vs-gum-disease.jpg"
               alt="Perbandingan klinikal sebenar: Gusi Sihat (Healthy Gums) vs Penyakit Gusi (Gum Disease)"
-              class="clinical-img"
-              loading="eager"
-            />
+              class="clinical-img" loading="eager" />
           </div>
         </figure>
       </header>
@@ -653,24 +1857,31 @@
             <span class="topic-num" aria-hidden="true">01</span>
             <span class="icon-orb" aria-hidden="true">
               <svg class="ic" viewBox="0 0 64 64">
-                <path d="M20 13C20 7 26 5 32 8C38 5 44 7 44 13C44 21 42 27 41 35L40 46H24L23 35C22 27 20 21 20 13Z" fill="url(#g-tooth)" stroke="#94a3b8" stroke-width="1.5" stroke-linejoin="round"/>
-                <path d="M25 13C25 11 27 10 29 11" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"/>
-                <path d="M5 44C9 39 14 43 18 40C21 38 24 39 26 42C29 45 35 45 38 42C40 39 44 37 47 40C51 43 55 39 59 44V54A6 6 0 0 1 53 60H11A6 6 0 0 1 5 54Z" fill="url(#g-rose)"/>
-                <ellipse cx="22" cy="43.5" rx="3" ry="1.3" fill="#fff" opacity=".6"/>
-                <ellipse cx="43" cy="43.5" rx="3" ry="1.3" fill="#fff" opacity=".6"/>
-                <path d="M9 36L7 33M13.5 34.5L13 31M55 36L57 33M50.5 34.5L51 31" stroke="#f43f5e" stroke-width="1.6" stroke-linecap="round"/>
+                <path d="M20 13C20 7 26 5 32 8C38 5 44 7 44 13C44 21 42 27 41 35L40 46H24L23 35C22 27 20 21 20 13Z"
+                  fill="url(#g-tooth)" stroke="#94a3b8" stroke-width="1.5" stroke-linejoin="round" />
+                <path d="M25 13C25 11 27 10 29 11" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none" />
+                <path
+                  d="M5 44C9 39 14 43 18 40C21 38 24 39 26 42C29 45 35 45 38 42C40 39 44 37 47 40C51 43 55 39 59 44V54A6 6 0 0 1 53 60H11A6 6 0 0 1 5 54Z"
+                  fill="url(#g-rose)" />
+                <ellipse cx="22" cy="43.5" rx="3" ry="1.3" fill="#fff" opacity=".6" />
+                <ellipse cx="43" cy="43.5" rx="3" ry="1.3" fill="#fff" opacity=".6" />
+                <path d="M9 36L7 33M13.5 34.5L13 31M55 36L57 33M50.5 34.5L51 31" stroke="#f43f5e" stroke-width="1.6"
+                  stroke-linecap="round" />
                 <g class="ic-bug">
-                  <path d="M12 18.5V16.5M16.6 21.2L18 20M7.4 21.2L6 20M17.3 25.5H19.3M4.7 25.5H6.7M15.5 29.5L17 31M8.5 29.5L7 31" stroke="#8b5cf6" stroke-width="1.3" stroke-linecap="round"/>
-                  <circle cx="12" cy="25" r="4.6" fill="url(#g-violet)"/>
-                  <circle cx="10.4" cy="23.4" r="1.2" fill="#fff" opacity=".75"/>
+                  <path
+                    d="M12 18.5V16.5M16.6 21.2L18 20M7.4 21.2L6 20M17.3 25.5H19.3M4.7 25.5H6.7M15.5 29.5L17 31M8.5 29.5L7 31"
+                    stroke="#8b5cf6" stroke-width="1.3" stroke-linecap="round" />
+                  <circle cx="12" cy="25" r="4.6" fill="url(#g-violet)" />
+                  <circle cx="10.4" cy="23.4" r="1.2" fill="#fff" opacity=".75" />
                 </g>
                 <g class="ic-bug b2">
-                  <rect x="46" y="17" width="12" height="5.6" rx="2.8" transform="rotate(-28 52 19.8)" fill="url(#g-lime)"/>
-                  <circle cx="49.5" cy="20.5" r=".9" fill="#fff" opacity=".8"/>
+                  <rect x="46" y="17" width="12" height="5.6" rx="2.8" transform="rotate(-28 52 19.8)"
+                    fill="url(#g-lime)" />
+                  <circle cx="49.5" cy="20.5" r=".9" fill="#fff" opacity=".8" />
                 </g>
                 <g class="ic-bug b3">
-                  <circle cx="49" cy="31" r="2.6" fill="url(#g-violet)"/>
-                  <circle cx="54.5" cy="29.5" r="2" fill="url(#g-violet)"/>
+                  <circle cx="49" cy="31" r="2.6" fill="url(#g-violet)" />
+                  <circle cx="54.5" cy="29.5" r="2" fill="url(#g-violet)" />
                 </g>
               </svg>
             </span>
@@ -685,18 +1896,27 @@
             <span class="topic-num" aria-hidden="true">02</span>
             <span class="icon-orb" aria-hidden="true">
               <svg class="ic" viewBox="0 0 64 64">
-                <path class="ic-flow" d="M19 15C27 7 37 7 45 15" fill="none" stroke="url(#g-cyan)" stroke-width="3" stroke-linecap="round"/>
-                <path d="M46.5 9.5V16.5H39.5" fill="none" stroke="#0891b2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                <path class="ic-flow" d="M45 52C37 60 27 60 19 52" fill="none" stroke="url(#g-coral)" stroke-width="3" stroke-linecap="round"/>
-                <path d="M17.5 57.5V50.5H24.5" fill="none" stroke="#f43f5e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <path class="ic-flow" d="M19 15C27 7 37 7 45 15" fill="none" stroke="url(#g-cyan)" stroke-width="3"
+                  stroke-linecap="round" />
+                <path d="M46.5 9.5V16.5H39.5" fill="none" stroke="#0891b2" stroke-width="3" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path class="ic-flow" d="M45 52C37 60 27 60 19 52" fill="none" stroke="url(#g-coral)" stroke-width="3"
+                  stroke-linecap="round" />
+                <path d="M17.5 57.5V50.5H24.5" fill="none" stroke="#f43f5e" stroke-width="3" stroke-linecap="round"
+                  stroke-linejoin="round" />
                 <g class="ic-pulse">
-                  <path d="M15 21C15 21 6 32 6 38A9 9 0 0 0 24 38C24 32 15 21 15 21Z" fill="url(#g-blood)"/>
-                  <path d="M10 36Q10 31.5 13 28" stroke="#fff" stroke-width="1.6" stroke-linecap="round" fill="none" opacity=".65"/>
-                  <polygon points="15,34 18.6,36 18.6,40 15,42 11.4,40 11.4,36" fill="none" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/>
+                  <path d="M15 21C15 21 6 32 6 38A9 9 0 0 0 24 38C24 32 15 21 15 21Z" fill="url(#g-blood)" />
+                  <path d="M10 36Q10 31.5 13 28" stroke="#fff" stroke-width="1.6" stroke-linecap="round" fill="none"
+                    opacity=".65" />
+                  <polygon points="15,34 18.6,36 18.6,40 15,42 11.4,40 11.4,36" fill="none" stroke="#fff"
+                    stroke-width="1.5" stroke-linejoin="round" />
                 </g>
-                <path d="M41 26C41 21 45 20 48 22C51 20 55 21 55 26C55 31 53.5 35 53 40L52 44H44L43 40C42.5 35 41 31 41 26Z" fill="url(#g-tooth)" stroke="#94a3b8" stroke-width="1.4" stroke-linejoin="round"/>
-                <path d="M38 40C41 37 44 41 48 38C52 41 55 37 58 40V44A4 4 0 0 1 54 48H42A4 4 0 0 1 38 44Z" fill="url(#g-rose)"/>
-                <ellipse cx="44" cy="40.5" rx="1.8" ry=".9" fill="#fff" opacity=".6"/>
+                <path
+                  d="M41 26C41 21 45 20 48 22C51 20 55 21 55 26C55 31 53.5 35 53 40L52 44H44L43 40C42.5 35 41 31 41 26Z"
+                  fill="url(#g-tooth)" stroke="#94a3b8" stroke-width="1.4" stroke-linejoin="round" />
+                <path d="M38 40C41 37 44 41 48 38C52 41 55 37 58 40V44A4 4 0 0 1 54 48H42A4 4 0 0 1 38 44Z"
+                  fill="url(#g-rose)" />
+                <ellipse cx="44" cy="40.5" rx="1.8" ry=".9" fill="#fff" opacity=".6" />
               </svg>
             </span>
             <span class="topic-kicker">Hubungan Dua Hala</span>
@@ -710,20 +1930,29 @@
             <span class="topic-num" aria-hidden="true">03</span>
             <span class="icon-orb" aria-hidden="true">
               <svg class="ic" viewBox="0 0 64 64">
-                <path d="M14 18C12 22 12 26 14 30M10 20C8.6 23 8.6 26 10 29M50 18C52 22 52 26 50 30M54 20C55.4 23 55.4 26 54 29" stroke="#94a3b8" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+                <path
+                  d="M14 18C12 22 12 26 14 30M10 20C8.6 23 8.6 26 10 29M50 18C52 22 52 26 50 30M54 20C55.4 23 55.4 26 54 29"
+                  stroke="#94a3b8" stroke-width="1.6" stroke-linecap="round" fill="none" />
                 <g transform="rotate(-6 32 44)">
                   <g class="ic-wobble">
-                    <path d="M22 15C22 9 27 7 32 10C37 7 42 9 42 15C42 23 40 29 39 36L38 46H26L25 36C24 29 22 23 22 15Z" fill="url(#g-tooth)" stroke="#94a3b8" stroke-width="1.5" stroke-linejoin="round"/>
-                    <path d="M27 15C27 13 29 12 31 13" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"/>
+                    <path d="M22 15C22 9 27 7 32 10C37 7 42 9 42 15C42 23 40 29 39 36L38 46H26L25 36C24 29 22 23 22 15Z"
+                      fill="url(#g-tooth)" stroke="#94a3b8" stroke-width="1.5" stroke-linejoin="round" />
+                    <path d="M27 15C27 13 29 12 31 13" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                      fill="none" />
                   </g>
                 </g>
-                <path d="M5 44C9 39 14 43 18 40C21 38 24 39 26 42C29 45 35 45 38 42C40 39 44 37 47 40C51 43 55 39 59 44V54A6 6 0 0 1 53 60H11A6 6 0 0 1 5 54Z" fill="url(#g-gum-soft)"/>
-                <path d="M5 44C9 39 14 43 18 40C21 38 24 39 26 42C29 45 35 45 38 42C40 39 44 37 47 40C51 43 55 39 59 44" stroke="#e11d48" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-                <path d="M19 42C19 42 16 46 16 48A3 3 0 0 0 22 48C22 46 19 42 19 42Z" fill="url(#g-blood)"/>
-                <path class="ic-drip" d="M44 41C44 41 41.5 44.5 41.5 46A2.5 2.5 0 0 0 46.5 46C46.5 44.5 44 41 44 41Z" fill="#be123c"/>
-                <path class="ic-pulse" d="M54 2.5L61.5 15.5H46.5Z" fill="url(#g-amber)" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/>
-                <path d="M54 7V11" stroke="#78350f" stroke-width="1.8" stroke-linecap="round"/>
-                <circle cx="54" cy="13.2" r="1" fill="#78350f"/>
+                <path
+                  d="M5 44C9 39 14 43 18 40C21 38 24 39 26 42C29 45 35 45 38 42C40 39 44 37 47 40C51 43 55 39 59 44V54A6 6 0 0 1 53 60H11A6 6 0 0 1 5 54Z"
+                  fill="url(#g-gum-soft)" />
+                <path d="M5 44C9 39 14 43 18 40C21 38 24 39 26 42C29 45 35 45 38 42C40 39 44 37 47 40C51 43 55 39 59 44"
+                  stroke="#e11d48" stroke-width="1.8" fill="none" stroke-linecap="round" />
+                <path d="M19 42C19 42 16 46 16 48A3 3 0 0 0 22 48C22 46 19 42 19 42Z" fill="url(#g-blood)" />
+                <path class="ic-drip" d="M44 41C44 41 41.5 44.5 41.5 46A2.5 2.5 0 0 0 46.5 46C46.5 44.5 44 41 44 41Z"
+                  fill="#be123c" />
+                <path class="ic-pulse" d="M54 2.5L61.5 15.5H46.5Z" fill="url(#g-amber)" stroke="#fff" stroke-width="1.4"
+                  stroke-linejoin="round" />
+                <path d="M54 7V11" stroke="#78350f" stroke-width="1.8" stroke-linecap="round" />
+                <circle cx="54" cy="13.2" r="1" fill="#78350f" />
               </svg>
             </span>
             <span class="topic-kicker">Tanda Amaran</span>
@@ -737,19 +1966,26 @@
             <span class="topic-num" aria-hidden="true">04</span>
             <span class="icon-orb" aria-hidden="true">
               <svg class="ic" viewBox="0 0 64 64">
-                <path d="M11 15C11 9 16 7 21 10C26 7 31 9 31 15C31 23 29 29 28 36L27 46H15L14 36C13 29 11 23 11 15Z" fill="url(#g-tooth)" stroke="#94a3b8" stroke-width="1.5" stroke-linejoin="round"/>
-                <path d="M16 15C16 13 18 12 20 13" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"/>
-                <path d="M3 42C7 39 11 43 15 40.5C18 39 20 41 21 42C23 43.5 26 43 28 41C31 38.5 35 41 39 41C43 41 45 43 45 46V52A4 4 0 0 1 41 56H7A4 4 0 0 1 3 52Z" fill="url(#g-gum-soft)"/>
-                <path d="M29.5 41.5V47" stroke="#be123c" stroke-width="1.4" stroke-linecap="round" opacity=".6"/>
+                <path d="M11 15C11 9 16 7 21 10C26 7 31 9 31 15C31 23 29 29 28 36L27 46H15L14 36C13 29 11 23 11 15Z"
+                  fill="url(#g-tooth)" stroke="#94a3b8" stroke-width="1.5" stroke-linejoin="round" />
+                <path d="M16 15C16 13 18 12 20 13" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none" />
+                <path
+                  d="M3 42C7 39 11 43 15 40.5C18 39 20 41 21 42C23 43.5 26 43 28 41C31 38.5 35 41 39 41C43 41 45 43 45 46V52A4 4 0 0 1 41 56H7A4 4 0 0 1 3 52Z"
+                  fill="url(#g-gum-soft)" />
+                <path d="M29.5 41.5V47" stroke="#be123c" stroke-width="1.4" stroke-linecap="round" opacity=".6" />
                 <g class="ic-probe">
-                  <line x1="58" y1="5" x2="44.5" y2="21.5" stroke="url(#g-steel)" stroke-width="5.5" stroke-linecap="round"/>
-                  <path d="M54 8.5L56 10.5M51.5 11.5L53.5 13.5M49 14.5L51 16.5" stroke="#475569" stroke-width="1" stroke-linecap="round"/>
-                  <path d="M44.5 21.5L37 30Q34 33.5 34 37.5V44" stroke="#475569" stroke-width="2" stroke-linecap="round" fill="none"/>
-                  <path d="M34 38V41.5" stroke="#0f172a" stroke-width="2.8"/>
-                  <circle cx="34" cy="45" r="1.7" fill="#334155"/>
+                  <line x1="58" y1="5" x2="44.5" y2="21.5" stroke="url(#g-steel)" stroke-width="5.5"
+                    stroke-linecap="round" />
+                  <path d="M54 8.5L56 10.5M51.5 11.5L53.5 13.5M49 14.5L51 16.5" stroke="#475569" stroke-width="1"
+                    stroke-linecap="round" />
+                  <path d="M44.5 21.5L37 30Q34 33.5 34 37.5V44" stroke="#475569" stroke-width="2" stroke-linecap="round"
+                    fill="none" />
+                  <path d="M34 38V41.5" stroke="#0f172a" stroke-width="2.8" />
+                  <circle cx="34" cy="45" r="1.7" fill="#334155" />
                 </g>
-                <circle class="ic-pulse" cx="54" cy="50" r="7.5" fill="url(#g-mint)" stroke="#fff" stroke-width="1.5"/>
-                <path d="M50.6 50.2L53 52.6L57.4 47.8" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <circle class="ic-pulse" cx="54" cy="50" r="7.5" fill="url(#g-mint)" stroke="#fff" stroke-width="1.5" />
+                <path d="M50.6 50.2L53 52.6L57.4 47.8" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" fill="none" />
               </svg>
             </span>
             <span class="topic-kicker">Saringan Klinikal</span>
@@ -763,28 +1999,35 @@
             <span class="topic-num" aria-hidden="true">05</span>
             <span class="icon-orb" aria-hidden="true">
               <svg class="ic" viewBox="0 0 64 64">
-                <path class="ic-flow" d="M13 19C21 9 43 9 51 19" fill="none" stroke="url(#g-cyan)" stroke-width="2.6" stroke-linecap="round"/>
-                <path d="M51.5 13.5V19.5H45.5" fill="none" stroke="#0891b2" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path class="ic-flow" d="M13 19C21 9 43 9 51 19" fill="none" stroke="url(#g-cyan)" stroke-width="2.6"
+                  stroke-linecap="round" />
+                <path d="M51.5 13.5V19.5H45.5" fill="none" stroke="#0891b2" stroke-width="2.6" stroke-linecap="round"
+                  stroke-linejoin="round" />
                 <!-- Klinik Kesihatan -->
-                <path d="M2.5 30L12.5 22L22.5 30Z" fill="url(#g-cyan)"/>
-                <rect x="4.5" y="29" width="16" height="23" rx="1.5" fill="#fff" stroke="#67e8f9" stroke-width="1.4"/>
-                <path d="M12.5 33V40.5M8.75 36.75H16.25" stroke="#0891b2" stroke-width="2.6" stroke-linecap="round"/>
-                <rect x="10" y="45" width="5" height="7" rx="1" fill="#a5f3fc"/>
+                <path d="M2.5 30L12.5 22L22.5 30Z" fill="url(#g-cyan)" />
+                <rect x="4.5" y="29" width="16" height="23" rx="1.5" fill="#fff" stroke="#67e8f9" stroke-width="1.4" />
+                <path d="M12.5 33V40.5M8.75 36.75H16.25" stroke="#0891b2" stroke-width="2.6" stroke-linecap="round" />
+                <rect x="10" y="45" width="5" height="7" rx="1" fill="#a5f3fc" />
                 <!-- Klinik Pergigian -->
-                <path d="M41.5 30L51.5 22L61.5 30Z" fill="url(#g-rose)"/>
-                <rect x="43.5" y="29" width="16" height="23" rx="1.5" fill="#fff" stroke="#fda4af" stroke-width="1.4"/>
-                <path d="M48 34C48 32 49.5 31.5 51.5 32.5C53.5 31.5 55 32 55 34C55 36.5 54.3 38 54 40.5C53.8 42 53 42.5 52.5 42L51.5 39L50.5 42C50 42.5 49.2 42 49 40.5C48.7 38 48 36.5 48 34Z" fill="#fb7185"/>
-                <rect x="49" y="45" width="5" height="7" rx="1" fill="#fecdd3"/>
+                <path d="M41.5 30L51.5 22L61.5 30Z" fill="url(#g-rose)" />
+                <rect x="43.5" y="29" width="16" height="23" rx="1.5" fill="#fff" stroke="#fda4af" stroke-width="1.4" />
+                <path
+                  d="M48 34C48 32 49.5 31.5 51.5 32.5C53.5 31.5 55 32 55 34C55 36.5 54.3 38 54 40.5C53.8 42 53 42.5 52.5 42L51.5 39L50.5 42C50 42.5 49.2 42 49 40.5C48.7 38 48 36.5 48 34Z"
+                  fill="#fb7185" />
+                <rect x="49" y="45" width="5" height="7" rx="1" fill="#fecdd3" />
                 <!-- Buku Hijau NCD -->
                 <g class="ic-book">
-                  <rect x="24" y="30" width="16" height="21" rx="2" fill="url(#g-book)" stroke="#fff" stroke-width="1.2"/>
-                  <path d="M27.5 30.6V50.4" stroke="#15803d" stroke-width="1.6"/>
-                  <rect x="29.5" y="34.5" width="8" height="5" rx="1" fill="#fff" opacity=".92"/>
-                  <path d="M30 43H37M30 46H35" stroke="#dcfce7" stroke-width="1.3" stroke-linecap="round"/>
+                  <rect x="24" y="30" width="16" height="21" rx="2" fill="url(#g-book)" stroke="#fff"
+                    stroke-width="1.2" />
+                  <path d="M27.5 30.6V50.4" stroke="#15803d" stroke-width="1.6" />
+                  <rect x="29.5" y="34.5" width="8" height="5" rx="1" fill="#fff" opacity=".92" />
+                  <path d="M30 43H37M30 46H35" stroke="#dcfce7" stroke-width="1.3" stroke-linecap="round" />
                 </g>
-                <path d="M2 53.5H62" stroke="#cbd5e1" stroke-width="1.4" stroke-linecap="round"/>
-                <path class="ic-flow" d="M46 59H19" stroke="#fb7185" stroke-width="2" stroke-linecap="round" stroke-dasharray="3 3"/>
-                <path d="M22 56L18.5 59L22 62" stroke="#fb7185" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M2 53.5H62" stroke="#cbd5e1" stroke-width="1.4" stroke-linecap="round" />
+                <path class="ic-flow" d="M46 59H19" stroke="#fb7185" stroke-width="2" stroke-linecap="round"
+                  stroke-dasharray="3 3" />
+                <path d="M22 56L18.5 59L22 62" stroke="#fb7185" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" fill="none" />
               </svg>
             </span>
             <span class="topic-kicker">Proses Rujukan</span>
@@ -799,18 +2042,24 @@
             <span class="icon-orb" aria-hidden="true">
               <svg class="ic" viewBox="0 0 64 64">
                 <g class="ic-pulse">
-                  <path d="M32 4L53 11.5V29C53 44 44 54.5 32 60C20 54.5 11 44 11 29V11.5Z" fill="url(#g-shield)" stroke="#fff" stroke-width="2" stroke-linejoin="round"/>
-                  <path d="M16 14.5L32 8.8V24C26 24 20.5 26 16 30Z" fill="#fff" opacity=".4"/>
+                  <path d="M32 4L53 11.5V29C53 44 44 54.5 32 60C20 54.5 11 44 11 29V11.5Z" fill="url(#g-shield)"
+                    stroke="#fff" stroke-width="2" stroke-linejoin="round" />
+                  <path d="M16 14.5L32 8.8V24C26 24 20.5 26 16 30Z" fill="#fff" opacity=".4" />
                 </g>
                 <g transform="rotate(-35 32 32)">
-                  <rect x="13" y="31" width="25" height="4.6" rx="2.3" fill="url(#g-cyan)"/>
-                  <rect x="37" y="29.4" width="12.5" height="7.8" rx="2.6" fill="#fff" stroke="#0891b2" stroke-width="1.2"/>
-                  <path d="M39.6 29V24.4M42.2 29V23.8M44.8 29V23.8M47.4 29V24.4" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"/>
+                  <rect x="13" y="31" width="25" height="4.6" rx="2.3" fill="url(#g-cyan)" />
+                  <rect x="37" y="29.4" width="12.5" height="7.8" rx="2.6" fill="#fff" stroke="#0891b2"
+                    stroke-width="1.2" />
+                  <path d="M39.6 29V24.4M42.2 29V23.8M44.8 29V23.8M47.4 29V24.4" stroke="#38bdf8" stroke-width="2"
+                    stroke-linecap="round" />
                 </g>
-                <path d="M17 47C22 42 26 51 31.5 46S41 41 47 46" stroke="#fb7185" stroke-width="2" stroke-linecap="round" fill="none"/>
-                <path class="ic-spark" d="M55 3L56 7L60 8L56 9L55 13L54 9L50 8L54 7Z" fill="#fbbf24"/>
-                <path class="ic-spark s2" d="M8 46L8.8 48.2L11 49L8.8 49.8L8 52L7.2 49.8L5 49L7.2 48.2Z" fill="#f472b6"/>
-                <path class="ic-spark s3" d="M58 40.5L58.7 42.3L60.5 43L58.7 43.7L58 45.5L57.3 43.7L55.5 43L57.3 42.3Z" fill="#22d3ee"/>
+                <path d="M17 47C22 42 26 51 31.5 46S41 41 47 46" stroke="#fb7185" stroke-width="2"
+                  stroke-linecap="round" fill="none" />
+                <path class="ic-spark" d="M55 3L56 7L60 8L56 9L55 13L54 9L50 8L54 7Z" fill="#fbbf24" />
+                <path class="ic-spark s2" d="M8 46L8.8 48.2L11 49L8.8 49.8L8 52L7.2 49.8L5 49L7.2 48.2Z"
+                  fill="#f472b6" />
+                <path class="ic-spark s3" d="M58 40.5L58.7 42.3L60.5 43L58.7 43.7L58 45.5L57.3 43.7L55.5 43L57.3 42.3Z"
+                  fill="#22d3ee" />
               </svg>
             </span>
             <span class="topic-kicker">Gaya Hidup Sihat</span>
@@ -819,7 +2068,8 @@
         </li>
       </ul>
 
-      <footer class="site-foot">© <span id="year">2026</span> PerioDiabetes · Maklumat untuk pendidikan kesihatan awam</footer>
+      <footer class="site-foot">© <span id="year">2026</span> PerioDiabetes · Maklumat untuk pendidikan kesihatan awam
+      </footer>
     </section>
 
     <!-- =====================================================
@@ -830,26 +2080,312 @@
          ===================================================== -->
 
     <!-- 1. PENGENALAN -->
-    <section class="view t1" id="view-pengenalan" data-topic="pengenalan" data-title="Pengenalan — PerioDiabetes" aria-labelledby="h-pengenalan" hidden>
+    <section class="view t1" id="view-pengenalan" data-topic="pengenalan"
+      data-title="Topik 1: Pengenalan — PerioDiabetes" aria-labelledby="h-pengenalan" hidden>
       <a class="glass back-btn" href="#/"><span class="arrow" aria-hidden="true">←</span>Kembali ke Menu Utama</a>
       <header class="glass page-head">
         <span class="icon-orb is-live" aria-hidden="true"></span>
         <span class="topic-kicker">Topik 01 · Pengenalan</span>
         <h2 id="h-pengenalan" tabindex="-1">Kenali Diabetes &amp; Penyakit Gusi</h2>
       </header>
-      <article class="glass content-card">
-        <!-- ▼ MASUKKAN KANDUNGAN TOPIK 1 DI SINI ▼ -->
-        <div class="placeholder">
-          <span class="dot" aria-hidden="true">✎</span>
-          <p>Kandungan sedang dikemas kini...</p>
-          <div class="skeleton" aria-hidden="true"><i></i><i></i><i></i></div>
+
+      <div class="t1-container">
+
+        <!-- 1. STATISTIK DIABETES (GRAFIK RINGKAS & CATCHY) -->
+        <div class="card-glass-sleek tahukah-anda-banner">
+          <h3 class="tahukah-title">TAHUKAH ANDA?</h3>
+          <p class="tahukah-text">
+            <strong>1 daripada 6 orang dewasa</strong> di Malaysia menghidap <strong>Diabetes Jenis 2</strong>
+          </p>
+
+          <!-- Grafik Ringkas: 6 Ikon Orang Dengan 1 Orang Berwarna Merah Menyerlah -->
+          <div class="ratio-people-strip" id="t1-people-strip" role="group"
+            aria-label="Nisbah 1 daripada 6 orang dewasa menghidap Diabetes Jenis 2">
+            <div class="person-node" title="Individu 1: Bebas Diabetes">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+              </svg>
+              <span class="person-node-label">1</span>
+            </div>
+            <div class="person-node" title="Individu 2: Bebas Diabetes">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+              </svg>
+              <span class="person-node-label">2</span>
+            </div>
+            <div class="person-node" title="Individu 3: Bebas Diabetes">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+              </svg>
+              <span class="person-node-label">3</span>
+            </div>
+            <div class="person-node" title="Individu 4: Bebas Diabetes">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+              </svg>
+              <span class="person-node-label">4</span>
+            </div>
+            <div class="person-node" title="Individu 5: Bebas Diabetes">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+              </svg>
+              <span class="person-node-label">5</span>
+            </div>
+            <div class="person-node active-red" title="Individu 6: Menghidap Diabetes (15.6%)">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+              </svg>
+              <span class="person-node-label">Diabetes</span>
+            </div>
+          </div>
+
+          <div class="ratio-badge-bubble">15.6% Populasi Dewasa Menghidap Diabetes</div>
         </div>
-        <!-- ▲ TAMAT KANDUNGAN TOPIK 1 ▲ -->
-      </article>
+
+        <!-- 2. APA ITU DIABETES JENIS 2 (T2DM)? -->
+        <article class="card-glass-sleek">
+          <h3 class="title-sec-h3">Apa Itu Diabetes Jenis 2 (T2DM)?</h3>
+          <ul class="list-points-clean">
+            <li>Penyakit kronik yang menyebabkan paras gula dalam darah meningkat apabila badan tidak dapat menggunakan
+              insulin dengan berkesan atau tidak menghasilkan insulin yang mencukupi.</li>
+            <li>Jika tidak dikawal, diabetes boleh menjejaskan mata, buah pinggang, jantung dan kesihatan mulut.</li>
+          </ul>
+
+          <!-- Peta Minda Siluet Tubuh Manusia Interaktif (Gaya Liquid Glass) -->
+          <div class="body-interactive-stage" id="body-stage">
+            <div class="stage-instruction-pill">
+              <span aria-hidden="true">👆</span> Sentuh titik organ untuk melihat komplikasi
+            </div>
+
+            <div class="silhouette-wrapper">
+              <!-- Vektor Siluet Tubuh Manusia Minimalis -->
+              <svg viewBox="0 0 280 480" fill="none" xmlns="http://www.w3.org/2000/svg" class="silhouette-svg" aria-hidden="true">
+                <defs>
+                  <linearGradient id="bodyGrad" x1="140" y1="10" x2="140" y2="470" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#bae6fd" stop-opacity="0.8"/>
+                    <stop offset="35%" stop-color="#cffafe" stop-opacity="0.65"/>
+                    <stop offset="70%" stop-color="#dcfce7" stop-opacity="0.6"/>
+                    <stop offset="100%" stop-color="#e0e7ff" stop-opacity="0.75"/>
+                  </linearGradient>
+                  <linearGradient id="bodyStroke" x1="0" y1="0" x2="280" y2="480" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#0891b2" stop-opacity="0.5"/>
+                    <stop offset="50%" stop-color="#06b6d4" stop-opacity="0.3"/>
+                    <stop offset="100%" stop-color="#0e7490" stop-opacity="0.5"/>
+                  </linearGradient>
+                </defs>
+                <!-- Kepala -->
+                <ellipse cx="140" cy="52" rx="24" ry="32" fill="url(#bodyGrad)" stroke="url(#bodyStroke)" stroke-width="1.8"/>
+                <!-- Badan, Lengan, Kaki -->
+                <path d="M132,82 C128,88 124,96 114,102 C96,108 82,118 75,134 C68,148 64,170 62,196 C60,220 54,248 51,266 C49,276 54,282 62,280 C69,278 73,268 76,252 C80,226 84,206 88,188 C90,178 98,172 105,178 C105,200 103,222 100,244 C97,264 97,286 99,310 C101,336 103,366 104,396 C105,422 104,448 101,466 C100,473 105,478 112,478 C119,478 123,473 124,465 C126,446 126,414 125,382 C124,350 125,316 127,284 C128,268 132,258 140,258 C148,258 152,268 153,284 C155,316 156,350 155,382 C154,414 154,446 156,465 C157,473 161,478 168,478 C175,478 180,473 179,466 C176,448 175,422 176,396 C177,366 179,336 181,310 C183,286 183,264 180,244 C177,222 175,200 175,178 C182,172 190,178 192,188 C196,206 200,226 204,252 C207,268 211,278 218,280 C226,282 231,276 229,266 C226,248 220,220 218,196 C216,170 212,148 205,134 C198,118 184,108 166,102 C156,96 152,88 148,82 Z" fill="url(#bodyGrad)" stroke="url(#bodyStroke)" stroke-width="1.8" stroke-linejoin="round"/>
+              </svg>
+
+              <!-- 1. Otak -->
+              <div class="body-pin" data-organ="otak" style="top: 7%; left: 50%;">
+                <button type="button" class="pin-touch-btn" aria-label="Otak: Strok" aria-expanded="false">
+                  <span class="pin-pulse-wave" aria-hidden="true"></span>
+                  <span class="pin-glyph" aria-hidden="true">🧠</span>
+                </button>
+                <div class="glass-bubble bubble-pos-bottom" role="tooltip">
+                  <div class="bubble-header">
+                    <span class="bubble-title">🧠 Otak</span>
+                    <button type="button" class="bubble-close-btn" aria-label="Tutup">✕</button>
+                  </div>
+                  <div class="bubble-complication">Strok</div>
+                </div>
+              </div>
+
+              <!-- 2. Mata -->
+              <div class="body-pin" data-organ="mata" style="top: 13.5%; left: 56%;">
+                <button type="button" class="pin-touch-btn" aria-label="Mata: Kabur penglihatan &amp; katarak" aria-expanded="false">
+                  <span class="pin-pulse-wave" aria-hidden="true"></span>
+                  <span class="pin-glyph" aria-hidden="true">👁️</span>
+                </button>
+                <div class="glass-bubble bubble-pos-left" role="tooltip">
+                  <div class="bubble-header">
+                    <span class="bubble-title">👁️ Mata</span>
+                    <button type="button" class="bubble-close-btn" aria-label="Tutup">✕</button>
+                  </div>
+                  <div class="bubble-complication">Kabur penglihatan &amp; katarak</div>
+                </div>
+              </div>
+
+              <!-- 3. Mulut / Gusi (UTAMA - DI-HIGHLIGHT KHAS) -->
+              <div class="body-pin pin-mulut-highlight is-active" data-organ="mulut" style="top: 20%; left: 50%;">
+                <button type="button" class="pin-touch-btn" aria-label="Mulut: Penyakit gusi (Periodontitis)" aria-expanded="true">
+                  <span class="pin-pulse-wave" aria-hidden="true"></span>
+                  <span class="pin-glyph" aria-hidden="true">🦷</span>
+                </button>
+                <div class="glass-bubble bubble-pos-bottom" role="tooltip">
+                  <div class="bubble-header">
+                    <span class="bubble-title">
+                      🦷 Mulut <span class="badge-utama-pill">★ UTAMA</span>
+                    </span>
+                    <button type="button" class="bubble-close-btn" aria-label="Tutup">✕</button>
+                  </div>
+                  <div class="bubble-complication">Penyakit gusi (Periodontitis)</div>
+                </div>
+              </div>
+
+              <!-- 4. Jantung -->
+              <div class="body-pin" data-organ="jantung" style="top: 33%; left: 56%;">
+                <button type="button" class="pin-touch-btn" aria-label="Jantung: Serangan jantung" aria-expanded="false">
+                  <span class="pin-pulse-wave" aria-hidden="true"></span>
+                  <span class="pin-glyph" aria-hidden="true">❤️</span>
+                </button>
+                <div class="glass-bubble bubble-pos-left" role="tooltip">
+                  <div class="bubble-header">
+                    <span class="bubble-title">❤️ Jantung</span>
+                    <button type="button" class="bubble-close-btn" aria-label="Tutup">✕</button>
+                  </div>
+                  <div class="bubble-complication">Serangan jantung</div>
+                </div>
+              </div>
+
+              <!-- 5. Buah Pinggang -->
+              <div class="body-pin" data-organ="buah-pinggang" style="top: 44%; left: 44%;">
+                <button type="button" class="pin-touch-btn" aria-label="Buah Pinggang: Kegagalan buah pinggang" aria-expanded="false">
+                  <span class="pin-pulse-wave" aria-hidden="true"></span>
+                  <span class="pin-glyph" aria-hidden="true">🫘</span>
+                </button>
+                <div class="glass-bubble bubble-pos-right" role="tooltip">
+                  <div class="bubble-header">
+                    <span class="bubble-title">🫘 Buah Pinggang</span>
+                    <button type="button" class="bubble-close-btn" aria-label="Tutup">✕</button>
+                  </div>
+                  <div class="bubble-complication">Kegagalan buah pinggang</div>
+                </div>
+              </div>
+
+              <!-- 6. Saraf -->
+              <div class="body-pin" data-organ="saraf" style="top: 54%; left: 22%;">
+                <button type="button" class="pin-touch-btn" aria-label="Saraf: Kebas &amp; hilang deria rasa" aria-expanded="false">
+                  <span class="pin-pulse-wave" aria-hidden="true"></span>
+                  <span class="pin-glyph" aria-hidden="true">⚡</span>
+                </button>
+                <div class="glass-bubble bubble-pos-right" role="tooltip">
+                  <div class="bubble-header">
+                    <span class="bubble-title">⚡ Saraf</span>
+                    <button type="button" class="bubble-close-btn" aria-label="Tutup">✕</button>
+                  </div>
+                  <div class="bubble-complication">Kebas &amp; hilang deria rasa</div>
+                </div>
+              </div>
+
+              <!-- 7. Kaki / Kulit -->
+              <div class="body-pin" data-organ="kaki" style="top: 90%; left: 56%;">
+                <button type="button" class="pin-touch-btn" aria-label="Kaki / Kulit: Luka lambat sembuh" aria-expanded="false">
+                  <span class="pin-pulse-wave" aria-hidden="true"></span>
+                  <span class="pin-glyph" aria-hidden="true">🦶</span>
+                </button>
+                <div class="glass-bubble bubble-pos-top" role="tooltip">
+                  <div class="bubble-header">
+                    <span class="bubble-title">🦶 Kaki / Kulit</span>
+                    <button type="button" class="bubble-close-btn" aria-label="Tutup">✕</button>
+                  </div>
+                  <div class="bubble-complication">Luka lambat sembuh</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </article>
+
+        <!-- 3. STATISTIK PENYAKIT GUSI -->
+        <article class="card-glass-sleek">
+          <h3 class="title-sec-h3">Statistik Penyakit Gusi</h3>
+          <div class="stats-pair-grid">
+            <div class="stat-chip-card teal">
+              <span class="percent-number-lg teal-text">94.5%</span>
+              <p class="stat-chip-text">9 daripada 20 orang dewasa di Malaysia mengalami masalah gusi</p>
+            </div>
+            <div class="stat-chip-card rose">
+              <span class="percent-number-lg rose-text">38%</span>
+              <p class="stat-chip-text">4 daripada 10 orang dewasa mengalami periodontitis</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4. APA ITU PENYAKIT GUSI? -->
+        <article class="card-glass-sleek">
+          <h3 class="title-sec-h3">Apa Itu Penyakit Gusi?</h3>
+          <ul class="list-points-clean">
+            <li>Penyakit gusi ialah jangkitan yang menjejaskan gusi dan tisu penyokong gigi akibat pengumpulan plak
+              bakteria.</li>
+            <li><strong>Gingivitis:</strong> Peringkat awal yang menyebabkan gusi merah, bengkak dan mudah berdarah.
+            </li>
+            <li><strong>Periodontitis:</strong> Peringkat lebih serius yang merosakkan tisu dan tulang penyokong gigi
+              sehingga gigi boleh menjadi longgar atau tercabut.</li>
+          </ul>
+
+          <!-- Carta Progresi Penyakit Gusi -->
+          <h4 style="font-size:0.95rem;font-weight:800;color:var(--ink);margin:0.9rem 0 0.4rem;">
+            Carta Progresi Penyakit Gusi:
+          </h4>
+          <div class="stages-numbered-list">
+            <div class="stage-item-pill">
+              <span class="stage-badge-dot">1</span>
+              <span><strong>1. Gusi Sihat</strong></span>
+            </div>
+            <div class="stage-item-pill">
+              <span class="stage-badge-dot">2</span>
+              <span><strong>2. Gingivitis</strong> (Gusi bengkak &amp; berdarah)</span>
+            </div>
+            <div class="stage-item-pill">
+              <span class="stage-badge-dot">3</span>
+              <span><strong>3. Periodontitis Awal</strong> (Kehilangan tulang bermula)</span>
+            </div>
+            <div class="stage-item-pill">
+              <span class="stage-badge-dot">4</span>
+              <span><strong>4. Periodontitis Sederhana</strong> (Kerosakan tulang bertambah)</span>
+            </div>
+            <div class="stage-item-pill">
+              <span class="stage-badge-dot">5</span>
+              <span><strong>5. Periodontitis Teruk</strong> (Tulang musnah, gigi goyang)</span>
+            </div>
+          </div>
+
+          <!-- Ruang Imej Carta Peringkat Penyakit Gusi -->
+          <div class="img-box-glass">
+            <img src="peringkat-penyakit-gusi.png" class="responsive-img" alt="Peringkat Penyakit Gusi"
+              loading="lazy" />
+          </div>
+
+          <!-- Gambar Foto Klinikal Sebenar -->
+          <h4 style="font-size:0.95rem;font-weight:800;color:var(--ink);margin:1.1rem 0 0.35rem;">
+            Gambar Foto Klinikal Sebenar:
+          </h4>
+          <div class="img-box-glass">
+            <img src="clinical-healthy-vs-disease.jpg" class="responsive-img" alt="Perbandingan Klinikal Gusi"
+              loading="lazy" />
+            <div class="clinical-labels-row">
+              <span class="label-healthy">Sebelah Kiri: Foto Gusi Sihat (Healthy Gums)</span>
+              <span class="label-disease">Sebelah Kanan: Foto Penyakit Gusi (Periodontitis)</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 5. BUTANG NAVIGASI -->
+        <nav class="nav-actions-bottom" aria-label="Navigasi Halaman Topik 1">
+          <a class="glass back-btn" href="#/" style="margin-bottom:0">
+            <span class="arrow" aria-hidden="true">←</span>Kembali ke Menu Utama
+          </a>
+          <a class="btn-next-step" href="#/hubungan">
+            Seterusnya: Topik 2 — Hubungan Dua Hala <span aria-hidden="true">→</span>
+          </a>
+        </nav>
+
+      </div>
     </section>
 
     <!-- 2. HUBUNGAN DUA HALA -->
-    <section class="view t2" id="view-hubungan" data-topic="hubungan" data-title="Hubungan Dua Hala — PerioDiabetes" aria-labelledby="h-hubungan" hidden>
+    <section class="view t2" id="view-hubungan" data-topic="hubungan" data-title="Hubungan Dua Hala — PerioDiabetes"
+      aria-labelledby="h-hubungan" hidden>
       <a class="glass back-btn" href="#/"><span class="arrow" aria-hidden="true">←</span>Kembali ke Menu Utama</a>
       <header class="glass page-head">
         <span class="icon-orb is-live" aria-hidden="true"></span>
@@ -868,7 +2404,8 @@
     </section>
 
     <!-- 3. TANDA-TANDA PENYAKIT GUSI -->
-    <section class="view t3" id="view-tanda" data-topic="tanda" data-title="Tanda-Tanda Penyakit Gusi — PerioDiabetes" aria-labelledby="h-tanda" hidden>
+    <section class="view t3" id="view-tanda" data-topic="tanda" data-title="Tanda-Tanda Penyakit Gusi — PerioDiabetes"
+      aria-labelledby="h-tanda" hidden>
       <a class="glass back-btn" href="#/"><span class="arrow" aria-hidden="true">←</span>Kembali ke Menu Utama</a>
       <header class="glass page-head">
         <span class="icon-orb is-live" aria-hidden="true"></span>
@@ -887,7 +2424,8 @@
     </section>
 
     <!-- 4. APA ITU SARINGAN BPE? -->
-    <section class="view t4" id="view-bpe" data-topic="bpe" data-title="Apa Itu Saringan BPE? — PerioDiabetes" aria-labelledby="h-bpe" hidden>
+    <section class="view t4" id="view-bpe" data-topic="bpe" data-title="Apa Itu Saringan BPE? — PerioDiabetes"
+      aria-labelledby="h-bpe" hidden>
       <a class="glass back-btn" href="#/"><span class="arrow" aria-hidden="true">←</span>Kembali ke Menu Utama</a>
       <header class="glass page-head">
         <span class="icon-orb is-live" aria-hidden="true"></span>
@@ -906,7 +2444,8 @@
     </section>
 
     <!-- 5. PROSES RUJUKAN KK KE KP -->
-    <section class="view t5" id="view-rujukan" data-topic="rujukan" data-title="Proses Rujukan KK ke KP — PerioDiabetes" aria-labelledby="h-rujukan" hidden>
+    <section class="view t5" id="view-rujukan" data-topic="rujukan" data-title="Proses Rujukan KK ke KP — PerioDiabetes"
+      aria-labelledby="h-rujukan" hidden>
       <a class="glass back-btn" href="#/"><span class="arrow" aria-hidden="true">←</span>Kembali ke Menu Utama</a>
       <header class="glass page-head">
         <span class="icon-orb is-live" aria-hidden="true"></span>
@@ -925,7 +2464,8 @@
     </section>
 
     <!-- 6. JAGA GUSI, JAGA KESIHATAN -->
-    <section class="view t6" id="view-jaga" data-topic="jaga" data-title="Jaga Gusi, Jaga Kesihatan — PerioDiabetes" aria-labelledby="h-jaga" hidden>
+    <section class="view t6" id="view-jaga" data-topic="jaga" data-title="Jaga Gusi, Jaga Kesihatan — PerioDiabetes"
+      aria-labelledby="h-jaga" hidden>
       <a class="glass back-btn" href="#/"><span class="arrow" aria-hidden="true">←</span>Kembali ke Menu Utama</a>
       <header class="glass page-head">
         <span class="icon-orb is-live" aria-hidden="true"></span>
@@ -989,11 +2529,68 @@
       window.addEventListener('hashchange', route);
       route();
 
-      // Membolehkan kesan :active (sentuhan) pada Safari iOS
-      document.addEventListener('touchstart', function () {}, { passive: true });
+      // Interaksi ringan ikon orang nisbah 1 daripada 6
+      var peopleStrip = document.getElementById('t1-people-strip');
+      if (peopleStrip) {
+        var nodes = peopleStrip.querySelectorAll('.person-node');
+        nodes.forEach(function (n) {
+          n.addEventListener('click', function () {
+            nodes.forEach(function (node) { node.style.transform = ''; });
+            this.style.transform = 'translateY(-3px) scale(1.08)';
+            setTimeout(function () { n.style.transform = ''; }, 250);
+          });
+        });
+      }
+
+      // 2. Interaksi Hotspot Pin Siluet Tubuh Manusia (Klik/Tap untuk Papar Bubble)
+      var bodyPins = document.querySelectorAll('.body-pin');
+      bodyPins.forEach(function (pin) {
+        var btn = pin.querySelector('.pin-touch-btn');
+        var closeBtn = pin.querySelector('.bubble-close-btn');
+
+        if (btn) {
+          btn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var wasActive = pin.classList.contains('is-active');
+
+            // Tutup semua pin yang lain
+            bodyPins.forEach(function (p) {
+              p.classList.remove('is-active');
+              var b = p.querySelector('.pin-touch-btn');
+              if (b) b.setAttribute('aria-expanded', 'false');
+            });
+
+            // Toggle pin ini
+            if (!wasActive) {
+              pin.classList.add('is-active');
+              btn.setAttribute('aria-expanded', 'true');
+            }
+          });
+        }
+
+        if (closeBtn) {
+          closeBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            pin.classList.remove('is-active');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
+          });
+        }
+      });
+
+      // Tutup bubble jika pengguna mengetuk latar luar stage
+      document.addEventListener('click', function (e) {
+        if (!e.target.closest('.body-pin')) {
+          bodyPins.forEach(function (p) {
+            p.classList.remove('is-active');
+            var b = p.querySelector('.pin-touch-btn');
+            if (b) b.setAttribute('aria-expanded', 'false');
+          });
+        }
+      });
 
       document.getElementById('year').textContent = new Date().getFullYear();
     })();
   </script>
 </body>
+
 </html>
