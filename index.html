@@ -1269,24 +1269,27 @@
     }
 
     /* =========================================================
-       SEKSYEN SILUET TUBUH & HOTSPOT INTERAKTIF (LIQUID GLASS)
+       SEKSYEN SILUET ANATOMI TUBUH & KAD ORGAN LIQUID GLASS
+       (Merujuk Susun Atur Rujukan Gambar Infografik Anatomi)
        ========================================================= */
-    .body-interactive-stage {
+    .anatomy-infographic-stage {
       position: relative;
       width: 100%;
-      max-width: 320px;
-      margin: 1.1rem auto 0.4rem;
-      padding: 1.1rem 0.6rem 1.4rem;
-      border-radius: 22px;
-      background: radial-gradient(circle at 50% 25%, rgba(255, 255, 255, 0.85) 0%, rgba(240, 253, 250, 0.5) 60%, rgba(224, 242, 254, 0.35) 100%);
+      max-width: 860px;
+      margin: 1.15rem auto 0.4rem;
+      padding: 1.15rem 0.65rem 1.35rem;
+      border-radius: 26px;
+      background: radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.92) 0%, rgba(240, 253, 250, 0.65) 55%, rgba(224, 242, 254, 0.45) 100%);
       border: 1px solid rgba(255, 255, 255, 0.95);
       -webkit-backdrop-filter: blur(20px) saturate(180%);
       backdrop-filter: blur(20px) saturate(180%);
       box-shadow:
         inset 0 1px 0 #fff,
         inset 0 -1px 0 rgba(255, 255, 255, 0.3),
-        0 8px 24px -8px rgba(8, 145, 178, 0.12),
-        0 18px 40px -16px rgba(13, 43, 62, 0.08);
+        0 8px 26px -8px rgba(8, 145, 178, 0.12),
+        0 20px 48px -16px rgba(13, 43, 62, 0.08);
+      box-sizing: border-box;
+      overflow: hidden;
       user-select: none;
     }
 
@@ -1295,259 +1298,496 @@
       align-items: center;
       justify-content: center;
       gap: 0.35rem;
-      margin: 0 auto 0.85rem;
-      padding: 0.25rem 0.75rem;
-      font-size: 0.7rem;
+      margin: 0 auto 0.95rem;
+      padding: 0.28rem 0.85rem;
+      font-size: 0.72rem;
       font-weight: 700;
       color: #0e7490;
-      background: rgba(255, 255, 255, 0.8);
-      border: 1px solid rgba(255, 255, 255, 0.95);
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(255, 255, 255, 0.98);
       border-radius: 999px;
       box-shadow: 0 2px 8px rgba(8, 145, 178, 0.06);
       width: fit-content;
       text-align: center;
     }
 
-    .silhouette-wrapper {
+    /* Susun Atur 3 Kolom: Kad Kiri — Anatomi Tengah — Kad Kanan */
+    .anatomy-grid-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(115px, 0.95fr) minmax(0, 1.25fr);
+      align-items: stretch;
+      gap: 0.5rem;
       position: relative;
-      width: 100%;
-      max-width: 250px;
-      margin: 0 auto;
-      aspect-ratio: 280 / 480;
+      z-index: 10;
     }
 
-    .silhouette-svg {
-      width: 100%;
-      height: 100%;
-      display: block;
-      filter: drop-shadow(0 6px 16px rgba(8, 145, 178, 0.1));
+    @media (min-width: 640px) {
+      .anatomy-infographic-stage {
+        padding: 1.5rem 1.15rem 1.6rem;
+      }
+
+      .anatomy-grid-layout {
+        grid-template-columns: minmax(0, 1.25fr) minmax(180px, 1.1fr) minmax(0, 1.25fr);
+        gap: 1.1rem;
+      }
     }
 
-    /* Hotspot Pin Element */
-    .body-pin {
+    @media (max-width: 480px) {
+      .anatomy-infographic-stage {
+        padding: 0.85rem 0.35rem 1rem;
+      }
+
+      .anatomy-grid-layout {
+        grid-template-columns: minmax(0, 1.18fr) minmax(88px, 0.82fr) minmax(0, 1.18fr);
+        gap: 0.25rem;
+      }
+    }
+
+    @media (max-width: 350px) {
+      .anatomy-grid-layout {
+        grid-template-columns: minmax(0, 1.12fr) minmax(76px, 0.76fr) minmax(0, 1.12fr);
+        gap: 0.2rem;
+      }
+    }
+
+    .anatomy-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.65rem;
+      position: relative;
+      z-index: 12;
+    }
+
+    @media (min-width: 640px) {
+      .anatomy-col {
+        gap: 0.95rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .anatomy-col {
+        gap: 0.4rem;
+      }
+    }
+
+    /* KAD MASALAH ORGAN (LIQUID GLASS STYLE) */
+    .organ-card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 1.15rem;
+      -webkit-backdrop-filter: blur(16px) saturate(170%);
+      backdrop-filter: blur(16px) saturate(170%);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.95),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.2),
+        0 4px 16px -4px rgba(13, 43, 62, 0.06),
+        0 1px 4px rgba(8, 145, 178, 0.04);
+      padding: 0.6rem 0.7rem;
+      cursor: pointer;
+      text-decoration: none;
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+      transition:
+        transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+        box-shadow 0.28s var(--ease),
+        border-color 0.28s var(--ease),
+        background-color 0.28s var(--ease);
+      overflow: visible;
+      display: flex;
+      align-items: center;
+      min-width: 0;
+    }
+
+    @media (max-width: 480px) {
+      .organ-card {
+        padding: 0.38rem 0.42rem;
+        border-radius: 0.95rem;
+      }
+    }
+
+    /* Kilauan Kaca Lembut (Glossy Specular Reflection) */
+    .organ-card-glass-shine {
       position: absolute;
-      transform: translate(-50%, -50%);
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.08) 50%, transparent 100%);
+      pointer-events: none;
+      opacity: 0.85;
+      transition: opacity 0.3s;
+    }
+
+    /* Interaktiviti Hover / Tap (scale 1.03x & sempadan berkilat lebih terang) */
+    .organ-card:hover,
+    .organ-card:focus-visible,
+    .organ-card.is-active {
+      transform: scale(1.03);
+      border-color: rgba(8, 145, 178, 0.75);
+      background-color: rgba(255, 255, 255, 0.94);
+      box-shadow:
+        inset 0 1px 0 #fff,
+        0 10px 26px -4px rgba(8, 145, 178, 0.26),
+        0 2px 8px rgba(8, 145, 178, 0.12);
       z-index: 20;
     }
 
-    .pin-touch-btn {
-      position: relative;
-      display: grid;
-      place-items: center;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.85);
-      border: 1.5px solid #fff;
-      -webkit-backdrop-filter: blur(12px);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 4px 12px rgba(8, 145, 178, 0.25), inset 0 1px 0 #fff;
-      cursor: pointer;
-      padding: 0;
-      color: inherit;
-      -webkit-tap-highlight-color: transparent;
-      transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
-    }
-    .pin-touch-btn:hover, .pin-touch-btn:focus-visible {
-      transform: scale(1.15);
-      box-shadow: 0 6px 18px rgba(8, 145, 178, 0.35), inset 0 1px 0 #fff;
-    }
-
-    /* Gelombang Denyutan (Pulsing Ripple) */
-    .pin-pulse-wave {
-      position: absolute;
-      inset: -4px;
-      border-radius: 50%;
-      border: 2px solid #06b6d4;
-      animation: pinWave 2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
-      pointer-events: none;
-    }
-    @keyframes pinWave {
-      0% { transform: scale(0.85); opacity: 0.9; }
-      100% { transform: scale(2.2); opacity: 0; }
-    }
-    .pin-glyph {
-      font-size: 0.92rem;
-      line-height: 1;
-      transform: translateY(-0.5px);
-    }
-
-    /* Khas: Pin Mulut / Gusi (UTAMA - DI-HIGHLIGHT MERAH/MERAH JAMBU DENGAN GLOW KETARA) */
-    .body-pin.pin-mulut-highlight {
-      z-index: 25;
-    }
-    .body-pin.pin-mulut-highlight .pin-touch-btn {
-      width: 36px;
-      height: 36px;
-      background: linear-gradient(135deg, #fff1f2, #ffe4e6);
-      border: 2px solid #f43f5e;
-      box-shadow:
-        0 0 0 3px rgba(244, 63, 94, 0.2),
-        0 0 18px rgba(244, 63, 94, 0.55),
-        inset 0 1px 0 #fff;
-      animation: mouthBeat 1.8s ease-in-out infinite alternate;
-    }
-    @keyframes mouthBeat {
-      0%   { transform: scale(1); box-shadow: 0 0 0 3px rgba(244, 63, 94, 0.2), 0 0 12px rgba(244, 63, 94, 0.35); }
-      100% { transform: scale(1.1); box-shadow: 0 0 0 5px rgba(244, 63, 94, 0.35), 0 0 22px rgba(244, 63, 94, 0.65); }
-    }
-    .body-pin.pin-mulut-highlight .pin-pulse-wave {
-      border-color: #f43f5e;
-      animation-duration: 1.5s;
-    }
-
-    /* Kotak Bubble Terapung Liquid Glass */
-    .glass-bubble {
-      position: absolute;
-      width: max-content;
-      max-width: min(220px, 75vw);
-      padding: 0.6rem 0.8rem;
-      border-radius: 14px;
-      background: rgba(255, 255, 255, 0.94);
-      border: 1px solid rgba(255, 255, 255, 0.98);
-      -webkit-backdrop-filter: blur(16px) saturate(180%);
-      backdrop-filter: blur(16px) saturate(180%);
-      box-shadow:
-        0 10px 28px -4px rgba(13, 43, 62, 0.18),
-        0 4px 12px rgba(8, 145, 178, 0.12),
-        inset 0 1px 0 #fff;
-      z-index: 60;
-      opacity: 0;
-      visibility: hidden;
-      transform: scale(0.9) translateY(4px);
-      transition: opacity 0.22s var(--ease), transform 0.22s var(--ease), visibility 0.22s;
-      pointer-events: none;
-    }
-
-    /* Apabila Pin Aktif / Terbuka */
-    .body-pin.is-active {
-      z-index: 70;
-    }
-    .body-pin.is-active .pin-touch-btn {
-      transform: scale(1.15);
-      border-color: #0891b2;
-      box-shadow: 0 0 0 4px rgba(8, 145, 178, 0.3), 0 6px 18px rgba(8, 145, 178, 0.35);
-    }
-    .body-pin.pin-mulut-highlight.is-active .pin-touch-btn {
-      border-color: #be123c;
-      box-shadow: 0 0 0 4px rgba(244, 63, 94, 0.4), 0 8px 24px rgba(244, 63, 94, 0.6);
-    }
-    .body-pin.is-active .glass-bubble {
+    .organ-card:hover .organ-card-glass-shine,
+    .organ-card.is-active .organ-card-glass-shine {
       opacity: 1;
-      visibility: visible;
-      transform: scale(1) translateY(0);
-      pointer-events: auto;
     }
 
-    /* Kedudukan Pintar Bubble */
-    .bubble-pos-bottom {
-      top: calc(100% + 8px);
-      left: 50%;
-      transform: translateX(-50%) scale(0.9);
-      transform-origin: top center;
-    }
-    .body-pin.is-active .bubble-pos-bottom {
-      transform: translateX(-50%) scale(1);
-    }
-
-    .bubble-pos-top {
-      bottom: calc(100% + 8px);
-      left: 50%;
-      transform: translateX(-50%) scale(0.9);
-      transform-origin: bottom center;
-    }
-    .body-pin.is-active .bubble-pos-top {
-      transform: translateX(-50%) scale(1);
-    }
-
-    .bubble-pos-left {
-      top: 50%;
-      right: calc(100% + 8px);
-      transform: translateY(-50%) scale(0.9);
-      transform-origin: center right;
-    }
-    .body-pin.is-active .bubble-pos-left {
-      transform: translateY(-50%) scale(1);
-    }
-
-    .bubble-pos-right {
-      top: 50%;
-      left: calc(100% + 8px);
-      transform: translateY(-50%) scale(0.9);
-      transform-origin: center left;
-    }
-    .body-pin.is-active .bubble-pos-right {
-      transform: translateY(-50%) scale(1);
-    }
-
-    /* Kandungan Bubble */
-    .bubble-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.5rem;
-      margin-bottom: 0.2rem;
-    }
-    .bubble-title {
-      font-size: 0.74rem;
-      font-weight: 800;
-      color: #0e7490;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-    }
-    .bubble-close-btn {
-      display: grid;
-      place-items: center;
-      width: 17px;
-      height: 17px;
-      border-radius: 50%;
-      background: rgba(15, 23, 42, 0.07);
-      border: none;
-      font-size: 0.62rem;
-      font-weight: 800;
-      color: var(--ink-soft);
-      cursor: pointer;
-      padding: 0;
-      transition: background 0.2s, color 0.2s;
-    }
-    .bubble-close-btn:hover {
-      background: rgba(244, 63, 94, 0.15);
-      color: #be123c;
-    }
-    .bubble-complication {
-      font-size: 0.84rem;
-      font-weight: 700;
-      color: var(--ink);
-      line-height: 1.3;
-    }
-
-    /* Penyesuaian Khas Bubble Mulut (Utama) */
-    .body-pin.pin-mulut-highlight .glass-bubble {
-      background: linear-gradient(145deg, #ffffff 0%, #fff1f2 100%);
+    /* PENEKANAN KHAS BAHAGIAN MULUT (UTAMA - GLOWING CORAL & PULSING HEARTBEAT) */
+    .organ-card-mulut.is-utama {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 241, 242, 0.85) 55%, rgba(254, 226, 226, 0.7) 100%);
       border: 1.5px solid #f43f5e;
       box-shadow:
-        0 12px 32px -4px rgba(244, 63, 94, 0.3),
-        0 4px 14px rgba(244, 63, 94, 0.18),
+        0 0 0 3px rgba(244, 63, 94, 0.18),
+        0 8px 24px -4px rgba(244, 63, 94, 0.32),
+        inset 0 1px 0 #fff;
+      animation: mouthCardPulse 2.4s ease-in-out infinite;
+    }
+
+    @keyframes mouthCardPulse {
+
+      0%,
+      100% {
+        box-shadow:
+          0 0 0 3px rgba(244, 63, 94, 0.18),
+          0 8px 24px -4px rgba(244, 63, 94, 0.3),
+          inset 0 1px 0 #fff;
+        border-color: rgba(244, 63, 94, 0.75);
+      }
+
+      50% {
+        box-shadow:
+          0 0 0 5.5px rgba(244, 63, 94, 0.38),
+          0 14px 34px -2px rgba(244, 63, 94, 0.52),
+          inset 0 1px 0 #fff;
+        border-color: #f43f5e;
+        transform: scale(1.025);
+      }
+    }
+
+    .organ-card-mulut.is-utama:hover,
+    .organ-card-mulut.is-utama.is-active {
+      transform: scale(1.045);
+      border-color: #be123c;
+      box-shadow:
+        0 0 0 6px rgba(244, 63, 94, 0.45),
+        0 16px 36px -4px rgba(244, 63, 94, 0.6),
         inset 0 1px 0 #fff;
     }
-    .body-pin.pin-mulut-highlight .bubble-title {
+
+    /* Kandungan Dalaman Kad */
+    .organ-card-content {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      width: 100%;
+      min-width: 0;
+    }
+
+    @media (max-width: 480px) {
+      .organ-card-content {
+        gap: 0.32rem;
+      }
+    }
+
+    .organ-card-icon-wrap {
+      flex-shrink: 0;
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.98);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 2px 6px rgba(13, 43, 62, 0.05);
+    }
+
+    @media (max-width: 480px) {
+      .organ-card-icon-wrap {
+        width: 24px;
+        height: 24px;
+        border-radius: 8px;
+      }
+    }
+
+    .organ-card-icon-wrap svg {
+      width: 22px;
+      height: 22px;
+      display: block;
+    }
+
+    @media (max-width: 480px) {
+      .organ-card-icon-wrap svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    .organ-card-icon-wrap.ic-wrap-mulut {
+      background: linear-gradient(135deg, #fff1f2, #ffe4e6);
+      border-color: #fecdd3;
+    }
+
+    .organ-card-meta {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      flex: 1;
+    }
+
+    .organ-card-title {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: #0e7490;
+      margin: 0;
+      line-height: 1.2;
+      text-wrap: balance;
+    }
+
+    @media (max-width: 480px) {
+      .organ-card-title {
+        font-size: 0.72rem;
+      }
+    }
+
+    .organ-card-title.title-mulut {
       color: #be123c;
     }
+
+    .organ-title-badge-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+    }
+
     .badge-utama-pill {
       display: inline-block;
-      font-size: 0.55rem;
+      font-size: 0.52rem;
       font-weight: 800;
       color: #fff;
       background: #be123c;
       padding: 0.08rem 0.38rem;
       border-radius: 999px;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.03em;
     }
-    .body-pin.pin-mulut-highlight .bubble-complication {
+
+    .organ-card-desc {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin: 0.15rem 0 0;
+      line-height: 1.25;
+      overflow-wrap: break-word;
+    }
+
+    @media (max-width: 480px) {
+      .organ-card-desc {
+        font-size: 0.64rem;
+        margin-top: 0.08rem;
+        line-height: 1.2;
+      }
+    }
+
+    .organ-card-desc.desc-mulut {
       color: #9f1239;
+    }
+
+    /* Titik Sambungan Anchor pada Kad (Pointer Anchor Dots) */
+    .card-anchor-dot {
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #0891b2;
+      border: 1.5px solid #fff;
+      box-shadow: 0 0 6px rgba(8, 145, 178, 0.45);
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      transition: transform 0.25s var(--ease), background 0.25s, box-shadow 0.25s;
+      z-index: 16;
+    }
+
+    .card-anchor-dot.right-anchor {
+      right: -4px;
+    }
+
+    .card-anchor-dot.left-anchor {
+      left: -4px;
+    }
+
+    .card-anchor-dot.dot-mulut-anchor {
+      background: #f43f5e;
+      box-shadow: 0 0 8px rgba(244, 63, 94, 0.7);
+    }
+
+    .organ-card:hover .card-anchor-dot,
+    .organ-card.is-active .card-anchor-dot {
+      transform: translateY(-50%) scale(1.4);
+      background: #06b6d4;
+      box-shadow: 0 0 10px rgba(6, 182, 212, 0.85);
+    }
+
+    .organ-card-mulut:hover .card-anchor-dot,
+    .organ-card-mulut.is-active .card-anchor-dot {
+      background: #be123c;
+      box-shadow: 0 0 12px rgba(244, 63, 94, 0.95);
+    }
+
+    /* KOLOM TENGAH: ANATOMI BADAN */
+    .anatomy-col-center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .anatomy-body-viewport {
+      position: relative;
+      width: 100%;
+      max-width: 260px;
+      margin: 0 auto;
+      aspect-ratio: 280 / 560;
+    }
+
+    .anatomy-silhouette-svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      filter: drop-shadow(0 6px 16px rgba(8, 145, 178, 0.12));
+    }
+
+    /* Titik Organ Hotspot Pada Badan */
+    .organ-dot-node {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      z-index: 15;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    @media (max-width: 480px) {
+      .organ-dot-node {
+        width: 18px;
+        height: 18px;
+      }
+    }
+
+    .dot-core {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #0891b2;
+      border: 1.5px solid #fff;
+      box-shadow: 0 0 8px rgba(8, 145, 178, 0.6);
+      transition: transform 0.25s var(--ease), background 0.25s, box-shadow 0.25s;
+    }
+
+    @media (max-width: 480px) {
+      .dot-core {
+        width: 6px;
+        height: 6px;
+      }
+    }
+
+    .dot-pulse-ring {
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      border: 1.5px solid #06b6d4;
+      animation: pinWave 2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+      pointer-events: none;
+    }
+
+    /* Khas Mulut: Hotspot Node */
+    .organ-dot-node.dot-mulut .dot-core {
+      background: #f43f5e;
+      box-shadow: 0 0 12px rgba(244, 63, 94, 0.85);
+      animation: mouthBeat 1.8s ease-in-out infinite alternate;
+    }
+
+    .organ-dot-node.dot-mulut .dot-pulse-ring {
+      border-color: #f43f5e;
+      animation-duration: 1.5s;
+    }
+
+    .organ-dot-node:hover .dot-core,
+    .organ-dot-node.is-active .dot-core {
+      transform: scale(1.4);
+      background: #06b6d4;
+      box-shadow: 0 0 14px #06b6d4;
+    }
+
+    .organ-dot-node.dot-mulut:hover .dot-core,
+    .organ-dot-node.dot-mulut.is-active .dot-core {
+      background: #be123c;
+      box-shadow: 0 0 16px #f43f5e;
+    }
+
+    /* GARIS PENUNJUK HALUS SVG (CONNECTING POINTER LINES) */
+    .connector-lines-layer {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 8;
+      overflow: visible;
+    }
+
+    .connector-path {
+      fill: none;
+      stroke: rgba(8, 145, 178, 0.45);
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: stroke 0.25s var(--ease), stroke-width 0.25s var(--ease), opacity 0.25s;
+    }
+
+    .connector-path.path-mulut {
+      stroke: rgba(244, 63, 94, 0.85);
+      stroke-width: 2.2;
+      filter: drop-shadow(0 0 4px rgba(244, 63, 94, 0.55));
+    }
+
+    .connector-path.is-active {
+      stroke: #0891b2;
+      stroke-width: 2.6;
+      opacity: 1;
+      filter: drop-shadow(0 0 6px rgba(8, 145, 178, 0.6));
+    }
+
+    .connector-path.path-mulut.is-active {
+      stroke: #be123c;
+      stroke-width: 3;
+      filter: drop-shadow(0 0 8px rgba(244, 63, 94, 0.8));
+    }
+
+    /* Garis penunjuk statik dalam SVG */
+    .static-pointer-line {
+      transition: stroke 0.25s, stroke-width 0.25s, opacity 0.25s;
+    }
+
+    .static-pointer-line.is-active {
+      stroke: #0891b2 !important;
+      stroke-width: 2.5 !important;
+      opacity: 1 !important;
+    }
+
+    .static-pointer-line.pointer-mulut.is-active {
+      stroke: #be123c !important;
+      stroke-width: 3 !important;
+      opacity: 1 !important;
     }
 
     /* 3. KAD STATISTIK PENYAKIT GUSI BERKEMBAR */
@@ -2157,142 +2397,311 @@
             <li>Jika tidak dikawal, diabetes boleh menjejaskan mata, buah pinggang, jantung dan kesihatan mulut.</li>
           </ul>
 
-          <!-- Peta Minda Siluet Tubuh Manusia Interaktif (Gaya Liquid Glass) -->
-          <div class="body-interactive-stage" id="body-stage">
-            <div class="stage-instruction-pill">
-              <span aria-hidden="true">👆</span> Sentuh titik organ untuk melihat komplikasi
+          <!-- Rajah Pusat Anatomi & Kad Masalah Organ Liquid Glass (Merujuk Susun Atur Rujukan) -->
+          <div class="anatomy-infographic-stage" id="anatomy-stage">
+            <div class="stage-instruction-pill"> </div>
+
+            <div class="anatomy-grid-layout">
+              <!-- KOLOM KIRI (Left Cards: Otak, Mulut, Buah Pinggang, Kaki) -->
+              <div class="anatomy-col anatomy-col-left">
+
+                <!-- 1. Otak -->
+                <div class="organ-card" data-organ="otak" tabindex="0" role="button" aria-label="Otak: Strok">
+                  <div class="organ-card-glass-shine"></div>
+                  <div class="organ-card-content">
+                    <div class="organ-card-icon-wrap" aria-hidden="true">
+                      <svg viewBox="0 0 36 36">
+                        <path
+                          d="M18 6C13.5 6 10 9 10 13C8.5 13.5 7 15 7 17.5C7 20 8.5 21.5 10 22C10 25.5 12.5 28 16 28.5L17 28.5V11L18 6Z"
+                          fill="#f472b6" />
+                        <path
+                          d="M18 6C22.5 6 26 9 26 13C27.5 13.5 29 15 29 17.5C29 20 27.5 21.5 26 22C26 25.5 23.5 28 20 28.5L19 28.5V11L18 6Z"
+                          fill="#f43f5e" />
+                        <path
+                          d="M13 14C15 14 16 12 18 12C20 12 21 14 23 14M11 19C13 19 15 17 18 17C21 17 23 19 25 19M13 24C15 24 16 22 18 22C20 22 21 24 23 24"
+                          stroke="#fff" stroke-width="1.3" stroke-linecap="round" fill="none" />
+                      </svg>
+                    </div>
+                    <div class="organ-card-meta">
+                      <h4 class="organ-card-title">Otak</h4>
+                      <p class="organ-card-desc">Strok</p>
+                    </div>
+                  </div>
+                  <div class="card-anchor-dot right-anchor" aria-hidden="true"></div>
+                </div>
+
+                <!-- 2. Mulut: Penyakit Gusi (Periodontitis) [PENEKANAN KHAS CORAL & PULSING HEARTBEAT] -->
+                <div class="organ-card organ-card-mulut is-utama is-active" data-organ="mulut" tabindex="0"
+                  role="button" aria-label="Mulut: Penyakit gusi">
+                  <div class="organ-card-glass-shine"></div>
+                  <div class="organ-card-content">
+                    <div class="organ-card-icon-wrap ic-wrap-mulut" aria-hidden="true">
+                      <svg viewBox="0 0 36 36">
+                        <path d="M12 9C12 5 15 4 18 6C21 4 24 5 24 9C24 14 23 18 22 23L21 29H15L14 23C13 18 12 14 12 9Z"
+                          fill="#fff" stroke="#94a3b8" stroke-width="1.3" />
+                        <path d="M6 21C10 18 14 20 18 19C22 18 26 20 30 21V28A4 4 0 0 1 26 32H10A4 4 0 0 1 6 28Z"
+                          fill="#f43f5e" />
+                        <path d="M6 21C10 18 14 20 18 19C22 18 26 20 30 21" stroke="#be123c" stroke-width="1.5"
+                          fill="none" stroke-linecap="round" />
+                        <circle cx="18" cy="24" r="1.8" fill="#ffe4e6" />
+                      </svg>
+                    </div>
+                    <div class="organ-card-meta">
+                      <div class="organ-title-badge-row">
+                        <h4 class="organ-card-title title-mulut">Mulut</h4>
+                      </div>
+                      <p class="organ-card-desc desc-mulut">Penyakit gusi</p>
+                    </div>
+                  </div>
+                  <div class="card-anchor-dot right-anchor dot-mulut-anchor" aria-hidden="true"></div>
+                </div>
+
+                <!-- 3. Buah Pinggang -->
+                <div class="organ-card" data-organ="buah-pinggang" tabindex="0" role="button"
+                  aria-label="Buah Pinggang: Kegagalan buah pinggang">
+                  <div class="organ-card-glass-shine"></div>
+                  <div class="organ-card-content">
+                    <div class="organ-card-icon-wrap" aria-hidden="true">
+                      <svg viewBox="0 0 36 36">
+                        <path
+                          d="M14 8C20 6 26 10 26 18C26 25 21 29 15 28C10 27 8 23 9 19C10 15 13 16 14 14C15 12 12 10 14 8Z"
+                          fill="#b45309" />
+                        <ellipse cx="18" cy="18" rx="3" ry="5" fill="#d97706" />
+                        <circle cx="17" cy="16" r="1.8" fill="#ef4444" />
+                        <circle cx="18" cy="20" r="1.8" fill="#3b82f6" />
+                      </svg>
+                    </div>
+                    <div class="organ-card-meta">
+                      <h4 class="organ-card-title">Buah Pinggang</h4>
+                      <p class="organ-card-desc">Kegagalan buah pinggang</p>
+                    </div>
+                  </div>
+                  <div class="card-anchor-dot right-anchor" aria-hidden="true"></div>
+                </div>
+
+                <!-- 4. Kaki / Kulit -->
+                <div class="organ-card" data-organ="kaki" tabindex="0" role="button"
+                  aria-label="Kaki / Kulit: Luka lambat sembuh">
+                  <div class="organ-card-glass-shine"></div>
+                  <div class="organ-card-content">
+                    <div class="organ-card-icon-wrap" aria-hidden="true">
+                      <svg viewBox="0 0 36 36">
+                        <path
+                          d="M14 6V18C14 20 12 23 10 25C9 26 10 28 12 28H24C27 28 29 26 28 23C26 19 23 16 22 12V6H14Z"
+                          fill="#fdba74" />
+                        <circle cx="21" cy="23" r="3" fill="#e11d48" />
+                        <circle cx="21" cy="23" r="1.4" fill="#fff" />
+                      </svg>
+                    </div>
+                    <div class="organ-card-meta">
+                      <h4 class="organ-card-title">Kaki / Kulit</h4>
+                      <p class="organ-card-desc">Luka lambat sembuh</p>
+                    </div>
+                  </div>
+                  <div class="card-anchor-dot right-anchor" aria-hidden="true"></div>
+                </div>
+
+              </div>
+
+              <!-- KOLOM TENGAH (Rajah Siluet Anatomi HD & Titik Organ) -->
+              <div class="anatomy-col anatomy-col-center">
+                <div class="anatomy-body-viewport">
+                  <!-- Vektor Siluet Anatomi HD Tubuh Manusia -->
+                  <svg viewBox="0 0 280 560" class="anatomy-silhouette-svg" xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true">
+                    <defs>
+                      <linearGradient id="anatBodyGrad" x1="140" y1="10" x2="140" y2="550"
+                        gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stop-color="#bae6fd" stop-opacity="0.85" />
+                        <stop offset="25%" stop-color="#cffafe" stop-opacity="0.75" />
+                        <stop offset="55%" stop-color="#e0f2fe" stop-opacity="0.7" />
+                        <stop offset="85%" stop-color="#dcfce7" stop-opacity="0.65" />
+                        <stop offset="100%" stop-color="#e0e7ff" stop-opacity="0.85" />
+                      </linearGradient>
+                      <linearGradient id="anatStrokeGrad" x1="0" y1="0" x2="280" y2="560"
+                        gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stop-color="#0891b2" stop-opacity="0.55" />
+                        <stop offset="50%" stop-color="#06b6d4" stop-opacity="0.35" />
+                        <stop offset="100%" stop-color="#0e7490" stop-opacity="0.55" />
+                      </linearGradient>
+                      <filter id="glowCoralFilter" x="-40%" y="-40%" width="180%" height="180%">
+                        <feGaussianBlur stdDeviation="3.5" result="blur" />
+                        <feMerge>
+                          <feMergeNode in="blur" />
+                          <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                      </filter>
+                    </defs>
+
+                    <!-- Kepala (Head) -->
+                    <ellipse cx="140" cy="52" rx="24" ry="32" fill="url(#anatBodyGrad)" stroke="url(#anatStrokeGrad)"
+                      stroke-width="1.8" />
+
+                    <!-- Badan, Lengan, Kaki (Torso, Arms, Legs) -->
+                    <path
+                      d="M132,82 C128,88 124,96 114,102 C96,108 82,118 75,134 C68,148 64,170 62,196 C60,220 54,248 51,266 C49,276 54,282 62,280 C69,278 73,268 76,252 C80,226 84,206 88,188 C90,178 98,172 105,178 C105,200 103,222 100,244 C97,264 97,286 99,310 C101,336 103,366 104,396 C105,422 104,448 101,466 C100,473 105,478 112,478 C119,478 123,473 124,465 C126,446 126,414 125,382 C124,350 125,316 127,284 C128,268 132,258 140,258 C148,258 152,268 153,284 C155,316 156,350 155,382 C154,414 154,446 156,465 C157,473 161,478 168,478 C175,478 180,473 179,466 C176,448 175,422 176,396 C177,366 179,336 181,310 C183,286 183,264 180,244 C177,222 175,200 175,178 C182,172 190,178 192,188 C196,206 200,226 204,252 C207,268 211,278 218,280 C226,282 231,276 229,266 C226,248 220,220 218,196 C216,170 212,148 205,134 C198,118 184,108 166,102 C156,96 152,88 148,82 Z"
+                      fill="url(#anatBodyGrad)" stroke="url(#anatStrokeGrad)" stroke-width="1.8"
+                      stroke-linejoin="round" />
+
+                    <!-- Garis Kontur Anatomi Halus (Subtle Contours) -->
+                    <path d="M122,106 Q140,113 158,106" stroke="#0891b2" stroke-width="1.2" stroke-linecap="round"
+                      fill="none" opacity="0.4" />
+                    <path d="M140,116 V185" stroke="#0891b2" stroke-width="1" stroke-linecap="round" fill="none"
+                      opacity="0.25" />
+                    <path d="M122,150 Q131,164 140,164 Q149,164 158,150" stroke="#0891b2" stroke-width="1"
+                      stroke-linecap="round" fill="none" opacity="0.25" />
+                    <circle cx="140" cy="235" r="2" fill="#0891b2" opacity="0.3" />
+
+                    <!-- Garis Penunjuk Statik Asas (Leader Lines to Edge) -->
+                    <line class="static-pointer-line" data-organ="otak" x1="140" y1="45" x2="0" y2="45" stroke="#0891b2"
+                      stroke-width="1.4" stroke-dasharray="3 3" opacity="0.6" />
+                    <line class="static-pointer-line" data-organ="mata" x1="148" y1="80" x2="280" y2="80"
+                      stroke="#0891b2" stroke-width="1.4" stroke-dasharray="3 3" opacity="0.6" />
+                    <line class="static-pointer-line pointer-mulut" data-organ="mulut" x1="140" y1="115" x2="0" y2="115"
+                      stroke="#f43f5e" stroke-width="2" filter="url(#glowCoralFilter)" opacity="0.85" />
+                    <line class="static-pointer-line" data-organ="jantung" x1="155" y1="190" x2="280" y2="190"
+                      stroke="#0891b2" stroke-width="1.4" stroke-dasharray="3 3" opacity="0.6" />
+                    <line class="static-pointer-line" data-organ="buah-pinggang" x1="126" y1="265" x2="0" y2="265"
+                      stroke="#0891b2" stroke-width="1.4" stroke-dasharray="3 3" opacity="0.6" />
+                    <line class="static-pointer-line" data-organ="saraf" x1="198" y1="325" x2="280" y2="325"
+                      stroke="#0891b2" stroke-width="1.4" stroke-dasharray="3 3" opacity="0.6" />
+                    <line class="static-pointer-line" data-organ="kaki" x1="120" y1="490" x2="0" y2="490"
+                      stroke="#0891b2" stroke-width="1.4" stroke-dasharray="3 3" opacity="0.6" />
+                  </svg>
+
+                  <!-- Titik Organ Hotspot Pada Badan (Interactive Hotspots) -->
+                  <!-- 1. Otak -->
+                  <div class="organ-dot-node dot-otak" data-organ="otak" style="top: 8%; left: 50%;" title="Otak"
+                    role="button" tabindex="0">
+                    <span class="dot-pulse-ring" aria-hidden="true"></span>
+                    <span class="dot-core" aria-hidden="true"></span>
+                  </div>
+
+                  <!-- 2. Mata -->
+                  <div class="organ-dot-node dot-mata" data-organ="mata" style="top: 14.3%; left: 53%;" title="Mata"
+                    role="button" tabindex="0">
+                    <span class="dot-pulse-ring" aria-hidden="true"></span>
+                    <span class="dot-core" aria-hidden="true"></span>
+                  </div>
+
+                  <!-- 3. Mulut (Fokus Utama - Glowing Coral Pulse) -->
+                  <div class="organ-dot-node dot-mulut is-utama is-active" data-organ="mulut"
+                    style="top: 20.5%; left: 50%;" title="Mulut: Penyakit Gusi" role="button" tabindex="0">
+                    <span class="dot-pulse-ring" aria-hidden="true"></span>
+                    <span class="dot-core" aria-hidden="true"></span>
+                  </div>
+
+                  <!-- 4. Jantung -->
+                  <div class="organ-dot-node dot-jantung" data-organ="jantung" style="top: 33.9%; left: 55%;"
+                    title="Jantung" role="button" tabindex="0">
+                    <span class="dot-pulse-ring" aria-hidden="true"></span>
+                    <span class="dot-core" aria-hidden="true"></span>
+                  </div>
+
+                  <!-- 5. Buah Pinggang -->
+                  <div class="organ-dot-node dot-buah-pinggang" data-organ="buah-pinggang"
+                    style="top: 47.3%; left: 45%;" title="Buah Pinggang" role="button" tabindex="0">
+                    <span class="dot-pulse-ring" aria-hidden="true"></span>
+                    <span class="dot-core" aria-hidden="true"></span>
+                  </div>
+
+                  <!-- 6. Saraf -->
+                  <div class="organ-dot-node dot-saraf" data-organ="saraf" style="top: 58%; left: 71%;" title="Saraf"
+                    role="button" tabindex="0">
+                    <span class="dot-pulse-ring" aria-hidden="true"></span>
+                    <span class="dot-core" aria-hidden="true"></span>
+                  </div>
+
+                  <!-- 7. Kaki / Kulit -->
+                  <div class="organ-dot-node dot-kaki" data-organ="kaki" style="top: 87.5%; left: 43%;"
+                    title="Kaki / Kulit" role="button" tabindex="0">
+                    <span class="dot-pulse-ring" aria-hidden="true"></span>
+                    <span class="dot-core" aria-hidden="true"></span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- KOLOM KANAN (Right Cards: Mata, Jantung, Saraf) -->
+              <div class="anatomy-col anatomy-col-right">
+
+                <!-- 1. Mata -->
+                <div class="organ-card" data-organ="mata" tabindex="0" role="button"
+                  aria-label="Mata: Kabur penglihatan &amp; katarak">
+                  <div class="card-anchor-dot left-anchor" aria-hidden="true"></div>
+                  <div class="organ-card-glass-shine"></div>
+                  <div class="organ-card-content">
+                    <div class="organ-card-icon-wrap" aria-hidden="true">
+                      <svg viewBox="0 0 36 36">
+                        <path d="M4 18C8 10 28 10 32 18C28 26 8 26 4 18Z" fill="#e0f2fe" stroke="#0284c7"
+                          stroke-width="1.5" stroke-linejoin="round" />
+                        <circle cx="18" cy="18" r="6" fill="#0284c7" />
+                        <circle cx="18" cy="18" r="3.2" fill="#0f172a" />
+                        <circle cx="16" cy="16" r="1.4" fill="#fff" />
+                      </svg>
+                    </div>
+                    <div class="organ-card-meta">
+                      <h4 class="organ-card-title">Mata</h4>
+                      <p class="organ-card-desc">Kabur penglihatan &amp; katarak</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 2. Jantung -->
+                <div class="organ-card" data-organ="jantung" tabindex="0" role="button"
+                  aria-label="Jantung: Serangan jantung">
+                  <div class="card-anchor-dot left-anchor" aria-hidden="true"></div>
+                  <div class="organ-card-glass-shine"></div>
+                  <div class="organ-card-content">
+                    <div class="organ-card-icon-wrap" aria-hidden="true">
+                      <svg viewBox="0 0 36 36">
+                        <path
+                          d="M18 31C18 31 7 24 7 14C7 9.5 10.5 6 15 6C17 6 18 7.5 18 7.5C18 7.5 19 6 21 6C25.5 6 29 9.5 29 14C29 24 18 31 18 31Z"
+                          fill="#e11d48" />
+                        <path d="M15 9C12.5 9 10 11.5 10 14" stroke="#fff" stroke-width="1.3" stroke-linecap="round"
+                          fill="none" />
+                      </svg>
+                    </div>
+                    <div class="organ-card-meta">
+                      <h4 class="organ-card-title">Jantung</h4>
+                      <p class="organ-card-desc">Serangan jantung</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 3. Saraf -->
+                <div class="organ-card" data-organ="saraf" tabindex="0" role="button"
+                  aria-label="Saraf: Kebas &amp; hilang deria rasa">
+                  <div class="card-anchor-dot left-anchor" aria-hidden="true"></div>
+                  <div class="organ-card-glass-shine"></div>
+                  <div class="organ-card-content">
+                    <div class="organ-card-icon-wrap" aria-hidden="true">
+                      <svg viewBox="0 0 36 36">
+                        <circle cx="18" cy="18" r="5" fill="#06b6d4" />
+                        <path d="M18 5V12M18 24V31M5 18H12M24 18H31M9 9L14 14M22 22L27 27M9 27L14 22M22 14L27 9"
+                          stroke="#06b6d4" stroke-width="1.5" stroke-linecap="round" />
+                        <circle cx="18" cy="18" r="2.2" fill="#fff" />
+                      </svg>
+                    </div>
+                    <div class="organ-card-meta">
+                      <h4 class="organ-card-title">Saraf</h4>
+                      <p class="organ-card-desc">Kebas &amp; hilang deria rasa</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
             </div>
 
-            <div class="silhouette-wrapper">
-              <!-- Vektor Siluet Tubuh Manusia Minimalis -->
-              <svg viewBox="0 0 280 480" fill="none" xmlns="http://www.w3.org/2000/svg" class="silhouette-svg" aria-hidden="true">
-                <defs>
-                  <linearGradient id="bodyGrad" x1="140" y1="10" x2="140" y2="470" gradientUnits="userSpaceOnUse">
-                    <stop offset="0%" stop-color="#bae6fd" stop-opacity="0.8"/>
-                    <stop offset="35%" stop-color="#cffafe" stop-opacity="0.65"/>
-                    <stop offset="70%" stop-color="#dcfce7" stop-opacity="0.6"/>
-                    <stop offset="100%" stop-color="#e0e7ff" stop-opacity="0.75"/>
-                  </linearGradient>
-                  <linearGradient id="bodyStroke" x1="0" y1="0" x2="280" y2="480" gradientUnits="userSpaceOnUse">
-                    <stop offset="0%" stop-color="#0891b2" stop-opacity="0.5"/>
-                    <stop offset="50%" stop-color="#06b6d4" stop-opacity="0.3"/>
-                    <stop offset="100%" stop-color="#0e7490" stop-opacity="0.5"/>
-                  </linearGradient>
-                </defs>
-                <!-- Kepala -->
-                <ellipse cx="140" cy="52" rx="24" ry="32" fill="url(#bodyGrad)" stroke="url(#bodyStroke)" stroke-width="1.8"/>
-                <!-- Badan, Lengan, Kaki -->
-                <path d="M132,82 C128,88 124,96 114,102 C96,108 82,118 75,134 C68,148 64,170 62,196 C60,220 54,248 51,266 C49,276 54,282 62,280 C69,278 73,268 76,252 C80,226 84,206 88,188 C90,178 98,172 105,178 C105,200 103,222 100,244 C97,264 97,286 99,310 C101,336 103,366 104,396 C105,422 104,448 101,466 C100,473 105,478 112,478 C119,478 123,473 124,465 C126,446 126,414 125,382 C124,350 125,316 127,284 C128,268 132,258 140,258 C148,258 152,268 153,284 C155,316 156,350 155,382 C154,414 154,446 156,465 C157,473 161,478 168,478 C175,478 180,473 179,466 C176,448 175,422 176,396 C177,366 179,336 181,310 C183,286 183,264 180,244 C177,222 175,200 175,178 C182,172 190,178 192,188 C196,206 200,226 204,252 C207,268 211,278 218,280 C226,282 231,276 229,266 C226,248 220,220 218,196 C216,170 212,148 205,134 C198,118 184,108 166,102 C156,96 152,88 148,82 Z" fill="url(#bodyGrad)" stroke="url(#bodyStroke)" stroke-width="1.8" stroke-linejoin="round"/>
-              </svg>
-
-              <!-- 1. Otak -->
-              <div class="body-pin" data-organ="otak" style="top: 7%; left: 50%;">
-                <button type="button" class="pin-touch-btn" aria-label="Otak: Strok" aria-expanded="false">
-                  <span class="pin-pulse-wave" aria-hidden="true"></span>
-                  <span class="pin-glyph" aria-hidden="true">🧠</span>
-                </button>
-                <div class="glass-bubble bubble-pos-bottom" role="tooltip">
-                  <div class="bubble-header">
-                    <span class="bubble-title">🧠 Otak</span>
-                    <button type="button" class="bubble-close-btn" aria-label="Tutup">✕</button>
-                  </div>
-                  <div class="bubble-complication">Strok</div>
-                </div>
-              </div>
-
-              <!-- 2. Mata -->
-              <div class="body-pin" data-organ="mata" style="top: 13.5%; left: 56%;">
-                <button type="button" class="pin-touch-btn" aria-label="Mata: Kabur penglihatan &amp; katarak" aria-expanded="false">
-                  <span class="pin-pulse-wave" aria-hidden="true"></span>
-                  <span class="pin-glyph" aria-hidden="true">👁️</span>
-                </button>
-                <div class="glass-bubble bubble-pos-left" role="tooltip">
-                  <div class="bubble-header">
-                    <span class="bubble-title">👁️ Mata</span>
-                    <button type="button" class="bubble-close-btn" aria-label="Tutup">✕</button>
-                  </div>
-                  <div class="bubble-complication">Kabur penglihatan &amp; katarak</div>
-                </div>
-              </div>
-
-              <!-- 3. Mulut / Gusi (UTAMA - DI-HIGHLIGHT KHAS) -->
-              <div class="body-pin pin-mulut-highlight is-active" data-organ="mulut" style="top: 20%; left: 50%;">
-                <button type="button" class="pin-touch-btn" aria-label="Mulut: Penyakit gusi (Periodontitis)" aria-expanded="true">
-                  <span class="pin-pulse-wave" aria-hidden="true"></span>
-                  <span class="pin-glyph" aria-hidden="true">🦷</span>
-                </button>
-                <div class="glass-bubble bubble-pos-bottom" role="tooltip">
-                  <div class="bubble-header">
-                    <span class="bubble-title">
-                      🦷 Mulut <span class="badge-utama-pill">★ UTAMA</span>
-                    </span>
-                    <button type="button" class="bubble-close-btn" aria-label="Tutup">✕</button>
-                  </div>
-                  <div class="bubble-complication">Penyakit gusi (Periodontitis)</div>
-                </div>
-              </div>
-
-              <!-- 4. Jantung -->
-              <div class="body-pin" data-organ="jantung" style="top: 33%; left: 56%;">
-                <button type="button" class="pin-touch-btn" aria-label="Jantung: Serangan jantung" aria-expanded="false">
-                  <span class="pin-pulse-wave" aria-hidden="true"></span>
-                  <span class="pin-glyph" aria-hidden="true">❤️</span>
-                </button>
-                <div class="glass-bubble bubble-pos-left" role="tooltip">
-                  <div class="bubble-header">
-                    <span class="bubble-title">❤️ Jantung</span>
-                    <button type="button" class="bubble-close-btn" aria-label="Tutup">✕</button>
-                  </div>
-                  <div class="bubble-complication">Serangan jantung</div>
-                </div>
-              </div>
-
-              <!-- 5. Buah Pinggang -->
-              <div class="body-pin" data-organ="buah-pinggang" style="top: 44%; left: 44%;">
-                <button type="button" class="pin-touch-btn" aria-label="Buah Pinggang: Kegagalan buah pinggang" aria-expanded="false">
-                  <span class="pin-pulse-wave" aria-hidden="true"></span>
-                  <span class="pin-glyph" aria-hidden="true">🫘</span>
-                </button>
-                <div class="glass-bubble bubble-pos-right" role="tooltip">
-                  <div class="bubble-header">
-                    <span class="bubble-title">🫘 Buah Pinggang</span>
-                    <button type="button" class="bubble-close-btn" aria-label="Tutup">✕</button>
-                  </div>
-                  <div class="bubble-complication">Kegagalan buah pinggang</div>
-                </div>
-              </div>
-
-              <!-- 6. Saraf -->
-              <div class="body-pin" data-organ="saraf" style="top: 54%; left: 22%;">
-                <button type="button" class="pin-touch-btn" aria-label="Saraf: Kebas &amp; hilang deria rasa" aria-expanded="false">
-                  <span class="pin-pulse-wave" aria-hidden="true"></span>
-                  <span class="pin-glyph" aria-hidden="true">⚡</span>
-                </button>
-                <div class="glass-bubble bubble-pos-right" role="tooltip">
-                  <div class="bubble-header">
-                    <span class="bubble-title">⚡ Saraf</span>
-                    <button type="button" class="bubble-close-btn" aria-label="Tutup">✕</button>
-                  </div>
-                  <div class="bubble-complication">Kebas &amp; hilang deria rasa</div>
-                </div>
-              </div>
-
-              <!-- 7. Kaki / Kulit -->
-              <div class="body-pin" data-organ="kaki" style="top: 90%; left: 56%;">
-                <button type="button" class="pin-touch-btn" aria-label="Kaki / Kulit: Luka lambat sembuh" aria-expanded="false">
-                  <span class="pin-pulse-wave" aria-hidden="true"></span>
-                  <span class="pin-glyph" aria-hidden="true">🦶</span>
-                </button>
-                <div class="glass-bubble bubble-pos-top" role="tooltip">
-                  <div class="bubble-header">
-                    <span class="bubble-title">🦶 Kaki / Kulit</span>
-                    <button type="button" class="bubble-close-btn" aria-label="Tutup">✕</button>
-                  </div>
-                  <div class="bubble-complication">Luka lambat sembuh</div>
-                </div>
-              </div>
-
-            </div>
+            <!-- SVG Garis Penunjuk Dinamik Merentasi Kolom (Dynamic Pointer Lines Layer) -->
+            <svg class="connector-lines-layer" id="connector-lines-svg" aria-hidden="true">
+              <path class="connector-path" data-organ="otak" d="" />
+              <path class="connector-path" data-organ="mata" d="" />
+              <path class="connector-path path-mulut is-active" data-organ="mulut" d="" />
+              <path class="connector-path" data-organ="jantung" d="" />
+              <path class="connector-path" data-organ="buah-pinggang" d="" />
+              <path class="connector-path" data-organ="saraf" d="" />
+              <path class="connector-path" data-organ="kaki" d="" />
+            </svg>
           </div>
         </article>
 
@@ -2524,6 +2933,125 @@
         }
         if (id !== 'utama') lastTopic = id;
         firstLoad = false;
+
+        if (id === 'pengenalan') {
+          setTimeout(function () {
+            if (typeof updateConnectorLines === 'function') {
+              requestAnimationFrame(updateConnectorLines);
+            }
+          }, 60);
+        }
+      }
+
+      // 2. Interaksi Infografik Anatomi Tubuh & Garis Penunjuk (Connecting Pointer Lines)
+      var anatomyStage = document.getElementById('anatomy-stage');
+      var connectorSvg = document.getElementById('connector-lines-svg');
+
+      function updateConnectorLines() {
+        if (!anatomyStage || !connectorSvg) return;
+        var viewPengenalan = document.getElementById('view-pengenalan');
+        if (viewPengenalan && viewPengenalan.hidden) return;
+
+        var stageRect = anatomyStage.getBoundingClientRect();
+        if (stageRect.width === 0 || stageRect.height === 0) return;
+
+        var organs = ['otak', 'mata', 'mulut', 'jantung', 'buah-pinggang', 'saraf', 'kaki'];
+
+        organs.forEach(function (organ) {
+          var dot = anatomyStage.querySelector('.organ-dot-node[data-organ="' + organ + '"]');
+          var card = anatomyStage.querySelector('.organ-card[data-organ="' + organ + '"]');
+          var anchor = card ? card.querySelector('.card-anchor-dot') : null;
+          var path = connectorSvg.querySelector('.connector-path[data-organ="' + organ + '"]');
+
+          if (!dot || !card || !anchor || !path) return;
+
+          var dotRect = dot.getBoundingClientRect();
+          var anchorRect = anchor.getBoundingClientRect();
+
+          var x1 = dotRect.left + dotRect.width / 2 - stageRect.left;
+          var y1 = dotRect.top + dotRect.height / 2 - stageRect.top;
+          var x2 = anchorRect.left + anchorRect.width / 2 - stageRect.left;
+          var y2 = anchorRect.top + anchorRect.height / 2 - stageRect.top;
+
+          path.setAttribute('d', 'M ' + x1.toFixed(1) + ' ' + y1.toFixed(1) + ' L ' + x2.toFixed(1) + ' ' + y2.toFixed(1));
+        });
+      }
+
+      // Aktifkan organ tertentu
+      function setActiveOrgan(organId) {
+        if (!anatomyStage) return;
+
+        var allCards = anatomyStage.querySelectorAll('.organ-card');
+        var allDots = anatomyStage.querySelectorAll('.organ-dot-node');
+        var allPaths = anatomyStage.querySelectorAll('.connector-path');
+        var allStaticLines = anatomyStage.querySelectorAll('.static-pointer-line');
+
+        // Reset semua organ lain kecuali Mulut yang kekal fokus utama
+        allCards.forEach(function (c) {
+          if (c.dataset.organ !== 'mulut') c.classList.remove('is-active');
+        });
+        allDots.forEach(function (d) {
+          if (d.dataset.organ !== 'mulut') d.classList.remove('is-active');
+        });
+        allPaths.forEach(function (p) {
+          if (p.dataset.organ !== 'mulut') p.classList.remove('is-active');
+        });
+        allStaticLines.forEach(function (l) {
+          if (l.dataset.organ !== 'mulut') l.classList.remove('is-active');
+        });
+
+        // Aktifkan organ yang dipilih
+        if (organId) {
+          var targetCard = anatomyStage.querySelector('.organ-card[data-organ="' + organId + '"]');
+          var targetDot = anatomyStage.querySelector('.organ-dot-node[data-organ="' + organId + '"]');
+          var targetPath = connectorSvg ? connectorSvg.querySelector('.connector-path[data-organ="' + organId + '"]') : null;
+          var targetStatic = anatomyStage.querySelector('.static-pointer-line[data-organ="' + organId + '"]');
+
+          if (targetCard) targetCard.classList.add('is-active');
+          if (targetDot) targetDot.classList.add('is-active');
+          if (targetPath) targetPath.classList.add('is-active');
+          if (targetStatic) targetStatic.classList.add('is-active');
+        }
+      }
+
+      if (anatomyStage) {
+        // Event listener untuk kad organ (hover, sentuhan, fokus)
+        var organCards = anatomyStage.querySelectorAll('.organ-card');
+        organCards.forEach(function (card) {
+          var organ = card.dataset.organ;
+          card.addEventListener('mouseenter', function () { setActiveOrgan(organ); });
+          card.addEventListener('click', function (e) {
+            e.stopPropagation();
+            setActiveOrgan(organ);
+          });
+          card.addEventListener('focus', function () { setActiveOrgan(organ); });
+        });
+
+        // Event listener untuk titik organ pada badan (hover & sentuhan)
+        var organDots = anatomyStage.querySelectorAll('.organ-dot-node');
+        organDots.forEach(function (dot) {
+          var organ = dot.dataset.organ;
+          dot.addEventListener('mouseenter', function () { setActiveOrgan(organ); });
+          dot.addEventListener('click', function (e) {
+            e.stopPropagation();
+            setActiveOrgan(organ);
+          });
+        });
+
+        // Reset apabila klik di luar kawasan stage
+        document.addEventListener('click', function (e) {
+          if (!e.target.closest('#anatomy-stage')) {
+            setActiveOrgan(null);
+          }
+        });
+
+        // Kemas kini kedudukan garis penunjuk apabila tetingkap diubah saiz
+        window.addEventListener('resize', function () {
+          requestAnimationFrame(updateConnectorLines);
+        });
+
+        // Panggilan awal selepas susun atur sedia
+        setTimeout(updateConnectorLines, 150);
       }
 
       window.addEventListener('hashchange', route);
@@ -2541,52 +3069,6 @@
           });
         });
       }
-
-      // 2. Interaksi Hotspot Pin Siluet Tubuh Manusia (Klik/Tap untuk Papar Bubble)
-      var bodyPins = document.querySelectorAll('.body-pin');
-      bodyPins.forEach(function (pin) {
-        var btn = pin.querySelector('.pin-touch-btn');
-        var closeBtn = pin.querySelector('.bubble-close-btn');
-
-        if (btn) {
-          btn.addEventListener('click', function (e) {
-            e.stopPropagation();
-            var wasActive = pin.classList.contains('is-active');
-
-            // Tutup semua pin yang lain
-            bodyPins.forEach(function (p) {
-              p.classList.remove('is-active');
-              var b = p.querySelector('.pin-touch-btn');
-              if (b) b.setAttribute('aria-expanded', 'false');
-            });
-
-            // Toggle pin ini
-            if (!wasActive) {
-              pin.classList.add('is-active');
-              btn.setAttribute('aria-expanded', 'true');
-            }
-          });
-        }
-
-        if (closeBtn) {
-          closeBtn.addEventListener('click', function (e) {
-            e.stopPropagation();
-            pin.classList.remove('is-active');
-            if (btn) btn.setAttribute('aria-expanded', 'false');
-          });
-        }
-      });
-
-      // Tutup bubble jika pengguna mengetuk latar luar stage
-      document.addEventListener('click', function (e) {
-        if (!e.target.closest('.body-pin')) {
-          bodyPins.forEach(function (p) {
-            p.classList.remove('is-active');
-            var b = p.querySelector('.pin-touch-btn');
-            if (b) b.setAttribute('aria-expanded', 'false');
-          });
-        }
-      });
 
       document.getElementById('year').textContent = new Date().getFullYear();
     })();
