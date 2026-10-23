@@ -3029,6 +3029,200 @@
       box-shadow: inset 0 1px 0 #fff, 0 8px 20px -4px rgba(8, 145, 178, 0.2);
     }
 
+    /* =========================================================
+       GAYA KHUSUS: TOPIK 3 (TANDA-TANDA PENYAKIT GUSI)
+       Liquid Glass Translucent · Grid Responsif · Mikro-interaksi
+       ========================================================= */
+    .t3-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.35rem;
+    }
+
+    /* Kad Pengenalan Seksyen Topik 3 */
+    .t3-intro-card {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.72) 0%, rgba(240, 253, 250, 0.6) 50%, rgba(255, 241, 242, 0.65) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      border-radius: 26px;
+      -webkit-backdrop-filter: blur(20px) saturate(170%);
+      backdrop-filter: blur(20px) saturate(170%);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.95),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.2),
+        0 6px 20px -6px rgba(13, 43, 62, 0.05),
+        0 16px 36px -12px rgba(8, 145, 178, 0.1);
+      padding: 1.4rem 1.25rem;
+    }
+
+    .t3-intro-title {
+      font-size: clamp(1.15rem, 3.8vw, 1.45rem);
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.35;
+      margin-bottom: 0.6rem;
+    }
+
+    .t3-intro-desc {
+      font-size: clamp(0.95rem, 3.2vw, 1.08rem);
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+
+    /* Susun Atur Grid Responsif (1 lajur telefon pintar, 2-3 lajur desktop) */
+    .t3-symptoms-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    @media (min-width: 640px) {
+      .t3-symptoms-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.35rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .t3-symptoms-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.45rem;
+      }
+    }
+
+    /* Kad Gejala Liquid Glass Translucent */
+    .t3-symptom-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background: rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 26px; /* rounded-2xl / rounded-3xl */
+      -webkit-backdrop-filter: blur(20px) saturate(175%);
+      backdrop-filter: blur(20px) saturate(175%);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.95),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.2),
+        0 6px 20px -6px rgba(13, 43, 62, 0.05),
+        0 16px 36px -12px rgba(8, 145, 178, 0.1);
+      padding: 1.25rem 1.15rem;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      transition:
+        transform 0.35s var(--ease),
+        box-shadow 0.35s var(--ease),
+        border-color 0.35s,
+        background-color 0.35s;
+    }
+
+    /* Mikro-interaksi: Apabila kad disentuh (hover/tap/active/focus-within) */
+    .t3-symptom-card:hover,
+    .t3-symptom-card:active,
+    .t3-symptom-card:focus-within,
+    .t3-symptom-card.is-touched {
+      transform: scale(1.02);
+      background-color: rgba(255, 255, 255, 0.7);
+      border-color: rgba(255, 255, 255, 0.95);
+      box-shadow:
+        inset 0 1px 0 #ffffff,
+        0 0 22px rgba(255, 255, 255, 0.8),
+        0 10px 28px -6px rgba(13, 43, 62, 0.08),
+        0 24px 48px -12px rgba(8, 145, 178, 0.24);
+    }
+
+    /* Bahagian Atas Kad: Nombor & Tajuk Gejala (Bold) */
+    .t3-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .t3-num-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      width: 2.1rem;
+      height: 2.1rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: #0e7490;
+      background: rgba(207, 250, 254, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      box-shadow: inset 0 1px 0 #fff, 0 2px 8px -2px rgba(8, 145, 178, 0.25);
+      transition: transform 0.35s var(--ease);
+    }
+
+    .t3-symptom-card:hover .t3-num-badge,
+    .t3-symptom-card.is-touched .t3-num-badge {
+      transform: scale(1.08);
+    }
+
+    .t3-card-title {
+      font-size: 1.06rem;
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.35;
+      margin: 0;
+    }
+
+    /* Teks Penerangan Ringkas */
+    .t3-card-desc {
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: var(--ink-soft);
+      margin: 0 0 1rem;
+      flex-grow: 1;
+    }
+
+    /* Bekas Gambar Foto Klinikal Sebenar HD dengan Sudut Melengkung (rounded-xl) dan Bingkai Berkilat */
+    .t3-img-frame {
+      position: relative;
+      padding: 0.45rem;
+      border-radius: 18px; /* rounded-xl */
+      background: rgba(255, 255, 255, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.85); /* bingkai berkilat */
+      box-shadow:
+        inset 0 1px 0 #ffffff,
+        0 4px 14px -3px rgba(13, 43, 62, 0.06);
+      overflow: hidden;
+      margin-top: auto;
+      transition: border-color 0.35s, box-shadow 0.35s;
+    }
+
+    .t3-symptom-card:hover .t3-img-frame,
+    .t3-symptom-card.is-touched .t3-img-frame {
+      border-color: rgba(255, 255, 255, 1);
+      box-shadow:
+        inset 0 1px 0 #ffffff,
+        0 0 16px rgba(255, 255, 255, 0.7),
+        0 6px 18px -4px rgba(8, 145, 178, 0.16);
+    }
+
+    .t3-img-frame .responsive-img {
+      display: block;
+      width: 100%;
+      height: 180px;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      background: #f8fafc;
+      transition: transform 0.4s var(--ease);
+    }
+
+    .t3-symptom-card:hover .responsive-img,
+    .t3-symptom-card.is-touched .responsive-img {
+      transform: scale(1.025);
+    }
+
+    @media (max-width: 480px) {
+      .t3-img-frame .responsive-img {
+        height: 165px;
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
 
       *,
@@ -4413,23 +4607,166 @@
     </section>
 
     <!-- 3. TANDA-TANDA PENYAKIT GUSI -->
-    <section class="view t3" id="view-tanda" data-topic="tanda" data-title="Tanda-Tanda Penyakit Gusi — PerioDiabetes"
-      aria-labelledby="h-tanda" hidden>
+    <section class="view t3" id="view-tanda" data-topic="tanda"
+      data-title="Topik 3: Tanda-Tanda Penyakit Gusi — PerioDiabetes" aria-labelledby="h-tanda" hidden>
       <a class="glass back-btn" href="#/"><span class="arrow" aria-hidden="true">←</span>Kembali ke Menu Utama</a>
       <header class="glass page-head">
         <span class="icon-orb is-live" aria-hidden="true"></span>
         <span class="topic-kicker">Topik 03 · Tanda Amaran</span>
         <h2 id="h-tanda" tabindex="-1">Tanda-Tanda Penyakit Gusi</h2>
       </header>
-      <article class="glass content-card">
-        <!-- ▼ MASUKKAN KANDUNGAN TOPIK 3 DI SINI ▼ -->
-        <div class="placeholder">
-          <span class="dot" aria-hidden="true">✎</span>
-          <p>Kandungan sedang dikemas kini...</p>
-          <div class="skeleton" aria-hidden="true"><i></i><i></i><i></i></div>
+
+      <div class="t3-container">
+
+        <!-- 1. TAJUK & PENGENALAN SEKSYEN -->
+        <article class="card-glass-sleek t3-intro-card">
+          <h3 class="t3-intro-title">Tanda-Tanda Amaran &amp; Gejala yang Perlu Diperhatikan</h3>
+          <p class="t3-intro-desc">
+            Penyakit gusi sering berlaku tanpa rasa sakit pada peringkat awal. Kenali 10 tanda amaran ini sebelum kerosakan menjadi lebih serius:
+          </p>
+        </article>
+
+        <!-- 2. GRID KAD INTERAKTIF (10 GEJALA BERSAMA FOTO KLINIKAL HD) -->
+        <div class="t3-symptoms-grid" role="list">
+
+          <!-- GEJALA 1 -->
+          <article class="t3-symptom-card" role="listitem" tabindex="0">
+            <div class="t3-card-header">
+              <span class="t3-num-badge" aria-hidden="true">01</span>
+              <h4 class="t3-card-title">Gusi Berdarah</h4>
+            </div>
+            <p class="t3-card-desc">Gusi mudah berdarah semasa memberus gigi, menggunakan flos, atau makan, dan kadang-kala boleh berdarah secara spontan.</p>
+            <div class="t3-img-frame">
+              <img src="sumber-gambar-klinikal.jpg" alt="Gusi Berdarah" class="responsive-img" loading="lazy" />
+            </div>
+          </article>
+
+          <!-- GEJALA 2 -->
+          <article class="t3-symptom-card" role="listitem" tabindex="0">
+            <div class="t3-card-header">
+              <span class="t3-num-badge" aria-hidden="true">02</span>
+              <h4 class="t3-card-title">Gusi Merah atau Bengkak</h4>
+            </div>
+            <p class="t3-card-desc">Gusi kelihatan kemerahan, membengkak, atau terasa sakit apabila disentuh.</p>
+            <div class="t3-img-frame">
+              <img src="sumber-gambar-klinikal.jpg" alt="Gusi Merah atau Bengkak" class="responsive-img" loading="lazy" />
+            </div>
+          </article>
+
+          <!-- GEJALA 3 -->
+          <article class="t3-symptom-card" role="listitem" tabindex="0">
+            <div class="t3-card-header">
+              <span class="t3-num-badge" aria-hidden="true">03</span>
+              <h4 class="t3-card-title">Poket Gusi Dalam</h4>
+            </div>
+            <p class="t3-card-desc">Gusi renggang daripada gigi, membentuk celah/ruang yang lebih dalam tempat bakteria bersembunyi.</p>
+            <div class="t3-img-frame">
+              <img src="sumber-gambar-klinikal.jpg" alt="Poket Gusi Dalam" class="responsive-img" loading="lazy" />
+            </div>
+          </article>
+
+          <!-- GEJALA 4 -->
+          <article class="t3-symptom-card" role="listitem" tabindex="0">
+            <div class="t3-card-header">
+              <span class="t3-num-badge" aria-hidden="true">04</span>
+              <h4 class="t3-card-title">Gusi Menyusut</h4>
+            </div>
+            <p class="t3-card-desc">Gusi mengecut ke bawah sehingga mendedahkan akar gigi dan menyebabkan gigi kelihatan lebih panjang.</p>
+            <div class="t3-img-frame">
+              <img src="sumber-gambar-klinikal.jpg" alt="Gusi Menyusut" class="responsive-img" loading="lazy" />
+            </div>
+          </article>
+
+          <!-- GEJALA 5 -->
+          <article class="t3-symptom-card" role="listitem" tabindex="0">
+            <div class="t3-card-header">
+              <span class="t3-num-badge" aria-hidden="true">05</span>
+              <h4 class="t3-card-title">Gigi Sensitif</h4>
+            </div>
+            <p class="t3-card-desc">Rasa ngilu atau ngilu tajam apabila minum minuman panas atau sejuk, makan makanan manis, atau memberus di kawasan akar gigi yang terdedah.</p>
+            <div class="t3-img-frame">
+              <img src="sumber-gambar-klinikal.jpg" alt="Gigi Sensitif" class="responsive-img" loading="lazy" />
+            </div>
+          </article>
+
+          <!-- GEJALA 6 -->
+          <article class="t3-symptom-card" role="listitem" tabindex="0">
+            <div class="t3-card-header">
+              <span class="t3-num-badge" aria-hidden="true">06</span>
+              <h4 class="t3-card-title">Gigi Longgar atau Goyang</h4>
+            </div>
+            <p class="t3-card-desc">Gigi kehilangan sokongan tulang dan mula bergoyang.</p>
+            <div class="t3-img-frame">
+              <img src="sumber-gambar-klinikal.jpg" alt="Gigi Longgar atau Goyang" class="responsive-img" loading="lazy" />
+            </div>
+          </article>
+
+          <!-- GEJALA 7 -->
+          <article class="t3-symptom-card" role="listitem" tabindex="0">
+            <div class="t3-card-header">
+              <span class="t3-num-badge" aria-hidden="true">07</span>
+              <h4 class="t3-card-title">Kedudukan Gigi Berubah</h4>
+            </div>
+            <p class="t3-card-desc">Gigi mula beranjak/meregang daripada kedudukan asal atau membentuk ruang baharu yang jelas.</p>
+            <div class="t3-img-frame">
+              <img src="sumber-gambar-klinikal.jpg" alt="Kedudukan Gigi Berubah" class="responsive-img" loading="lazy" />
+            </div>
+          </article>
+
+          <!-- GEJALA 8 -->
+          <article class="t3-symptom-card" role="listitem" tabindex="0">
+            <div class="t3-card-header">
+              <span class="t3-num-badge" aria-hidden="true">08</span>
+              <h4 class="t3-card-title">Keluar Nanah</h4>
+            </div>
+            <p class="t3-card-desc">Bengkak yang mengeluarkan nanah kekuningan dari celah antara gigi dan gusi.</p>
+            <div class="t3-img-frame">
+              <img src="sumber-gambar-klinikal.jpg" alt="Keluar Nanah" class="responsive-img" loading="lazy" />
+            </div>
+          </article>
+
+          <!-- GEJALA 9 -->
+          <article class="t3-symptom-card" role="listitem" tabindex="0">
+            <div class="t3-card-header">
+              <span class="t3-num-badge" aria-hidden="true">09</span>
+              <h4 class="t3-card-title">Nafas Berbau Berterusan</h4>
+            </div>
+            <p class="t3-card-desc">Rasa atau bau mulut yang tidak menyenangkan yang kekal berterusan walaupun selepas memberus gigi.</p>
+            <div class="t3-img-frame">
+              <img src="sumber-gambar-klinikal.jpg" alt="Nafas Berbau Berterusan" class="responsive-img" loading="lazy" />
+            </div>
+          </article>
+
+          <!-- GEJALA 10 -->
+          <article class="t3-symptom-card" role="listitem" tabindex="0">
+            <div class="t3-card-header">
+              <span class="t3-num-badge" aria-hidden="true">10</span>
+              <h4 class="t3-card-title">Sukar Mengunyah</h4>
+            </div>
+            <p class="t3-card-desc">Mengunyah terasa sakit atau tidak selesa kerana kedudukan gigi telah beranjak, menjadi longgar, atau telah tercabut.</p>
+            <div class="t3-img-frame">
+              <img src="sumber-gambar-klinikal.jpg" alt="Sukar Mengunyah" class="responsive-img" loading="lazy" />
+            </div>
+          </article>
+
         </div>
-        <!-- ▲ TAMAT KANDUNGAN TOPIK 3 ▲ -->
-      </article>
+
+        <!-- BUTANG NAVIGASI -->
+        <nav class="nav-actions-bottom" aria-label="Navigasi Halaman Topik 3">
+          <a class="glass back-btn" href="#/" style="margin-bottom:0">
+            <span class="arrow" aria-hidden="true">←</span>Kembali ke Menu Utama
+          </a>
+          <div class="nav-subtopic-pair">
+            <a class="btn-prev-step-glass" href="#/hubungan">
+              <span aria-hidden="true">←</span> Topik 2: Hubungan Dua Hala
+            </a>
+            <a class="btn-next-step" href="#/bpe">
+              Seterusnya: Topik 4 — Saringan BPE <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </nav>
+
+      </div>
     </section>
 
     <!-- 4. APA ITU SARINGAN BPE? -->
@@ -4552,6 +4889,14 @@
           if (typeof toggleCycleAutoplay === 'function' && isCycleAutoplaying) {
             toggleCycleAutoplay(false);
           }
+        }
+
+        if (id === 'tanda') {
+          setTimeout(function () {
+            if (typeof initTopic3 === 'function') {
+              initTopic3();
+            }
+          }, 60);
         }
       }
 
@@ -4884,6 +5229,31 @@
 
         // Mulakan paparan pada Langkah 1
         updateCycleView(1);
+      }
+
+      // =========================================================
+      // 4. INTERAKSI TOPIK 3 (TANDA-TANDA PENYAKIT GUSI)
+      // =========================================================
+      var topic3Initialized = false;
+      function initTopic3() {
+        if (topic3Initialized) return;
+        var view = document.getElementById('view-tanda');
+        if (!view) return;
+        var cards = view.querySelectorAll('.t3-symptom-card');
+        cards.forEach(function (card) {
+          // Maklum balas sentuhan pada peranti mudah alih (hover/tap micro-interaction)
+          card.addEventListener('touchstart', function () {
+            this.classList.add('is-touched');
+          }, { passive: true });
+          card.addEventListener('touchend', function () {
+            var self = this;
+            setTimeout(function () { self.classList.remove('is-touched'); }, 300);
+          }, { passive: true });
+          card.addEventListener('touchcancel', function () {
+            this.classList.remove('is-touched');
+          }, { passive: true });
+        });
+        topic3Initialized = true;
       }
 
       window.addEventListener('hashchange', route);
