@@ -149,7 +149,8 @@
       backdrop-filter: blur(12px) saturate(180%);
       -webkit-backdrop-filter: blur(12px) saturate(180%);
       padding: 6px 14px;
-      border-radius: var(--radius-sm); /* rounded-xl */
+      border-radius: var(--radius-sm);
+      /* rounded-xl */
       border: 1px solid rgba(255, 255, 255, 0.65);
       box-shadow: 0 4px 14px rgba(11, 34, 51, 0.07), inset 0 1px 1px rgba(255, 255, 255, 0.9);
     }
@@ -195,9 +196,17 @@
       line-height: 1;
     }
 
-    .btn-size-toggle .symbol-a.a-sm { font-size: 14px; }
-    .btn-size-toggle .symbol-a.a-md { font-size: 18px; }
-    .btn-size-toggle .symbol-a.a-lg { font-size: 22px; }
+    .btn-size-toggle .symbol-a.a-sm {
+      font-size: 14px;
+    }
+
+    .btn-size-toggle .symbol-a.a-md {
+      font-size: 18px;
+    }
+
+    .btn-size-toggle .symbol-a.a-lg {
+      font-size: 22px;
+    }
 
     .btn-size-toggle:hover {
       background: rgba(255, 255, 255, 0.95);
@@ -335,13 +344,13 @@
       -webkit-text-fill-color: transparent;
       margin: 8px 0 18px;
       filter: drop-shadow(0 2px 12px rgba(6, 182, 212, 0.35));
-      animation: neonGlowPulse 3s ease-in-out infinite alternate;
     }
 
     @keyframes neonGlowPulse {
       0% {
         filter: drop-shadow(0 2px 10px rgba(6, 182, 212, 0.28));
       }
+
       100% {
         filter: drop-shadow(0 4px 22px rgba(6, 182, 212, 0.65)) drop-shadow(0 0 8px rgba(56, 189, 248, 0.45));
       }
@@ -1536,13 +1545,16 @@
         <aside class="size-control-glass" role="region" aria-label="Pelaras Saiz Tulisan">
           <span class="size-control-label">Saiz Tulisan</span>
           <div class="size-btn-group" role="group" aria-label="Pilihan Saiz Tulisan">
-            <button type="button" class="btn-size-toggle active" data-size="14" id="btn-size-14" aria-pressed="true" aria-label="Saiz Tulisan Asas (14px)" title="Saiz Asas (14px)">
+            <button type="button" class="btn-size-toggle active" data-size="14" id="btn-size-14" aria-pressed="true"
+              aria-label="Saiz Tulisan Asas (14px)" title="Saiz Asas (14px)">
               <span class="symbol-a a-sm">A</span>
             </button>
-            <button type="button" class="btn-size-toggle" data-size="16" id="btn-size-16" aria-pressed="false" aria-label="Saiz Tulisan Besar (16px)" title="Saiz Besar (16px)">
+            <button type="button" class="btn-size-toggle" data-size="16" id="btn-size-16" aria-pressed="false"
+              aria-label="Saiz Tulisan Besar (16px)" title="Saiz Besar (16px)">
               <span class="symbol-a a-md">A</span>
             </button>
-            <button type="button" class="btn-size-toggle" data-size="18" id="btn-size-18" aria-pressed="false" aria-label="Saiz Tulisan Sangat Besar (18px)" title="Saiz Sangat Besar (18px)">
+            <button type="button" class="btn-size-toggle" data-size="18" id="btn-size-18" aria-pressed="false"
+              aria-label="Saiz Tulisan Sangat Besar (18px)" title="Saiz Sangat Besar (18px)">
               <span class="symbol-a a-lg">A</span>
             </button>
           </div>
@@ -1776,7 +1788,8 @@
 
       <div class="content-box">
         <p style="font-size: 1.05rem; font-weight: 600;">
-          Sains perubatan dan Kementerian Kesihatan Malaysia (KKM) mengiktiraf penyakit gusi sebagai komplikasi utama ke-6 bagi penyakit diabetes.
+          Sains perubatan dan Kementerian Kesihatan Malaysia (KKM) mengiktiraf penyakit gusi sebagai komplikasi utama
+          ke-6 bagi penyakit diabetes.
         </p>
       </div>
 
@@ -2377,24 +2390,36 @@
 
       <article class="content-box">
         <h2>Garis Panduan Klinikal &amp; Sumber Rasmi</h2>
-        <p>Semua maklumat perubatan dan kesihatan pergigian di dalam portal ini dirujuk daripada dokumen rasmi Kementerian Kesihatan Malaysia (KKM) serta panduan klinikal yang diiktiraf:</p>
+        <p>Semua maklumat perubatan dan kesihatan pergigian di dalam portal ini dirujuk daripada dokumen rasmi
+          Kementerian Kesihatan Malaysia (KKM) serta panduan klinikal yang diiktiraf:</p>
 
         <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 18px;">
-          <div style="background: rgba(255, 255, 255, 0.72); border: 1px solid rgba(255, 255, 255, 0.9); border-radius: var(--radius-sm); padding: 18px 20px; box-shadow: var(--shadow-sm);">
-            <strong style="color: var(--ink); display: block; font-size: 1.05rem; margin-bottom: 4px;">1. Clinical Practice Guidelines (CPG): Management of Type 2 Diabetes Mellitus (6th Edition)</strong>
+          <div
+            style="background: rgba(255, 255, 255, 0.72); border: 1px solid rgba(255, 255, 255, 0.9); border-radius: var(--radius-sm); padding: 18px 20px; box-shadow: var(--shadow-sm);">
+            <strong style="color: var(--ink); display: block; font-size: 1.05rem; margin-bottom: 4px;">1. Clinical
+              Practice Guidelines (CPG): Management of Type 2 Diabetes Mellitus (6th Edition)</strong>
             <span style="color: var(--ink-muted); font-size: 0.92rem;">Kementerian Kesihatan Malaysia (KKM)</span>
           </div>
-          <div style="background: rgba(255, 255, 255, 0.72); border: 1px solid rgba(255, 255, 255, 0.9); border-radius: var(--radius-sm); padding: 18px 20px; box-shadow: var(--shadow-sm);">
-            <strong style="color: var(--ink); display: block; font-size: 1.05rem; margin-bottom: 4px;">2. Clinical Practice Guidelines (CPG): Management of Periodontal Conditions</strong>
-            <span style="color: var(--ink-muted); font-size: 0.92rem;">Bahagian Kesihatan Pergigian, Kementerian Kesihatan Malaysia (KKM)</span>
+          <div
+            style="background: rgba(255, 255, 255, 0.72); border: 1px solid rgba(255, 255, 255, 0.9); border-radius: var(--radius-sm); padding: 18px 20px; box-shadow: var(--shadow-sm);">
+            <strong style="color: var(--ink); display: block; font-size: 1.05rem; margin-bottom: 4px;">2. Clinical
+              Practice Guidelines (CPG): Management of Periodontal Conditions</strong>
+            <span style="color: var(--ink-muted); font-size: 0.92rem;">Bahagian Kesihatan Pergigian, Kementerian
+              Kesihatan Malaysia (KKM)</span>
           </div>
-          <div style="background: rgba(255, 255, 255, 0.72); border: 1px solid rgba(255, 255, 255, 0.9); border-radius: var(--radius-sm); padding: 18px 20px; box-shadow: var(--shadow-sm);">
-            <strong style="color: var(--ink); display: block; font-size: 1.05rem; margin-bottom: 4px;">3. National Health and Morbidity Survey (NHMS)</strong>
-            <span style="color: var(--ink-muted); font-size: 0.92rem;">Institut Kesihatan Umum (IKU), Institut Kesihatan Negara, Kementerian Kesihatan Malaysia</span>
+          <div
+            style="background: rgba(255, 255, 255, 0.72); border: 1px solid rgba(255, 255, 255, 0.9); border-radius: var(--radius-sm); padding: 18px 20px; box-shadow: var(--shadow-sm);">
+            <strong style="color: var(--ink); display: block; font-size: 1.05rem; margin-bottom: 4px;">3. National
+              Health and Morbidity Survey (NHMS)</strong>
+            <span style="color: var(--ink-muted); font-size: 0.92rem;">Institut Kesihatan Umum (IKU), Institut Kesihatan
+              Negara, Kementerian Kesihatan Malaysia</span>
           </div>
-          <div style="background: rgba(255, 255, 255, 0.72); border: 1px solid rgba(255, 255, 255, 0.9); border-radius: var(--radius-sm); padding: 18px 20px; box-shadow: var(--shadow-sm);">
-            <strong style="color: var(--ink); display: block; font-size: 1.05rem; margin-bottom: 4px;">4. Portal Rasmi Program Kesihatan Pergigian KKM</strong>
-            <span style="color: var(--ink-muted); font-size: 0.92rem;">Kementerian Kesihatan Malaysia · Bahagian Kesihatan Pergigian</span>
+          <div
+            style="background: rgba(255, 255, 255, 0.72); border: 1px solid rgba(255, 255, 255, 0.9); border-radius: var(--radius-sm); padding: 18px 20px; box-shadow: var(--shadow-sm);">
+            <strong style="color: var(--ink); display: block; font-size: 1.05rem; margin-bottom: 4px;">4. Portal Rasmi
+              Program Kesihatan Pergigian KKM</strong>
+            <span style="color: var(--ink-muted); font-size: 0.92rem;">Kementerian Kesihatan Malaysia · Bahagian
+              Kesihatan Pergigian</span>
           </div>
         </div>
       </article>
