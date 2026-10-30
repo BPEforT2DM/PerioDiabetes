@@ -21,8 +21,7 @@
        1. TOKEN REKA BENTUK (Vibrant Pastel Liquid Glass)
        ================================================================ */
     :root {
-      --scale: 1;
-      --base-font: 19px;
+      --base-font: 14px;
       --font-main: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
       /* Warna Teks Pekat Kontras Tinggi untuk Warga Emas */
@@ -76,7 +75,7 @@
     }
 
     html {
-      font-size: calc(var(--base-font) * var(--scale));
+      font-size: var(--base-font, 14px);
       scroll-behavior: smooth;
       -webkit-text-size-adjust: 100%;
     }
@@ -129,7 +128,7 @@
     }
 
     /* ================================================================
-       4. BAR KAWALAN SAIZ FON (Mesra Warga Emas - Sudut Atas Kanan)
+       4. PELARAS "SAIZ TULISAN" LIQUID GLASS (Sudut Atas Kanan - Tidak Mengikut Skrol)
        ================================================================ */
     .header-top-bar {
       display: flex;
@@ -142,52 +141,80 @@
       z-index: 50;
     }
 
-    .accessibility-bar {
+    .size-control-glass {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(12px) saturate(180%);
+      -webkit-backdrop-filter: blur(12px) saturate(180%);
       padding: 6px 14px;
-      border-radius: var(--radius-full);
-      border: 1px solid rgba(255, 255, 255, 0.95);
-      box-shadow: 0 4px 14px rgba(11, 34, 51, 0.06);
+      border-radius: var(--radius-sm); /* rounded-xl */
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      box-shadow: 0 4px 14px rgba(11, 34, 51, 0.07), inset 0 1px 1px rgba(255, 255, 255, 0.9);
     }
 
-    .accessibility-label {
-      font-size: 0.78rem;
-      font-weight: 700;
+    .size-control-label {
+      font-size: 0.76rem;
+      font-weight: 800;
       color: var(--ink-soft);
-      margin-right: 4px;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+
+    .size-btn-group {
       display: inline-flex;
       align-items: center;
-      gap: 4px;
+      gap: 5px;
     }
 
-    .btn-zoom-btn {
-      background: #f1f5f9;
-      border: 1px solid #cbd5e1;
-      border-radius: var(--radius-full);
-      padding: 4px 12px;
-      font-size: 0.84rem;
-      font-weight: 800;
-      color: var(--ink);
+    .btn-size-toggle {
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      min-height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(11, 34, 51, 0.12);
+      border-radius: 9px;
       cursor: pointer;
+      color: var(--ink-soft);
+      font-weight: 800;
+      font-family: inherit;
+      line-height: 1;
+      padding: 0;
       transition: all 0.2s var(--ease);
-      line-height: 1.2;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    .btn-zoom-btn:hover {
-      background: #e2e8f0;
-      transform: scale(1.08);
+    .btn-size-toggle .symbol-a {
+      display: block;
+      font-weight: 800;
+      line-height: 1;
     }
 
-    .btn-zoom-btn.active {
+    .btn-size-toggle .symbol-a.a-sm { font-size: 14px; }
+    .btn-size-toggle .symbol-a.a-md { font-size: 18px; }
+    .btn-size-toggle .symbol-a.a-lg { font-size: 22px; }
+
+    .btn-size-toggle:hover {
+      background: rgba(255, 255, 255, 0.95);
+      border-color: rgba(6, 182, 212, 0.5);
+      color: var(--ink);
+      transform: translateY(-1px);
+    }
+
+    .btn-size-toggle.active {
       background: linear-gradient(135deg, var(--pastel-cyan), #0891b2);
       color: #ffffff;
       border-color: transparent;
-      box-shadow: 0 2px 8px rgba(6, 182, 212, 0.4);
+      box-shadow: 0 2px 10px rgba(6, 182, 212, 0.45);
+    }
+
+    .btn-size-toggle:active {
+      transform: scale(0.92);
     }
 
     /* ================================================================
@@ -299,14 +326,25 @@
 
     /* Tajuk Utama "PerioDiabetes" (Gradien Biru Pastel ke Cyan + Neon Glowing Pulse) */
     .brand-title {
-      font-size: clamp(2.9rem, 6.2vw, 4.4rem);
+      font-size: clamp(2.6rem, 6vw, 4.4rem);
       font-weight: 800;
       line-height: 1.08;
       letter-spacing: -0.025em;
-      background: linear-gradient(135deg, #3730a3 0%, #2563eb 25%, #0891b2 58%, #06b6d4 82%, #22d3ee 100%);
+      background: linear-gradient(135deg, #1d4ed8 0%, #0284c7 35%, #06b6d4 70%, #22d3ee 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       margin: 8px 0 18px;
+      filter: drop-shadow(0 2px 12px rgba(6, 182, 212, 0.35));
+      animation: neonGlowPulse 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes neonGlowPulse {
+      0% {
+        filter: drop-shadow(0 2px 10px rgba(6, 182, 212, 0.28));
+      }
+      100% {
+        filter: drop-shadow(0 4px 22px rgba(6, 182, 212, 0.65)) drop-shadow(0 0 8px rgba(56, 189, 248, 0.45));
+      }
     }
 
     /* Slogan Dua Baris Berkedudukan Center dengan Warna Aksen Merah Jambu / Coral */
@@ -478,7 +516,11 @@
       position: relative;
       overflow: hidden;
       border-radius: var(--radius-lg);
+      word-break: break-word;
+      overflow-wrap: break-word;
+      min-width: 0;
       transition: transform 0.28s var(--ease), box-shadow 0.28s var(--ease), border-color 0.28s var(--ease);
+      -webkit-tap-highlight-color: transparent;
     }
 
     .topic-btn-card:hover,
@@ -489,14 +531,21 @@
       outline: none;
     }
 
+    .topic-btn-card:active {
+      transform: scale(0.97);
+      box-shadow: var(--shadow-sm);
+    }
+
     .card-top-tag {
-      font-size: 0.74rem;
+      font-size: clamp(0.68rem, 1.8vw, 0.74rem);
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       padding: 4px 12px;
       border-radius: var(--radius-full);
       margin-bottom: 16px;
+      text-align: center;
+      max-width: 100%;
     }
 
     .card-icon-circle {
@@ -507,9 +556,10 @@
       align-items: center;
       justify-content: center;
       font-size: 2.2rem;
-      margin-bottom: 16px;
+      margin: 0 auto 16px;
       box-shadow: var(--shadow-sm), var(--edge-reflection);
       transition: transform 0.3s var(--ease);
+      flex-shrink: 0;
     }
 
     .topic-btn-card:hover .card-icon-circle {
@@ -517,20 +567,27 @@
     }
 
     .card-topic-title {
-      font-size: 1.12rem;
+      font-size: clamp(1rem, 2.3vw, 1.15rem);
       font-weight: 800;
       color: var(--ink);
       line-height: 1.4;
       margin-bottom: 12px;
+      text-align: center;
+      word-break: break-word;
+      overflow-wrap: break-word;
+      hyphens: auto;
+      max-width: 100%;
     }
 
     .card-action-cue {
-      font-size: 0.88rem;
+      font-size: clamp(0.8rem, 1.8vw, 0.88rem);
       font-weight: 700;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 6px;
       margin-top: auto;
+      text-align: center;
     }
 
     /* Skema Warna Khas Tiap Kad Menu */
@@ -612,7 +669,7 @@
       color: #2563eb;
     }
 
-    /* Kad Khas 7 & 8 (Kuiz & Maklum Balas) */
+    /* Kad Khas 7, 8 & 9 (Kuiz, Maklum Balas & Bahan Rujukan) */
     .c-t7 .card-top-tag {
       background: #fef08a;
       color: #854d0e;
@@ -637,6 +694,19 @@
 
     .c-t8 .card-action-cue {
       color: #475569;
+    }
+
+    .c-t9 .card-top-tag {
+      background: #ccfbf1;
+      color: #0f766e;
+    }
+
+    .c-t9 .card-icon-circle {
+      background: linear-gradient(135deg, #ccfbf1, #99f6e4);
+    }
+
+    .c-t9 .card-action-cue {
+      color: #0f766e;
     }
 
     /* ================================================================
@@ -1316,8 +1386,17 @@
     }
 
     /* ================================================================
-       8. RESPENSIF MUDAH ALIH (1 Lajur Pada Telefon Pintar)
+       8. RESPENSIF & SUSUN ATUR GRID (Desktop Terpelihara & Mudah Alih 2-Lajur)
        ================================================================ */
+    /* Paparan Desktop / Komputer Riba: Kekalkan Grid Asal Sedia Ada */
+    @media (min-width: 769px) {
+      .topics-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 22px;
+      }
+    }
+
     @media (max-width: 880px) {
       .hero-glass-banner {
         grid-template-columns: 1fr;
@@ -1327,45 +1406,90 @@
       }
 
       .brand-title {
-        font-size: clamp(2.5rem, 8vw, 3.6rem);
+        font-size: clamp(2.3rem, 7.5vw, 3.4rem);
       }
     }
 
-    @media (max-width: 640px) {
-      :root {
-        --base-font: 18.5px;
-      }
-
+    /* Khusus Peranti Mudah Alih: Grid 2 Lajur Padat (Memotong Jarak Skrol 50%) */
+    @media (max-width: 768px) {
       .landing-wrapper {
-        padding: 18px 14px 70px;
+        padding: 16px 12px 60px;
       }
 
       .hero-glass-banner {
-        padding: 26px 16px;
+        padding: 24px 16px;
         border-radius: var(--radius-md);
-        margin-bottom: 34px;
+        margin-bottom: 26px;
       }
 
-      .subtopic-wrapper {
-        padding: 30px 16px 80px;
+      .menu-heading {
+        margin: 32px 0 18px;
+      }
+
+      .menu-heading h2 {
+        font-size: 1.25rem;
+      }
+
+      .menu-heading p {
+        font-size: 0.88rem;
       }
 
       .topics-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .topic-btn-card {
+        padding: 18px 10px;
+        min-height: 154px;
+        border-radius: var(--radius-md);
+      }
+
+      /* Kad ke-9: Bahan Rujukan merentang 2 lajur agar simetri */
+      .topic-btn-card.c-t9 {
+        grid-column: span 2;
+        padding: 20px 16px;
+      }
+
+      .card-top-tag {
+        font-size: clamp(0.58rem, 2.2vw, 0.68rem);
+        padding: 3px 8px;
+        margin-bottom: 10px;
+      }
+
+      .card-icon-circle {
+        width: 48px;
+        height: 48px;
+        font-size: 1.5rem;
+        margin: 0 auto 10px;
+      }
+
+      .card-topic-title {
+        font-size: clamp(0.82rem, 3.2vw, 0.96rem);
+        line-height: 1.32;
+        margin-bottom: 8px;
+      }
+
+      .card-action-cue {
+        font-size: clamp(0.7rem, 2.6vw, 0.78rem);
+      }
+
+      .subtopic-wrapper {
+        padding: 26px 14px 70px;
       }
 
       .content-box,
       .step-treatment-card {
-        padding: 22px 18px;
+        padding: 20px 16px;
       }
 
       .bpe-score-block {
-        grid-template-columns: 65px 1fr;
+        grid-template-columns: 60px 1fr;
       }
 
       .bpe-badge-col .score-digit {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
       }
 
       .bottom-nav-bar {
@@ -1379,6 +1503,23 @@
         width: 100%;
       }
     }
+
+    @media (max-width: 380px) {
+      .topics-grid {
+        gap: 8px;
+      }
+
+      .topic-btn-card {
+        padding: 14px 6px;
+        min-height: 146px;
+      }
+
+      .card-icon-circle {
+        width: 42px;
+        height: 42px;
+        font-size: 1.35rem;
+      }
+    }
   </style>
 </head>
 
@@ -1390,13 +1531,21 @@
   <main id="view-home" class="view-container active" aria-label="Halaman Utama PerioDiabetes">
     <div class="landing-wrapper">
 
-      <!-- Pelaras Saiz Fon (Sudut Atas Kanan - Tidak Mengikut Skrol) -->
+      <!-- Pelaras Saiz Tulisan (Sudut Atas Kanan - Tidak Mengikut Skrol) -->
       <div class="header-top-bar">
-        <aside class="accessibility-bar" role="toolbar" aria-label="Pelaras Saiz Fon">
-          <span class="accessibility-label">Saiz Fon:</span>
-          <button type="button" class="btn-zoom-btn" id="btn-zoom-dec" title="Kecilkan Saiz Fon (A-)">A−</button>
-          <button type="button" class="btn-zoom-btn active" id="btn-zoom-norm" title="Saiz Normal (A)">A</button>
-          <button type="button" class="btn-zoom-btn" id="btn-zoom-inc" title="Besarkan Saiz Fon (A+)">A+</button>
+        <aside class="size-control-glass" role="region" aria-label="Pelaras Saiz Tulisan">
+          <span class="size-control-label">Saiz Tulisan</span>
+          <div class="size-btn-group" role="group" aria-label="Pilihan Saiz Tulisan">
+            <button type="button" class="btn-size-toggle active" data-size="14" id="btn-size-14" aria-pressed="true" aria-label="Saiz Tulisan Asas (14px)" title="Saiz Asas (14px)">
+              <span class="symbol-a a-sm">A</span>
+            </button>
+            <button type="button" class="btn-size-toggle" data-size="16" id="btn-size-16" aria-pressed="false" aria-label="Saiz Tulisan Besar (16px)" title="Saiz Besar (16px)">
+              <span class="symbol-a a-md">A</span>
+            </button>
+            <button type="button" class="btn-size-toggle" data-size="18" id="btn-size-18" aria-pressed="false" aria-label="Saiz Tulisan Sangat Besar (18px)" title="Saiz Sangat Besar (18px)">
+              <span class="symbol-a a-lg">A</span>
+            </button>
+          </div>
         </aside>
       </div>
 
@@ -1515,6 +1664,14 @@
           <span class="card-action-cue">Kongsi Pendapat →</span>
         </a>
 
+        <!-- Kad 9: Bahan Rujukan (Kad Khas Tambahan) -->
+        <a href="#/bahan-rujukan" class="glass-card topic-btn-card c-t9" data-route="bahan-rujukan">
+          <span class="card-top-tag">Rujukan 09</span>
+          <div class="card-icon-circle">📚</div>
+          <h3 class="card-topic-title">Bahan Rujukan</h3>
+          <span class="card-action-cue">Lihat Sumber →</span>
+        </a>
+
       </nav>
 
       <footer class="site-footer">
@@ -1619,8 +1776,7 @@
 
       <div class="content-box">
         <p style="font-size: 1.05rem; font-weight: 600;">
-          Sains perubatan dan Kementerian Kesihatan Malaysia (KKM) mengiktiraf penyakit gusi sebagai komplikasi utama
-          ke-6 bagi penyakit diabetes.
+          Sains perubatan dan Kementerian Kesihatan Malaysia (KKM) mengiktiraf penyakit gusi sebagai komplikasi utama ke-6 bagi penyakit diabetes.
         </p>
       </div>
 
@@ -2207,6 +2363,49 @@
   </section>
 
   <!-- ================================================================
+       9. BAHAN RUJUKAN (KAD KHAS)
+       ================================================================ -->
+  <section id="view-bahanrujukan" class="view-container" aria-label="Bahan Rujukan">
+    <div class="subtopic-wrapper">
+      <a href="#/" class="btn-back-home">← Kembali ke Menu Utama</a>
+
+      <header class="subtopic-header">
+        <div class="subtopic-icon-hero" style="background: linear-gradient(135deg, #ccfbf1, #99f6e4);">📚</div>
+        <h1>Bahan Rujukan</h1>
+        <div class="subtopic-accent-bar" style="background: #0f766e;"></div>
+      </header>
+
+      <article class="content-box">
+        <h2>Garis Panduan Klinikal &amp; Sumber Rasmi</h2>
+        <p>Semua maklumat perubatan dan kesihatan pergigian di dalam portal ini dirujuk daripada dokumen rasmi Kementerian Kesihatan Malaysia (KKM) serta panduan klinikal yang diiktiraf:</p>
+
+        <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 18px;">
+          <div style="background: rgba(255, 255, 255, 0.72); border: 1px solid rgba(255, 255, 255, 0.9); border-radius: var(--radius-sm); padding: 18px 20px; box-shadow: var(--shadow-sm);">
+            <strong style="color: var(--ink); display: block; font-size: 1.05rem; margin-bottom: 4px;">1. Clinical Practice Guidelines (CPG): Management of Type 2 Diabetes Mellitus (6th Edition)</strong>
+            <span style="color: var(--ink-muted); font-size: 0.92rem;">Kementerian Kesihatan Malaysia (KKM)</span>
+          </div>
+          <div style="background: rgba(255, 255, 255, 0.72); border: 1px solid rgba(255, 255, 255, 0.9); border-radius: var(--radius-sm); padding: 18px 20px; box-shadow: var(--shadow-sm);">
+            <strong style="color: var(--ink); display: block; font-size: 1.05rem; margin-bottom: 4px;">2. Clinical Practice Guidelines (CPG): Management of Periodontal Conditions</strong>
+            <span style="color: var(--ink-muted); font-size: 0.92rem;">Bahagian Kesihatan Pergigian, Kementerian Kesihatan Malaysia (KKM)</span>
+          </div>
+          <div style="background: rgba(255, 255, 255, 0.72); border: 1px solid rgba(255, 255, 255, 0.9); border-radius: var(--radius-sm); padding: 18px 20px; box-shadow: var(--shadow-sm);">
+            <strong style="color: var(--ink); display: block; font-size: 1.05rem; margin-bottom: 4px;">3. National Health and Morbidity Survey (NHMS)</strong>
+            <span style="color: var(--ink-muted); font-size: 0.92rem;">Institut Kesihatan Umum (IKU), Institut Kesihatan Negara, Kementerian Kesihatan Malaysia</span>
+          </div>
+          <div style="background: rgba(255, 255, 255, 0.72); border: 1px solid rgba(255, 255, 255, 0.9); border-radius: var(--radius-sm); padding: 18px 20px; box-shadow: var(--shadow-sm);">
+            <strong style="color: var(--ink); display: block; font-size: 1.05rem; margin-bottom: 4px;">4. Portal Rasmi Program Kesihatan Pergigian KKM</strong>
+            <span style="color: var(--ink-muted); font-size: 0.92rem;">Kementerian Kesihatan Malaysia · Bahagian Kesihatan Pergigian</span>
+          </div>
+        </div>
+      </article>
+
+      <nav class="bottom-nav-bar" style="justify-content: center;">
+        <a href="#/" class="btn-back-home">← Kembali ke Menu Utama</a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ================================================================
        JAVASCRIPT: SPA ROUTER & AKSESIBILITI
        ================================================================ -->
   <script>
@@ -2214,62 +2413,46 @@
       'use strict';
 
       /* ----------------------------------------------------------------
-         1. KAWALAN SAIZ FON (A- / A / A+) - PERSIST KE LOCALSTORAGE
+         1. PELARAS "SAIZ TULISAN" (14px / 16px / 18px)
          ---------------------------------------------------------------- */
       const root = document.documentElement;
-      const btnDec = document.getElementById('btn-zoom-dec');
-      const btnNorm = document.getElementById('btn-zoom-norm');
-      const btnInc = document.getElementById('btn-zoom-inc');
-      const ZOOM_STORAGE_KEY = 'perio_zoom_scale';
-      const ZOOM_LEVELS = [1.0, 1.18, 1.36];
-      let currentZoomIdx = 0;
+      const sizeButtons = document.querySelectorAll('.btn-size-toggle');
+      const FONT_STORAGE_KEY = 'perio_font_size';
+      const VALID_SIZES = ['14', '16', '18'];
 
-      function updateZoomUI(scale) {
-        root.style.setProperty('--scale', scale);
-        if (btnDec) {
-          btnDec.classList.toggle('active', currentZoomIdx === 0);
-          btnDec.setAttribute('aria-pressed', currentZoomIdx === 0 ? 'true' : 'false');
-        }
-        if (btnNorm) {
-          btnNorm.classList.toggle('active', currentZoomIdx === 0);
-          btnNorm.setAttribute('aria-pressed', currentZoomIdx === 0 ? 'true' : 'false');
-        }
-        if (btnInc) {
-          btnInc.classList.toggle('active', currentZoomIdx > 0);
-          btnInc.setAttribute('aria-pressed', currentZoomIdx > 0 ? 'true' : 'false');
-        }
+      function setBaseFontSize(size) {
+        const targetSize = VALID_SIZES.includes(String(size)) ? String(size) : '14';
+        root.style.setProperty('--base-font', targetSize + 'px');
+
+        sizeButtons.forEach(btn => {
+          const isActive = btn.getAttribute('data-size') === targetSize;
+          btn.classList.toggle('active', isActive);
+          btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+        });
+
         try {
-          localStorage.setItem(ZOOM_STORAGE_KEY, scale);
+          localStorage.setItem(FONT_STORAGE_KEY, targetSize);
         } catch (e) { }
       }
 
-      function setZoomIndex(idx) {
-        if (idx < 0) idx = 0;
-        if (idx >= ZOOM_LEVELS.length) idx = ZOOM_LEVELS.length - 1;
-        currentZoomIdx = idx;
-        updateZoomUI(ZOOM_LEVELS[currentZoomIdx]);
-      }
-
-      // Muatkan skala fon simpanan terdahulu
+      // Muatkan pilihan saiz simpanan terdahulu (laluan: 14px)
       try {
-        const savedScale = parseFloat(localStorage.getItem(ZOOM_STORAGE_KEY));
-        if (savedScale) {
-          const foundIdx = ZOOM_LEVELS.findIndex(v => Math.abs(v - savedScale) < 0.04);
-          if (foundIdx !== -1) {
-            setZoomIndex(foundIdx);
-          }
+        const savedSize = localStorage.getItem(FONT_STORAGE_KEY);
+        if (savedSize && VALID_SIZES.includes(savedSize)) {
+          setBaseFontSize(savedSize);
+        } else {
+          setBaseFontSize('14');
         }
-      } catch (e) { }
+      } catch (e) {
+        setBaseFontSize('14');
+      }
 
-      if (btnDec) {
-        btnDec.addEventListener('click', () => setZoomIndex(currentZoomIdx - 1));
-      }
-      if (btnNorm) {
-        btnNorm.addEventListener('click', () => setZoomIndex(0));
-      }
-      if (btnInc) {
-        btnInc.addEventListener('click', () => setZoomIndex(currentZoomIdx + 1));
-      }
+      sizeButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const chosenSize = btn.getAttribute('data-size');
+          setBaseFontSize(chosenSize);
+        });
+      });
 
       /* ----------------------------------------------------------------
          2. SPA HASH ROUTER
@@ -2283,7 +2466,8 @@
         '/rujukan': 'view-rujukan',
         '/rawatan': 'view-rawatan',
         '/kuiz': 'view-kuiz',
-        '/maklumbalas': 'view-maklumbalas'
+        '/maklumbalas': 'view-maklumbalas',
+        '/bahan-rujukan': 'view-bahanrujukan'
       };
 
       let lastActiveLinkHref = null;
