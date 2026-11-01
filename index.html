@@ -1529,6 +1529,409 @@
         font-size: 1.35rem;
       }
     }
+
+    /* ================================================================
+       9. SESI KUIZ INTERAKTIF — CSS
+       ================================================================ */
+
+    /* Butang pilihan tahap */
+    .kuiz-level-btns {
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .kuiz-level-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 28px 30px;
+      border: 2px solid transparent;
+      border-radius: var(--radius-lg);
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      box-shadow: var(--shadow-md), var(--edge-reflection);
+      cursor: pointer;
+      min-width: 140px;
+      transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), border-color 0.25s var(--ease), background 0.25s var(--ease);
+      -webkit-tap-highlight-color: transparent;
+      font-family: inherit;
+    }
+
+    .kuiz-level-btn:hover {
+      transform: translateY(-4px) scale(1.04);
+      box-shadow: var(--shadow-lg), var(--edge-reflection);
+    }
+
+    .kuiz-level-btn:active {
+      transform: scale(0.97);
+    }
+
+    .lvl-icon {
+      font-size: 2.4rem;
+    }
+
+    .lvl-name {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .lvl-desc {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--ink-muted);
+    }
+
+    .lvl-senang:hover {
+      border-color: #10b981;
+      background: rgba(209, 250, 229, 0.55);
+    }
+
+    .lvl-sederhana:hover {
+      border-color: #f59e0b;
+      background: rgba(254, 243, 199, 0.55);
+    }
+
+    .lvl-susah:hover {
+      border-color: #ef4444;
+      background: rgba(254, 226, 226, 0.55);
+    }
+
+    /* Progress */
+    .kuiz-progress-wrap {
+      margin-bottom: 20px;
+    }
+
+    .kuiz-progress-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .kuiz-tahap-badge {
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .badge-senang {
+      background: #d1fae5;
+      color: #065f46;
+    }
+
+    .badge-sederhana {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .badge-susah {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .kuiz-progress-bar-track {
+      width: 100%;
+      height: 8px;
+      background: rgba(11, 34, 51, 0.08);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+    }
+
+    .kuiz-progress-bar-fill {
+      height: 100%;
+      border-radius: var(--radius-full);
+      background: linear-gradient(90deg, #0891b2, #10b981);
+      transition: width 0.5s var(--ease);
+    }
+
+    /* Kad soalan */
+    .kuiz-soalan-card {
+      padding: 32px;
+      transition: none;
+    }
+
+    .kuiz-soalan-text {
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    /* Pilihan jawapan */
+    .kuiz-pilihan-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .kuiz-pilihan-btn {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 20px;
+      border: 2px solid rgba(11, 34, 51, 0.1);
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.97rem;
+      font-weight: 600;
+      color: var(--ink);
+      text-align: left;
+      transition: transform 0.2s var(--ease), border-color 0.2s var(--ease), background 0.2s var(--ease);
+      -webkit-tap-highlight-color: transparent;
+      line-height: 1.5;
+    }
+
+    .kuiz-pilihan-btn:hover:not(:disabled) {
+      transform: translateX(4px);
+      border-color: #06b6d4;
+      background: rgba(224, 249, 252, 0.85);
+    }
+
+    .kuiz-pilihan-btn:active:not(:disabled) {
+      transform: scale(0.98);
+    }
+
+    .kuiz-pilihan-btn .pilihan-huruf {
+      min-width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(11, 34, 51, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 800;
+      flex-shrink: 0;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .kuiz-pilihan-btn.betul {
+      border-color: #10b981;
+      background: rgba(209, 250, 229, 0.9);
+    }
+
+    .kuiz-pilihan-btn.betul .pilihan-huruf {
+      background: #10b981;
+      color: #fff;
+    }
+
+    .kuiz-pilihan-btn.salah {
+      border-color: #ef4444;
+      background: rgba(254, 226, 226, 0.9);
+    }
+
+    .kuiz-pilihan-btn.salah .pilihan-huruf {
+      background: #ef4444;
+      color: #fff;
+    }
+
+    .kuiz-pilihan-btn.jawapan-betul-tunjuk {
+      border-color: #10b981;
+      background: rgba(209, 250, 229, 0.6);
+    }
+
+    .kuiz-pilihan-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.78;
+    }
+
+    /* Maklum balas */
+    .kuiz-feedback {
+      margin-top: 20px;
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      animation: fadeIn 0.3s var(--ease);
+    }
+
+    .kuiz-feedback.fb-betul {
+      background: rgba(209, 250, 229, 0.85);
+      border: 1.5px solid #10b981;
+    }
+
+    .kuiz-feedback.fb-salah {
+      background: rgba(254, 226, 226, 0.85);
+      border: 1.5px solid #ef4444;
+    }
+
+    .kuiz-feedback-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .fb-betul .kuiz-feedback-title {
+      color: #065f46;
+    }
+
+    .fb-salah .kuiz-feedback-title {
+      color: #991b1b;
+    }
+
+    .kuiz-feedback-body {
+      font-size: 0.93rem;
+      font-weight: 600;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+
+    .kuiz-jawapan-betul-label {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 3px 12px;
+      background: #10b981;
+      color: #fff;
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    /* Butang seterusnya */
+    .kuiz-btn-next {
+      background: linear-gradient(135deg, #0891b2, #10b981);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-full);
+      padding: 13px 36px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(8, 145, 178, 0.3);
+      transition: all 0.24s var(--ease);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .kuiz-btn-next:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(8, 145, 178, 0.4);
+    }
+
+    /* Animasi tepukan */
+    .kuiz-clap-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .kuiz-clap-emojis {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .clap-emoji {
+      position: absolute;
+      font-size: 2.8rem;
+      animation: clapFly 1.2s ease-out forwards;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    @keyframes clapFly {
+      0% {
+        opacity: 1;
+        transform: translateY(0) scale(0.6) rotate(0deg);
+      }
+
+      50% {
+        opacity: 1;
+        transform: translateY(-120px) scale(1.2) rotate(15deg);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(-220px) scale(0.8) rotate(-10deg);
+      }
+    }
+
+    /* Skrin keputusan */
+    .kuiz-btn-cuba {
+      background: linear-gradient(135deg, #0891b2, #10b981);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-full);
+      padding: 13px 30px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(8, 145, 178, 0.3);
+      transition: all 0.24s var(--ease);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .kuiz-btn-cuba:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(8, 145, 178, 0.4);
+    }
+
+    .kuiz-btn-tukar {
+      background: rgba(255, 255, 255, 0.78);
+      color: var(--ink-soft);
+      border: 2px solid rgba(11, 34, 51, 0.12);
+      border-radius: var(--radius-full);
+      padding: 12px 28px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: all 0.24s var(--ease);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .kuiz-btn-tukar:hover {
+      background: #fff;
+      color: var(--ink);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    @media (max-width: 560px) {
+      .kuiz-level-btns {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .kuiz-level-btn {
+        width: 100%;
+        max-width: 320px;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 16px;
+      }
+
+      .lvl-icon {
+        font-size: 2rem;
+      }
+
+      .kuiz-soalan-card {
+        padding: 22px 18px;
+      }
+
+      .kuiz-soalan-text {
+        font-size: 1rem;
+      }
+    }
   </style>
 </head>
 
@@ -2329,22 +2732,90 @@
        7. SESI KUIZ (KAD KHAS / PLACEHOLDER)
        ================================================================ -->
   <section id="view-kuiz" class="view-container" aria-label="Sesi Kuiz Interaktif">
-    <div class="subtopic-wrapper">
+    <div class="subtopic-wrapper" style="max-width:860px;">
       <a href="#/" class="btn-back-home">← Kembali ke Menu Utama</a>
 
       <header class="subtopic-header">
         <div class="subtopic-icon-hero" style="background: linear-gradient(135deg, #fef9c3, #fde047);">🎯</div>
         <h1>Sesi Kuiz Interaktif</h1>
         <div class="subtopic-accent-bar" style="background: #eab308;"></div>
+        <p style="color:var(--ink-muted);font-size:1rem;margin-top:10px;">Uji pengetahuan anda tentang hubungan Diabetes
+          dan Penyakit Gusi</p>
       </header>
 
-      <article class="content-box placeholder-box">
-        <span class="placeholder-icon">🧠</span>
-        <div><span class="placeholder-badge">Akan Datang</span></div>
-        <p>Sesi kuiz interaktif akan disediakan di sini tidak lama lagi.</p>
-      </article>
+      <!-- ═══ SKRIN PEMILIHAN TAHAP ═══ -->
+      <div id="kuiz-screen-level" class="kuiz-screen">
+        <div class="content-box" style="text-align:center;padding:40px 30px;">
+          <p style="font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:8px;">Pilih Tahap Kesukaran</p>
+          <p style="font-size:0.92rem;color:var(--ink-muted);margin-bottom:32px;">5 soalan rawak akan dipaparkan
+            daripada 15 soalan dalam setiap tahap</p>
+          <div class="kuiz-level-btns">
+            <button class="kuiz-level-btn lvl-senang" onclick="kuizMula('senang')">
+              <span class="lvl-icon">🌿</span>
+              <span class="lvl-name">Senang</span>
+            </button>
+            <button class="kuiz-level-btn lvl-sederhana" onclick="kuizMula('sederhana')">
+              <span class="lvl-icon">⚡</span>
+              <span class="lvl-name">Sederhana</span>
+            </button>
+            <button class="kuiz-level-btn lvl-susah" onclick="kuizMula('susah')">
+              <span class="lvl-icon">🔥</span>
+              <span class="lvl-name">Susah</span>
+            </button>
+          </div>
+        </div>
+      </div>
 
-      <nav class="bottom-nav-bar" style="justify-content: center;">
+      <!-- ═══ SKRIN SOALAN ═══ -->
+      <div id="kuiz-screen-soalan" class="kuiz-screen" style="display:none;">
+        <!-- Progress bar -->
+        <div class="kuiz-progress-wrap">
+          <div class="kuiz-progress-info">
+            <span id="kuiz-tahap-badge" class="kuiz-tahap-badge"></span>
+            <span id="kuiz-prog-text" style="font-size:0.88rem;font-weight:700;color:var(--ink-muted);"></span>
+          </div>
+          <div class="kuiz-progress-bar-track">
+            <div id="kuiz-progress-bar" class="kuiz-progress-bar-fill" style="width:0%"></div>
+          </div>
+        </div>
+
+        <!-- Soalan card -->
+        <div id="kuiz-soalan-card" class="content-box kuiz-soalan-card">
+          <p id="kuiz-soalan-text" class="kuiz-soalan-text"></p>
+          <div id="kuiz-pilihan-wrap" class="kuiz-pilihan-wrap"></div>
+
+          <!-- Maklum balas (tersembunyi pada mulanya) -->
+          <div id="kuiz-feedback" class="kuiz-feedback" style="display:none;">
+            <div id="kuiz-feedback-inner"></div>
+          </div>
+
+          <!-- Butang seterusnya -->
+          <div id="kuiz-next-wrap" style="display:none;text-align:center;margin-top:22px;">
+            <button class="kuiz-btn-next" onclick="kuizSoalanSeterusnya()">Seterusnya →</button>
+          </div>
+        </div>
+
+        <!-- Animasi tepukan -->
+        <div id="kuiz-clap-overlay" class="kuiz-clap-overlay" style="display:none;" aria-hidden="true">
+          <div class="kuiz-clap-emojis" id="kuiz-clap-emojis"></div>
+        </div>
+      </div>
+
+      <!-- ═══ SKRIN KEPUTUSAN ═══ -->
+      <div id="kuiz-screen-keputusan" class="kuiz-screen" style="display:none;">
+        <div class="content-box" style="text-align:center;padding:48px 32px;">
+          <div id="kuiz-result-emoji" style="font-size:4rem;margin-bottom:16px;"></div>
+          <h2 id="kuiz-result-title" style="font-size:1.6rem;font-weight:800;color:var(--ink);margin-bottom:8px;"></h2>
+          <p id="kuiz-result-markah" style="font-size:2.2rem;font-weight:800;color:#0891b2;margin:16px 0 8px;"></p>
+          <p id="kuiz-result-msg" style="font-size:1rem;color:var(--ink-soft);margin-bottom:32px;"></p>
+          <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+            <button class="kuiz-btn-cuba" onclick="kuizUlang()">🔄 Cuba Lagi</button>
+            <button class="kuiz-btn-tukar" onclick="kuizTukarTahap()">🎯 Tukar Tahap</button>
+          </div>
+        </div>
+      </div>
+
+      <nav class="bottom-nav-bar" style="justify-content: center;margin-top:32px;">
         <a href="#/" class="btn-back-home">← Kembali ke Menu Utama</a>
       </nav>
     </div>
@@ -2541,6 +3012,768 @@
 
       window.addEventListener('hashchange', handleRoute);
       handleRoute(); // Muat mula router
+    })();
+
+    /* ================================================================
+       SESI KUIZ INTERAKTIF — JAVASCRIPT ENGINE
+       ================================================================ */
+    (function () {
+
+      /* ── BANK SOALAN ─────────────────────────────────────────────── */
+      const BANK_SOALAN = {
+
+        senang: [
+          {
+            s: "Apakah yang dimaksudkan dengan Diabetes Jenis 2 (T2DM)?",
+            p: ["Penyakit yang menyebabkan gusi menjadi bengkak.", "Penyakit kronik yang menyebabkan paras gula dalam darah meningkat.", "Penyakit yang hanya menjejaskan buah pinggang.", "Penyakit yang menyebabkan badan menghasilkan terlalu banyak insulin."],
+            j: 1,
+            a: [
+              "A – Salah. Gusi bengkak merupakan salah satu tanda penyakit gusi.",
+              "B – Betul. T2DM menyebabkan paras gula darah meningkat apabila badan tidak menggunakan insulin dengan berkesan atau tidak menghasilkan insulin yang mencukupi.",
+              "C – Salah. Diabetes boleh menjejaskan mata, buah pinggang, jantung dan kesihatan mulut.",
+              "D – Salah. Diabetes berlaku apabila insulin tidak digunakan dengan berkesan atau tidak dihasilkan secukupnya."
+            ]
+          },
+          {
+            s: "Apakah punca utama penyakit gusi berdasarkan teks?",
+            p: ["Pengumpulan plak bakteria.", "Kekurangan penghasilan insulin.", "Pengambilan ubat diabetes.", "Kekurangan aliran darah ke jantung."],
+            j: 0,
+            a: [
+              "A – Betul. Penyakit gusi berpunca daripada jangkitan akibat pengumpulan plak bakteria.",
+              "B – Salah. Kekurangan insulin berkaitan dengan diabetes.",
+              "C – Salah. Pengambilan ubat diabetes tidak dinyatakan sebagai punca penyakit gusi.",
+              "D – Salah. Teks menyatakan diabetes menjejaskan aliran darah ke tisu gusi."
+            ]
+          },
+          {
+            s: "Apakah tanda utama gingivitis?",
+            p: ["Gigi menjadi longgar dan tercabut.", "Gusi merah, bengkak dan mudah berdarah.", "Poket gusi melebihi 5.5 mm.", "Tulang penyokong gigi rosak."],
+            j: 1,
+            a: [
+              "A – Salah. Gigi longgar dan tercabut boleh berlaku dalam periodontitis yang lebih serius.",
+              "B – Betul. Gingivitis ialah peringkat awal yang menyebabkan gusi merah, bengkak dan mudah berdarah.",
+              "C – Salah. Poket gusi melebihi 5.5 mm menunjukkan skor BPE 4.",
+              "D – Salah. Gingivitis merupakan peringkat awal penyakit gusi."
+            ]
+          },
+          {
+            s: "Apakah nama alat yang digunakan untuk pemeriksaan BPE?",
+            p: ["Berus interdental.", "Flos gigi.", "Prob periodontal.", "Berus gigi berbulu lembut."],
+            j: 2,
+            a: [
+              "A – Salah. Berus interdental digunakan untuk membersihkan celah gigi.",
+              "B – Salah. Flos digunakan untuk membuang plak di celah gigi.",
+              "C – Betul. Prob periodontal digunakan untuk memeriksa gusi dan mengukur kedalaman ruang antara gigi dengan gusi.",
+              "D – Salah. Berus gigi digunakan untuk penjagaan kebersihan mulut harian."
+            ]
+          },
+          {
+            s: "Berapa kali pesakit diabetes disarankan menjalani pemeriksaan gusi dalam setahun?",
+            p: ["Sekali setahun.", "Dua kali setahun.", "Setiap tiga bulan.", "Hanya apabila gusi berdarah."],
+            j: 0,
+            a: [
+              "A – Betul. Pesakit diabetes disarankan menjalani pemeriksaan gusi sekurang-kurangnya sekali setahun.",
+              "B – Salah. Dua kali setahun ialah kekerapan pemeriksaan gigi berkala yang dinyatakan dalam langkah penjagaan kendiri.",
+              "C – Salah. Lawatan susulan selepas rawatan periodontal lazimnya setiap 3 hingga 12 bulan.",
+              "D – Salah. Pemeriksaan gusi disarankan walaupun tiada gejala."
+            ]
+          },
+          {
+            s: "Apakah nama peringkat awal penyakit gusi?",
+            p: ["Periodontitis.", "Gingivitis.", "Diabetes.", "Keradangan sistemik."],
+            j: 1,
+            a: [
+              "A – Salah. Periodontitis ialah peringkat penyakit gusi yang lebih serius.",
+              "B – Betul. Gingivitis merupakan peringkat awal penyakit gusi.",
+              "C – Salah. Diabetes ialah penyakit kronik yang berkaitan dengan paras gula darah.",
+              "D – Salah. Keradangan sistemik bukan nama peringkat awal penyakit gusi."
+            ]
+          },
+          {
+            s: "Apakah komplikasi yang boleh berlaku jika periodontitis menjadi semakin serius?",
+            p: ["Gigi menjadi lebih kuat.", "Gigi menjadi longgar atau tercabut.", "Gusi menjadi semakin sihat.", "Paras gula darah menjadi normal."],
+            j: 1,
+            a: [
+              "A – Salah. Periodontitis merosakkan tisu dan tulang penyokong gigi.",
+              "B – Betul. Kerosakan tisu dan tulang penyokong boleh menyebabkan gigi longgar atau tercabut.",
+              "C – Salah. Periodontitis menyebabkan kerosakan pada gusi.",
+              "D – Salah. Tiada maklumat bahawa periodontitis menormalkan gula darah."
+            ]
+          },
+          {
+            s: "Apakah maksud BPE?",
+            p: ["Basic Periodontal Examination.", "Blood Periodontal Evaluation.", "Basic Patient Examination.", "Bacterial Periodontal Examination."],
+            j: 0,
+            a: [
+              "A – Betul. BPE ialah singkatan bagi Basic Periodontal Examination.",
+              "B – Salah. Bukan nama pemeriksaan yang dinyatakan.",
+              "C – Salah. Bukan nama pemeriksaan yang dinyatakan.",
+              "D – Salah. Bukan nama pemeriksaan yang dinyatakan."
+            ]
+          },
+          {
+            s: "Apakah skor BPE yang menunjukkan tiada tanda penyakit periodontal berdasarkan saringan?",
+            p: ["Skor 1.", "Skor 2.", "Skor 0.", "Skor 3."],
+            j: 2,
+            a: [
+              "A – Salah. Skor 1 menunjukkan gusi berdarah semasa pemeriksaan.",
+              "B – Salah. Skor 2 menunjukkan karang gigi atau faktor penahan plak.",
+              "C – Betul. Skor 0 menunjukkan tiada tanda penyakit periodontal berdasarkan saringan.",
+              "D – Salah. Skor 3 menunjukkan poket gusi sedalam 3.5–5.5 mm."
+            ]
+          },
+          {
+            s: "Apakah keadaan yang ditunjukkan oleh skor BPE 1?",
+            p: ["Poket gusi melebihi 5.5 mm.", "Gusi berdarah semasa pemeriksaan.", "Tiada tanda penyakit periodontal.", "Karang gigi dikesan."],
+            j: 1,
+            a: [
+              "A – Salah. Keadaan ini menunjukkan skor 4.",
+              "B – Betul. Skor 1 menunjukkan gusi berdarah semasa pemeriksaan.",
+              "C – Salah. Keadaan ini menunjukkan skor 0.",
+              "D – Salah. Karang gigi atau faktor penahan plak menunjukkan skor 2."
+            ]
+          },
+          {
+            s: "Apakah keadaan yang menunjukkan skor BPE 4?",
+            p: ["Gusi berdarah.", "Karang gigi dikesan.", "Poket gusi melebihi 5.5 mm.", "Poket gusi sedalam 3.5–5.5 mm."],
+            j: 2,
+            a: [
+              "A – Salah. Gusi berdarah menunjukkan skor 1.",
+              "B – Salah. Karang gigi menunjukkan skor 2.",
+              "C – Betul. Skor 4 menunjukkan poket gusi melebihi 5.5 mm.",
+              "D – Salah. Keadaan ini menunjukkan skor 3."
+            ]
+          },
+          {
+            s: "Berapa kali sehari pesakit disarankan memberus gigi?",
+            p: ["Sekali sehari.", "Dua kali sehari.", "Tiga kali seminggu.", "Sekali seminggu."],
+            j: 1,
+            a: [
+              "A – Salah. Tidak memenuhi cadangan penjagaan kendiri dalam teks.",
+              "B – Betul. Pesakit disarankan memberus gigi dua kali sehari.",
+              "C – Salah. Memberus gigi perlu dilakukan setiap hari.",
+              "D – Salah. Memberus gigi sekali seminggu tidak mencukupi."
+            ]
+          },
+          {
+            s: "Apakah alat yang boleh digunakan untuk membersihkan celah gigi setiap hari?",
+            p: ["Prob periodontal sahaja.", "Flos atau berus interdental.", "Berus gigi palsu sahaja.", "Kumuran antiseptik sahaja."],
+            j: 1,
+            a: [
+              "A – Salah. Prob periodontal digunakan untuk pemeriksaan gusi.",
+              "B – Betul. Flos atau berus interdental membantu membuang plak di celah gigi.",
+              "C – Salah. Berus gigi palsu digunakan untuk membersihkan gigi palsu.",
+              "D – Salah. Kumuran antiseptik bukan pengganti pembersihan celah gigi."
+            ]
+          },
+          {
+            s: "Berapa lama pesakit disarankan memberus gigi setiap kali?",
+            p: ["Sekurang-kurangnya 1 minit.", "Sekurang-kurangnya 2 minit.", "Sekurang-kurangnya 3 minit.", "Sekurang-kurangnya 5 minit."],
+            j: 2,
+            a: [
+              "A – Salah. Tempoh ini lebih pendek daripada cadangan teks.",
+              "B – Salah. Teks menetapkan sekurang-kurangnya 3 minit.",
+              "C – Betul. Pesakit disarankan memberus gigi sekurang-kurangnya 3 minit.",
+              "D – Salah. Teks tidak menetapkan tempoh minimum 5 minit."
+            ]
+          },
+          {
+            s: "Berapa peringkat utama rawatan penyakit gusi yang dinyatakan dalam teks?",
+            p: ["Dua langkah.", "Tiga langkah.", "Empat langkah.", "Lima langkah."],
+            j: 2,
+            a: [
+              "A – Salah. Rawatan bukan dua langkah sahaja.",
+              "B – Salah. Rawatan bukan tiga langkah sahaja.",
+              "C – Betul. Rawatan penyakit gusi dibahagikan kepada empat langkah utama.",
+              "D – Salah. Teks menyatakan empat langkah utama."
+            ]
+          }
+        ],
+
+        sederhana: [
+          {
+            s: "Mengapakah pesakit diabetes lebih mudah mengalami penyakit gusi?",
+            p: ["Paras gula darah tinggi menguatkan sistem imun.", "Paras gula darah tinggi meningkatkan glukosa dalam air liur dan menggalakkan pembiakan bakteria.", "Diabetes meningkatkan penghasilan tulang penyokong gigi.", "Diabetes mempercepatkan penyembuhan tisu gusi."],
+            j: 1,
+            a: [
+              "A – Salah. Paras gula darah tinggi melemahkan sistem imun.",
+              "B – Betul. Glukosa dalam air liur yang meningkat menggalakkan pembiakan bakteria penyebab penyakit gusi.",
+              "C – Salah. Diabetes meningkatkan risiko kehilangan tulang penyokong gigi.",
+              "D – Salah. Diabetes boleh melambatkan penyembuhan tisu gusi."
+            ]
+          },
+          {
+            s: "Bagaimanakah penyakit gusi boleh menyukarkan kawalan diabetes?",
+            p: ["Mengurangkan keradangan dalam badan.", "Meningkatkan keupayaan badan menggunakan insulin.", "Keradangan menyebabkan badan sukar menggunakan insulin dengan berkesan.", "Mengurangkan paras gula dalam darah."],
+            j: 2,
+            a: [
+              "A – Salah. Jangkitan gusi menyebabkan keradangan berterusan.",
+              "B – Salah. Keradangan menyukarkan penggunaan insulin.",
+              "C – Betul. Keradangan menyebabkan badan sukar menggunakan insulin dengan berkesan lalu meningkatkan gula darah.",
+              "D – Salah. Keadaan ini boleh melonjakkan paras gula darah."
+            ]
+          },
+          {
+            s: "Seorang pesakit mendapat skor BPE 2. Apakah rawatan yang biasanya diperlukan?",
+            p: ["Pembedahan gusi.", "Penskaleran untuk membuang karang gigi dan plak.", "Rujukan terus kepada pakar periodontik.", "Tiada rawatan diperlukan."],
+            j: 1,
+            a: [
+              "A – Salah. Pembedahan gusi merupakan rawatan lanjutan jika diperlukan.",
+              "B – Betul. Skor 2 menunjukkan karang gigi atau faktor penahan plak dan biasanya memerlukan penskaleran.",
+              "C – Salah. Skor 2 tidak secara automatik memerlukan rujukan pakar.",
+              "D – Salah. Karang gigi dan faktor penahan plak perlu ditangani."
+            ]
+          },
+          {
+            s: "Seorang pesakit diabetes belum menjalani saringan gusi. Apakah tindakan Klinik Kesihatan?",
+            p: ["Memberikan rujukan ke Klinik Pergigian melalui Buku Rekod NCD atau slip rujukan berkaitan.", "Terus melakukan pembedahan gusi.", "Memberikan antibiotik kepada semua pesakit.", "Menunggu sehingga pesakit mengalami sakit gigi."],
+            j: 0,
+            a: [
+              "A – Betul. Pesakit boleh diberikan rujukan ke Klinik Pergigian melalui Buku Rekod NCD atau slip berkaitan seperti Slip 1/BPE.",
+              "B – Salah. Pembedahan bukan tindakan awal di Klinik Kesihatan.",
+              "C – Salah. Teks tidak menyatakan antibiotik diberikan kepada semua pesakit.",
+              "D – Salah. Saringan disarankan walaupun tiada gejala."
+            ]
+          },
+          {
+            s: "Apakah tujuan utama pemeriksaan BPE?",
+            p: ["Mengukur paras gula darah.", "Memeriksa keadaan gusi dan mengukur kedalaman ruang antara gigi dengan gusi.", "Memeriksa fungsi buah pinggang.", "Mengukur tekanan darah."],
+            j: 1,
+            a: [
+              "A – Salah. BPE ialah pemeriksaan periodontal, bukan ujian gula darah.",
+              "B – Betul. Prob periodontal digunakan untuk memeriksa gusi dan mengukur kedalaman ruang antara gigi dengan gusi.",
+              "C – Salah. Pemeriksaan buah pinggang tidak berkaitan dengan BPE.",
+              "D – Salah. BPE bukan pemeriksaan tekanan darah."
+            ]
+          },
+          {
+            s: "Mengapakah diabetes boleh melambatkan penyembuhan gusi?",
+            p: ["Diabetes meningkatkan aliran darah ke tisu gusi.", "Diabetes menjejaskan saluran dan aliran darah ke tisu gusi.", "Diabetes mengurangkan pembiakan bakteria.", "Diabetes menguatkan sistem imun."],
+            j: 1,
+            a: [
+              "A – Salah. Diabetes menjejaskan saluran dan aliran darah.",
+              "B – Betul. Gangguan aliran darah melambatkan penyembuhan dan meningkatkan risiko jangkitan.",
+              "C – Salah. Glukosa dalam air liur yang meningkat menggalakkan pembiakan bakteria.",
+              "D – Salah. Paras gula tinggi melemahkan sistem imun."
+            ]
+          },
+          {
+            s: "Apakah kesan tabiat merokok terhadap pesakit diabetes yang mengalami penyakit gusi?",
+            p: ["Mengurangkan risiko penyakit gusi.", "Mempercepatkan penyembuhan gusi.", "Meningkatkan lagi risiko penyakit gusi.", "Mengurangkan paras gula dalam darah."],
+            j: 2,
+            a: [
+              "A – Salah. Merokok meningkatkan risiko penyakit gusi.",
+              "B – Salah. Merokok menjejaskan proses penyembuhan gusi.",
+              "C – Betul. Kebersihan mulut yang kurang baik dan merokok meningkatkan risiko penyakit gusi, terutama dalam kalangan pesakit diabetes.",
+              "D – Salah. Teks tidak menyatakan merokok mengurangkan gula darah."
+            ]
+          },
+          {
+            s: "Apakah maksud skor BPE 3?",
+            p: ["Tiada tanda penyakit periodontal.", "Gusi berdarah semasa pemeriksaan.", "Poket gusi sedalam 3.5–5.5 mm.", "Poket gusi melebihi 5.5 mm."],
+            j: 2,
+            a: [
+              "A – Salah. Ini menunjukkan skor 0.",
+              "B – Salah. Ini menunjukkan skor 1.",
+              "C – Betul. Skor 3 menunjukkan poket gusi sedalam 3.5–5.5 mm.",
+              "D – Salah. Ini menunjukkan skor 4."
+            ]
+          },
+          {
+            s: "Apakah tindakan yang sesuai jika pesakit menunjukkan tanda penyakit periodontal serius?",
+            p: ["Menghentikan pemeriksaan.", "Memberikan rawatan sendiri tanpa penilaian.", "Melakukan pemeriksaan lanjut atau rujukan kepada pakar periodontik.", "Menunggu sehingga gigi tercabut."],
+            j: 2,
+            a: [
+              "A – Salah. Pesakit memerlukan pemeriksaan lanjut.",
+              "B – Salah. Penyakit serius memerlukan penilaian dan rawatan profesional.",
+              "C – Betul. Teks menyatakan pemeriksaan lanjut atau rujukan pakar akan dibuat jika terdapat tanda penyakit periodontal serius.",
+              "D – Salah. Rawatan tidak sepatutnya ditangguhkan sehingga gigi tercabut."
+            ]
+          },
+          {
+            s: "Apakah tujuan pembersihan profesional oleh pasukan pergigian dalam Langkah 1?",
+            p: ["Membuang plak dan kalkulus.", "Membina semula tulang penyokong gigi.", "Menggantikan gigi yang hilang.", "Mengukur paras gula darah."],
+            j: 0,
+            a: [
+              "A – Betul. Pasukan pergigian melakukan pembersihan profesional untuk membuang plak dan kalkulus.",
+              "B – Salah. Pemulihan tulang merupakan rawatan lanjutan dalam Langkah 3.",
+              "C – Salah. Penggantian gigi tidak dinyatakan dalam Langkah 1.",
+              "D – Salah. Pengukuran gula darah bukan tujuan pembersihan profesional."
+            ]
+          },
+          {
+            s: "Apakah tujuan pemeriksaan semula selepas pembersihan mendalam di bawah gusi?",
+            p: ["Memastikan gigi telah diganti.", "Melihat sama ada bengkak dan poket gusi semakin mengecil.", "Mengukur tekanan darah pesakit.", "Menghentikan semua penjagaan mulut di rumah."],
+            j: 1,
+            a: [
+              "A – Salah. Pemeriksaan semula bukan untuk memastikan penggantian gigi.",
+              "B – Betul. Doktor akan memeriksa keadaan gusi selepas tempoh penyembuhan.",
+              "C – Salah. Tekanan darah bukan fokus pemeriksaan ini.",
+              "D – Salah. Penjagaan mulut di rumah perlu diteruskan."
+            ]
+          },
+          {
+            s: "Apakah rawatan yang mungkin diberikan dalam sesetengah kes semasa Langkah 2?",
+            p: ["Antibiotik atau kumuran antiseptik.", "Ubat untuk meningkatkan glukosa air liur.", "Pembedahan jantung.", "Penggantian semua gigi."],
+            j: 0,
+            a: [
+              "A – Betul. Antibiotik atau kumuran antiseptik mungkin diberikan mengikut keperluan.",
+              "B – Salah. Teks tidak menyatakan rawatan sedemikian.",
+              "C – Salah. Pembedahan jantung tidak berkaitan dengan rawatan periodontal.",
+              "D – Salah. Penggantian semua gigi bukan rawatan Langkah 2."
+            ]
+          },
+          {
+            s: "Apakah yang berlaku semasa rawatan pembersihan akar gigi (Subgingival Scaling)?",
+            p: ["Doktor membersihkan kawasan di bawah gusi menggunakan alat khas.", "Semua gigi dicabut.", "Gusi dibuang sepenuhnya.", "Paras gula darah diturunkan melalui pembedahan."],
+            j: 0,
+            a: [
+              "A – Betul. Rawatan ini membersihkan kawasan di bawah garisan gusi menggunakan alat manual atau bermotor.",
+              "B – Salah. Rawatan ini tidak melibatkan pencabutan semua gigi.",
+              "C – Salah. Gusi tidak dibuang sepenuhnya.",
+              "D – Salah. Rawatan ini bertujuan membersihkan kawasan bawah gusi, bukan menurunkan gula darah."
+            ]
+          },
+          {
+            s: "Apakah tujuan utama Langkah 3 dalam rawatan penyakit gusi?",
+            p: ["Menghentikan semua rawatan pergigian.", "Menangani kawasan gusi yang masih bermasalah selepas rawatan biasa.", "Menggantikan penjagaan kebersihan mulut di rumah.", "Mengukur paras gula darah."],
+            j: 1,
+            a: [
+              "A – Salah. Rawatan masih diperlukan jika masalah berterusan.",
+              "B – Betul. Langkah 3 melibatkan rawatan lanjutan jika gusi masih bermasalah selepas Langkah 2.",
+              "C – Salah. Penjagaan mulut di rumah tetap penting.",
+              "D – Salah. Pengukuran gula darah bukan tujuan rawatan periodontal."
+            ]
+          },
+          {
+            s: "Berapa kerap lawatan susulan selepas rawatan periodontal lazimnya dilakukan?",
+            p: ["Setiap minggu.", "Setiap bulan.", "Setiap 3 hingga 12 bulan.", "Setiap 5 tahun."],
+            j: 2,
+            a: [
+              "A – Salah. Teks tidak menetapkan lawatan susulan setiap minggu.",
+              "B – Salah. Teks tidak menetapkan lawatan susulan setiap bulan.",
+              "C – Betul. Kekerapan lawatan bergantung pada keperluan individu, lazimnya setiap 3 hingga 12 bulan.",
+              "D – Salah. Tempoh ini terlalu lama berbanding cadangan teks."
+            ]
+          }
+        ],
+
+        susah: [
+          {
+            s: "Mengapakah pesakit diabetes yang tidak terkawal berisiko lebih tinggi mengalami penyakit gusi teruk?",
+            p: ["Paras gula tinggi menguatkan sistem imun.", "Paras gula tinggi melemahkan sistem imun dan menggalakkan pembiakan bakteria.", "Paras gula tinggi mengurangkan glukosa dalam air liur.", "Paras gula tinggi mempercepatkan penyembuhan gusi."],
+            j: 1,
+            a: [
+              "A – Salah. Paras gula tinggi melemahkan sistem imun.",
+              "B – Betul. Gula darah tinggi melemahkan pertahanan badan dan meningkatkan glukosa dalam air liur yang menggalakkan pembiakan bakteria.",
+              "C – Salah. Glukosa dalam air liur meningkat, bukannya berkurang.",
+              "D – Salah. Diabetes boleh melambatkan penyembuhan gusi."
+            ]
+          },
+          {
+            s: "Bagaimanakah penyakit gusi boleh menyebabkan diabetes semakin sukar dikawal?",
+            p: ["Jangkitan gusi mengurangkan keradangan dalam badan.", "Bakteria dan keradangan daripada jangkitan gusi boleh mengganggu keberkesanan insulin.", "Jangkitan gusi meningkatkan penghasilan insulin.", "Bakteria dalam gusi mengurangkan paras gula darah."],
+            j: 1,
+            a: [
+              "A – Salah. Jangkitan gusi menyebabkan keradangan berterusan.",
+              "B – Betul. Keradangan daripada jangkitan gusi boleh menyebabkan badan sukar menggunakan insulin dengan berkesan.",
+              "C – Salah. Teks tidak menyatakan jangkitan gusi meningkatkan penghasilan insulin.",
+              "D – Salah. Keradangan boleh meningkatkan paras gula darah."
+            ]
+          },
+          {
+            s: "Mengapakah pesakit diabetes perlu menjaga kesihatan gusi walaupun diabetes sedang dipantau?",
+            p: ["Penyakit gusi boleh menyukarkan kawalan gula darah.", "Penyakit gusi hanya menyebabkan masalah nafas berbau.", "Penyakit gusi tidak mempunyai kaitan dengan diabetes.", "Penyakit gusi boleh menyembuhkan diabetes."],
+            j: 0,
+            a: [
+              "A – Betul. Keradangan daripada penyakit gusi boleh mengganggu keberkesanan insulin dan menyukarkan kawalan diabetes.",
+              "B – Salah. Penyakit gusi juga boleh merosakkan tisu dan tulang penyokong gigi.",
+              "C – Salah. Kedua-duanya mempunyai hubungan dua hala.",
+              "D – Salah. Penyakit gusi tidak menyembuhkan diabetes."
+            ]
+          },
+          {
+            s: "Apakah risiko jika diabetes tidak terkawal berlaku bersama penyakit gusi yang teruk?",
+            p: ["Risiko komplikasi jantung dan kerosakan buah pinggang meningkat.", "Risiko penyakit jantung berkurang.", "Tulang penyokong gigi menjadi lebih kuat.", "Penyembuhan gusi menjadi lebih cepat."],
+            j: 0,
+            a: [
+              "A – Betul. Kedua-dua keadaan meningkatkan risiko komplikasi jantung dan bahaya kerosakan buah pinggang yang serius.",
+              "B – Salah. Risiko komplikasi jantung meningkat.",
+              "C – Salah. Penyakit gusi boleh merosakkan tulang penyokong gigi.",
+              "D – Salah. Diabetes boleh melambatkan penyembuhan gusi."
+            ]
+          },
+          {
+            s: "Antara berikut, yang manakah merupakan tanda penyakit gusi yang tidak boleh diabaikan?",
+            p: ["Gigi kelihatan lebih panjang akibat gusi menyusut.", "Gigi menjadi lebih putih selepas memberus.", "Gigi terasa bersih selepas menggunakan flos.", "Nafas menjadi segar selepas berkumur."],
+            j: 0,
+            a: [
+              "A – Betul. Gusi menyusut menyebabkan gigi kelihatan lebih panjang dan merupakan tanda amaran penyakit gusi.",
+              "B – Salah. Gigi lebih putih bukan tanda amaran yang disenaraikan.",
+              "C – Salah. Gigi terasa bersih selepas menggunakan flos bukan tanda penyakit gusi.",
+              "D – Salah. Nafas segar selepas berkumur bukan tanda amaran penyakit gusi."
+            ]
+          },
+          {
+            s: "Mengapakah pemeriksaan gusi penting walaupun tiada rasa sakit atau gejala?",
+            p: ["Penyakit gusi hanya berlaku apabila terdapat kesakitan.", "Pesakit diabetes disarankan menjalani pemeriksaan gusi sekurang-kurangnya sekali setahun walaupun tiada gejala.", "Pemeriksaan gusi hanya diperlukan apabila gigi tercabut.", "Pemeriksaan gusi boleh menggantikan pemeriksaan diabetes."],
+            j: 1,
+            a: [
+              "A – Salah. Pemeriksaan tetap disarankan walaupun tiada gejala.",
+              "B – Betul. Pemeriksaan sekurang-kurangnya sekali setahun membantu memastikan kesihatan gusi dipantau.",
+              "C – Salah. Pemeriksaan tidak perlu menunggu sehingga gigi tercabut.",
+              "D – Salah. Pemeriksaan gusi tidak menggantikan pemantauan diabetes."
+            ]
+          },
+          {
+            s: "Mengapakah penjagaan kebersihan mulut perlu dilakukan setiap hari walaupun telah menjalani rawatan gusi?",
+            p: ["Untuk mengelakkan pengumpulan plak dan mengurangkan risiko penyakit gusi berulang.", "Untuk mengelakkan keperluan mengambil ubat diabetes.", "Untuk menggantikan semua pemeriksaan pergigian.", "Untuk memastikan gigi tidak perlu dibersihkan secara profesional."],
+            j: 0,
+            a: [
+              "A – Betul. Penjagaan mulut yang baik membantu mengurangkan faktor risiko dan mengekalkan kesihatan gusi.",
+              "B – Salah. Kebersihan mulut tidak menggantikan ubat diabetes.",
+              "C – Salah. Pemeriksaan pergigian berkala tetap diperlukan.",
+              "D – Salah. Pembersihan profesional masih diperlukan."
+            ]
+          },
+          {
+            s: "Apakah tindakan terbaik jika gusi kerap berdarah ketika memberus gigi?",
+            p: ["Mengabaikannya kerana keadaan itu sentiasa normal.", "Menghentikan penjagaan kebersihan mulut.", "Mendapatkan pemeriksaan pergigian untuk menilai keadaan gusi.", "Menunggu sehingga gigi menjadi longgar."],
+            j: 2,
+            a: [
+              "A – Salah. Gusi berdarah merupakan salah satu tanda amaran penyakit gusi.",
+              "B – Salah. Penjagaan kebersihan mulut perlu diteruskan.",
+              "C – Betul. Pemeriksaan pergigian membantu menilai keadaan gusi dan menentukan keperluan rawatan.",
+              "D – Salah. Tidak perlu menunggu sehingga keadaan menjadi lebih serius."
+            ]
+          },
+          {
+            s: "Apakah tujuan utama pesakit diabetes dirujuk dari Klinik Kesihatan ke Klinik Pergigian?",
+            p: ["Untuk menjalani pemeriksaan BPE dan mendapatkan rawatan gusi yang diperlukan.", "Untuk menjalani pembedahan jantung.", "Untuk menggantikan rawatan diabetes.", "Untuk mendapatkan ubat diabetes sahaja."],
+            j: 0,
+            a: [
+              "A – Betul. Klinik Pergigian menjalankan pemeriksaan BPE, merekodkan keputusan dan memberikan rawatan serta panduan penjagaan mulut.",
+              "B – Salah. Pembedahan jantung bukan tujuan rujukan pergigian.",
+              "C – Salah. Rawatan pergigian tidak menggantikan rawatan diabetes.",
+              "D – Salah. Tujuan rujukan ialah pemeriksaan dan penjagaan kesihatan gusi."
+            ]
+          },
+          {
+            s: "Mengapakah kebersihan mulut yang kurang baik boleh memberi kesan lebih serius kepada pesakit diabetes?",
+            p: ["Diabetes melemahkan sistem imun dan meningkatkan risiko jangkitan gusi.", "Diabetes menghapuskan semua bakteria dalam mulut.", "Diabetes menghalang pengumpulan plak.", "Diabetes menjadikan gusi kebal daripada jangkitan."],
+            j: 0,
+            a: [
+              "A – Betul. Paras gula tinggi melemahkan sistem imun dan meningkatkan risiko jangkitan gusi.",
+              "B – Salah. Diabetes tidak menghapuskan bakteria.",
+              "C – Salah. Plak masih boleh terkumpul dan menyebabkan penyakit gusi.",
+              "D – Salah. Diabetes meningkatkan risiko jangkitan, bukan melindungi gusi daripadanya."
+            ]
+          },
+          {
+            s: "Apakah amalan yang paling lengkap untuk membantu menjaga kesihatan gusi di rumah?",
+            p: ["Memberus gigi sekali sehari tanpa membersihkan celah gigi.", "Memberus gigi dua kali sehari, membersihkan celah gigi setiap hari dan mengawal paras gula.", "Hanya berkumur selepas makan.", "Memberus gigi apabila terasa kotor sahaja."],
+            j: 1,
+            a: [
+              "A – Salah. Memberus sekali sehari dan tidak membersihkan celah gigi tidak memenuhi cadangan penjagaan kendiri.",
+              "B – Betul. Memberus gigi dua kali sehari, membersihkan celah gigi dan mengawal diabetes merupakan amalan penting.",
+              "C – Salah. Berkumur sahaja tidak menggantikan memberus dan membersihkan celah gigi.",
+              "D – Salah. Penjagaan gigi perlu dilakukan secara konsisten setiap hari."
+            ]
+          },
+          {
+            s: "Apakah perbezaan utama antara gingivitis dan periodontitis?",
+            p: ["Gingivitis ialah peringkat awal, manakala periodontitis ialah peringkat lebih serius yang merosakkan tisu dan tulang penyokong gigi.", "Gingivitis lebih serius daripada periodontitis.", "Kedua-duanya tidak melibatkan gusi.", "Periodontitis hanya menyebabkan nafas berbau."],
+            j: 0,
+            a: [
+              "A – Betul. Gingivitis menyebabkan gusi merah, bengkak dan mudah berdarah, manakala periodontitis merosakkan tisu dan tulang penyokong gigi.",
+              "B – Salah. Periodontitis merupakan peringkat yang lebih serius.",
+              "C – Salah. Kedua-duanya merupakan penyakit yang melibatkan gusi.",
+              "D – Salah. Periodontitis boleh menyebabkan gigi longgar atau tercabut."
+            ]
+          },
+          {
+            s: "Mengapakah pesakit diabetes perlu memberitahu doktor gigi tentang keadaan kesihatan dan ubat yang diambil?",
+            p: ["Supaya doktor gigi dapat memberikan penjagaan dan rawatan yang diperlukan dengan sewajarnya.", "Supaya pesakit tidak perlu mengambil ubat diabetes.", "Supaya pemeriksaan BPE tidak perlu dilakukan.", "Supaya pesakit boleh menghentikan semua rawatan pergigian."],
+            j: 0,
+            a: [
+              "A – Betul. Maklumat kesihatan membantu pasukan pergigian memberikan penjagaan yang sesuai.",
+              "B – Salah. Pesakit tidak boleh menghentikan ubat diabetes berdasarkan maklumat tersebut.",
+              "C – Salah. Pemeriksaan BPE masih diperlukan.",
+              "D – Salah. Maklumat kesihatan membantu perancangan rawatan, bukan menghentikannya."
+            ]
+          },
+          {
+            s: "Apakah kepentingan Langkah 4 selepas rawatan penyakit gusi selesai?",
+            p: ["Menghentikan semua lawatan pergigian.", "Mengekalkan kesihatan gusi melalui pembersihan profesional, nasihat penjagaan mulut dan pemeriksaan susulan.", "Mengelakkan pesakit daripada memberus gigi.", "Menggantikan semua gigi yang masih ada."],
+            j: 1,
+            a: [
+              "A – Salah. Lawatan susulan masih diperlukan.",
+              "B – Betul. Langkah 4 menekankan penjagaan dan pemeliharaan berterusan bagi mengelakkan penyakit berulang.",
+              "C – Salah. Memberus gigi tetap perlu dilakukan.",
+              "D – Salah. Penggantian semua gigi bukan tujuan Langkah 4."
+            ]
+          },
+          {
+            s: "Antara berikut, yang manakah paling tepat menggambarkan hubungan dua hala antara diabetes dan penyakit gusi?",
+            p: ["Diabetes memburukkan penyakit gusi, tetapi penyakit gusi tidak memberi kesan kepada diabetes.", "Penyakit gusi menyebabkan diabetes sembuh sepenuhnya.", "Diabetes meningkatkan risiko penyakit gusi, manakala keradangan daripada penyakit gusi menyukarkan kawalan gula darah.", "Kedua-dua penyakit tidak mempunyai sebarang hubungan."],
+            j: 2,
+            a: [
+              "A – Salah. Penyakit gusi juga boleh menyukarkan kawalan diabetes.",
+              "B – Salah. Penyakit gusi tidak menyembuhkan diabetes.",
+              "C – Betul. Diabetes boleh memburukkan penyakit gusi, manakala keradangan daripada jangkitan gusi boleh mengganggu keberkesanan insulin dan meningkatkan gula darah.",
+              "D – Salah. Kedua-duanya mempunyai hubungan dua hala."
+            ]
+          }
+        ]
+      };
+
+      /* ── STATE PEMAIN ──────────────────────────────────────────────── */
+      let kuizTahap = null;
+      let kuizSoalanSet = [];
+      let kuizIndeks = 0;
+      let kuizMarkah = 0;
+      let kuizDijawab = false;
+
+      /* ── AUDIO CONTEXT (Web Audio API) ──────────────────────────────── */
+      function bunyiTepukan() {
+        try {
+          const ctx = new (window.AudioContext || window.webkitAudioContext)();
+          const masa = ctx.currentTime;
+          for (let i = 0; i < 5; i++) {
+            const buf = ctx.createBuffer(1, ctx.sampleRate * 0.12, ctx.sampleRate);
+            const d = buf.getChannelData(0);
+            for (let k = 0; k < d.length; k++) d[k] = (Math.random() * 2 - 1) * Math.exp(-k / (ctx.sampleRate * 0.04));
+            const src = ctx.createBufferSource();
+            src.buffer = buf;
+            const g = ctx.createGain();
+            g.gain.setValueAtTime(0.7, masa + i * 0.18);
+            g.gain.exponentialRampToValueAtTime(0.001, masa + i * 0.18 + 0.12);
+            src.connect(g);
+            g.connect(ctx.destination);
+            src.start(masa + i * 0.18);
+          }
+        } catch (e) { }
+      }
+
+      function bunyiBuzzer() {
+        try {
+          const ctx = new (window.AudioContext || window.webkitAudioContext)();
+          const osc = ctx.createOscillator();
+          const g = ctx.createGain();
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(160, ctx.currentTime);
+          osc.frequency.linearRampToValueAtTime(100, ctx.currentTime + 0.4);
+          g.gain.setValueAtTime(0.55, ctx.currentTime);
+          g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.45);
+          osc.connect(g);
+          g.connect(ctx.destination);
+          osc.start();
+          osc.stop(ctx.currentTime + 0.45);
+        } catch (e) { }
+      }
+
+      /* ── ANIMASI TEPUKAN ─────────────────────────────────────────────── */
+      function tunjukAnimasiTepukan() {
+        const overlay = document.getElementById('kuiz-clap-overlay');
+        const wrap = document.getElementById('kuiz-clap-emojis');
+        wrap.innerHTML = '';
+        overlay.style.display = 'block';
+        const emojis = ['👏', '🎉', '✨', '⭐', '💫', '🌟'];
+        const count = 12;
+        for (let i = 0; i < count; i++) {
+          const el = document.createElement('span');
+          el.className = 'clap-emoji';
+          el.textContent = emojis[i % emojis.length];
+          el.style.left = (10 + Math.random() * 80) + '%';
+          el.style.top = (30 + Math.random() * 50) + '%';
+          el.style.animationDelay = (Math.random() * 0.35) + 's';
+          el.style.animationDuration = (0.9 + Math.random() * 0.5) + 's';
+          wrap.appendChild(el);
+        }
+        setTimeout(() => { overlay.style.display = 'none'; wrap.innerHTML = ''; }, 1600);
+      }
+
+      /* ── FUNGSI AWAM ─────────────────────────────────────────────────── */
+      window.kuizMula = function (tahap) {
+        kuizTahap = tahap;
+        kuizMarkah = 0;
+        kuizIndeks = 0;
+        kuizDijawab = false;
+
+        // Pilih 5 soalan rawak
+        const pool = [...BANK_SOALAN[tahap]];
+        for (let i = pool.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [pool[i], pool[j]] = [pool[j], pool[i]];
+        }
+        kuizSoalanSet = pool.slice(0, 5);
+
+        tunjukSkrin('kuiz-screen-soalan');
+        paparSoalan();
+      };
+
+      window.kuizSoalanSeterusnya = function () {
+        kuizIndeks++;
+        if (kuizIndeks >= kuizSoalanSet.length) {
+          tunjukKeputusan();
+        } else {
+          paparSoalan();
+        }
+      };
+
+      window.kuizUlang = function () {
+        kuizMula(kuizTahap);
+      };
+
+      window.kuizTukarTahap = function () {
+        tunjukSkrin('kuiz-screen-level');
+      };
+
+      /* ── PAPARAN SOALAN ──────────────────────────────────────────────── */
+      function paparSoalan() {
+        const soalan = kuizSoalanSet[kuizIndeks];
+        kuizDijawab = false;
+
+        // Progress bar
+        const pct = ((kuizIndeks) / kuizSoalanSet.length) * 100;
+        document.getElementById('kuiz-progress-bar').style.width = pct + '%';
+        document.getElementById('kuiz-prog-text').textContent = 'Soalan ' + (kuizIndeks + 1) + ' / ' + kuizSoalanSet.length;
+
+        const badgeEl = document.getElementById('kuiz-tahap-badge');
+        badgeEl.textContent = { senang: '🌿 Senang', sederhana: '⚡ Sederhana', susah: '🔥 Susah' }[kuizTahap];
+        badgeEl.className = 'kuiz-tahap-badge badge-' + kuizTahap;
+
+        document.getElementById('kuiz-soalan-text').textContent = (kuizIndeks + 1) + '. ' + soalan.s;
+
+        // Pilihan
+        const wrap = document.getElementById('kuiz-pilihan-wrap');
+        wrap.innerHTML = '';
+        const huruf = ['A', 'B', 'C', 'D'];
+        soalan.p.forEach((pil, idx) => {
+          const btn = document.createElement('button');
+          btn.className = 'kuiz-pilihan-btn';
+          btn.innerHTML = '<span class="pilihan-huruf">' + huruf[idx] + '</span><span>' + pil + '</span>';
+          btn.addEventListener('click', () => jawab(idx));
+          wrap.appendChild(btn);
+        });
+
+        // Sembunyikan feedback & butang next
+        const fb = document.getElementById('kuiz-feedback');
+        fb.style.display = 'none';
+        fb.className = 'kuiz-feedback';
+        document.getElementById('kuiz-feedback-inner').innerHTML = '';
+        document.getElementById('kuiz-next-wrap').style.display = 'none';
+
+        // Scroll ke atas kad
+        const kad = document.getElementById('kuiz-soalan-card');
+        if (kad) kad.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      /* ── PROSES JAWAPAN ──────────────────────────────────────────────── */
+      function jawab(pilihanIdx) {
+        if (kuizDijawab) return;
+        kuizDijawab = true;
+
+        const soalan = kuizSoalanSet[kuizIndeks];
+        const betul = (pilihanIdx === soalan.j);
+        const btns = document.querySelectorAll('.kuiz-pilihan-btn');
+
+        // Lumpuhkan semua butang
+        btns.forEach(b => b.disabled = true);
+
+        // Warnakan butang
+        btns[pilihanIdx].classList.add(betul ? 'betul' : 'salah');
+        if (!betul) {
+          btns[soalan.j].classList.add('jawapan-betul-tunjuk');
+        }
+
+        const huruf = ['A', 'B', 'C', 'D'];
+
+        // Update progress bar untuk soalan ini
+        const pct = ((kuizIndeks + 1) / kuizSoalanSet.length) * 100;
+        document.getElementById('kuiz-progress-bar').style.width = pct + '%';
+
+        const nextWrap = document.getElementById('kuiz-next-wrap');
+
+        if (betul) {
+          // BETUL: tepukan + bunyi, kemudian bergerak automatik ke soalan seterusnya
+          kuizMarkah++;
+          bunyiTepukan();
+          tunjukAnimasiTepukan();
+          tunjukFeedback(true, soalan.a[soalan.j], null);
+          nextWrap.style.display = 'none';
+          const indeksSemasa = kuizIndeks;
+          const setSemasa = kuizSoalanSet;
+          setTimeout(() => {
+            // Pastikan pengguna masih pada soalan yang sama (tidak tukar tahap / ulang)
+            if (kuizSoalanSet === setSemasa && kuizIndeks === indeksSemasa && kuizDijawab) kuizSoalanSeterusnya();
+          }, 1800);
+        } else {
+          // SALAH: buzzer + alasan pilihan salah + jawapan betul
+          bunyiBuzzer();
+          tunjukFeedback(false, soalan.a[pilihanIdx], huruf[soalan.j] + '. ' + soalan.p[soalan.j], soalan.a[soalan.j]);
+
+          nextWrap.style.display = 'block';
+          const nextBtn = nextWrap.querySelector('.kuiz-btn-next');
+          nextBtn.textContent = (kuizIndeks + 1 >= kuizSoalanSet.length) ? '📊 Lihat Keputusan' : 'Seterusnya →';
+        }
+      }
+
+      function tunjukFeedback(betul, alasanPilihan, jawapanBetulTeks, alasanBetul) {
+        const fb = document.getElementById('kuiz-feedback');
+        const inner = document.getElementById('kuiz-feedback-inner');
+        fb.className = 'kuiz-feedback ' + (betul ? 'fb-betul' : 'fb-salah');
+
+        let html = '<p class="kuiz-feedback-title">' + (betul ? '✅ Jawapan Betul! Syabas!' : '❌ Jawapan Salah') + '</p>';
+        html += '<p class="kuiz-feedback-body">' + alasanPilihan + '</p>';
+        if (!betul && jawapanBetulTeks) {
+          html += '<span class="kuiz-jawapan-betul-label">✔ Jawapan Betul: ' + jawapanBetulTeks + '</span>';
+          if (alasanBetul) html += '<p class="kuiz-feedback-body" style="margin-top:10px;">' + alasanBetul + '</p>';
+        }
+
+        inner.innerHTML = html;
+        fb.style.display = 'block';
+      }
+
+      /* ── KEPUTUSAN AKHIR ─────────────────────────────────────────────── */
+      function tunjukKeputusan() {
+        const total = kuizSoalanSet.length;
+        const m = kuizMarkah;
+
+        let emoji, tajuk, msg;
+        if (m === total) {
+          emoji = '🏆'; tajuk = 'Cemerlang! Sempurna!';
+          msg = 'Tahniah! Anda menguasai topik ini sepenuhnya. Teruskan usaha yang baik!';
+        } else if (m >= total * 0.8) {
+          emoji = '🌟'; tajuk = 'Sangat Baik!';
+          msg = 'Prestasi anda amat membanggakan. Sedikit lagi untuk mencapai sempurna!';
+        } else if (m >= total * 0.6) {
+          emoji = '👍'; tajuk = 'Baik!';
+          msg = 'Usaha yang baik! Ulangkaji bahagian yang kurang jelas dan cuba lagi.';
+        } else if (m >= total * 0.4) {
+          emoji = '📚'; tajuk = 'Boleh Ditingkatkan';
+          msg = 'Jangan putus asa! Baca semula bahan ilmu dan cuba sekali lagi.';
+        } else {
+          emoji = '💪'; tajuk = 'Cuba Lagi!';
+          msg = 'Teruskan belajar dan uji semula pengetahuan anda. Anda pasti boleh!';
+        }
+
+        document.getElementById('kuiz-result-emoji').textContent = emoji;
+        document.getElementById('kuiz-result-title').textContent = tajuk;
+        document.getElementById('kuiz-result-markah').textContent = 'Markah Anda: ' + m + '/' + total;
+        document.getElementById('kuiz-result-msg').textContent = msg;
+
+        tunjukSkrin('kuiz-screen-keputusan');
+      }
+
+      /* ── UTILITI ─────────────────────────────────────────────────────── */
+      function tunjukSkrin(id) {
+        ['kuiz-screen-level', 'kuiz-screen-soalan', 'kuiz-screen-keputusan'].forEach(s => {
+          const el = document.getElementById(s);
+          if (el) el.style.display = (s === id) ? 'block' : 'none';
+        });
+      }
+
     })();
   </script>
 
