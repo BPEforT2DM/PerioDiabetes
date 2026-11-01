@@ -1015,33 +1015,130 @@
       line-height: 1;
     }
 
-    /* Grid 10 Tanda Amaran Visual (Topik 3) */
+    /* Grid 9 Tanda Amaran Klinikal Interaktif (Topik 3) — Liquid Glass */
     .signs-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px;
+      grid-template-columns: 1fr;
+      gap: 16px;
       margin-top: 14px;
     }
 
-    .sign-card-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: rgba(255, 255, 255, 0.7);
-      border: 1px solid rgba(244, 63, 94, 0.25);
-      border-radius: var(--radius-md);
-      padding: 14px 16px;
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--ink);
-      box-shadow: 0 2px 10px rgba(244, 63, 94, 0.06);
-      transition: transform 0.2s var(--ease), background 0.2s;
+    @media (min-width: 560px) {
+      .signs-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
-    .sign-card-item:hover {
-      transform: translateY(-2px);
-      background: #ffffff;
-      border-color: rgba(244, 63, 94, 0.5);
+    @media (min-width: 900px) {
+      .signs-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .sign-photo-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding: 10px;
+      margin: 0;
+      font: inherit;
+      color: var(--ink);
+      text-align: left;
+      cursor: pointer;
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md), var(--edge-reflection);
+      -webkit-tap-highlight-color: transparent;
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s, background 0.3s;
+    }
+
+    .sign-photo-card:hover,
+    .sign-photo-card:focus-visible,
+    .sign-photo-card:active {
+      transform: translateY(-3px) scale(1.02);
+      background: var(--glass-bg-hover);
+      border-color: var(--glass-border-hover);
+      box-shadow: var(--shadow-lg), var(--edge-reflection);
+    }
+
+    .sign-photo-frame {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      aspect-ratio: 4 / 3;
+      background: #fff;
+    }
+
+    .sign-photo-frame img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.45s var(--ease);
+    }
+
+    .sign-photo-card:hover .sign-photo-frame img,
+    .sign-photo-card:focus-visible .sign-photo-frame img {
+      transform: scale(1.06);
+    }
+
+    .sign-photo-num {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      min-width: 30px;
+      height: 30px;
+      padding: 0 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--pastel-rose);
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sign-photo-zoom {
+      position: absolute;
+      right: 8px;
+      bottom: 8px;
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: var(--radius-full);
+      font-size: 0.95rem;
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.3s var(--ease);
+    }
+
+    .sign-photo-card:hover .sign-photo-zoom {
+      transform: scale(1.1);
+    }
+
+    .sign-photo-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 6px 4px;
+      font-size: 0.98rem;
+      font-weight: 800;
+      line-height: 1.35;
     }
 
     .sign-dot-alert {
@@ -1051,6 +1148,158 @@
       background: var(--pastel-rose);
       flex-shrink: 0;
       box-shadow: 0 0 0 3px rgba(244, 63, 94, 0.22);
+    }
+
+    /* Paparan Gambar Penuh Terpusat (Centered Lightbox Liquid Glass) */
+    .sign-lightbox {
+      position: fixed;
+      inset: 0;
+      margin: auto;
+      width: min(92vw, 720px);
+      max-width: calc(100vw - 24px);
+      max-height: min(88vh, 88dvh);
+      padding: 16px;
+      border: 1px solid var(--glass-border-hover);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      box-shadow: 0 24px 60px rgba(11, 34, 51, 0.28), var(--edge-reflection);
+      color: var(--ink);
+      font-family: var(--font-main);
+      overflow: hidden;
+    }
+
+    .sign-lightbox::backdrop {
+      background: rgba(11, 34, 51, 0.55);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .sign-lightbox[open] {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      animation: signLbIn 0.28s var(--ease);
+    }
+
+    @keyframes signLbIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .sign-lightbox-img-wrap {
+      position: relative;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      overflow: hidden;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), var(--shadow-sm);
+    }
+
+    .sign-lightbox img {
+      display: block;
+      width: 100%;
+      max-height: min(64vh, 64dvh);
+      margin: 0 auto;
+      object-fit: contain;
+      background: #fff;
+    }
+
+    .sign-lightbox-bar {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 4px 4px 0;
+    }
+
+    .sign-lightbox-title {
+      margin: 0;
+      font-size: 1.05rem;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .sign-lightbox-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .sign-lightbox-btn {
+      min-width: 44px;
+      height: 44px;
+      padding: 0 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--ink);
+      font: inherit;
+      font-size: 0.92rem;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      -webkit-tap-highlight-color: transparent;
+      transition: transform 0.2s var(--ease), background 0.2s, box-shadow 0.2s;
+    }
+
+    .sign-lightbox-btn:hover,
+    .sign-lightbox-btn:focus-visible {
+      transform: translateY(-2px);
+      background: #fff;
+      box-shadow: var(--shadow-md);
+    }
+
+    .sign-lightbox-btn-close {
+      background: linear-gradient(135deg, #ffe4e6, #fecdd3);
+      color: #be123c;
+      border-color: rgba(244, 63, 94, 0.35);
+    }
+
+    .sign-lightbox-btn-close:hover,
+    .sign-lightbox-btn-close:focus-visible {
+      background: #fecdd3;
+    }
+
+    @media (max-width: 560px) {
+      .sign-lightbox {
+        width: calc(100vw - 24px);
+        padding: 12px;
+        border-radius: var(--radius-md);
+      }
+
+      .sign-lightbox img {
+        max-height: min(56vh, 56dvh);
+      }
+
+      .sign-lightbox-bar {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .sign-lightbox-title {
+        width: 100%;
+        text-align: center;
+        font-size: 0.98rem;
+      }
+
+      .sign-lightbox-nav {
+        width: 100%;
+        justify-content: center;
+      }
     }
 
     /* BPE Skor Visual 0 - 4 (Topik 4) */
@@ -2374,47 +2623,79 @@
         <p style="margin-bottom: 20px;">Sila periksa gigi dan gusi anda. Ambil tindakan segera sekiranya anda mengalami
           sebarang tanda berikut:</p>
 
-        <div class="signs-grid">
-          <div class="sign-card-item">
-            <span class="sign-dot-alert"></span>
-            <span>Gusi berdarah</span>
-          </div>
-          <div class="sign-card-item">
-            <span class="sign-dot-alert"></span>
-            <span>Gusi merah, bengkak, atau sakit</span>
-          </div>
-          <div class="sign-card-item">
-            <span class="sign-dot-alert"></span>
-            <span>Gigi longgar</span>
-          </div>
-          <div class="sign-card-item">
-            <span class="sign-dot-alert"></span>
-            <span>Nafas berbau berterusan</span>
-          </div>
-          <div class="sign-card-item">
-            <span class="sign-dot-alert"></span>
-            <span>Gusi Menyusut/Gigi kelihatan lebih panjang</span>
-          </div>
-          <div class="sign-card-item">
-            <span class="sign-dot-alert"></span>
-            <span>Ruang terbuka di percelahan gigi</span>
-          </div>
-          <div class="sign-card-item">
-            <span class="sign-dot-alert"></span>
-            <span>Gigi Longgar atau Goyang</span>
-          </div>
-          <div class="sign-card-item">
-            <span class="sign-dot-alert"></span>
-            <span>Bernanah di celah gigi dan gusi</span>
-          </div>
-          <div class="sign-card-item">
-            <span class="sign-dot-alert"></span>
-            <span>Gigi palsu tidak muat dengan baik</span>
-          </div>
-          <div class="sign-card-item">
-            <span class="sign-dot-alert"></span>
-            <span>Perubahan pada kedudukan gigi apabila menggigit</span>
-          </div>
+        <div class="signs-grid" id="t3-signs-grid">
+          <button type="button" class="sign-photo-card" data-index="0" aria-label="Gusi berdarah — sentuh untuk paparan gambar penuh">
+            <span class="sign-photo-frame">
+              <img src="gambar-tanda/gusi-berdarah.jpg" alt="Gusi berdarah" loading="lazy" decoding="async" />
+              <span class="sign-photo-num" aria-hidden="true">01</span>
+              <span class="sign-photo-zoom" aria-hidden="true">⤢</span>
+            </span>
+            <span class="sign-photo-label"><span class="sign-dot-alert" aria-hidden="true"></span>Gusi berdarah</span>
+          </button>
+          <button type="button" class="sign-photo-card" data-index="1" aria-label="Gusi bengkak — sentuh untuk paparan gambar penuh">
+            <span class="sign-photo-frame">
+              <img src="gambar-tanda/gusi-bengkak.jpg" alt="Gusi bengkak" loading="lazy" decoding="async" />
+              <span class="sign-photo-num" aria-hidden="true">02</span>
+              <span class="sign-photo-zoom" aria-hidden="true">⤢</span>
+            </span>
+            <span class="sign-photo-label"><span class="sign-dot-alert" aria-hidden="true"></span>Gusi bengkak</span>
+          </button>
+          <button type="button" class="sign-photo-card" data-index="2" aria-label="Gigi longgar — sentuh untuk paparan gambar penuh">
+            <span class="sign-photo-frame">
+              <img src="gambar-tanda/gigi-longgar.jpg" alt="Gigi longgar" loading="lazy" decoding="async" />
+              <span class="sign-photo-num" aria-hidden="true">03</span>
+              <span class="sign-photo-zoom" aria-hidden="true">⤢</span>
+            </span>
+            <span class="sign-photo-label"><span class="sign-dot-alert" aria-hidden="true"></span>Gigi longgar</span>
+          </button>
+          <button type="button" class="sign-photo-card" data-index="3" aria-label="Nafas berbau berterusan — sentuh untuk paparan gambar penuh">
+            <span class="sign-photo-frame">
+              <img src="gambar-tanda/nafas-berbau.jpeg" alt="Nafas berbau berterusan" loading="lazy" decoding="async" />
+              <span class="sign-photo-num" aria-hidden="true">04</span>
+              <span class="sign-photo-zoom" aria-hidden="true">⤢</span>
+            </span>
+            <span class="sign-photo-label"><span class="sign-dot-alert" aria-hidden="true"></span>Nafas berbau berterusan</span>
+          </button>
+          <button type="button" class="sign-photo-card" data-index="4" aria-label="Gusi Menyusut — sentuh untuk paparan gambar penuh">
+            <span class="sign-photo-frame">
+              <img src="gambar-tanda/gusi-menyusut.png" alt="Gusi Menyusut" loading="lazy" decoding="async" />
+              <span class="sign-photo-num" aria-hidden="true">05</span>
+              <span class="sign-photo-zoom" aria-hidden="true">⤢</span>
+            </span>
+            <span class="sign-photo-label"><span class="sign-dot-alert" aria-hidden="true"></span>Gusi Menyusut</span>
+          </button>
+          <button type="button" class="sign-photo-card" data-index="5" aria-label="Ruang terbuka di percelahan gigi — sentuh untuk paparan gambar penuh">
+            <span class="sign-photo-frame">
+              <img src="gambar-tanda/ruang-celah-gigi.jpeg" alt="Ruang terbuka di percelahan gigi" loading="lazy" decoding="async" />
+              <span class="sign-photo-num" aria-hidden="true">06</span>
+              <span class="sign-photo-zoom" aria-hidden="true">⤢</span>
+            </span>
+            <span class="sign-photo-label"><span class="sign-dot-alert" aria-hidden="true"></span>Ruang terbuka di percelahan gigi</span>
+          </button>
+          <button type="button" class="sign-photo-card" data-index="6" aria-label="Gigi Longgar atau Goyang — sentuh untuk paparan gambar penuh">
+            <span class="sign-photo-frame">
+              <img src="gambar-tanda/gigi-longgar.jpg" alt="Gigi Longgar atau Goyang" loading="lazy" decoding="async" />
+              <span class="sign-photo-num" aria-hidden="true">07</span>
+              <span class="sign-photo-zoom" aria-hidden="true">⤢</span>
+            </span>
+            <span class="sign-photo-label"><span class="sign-dot-alert" aria-hidden="true"></span>Gigi Longgar atau Goyang</span>
+          </button>
+          <button type="button" class="sign-photo-card" data-index="7" aria-label="Gigi palsu tidak muat dengan baik — sentuh untuk paparan gambar penuh">
+            <span class="sign-photo-frame">
+              <img src="gambar-tanda/gigi-palsu-tak-muat.jpg" alt="Gigi palsu tidak muat dengan baik" loading="lazy" decoding="async" />
+              <span class="sign-photo-num" aria-hidden="true">08</span>
+              <span class="sign-photo-zoom" aria-hidden="true">⤢</span>
+            </span>
+            <span class="sign-photo-label"><span class="sign-dot-alert" aria-hidden="true"></span>Gigi palsu tidak muat dengan baik</span>
+          </button>
+          <button type="button" class="sign-photo-card" data-index="8" aria-label="Gusi Bernanah — sentuh untuk paparan gambar penuh">
+            <span class="sign-photo-frame">
+              <img src="gambar-tanda/gusi-bernanah.webp" alt="Gusi Bernanah" loading="lazy" decoding="async" />
+              <span class="sign-photo-num" aria-hidden="true">09</span>
+              <span class="sign-photo-zoom" aria-hidden="true">⤢</span>
+            </span>
+            <span class="sign-photo-label"><span class="sign-dot-alert" aria-hidden="true"></span>Gusi Bernanah</span>
+          </button>
         </div>
       </article>
 
@@ -2424,6 +2705,21 @@
       </nav>
     </div>
   </section>
+
+  <!-- Paparan Gambar Penuh Tanda Amaran (Topik 3) -->
+  <dialog class="sign-lightbox" id="t3-lightbox" aria-labelledby="t3-lightbox-title">
+    <div class="sign-lightbox-img-wrap">
+      <img id="t3-lightbox-img" src="" alt="" />
+    </div>
+    <div class="sign-lightbox-bar">
+      <h3 class="sign-lightbox-title" id="t3-lightbox-title"></h3>
+      <div class="sign-lightbox-nav">
+        <button type="button" class="sign-lightbox-btn" id="t3-lb-prev" aria-label="Sebelumnya">←</button>
+        <button type="button" class="sign-lightbox-btn" id="t3-lb-next" aria-label="Seterusnya">→</button>
+        <button type="button" class="sign-lightbox-btn sign-lightbox-btn-close" id="t3-lb-close" aria-label="Tutup">✕ Tutup</button>
+      </div>
+    </div>
+  </dialog>
 
   <!-- ================================================================
        TOPIK 4: SARINGAN GUSI (BPE)
@@ -3850,6 +4146,62 @@
     })();
   </script>
 
+  <!-- JAVASCRIPT: INTERAKSI KAD TANDA AMARAN (TOPIK 3) -->
+  <script>
+    (function () {
+      'use strict';
+      const grid = document.getElementById('t3-signs-grid');
+      const lb = document.getElementById('t3-lightbox');
+      if (!grid || !lb || typeof lb.showModal !== 'function') return;
+
+      const cards = Array.from(grid.querySelectorAll('.sign-photo-card'));
+      const lbImg = document.getElementById('t3-lightbox-img');
+      const lbTitle = document.getElementById('t3-lightbox-title');
+      let current = 0;
+      let opener = null;
+
+      function show(i) {
+        current = (i + cards.length) % cards.length;
+        const img = cards[current].querySelector('img');
+        lbImg.src = img.getAttribute('src');
+        lbImg.alt = img.alt;
+        lbTitle.textContent = (current + 1) + '. ' + img.alt;
+      }
+
+      cards.forEach((card, i) => {
+        card.addEventListener('click', () => {
+          opener = card;
+          show(i);
+          lb.showModal();
+        });
+      });
+
+      document.getElementById('t3-lb-prev').addEventListener('click', () => show(current - 1));
+      document.getElementById('t3-lb-next').addEventListener('click', () => show(current + 1));
+      document.getElementById('t3-lb-close').addEventListener('click', () => lb.close());
+
+      // Tutup apabila sentuh di luar kotak gambar
+      lb.addEventListener('click', (e) => { if (e.target === lb) lb.close(); });
+
+      lb.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') show(current - 1);
+        if (e.key === 'ArrowRight') show(current + 1);
+      });
+
+      // Leret (swipe) pada peranti mudah alih
+      let startX = null;
+      lbImg.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, { passive: true });
+      lbImg.addEventListener('touchend', (e) => {
+        if (startX === null) return;
+        const dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) > 40) show(dx < 0 ? current + 1 : current - 1);
+        startX = null;
+      }, { passive: true });
+
+      lb.addEventListener('close', () => { if (opener) opener.focus({ preventScroll: true }); });
+      window.addEventListener('hashchange', () => { if (lb.open) lb.close(); });
+    })();
+  </script>
 </body>
 
 </html>
