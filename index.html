@@ -953,66 +953,272 @@
       margin-top: 2px;
     }
 
-    /* Diagram Kitaran 2 Hala Visual (Topik 2) */
+    /* Diagram Kitaran 2 Hala Visual & Gaya Khusus Topik 2 */
+    .t2-hl,
+    .t2-hl-rose,
+    .t2-hl-teal,
+    .t2-hl-amber {
+      font-weight: 800;
+      padding: 1px 6px;
+      border-radius: 6px;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+    }
+
+    .t2-hl {
+      color: #6d28d9;
+      background: rgba(139, 92, 246, 0.12);
+    }
+
+    .t2-hl-rose {
+      color: #be123c;
+      background: rgba(244, 63, 94, 0.12);
+    }
+
+    .t2-hl-teal {
+      color: #0e7490;
+      background: rgba(6, 182, 212, 0.13);
+    }
+
+    .t2-hl-amber {
+      color: #b45309;
+      background: rgba(245, 158, 11, 0.15);
+    }
+
     .cycle-diagram {
-      background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(244, 63, 94, 0.08));
-      border: 1px solid rgba(139, 92, 246, 0.25);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.74), rgba(243, 239, 254, 0.72), rgba(255, 238, 242, 0.68));
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid rgba(255, 255, 255, 0.85);
       border-radius: var(--radius-lg);
-      padding: 24px;
-      margin: 20px 0;
-      box-shadow: var(--shadow-sm);
+      padding: 26px 22px;
+      margin: 22px 0;
+      box-shadow: var(--shadow-md), var(--edge-reflection);
     }
 
     .cycle-title {
       text-align: center;
-      font-size: 0.95rem;
+      font-size: 1rem;
       font-weight: 800;
-      color: #7c3aed;
+      color: #6d28d9;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 16px;
+      letter-spacing: 0.06em;
+      margin-bottom: 18px;
     }
 
     .cycle-steps {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
+      max-width: 640px;
+      margin: 0 auto;
     }
 
     .cycle-node-card {
-      background: #ffffff;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       border-radius: var(--radius-md);
-      padding: 12px 18px;
-      border: 1px solid rgba(139, 92, 246, 0.22);
-      font-size: 0.95rem;
-      font-weight: 700;
+      padding: 12px 16px;
+      border: 1.5px solid rgba(139, 92, 246, 0.24);
+      font-size: 1rem;
+      font-weight: 800;
       color: var(--ink);
       display: flex;
       align-items: center;
-      gap: 12px;
-      box-shadow: 0 2px 8px rgba(139, 92, 246, 0.08);
+      gap: 14px;
+      box-shadow: 0 4px 14px rgba(139, 92, 246, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+      transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), border-color 0.25s;
+    }
+
+    .cycle-node-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(139, 92, 246, 0.5);
+      box-shadow: 0 8px 20px rgba(139, 92, 246, 0.14), inset 0 1px 0 #ffffff;
     }
 
     .cycle-num {
-      width: 28px;
-      height: 28px;
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
       background: linear-gradient(135deg, #8b5cf6, #6d28d9);
       color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.8rem;
+      font-size: 0.84rem;
       font-weight: 800;
       flex-shrink: 0;
+      box-shadow: 0 2px 6px rgba(109, 40, 217, 0.3);
+    }
+
+    .cycle-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, #f5f3ff, #ede9fe);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      box-shadow: inset 0 1px 0 #ffffff, 0 2px 6px rgba(11, 34, 51, 0.05);
+    }
+
+    .cycle-icon-box svg {
+      width: 34px;
+      height: 34px;
+      display: block;
+    }
+
+    .cycle-node-text {
+      flex: 1;
+      min-width: 0;
+      line-height: 1.35;
     }
 
     .cycle-arrow-down {
-      text-align: center;
-      color: #8b5cf6;
-      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #7c3aed;
+      font-size: 1.1rem;
       font-weight: 800;
       line-height: 1;
+      height: 20px;
+    }
+
+    .cycle-loop-pill {
+      margin-top: 8px;
+      align-self: center;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      background: linear-gradient(135deg, rgba(244, 63, 94, 0.14), rgba(139, 92, 246, 0.16));
+      border: 1px dashed rgba(225, 29, 72, 0.45);
+      color: #be123c;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    /* Poster Infografik HD (Topik 2) */
+    .t2-poster-wrap {
+      margin-top: 16px;
+    }
+
+    .t2-poster-hero {
+      max-width: 640px;
+      margin: 16px auto 0;
+    }
+
+    .t2-posters-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    @media (min-width: 720px) {
+      .t2-posters-grid {
+        grid-template-columns: repeat(2, 1fr);
+        align-items: stretch;
+      }
+    }
+
+    .t2-poster-btn {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding: 10px;
+      margin: 0;
+      border: 1px solid rgba(255, 255, 255, 0.92);
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: var(--shadow-md), var(--edge-reflection);
+      cursor: zoom-in;
+      text-align: center;
+      font-family: inherit;
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s;
+      -webkit-tap-highlight-color: transparent;
+      overflow: hidden;
+    }
+
+    .t2-poster-btn:hover,
+    .t2-poster-btn:focus-visible {
+      transform: translateY(-3px);
+      border-color: #ffffff;
+      box-shadow: var(--shadow-lg), var(--edge-reflection);
+      outline: none;
+    }
+
+    .t2-poster-frame {
+      position: relative;
+      width: 100%;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      background: #ffffff;
+      border: 1px solid rgba(11, 34, 51, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .t2-poster-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      image-rendering: -webkit-optimize-contrast;
+      transition: transform 0.4s var(--ease);
+    }
+
+    .t2-poster-btn:hover .t2-poster-frame img {
+      transform: scale(1.02);
+    }
+
+    .t2-poster-cap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 8px 4px;
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.35;
+    }
+
+    @media (max-width: 640px) {
+      .cycle-diagram {
+        padding: 18px 14px;
+      }
+
+      .cycle-node-card {
+        padding: 10px 12px;
+        gap: 10px;
+        font-size: 0.94rem;
+      }
+
+      .cycle-icon-box {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+      }
+
+      .cycle-icon-box svg {
+        width: 28px;
+        height: 28px;
+      }
+
+      .t2-poster-btn {
+        padding: 8px;
+      }
     }
 
     /* Grid 9 Tanda Amaran Klinikal Interaktif (Topik 3) — Liquid Glass */
@@ -2794,43 +3000,130 @@
 
       <div class="content-box">
         <p style="font-size: 1.05rem; font-weight: 600;">
-          Sains perubatan dan Kementerian Kesihatan Malaysia (KKM) mengiktiraf penyakit gusi sebagai komplikasi utama
-          ke-6 bagi penyakit diabetes.
+          Sains perubatan dan <strong class="t2-hl">Kementerian Kesihatan Malaysia (KKM)</strong> mengiktiraf
+          <strong class="t2-hl-rose">penyakit gusi</strong> sebagai <strong class="t2-hl-rose">komplikasi utama
+            ke-6</strong> bagi penyakit <strong class="t2-hl">diabetes</strong>.
         </p>
+
+        <!-- Poster Infografik 1: Kaitan 2 Hala -->
+        <div class="t2-poster-hero">
+          <button type="button" class="t2-poster-btn t2-zoomable" data-t2-index="0"
+            aria-label="Infografik Kaitan Antara Diabetes dan Penyakit Gusi — sentuh untuk paparan gambar penuh">
+            <span class="t2-poster-frame">
+              <img src="kaitan-2-hala/kaitan-2-hala.png"
+                alt="Kaitan Antara Diabetes &amp; Penyakit Gusi — Komplikasi Diabetes Ke-6" width="1228" height="1136"
+                loading="lazy" decoding="async" />
+              <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
+            </span>
+            <span class="t2-poster-cap">📌 Kaitan Antara Diabetes &amp; Penyakit Gusi</span>
+          </button>
+        </div>
       </div>
 
-      <!-- Diagram Kitaran 2 Hala Visual -->
+      <!-- Diagram Kitaran 2 Hala Visual dengan Ikon Sepadan -->
       <div class="cycle-diagram" role="region" aria-label="Diagram Kitaran Dua Hala">
         <div class="cycle-title">Kedua-duanya membentuk satu kitaran 2 hala:</div>
         <div class="cycle-steps">
+          <!-- 1. Gula Darah Tinggi -->
           <div class="cycle-node-card">
             <span class="cycle-num">1</span>
-            <span>Gula Darah Tinggi</span>
+            <span class="cycle-icon-box" style="background: linear-gradient(135deg, #ffe4e6, #fecdd3); border-color: rgba(244, 63, 94, 0.28);" aria-hidden="true">
+              <svg viewBox="0 0 40 40" fill="none">
+                <path d="M20 5C20 5 10 16.5 10 24C10 29.52 14.48 34 20 34C25.52 34 30 29.52 30 24C30 16.5 20 5 20 5Z" fill="#e11d48" />
+                <path d="M14.5 23C14.5 19.5 16.8 16.5 18.5 14.5" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.8" />
+                <rect x="17" y="21" width="6" height="6" rx="1.2" fill="#ffffff" />
+                <path d="M28 7V13M28 7L25 10M28 7L31 10" stroke="#be123c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            <span class="cycle-node-text"><strong class="t2-hl-rose">Gula Darah Tinggi</strong></span>
           </div>
-          <div class="cycle-arrow-down">▼</div>
+
+          <div class="cycle-arrow-down" aria-hidden="true">▼</div>
+
+          <!-- 2. Merosakkan Gusi & Tulang -->
           <div class="cycle-node-card">
             <span class="cycle-num">2</span>
-            <span>Merosakkan Gusi &amp; Tulang</span>
+            <span class="cycle-icon-box" style="background: linear-gradient(135deg, #fef3c7, #fde68a); border-color: rgba(245, 158, 11, 0.3);" aria-hidden="true">
+              <svg viewBox="0 0 40 40" fill="none">
+                <path d="M13 10C13 6.8 16 5.5 20 6.8C24 5.5 27 6.8 27 10C27 14 25.8 17.5 25.2 21.5L23.8 29.5C23.4 31 22.2 31.2 21.5 29L20 25L18.5 29C17.8 31.2 16.6 31 16.2 29.5L14.8 21.5C14.2 17.5 13 14 13 10Z" fill="#ffffff" stroke="#64748b" stroke-width="1.6" stroke-linejoin="round" />
+                <path d="M9 21C12 18.8 16 22 20 19.8C24 22 28 18.8 31 21V26C31 27.5 26 29 20 29C14 29 9 27.5 9 26V21Z" fill="#fb7185" />
+                <path d="M10 32.5H30" stroke="#d97706" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="3 3" />
+              </svg>
+            </span>
+            <span class="cycle-node-text"><strong class="t2-hl-amber">Merosakkan Gusi &amp; Tulang</strong></span>
           </div>
-          <div class="cycle-arrow-down">▼</div>
+
+          <div class="cycle-arrow-down" aria-hidden="true">▼</div>
+
+          <!-- 3. Jangkitan Gusi Teruk -->
           <div class="cycle-node-card">
             <span class="cycle-num">3</span>
-            <span>Jangkitan Gusi Teruk</span>
+            <span class="cycle-icon-box" style="background: linear-gradient(135deg, #fce7f3, #fbcfe8); border-color: rgba(219, 39, 119, 0.28);" aria-hidden="true">
+              <svg viewBox="0 0 40 40" fill="none">
+                <path d="M8 14C12 11.5 16 14.5 20 12.5C24 14.5 28 11.5 32 14V26C32 30 26.8 32 20 32C13.2 32 8 30 8 26V14Z" fill="#e11d48" />
+                <circle cx="15" cy="21" r="3" fill="#a3e635" stroke="#3f6212" stroke-width="1.2" />
+                <circle cx="24" cy="19.5" r="2.6" fill="#a3e635" stroke="#3f6212" stroke-width="1.2" />
+                <circle cx="21" cy="26" r="2.3" fill="#fde047" stroke="#854d0e" stroke-width="1.2" />
+                <path d="M14 9L16 12M26 9L24 12M20 7.5V11" stroke="#e11d48" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </span>
+            <span class="cycle-node-text"><strong class="t2-hl-rose">Jangkitan Gusi Teruk</strong></span>
           </div>
-          <div class="cycle-arrow-down">▼</div>
+
+          <div class="cycle-arrow-down" aria-hidden="true">▼</div>
+
+          <!-- 4. Bakteria Masuk Saluran Darah -->
           <div class="cycle-node-card">
             <span class="cycle-num">4</span>
-            <span>Bakteria Masuk Saluran Darah</span>
+            <span class="cycle-icon-box" style="background: linear-gradient(135deg, #e0f2fe, #bae6fd); border-color: rgba(2, 132, 199, 0.28);" aria-hidden="true">
+              <svg viewBox="0 0 40 40" fill="none">
+                <rect x="6" y="15" width="28" height="14" rx="7" fill="#fecdd3" stroke="#e11d48" stroke-width="1.8" />
+                <circle cx="13" cy="22" r="2.8" fill="#e11d48" />
+                <circle cx="27" cy="22" r="2.8" fill="#e11d48" />
+                <circle cx="20" cy="9" r="2.6" fill="#65a30d" />
+                <circle cx="20" cy="21" r="2.4" fill="#65a30d" />
+                <path d="M20 12V17.5M20 17.5L17.8 15.3M20 17.5L22.2 15.3" stroke="#15803d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            <span class="cycle-node-text"><strong class="t2-hl-teal">Bakteria Masuk Saluran Darah</strong></span>
           </div>
-          <div class="cycle-arrow-down">▼</div>
+
+          <div class="cycle-arrow-down" aria-hidden="true">▼</div>
+
+          <!-- 5. Radang Merebak -->
           <div class="cycle-node-card">
             <span class="cycle-num">5</span>
-            <span>Radang Merebak</span>
+            <span class="cycle-icon-box" style="background: linear-gradient(135deg, #ede9fe, #ddd6fe); border-color: rgba(124, 58, 237, 0.28);" aria-hidden="true">
+              <svg viewBox="0 0 40 40" fill="none">
+                <circle cx="20" cy="20" r="14" stroke="#8b5cf6" stroke-width="1.8" stroke-dasharray="3 3" />
+                <circle cx="20" cy="20" r="9.5" stroke="#ef4444" stroke-width="1.8" opacity="0.75" />
+                <circle cx="20" cy="20" r="5" fill="#ef4444" />
+                <path d="M20 4V8M20 32V36M4 20H8M32 20H36" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </span>
+            <span class="cycle-node-text"><strong class="t2-hl">Radang Merebak</strong></span>
           </div>
-          <div class="cycle-arrow-down">▼</div>
-          <div class="cycle-node-card" style="border-color: #f43f5e; background: #fff5f7;">
-            <span class="cycle-num" style="background: #f43f5e;">6</span>
-            <span style="color: #e11d48; font-weight: 800;">Diabetes Semakin Buruk</span>
+
+          <div class="cycle-arrow-down" aria-hidden="true">▼</div>
+
+          <!-- 6. Diabetes Semakin Buruk -->
+          <div class="cycle-node-card" style="border-color: #f43f5e; background: rgba(255, 241, 242, 0.92);">
+            <span class="cycle-num" style="background: linear-gradient(135deg, #f43f5e, #be123c);">6</span>
+            <span class="cycle-icon-box" style="background: linear-gradient(135deg, #ffe4e6, #fecdd3); border-color: rgba(244, 63, 94, 0.4);" aria-hidden="true">
+              <svg viewBox="0 0 40 40" fill="none">
+                <rect x="9" y="7" width="22" height="26" rx="5" fill="#ffffff" stroke="#e11d48" stroke-width="2" />
+                <rect x="12.5" y="10.5" width="15" height="10" rx="2.5" fill="#ffe4e6" />
+                <path d="M14.5 18L17.5 15L20.5 17L24.5 12.5" stroke="#be123c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+                <circle cx="24.5" cy="12.5" r="1.6" fill="#be123c" />
+                <circle cx="20" cy="26.5" r="3" fill="#f43f5e" />
+              </svg>
+            </span>
+            <span class="cycle-node-text"><strong class="t2-hl-rose">Diabetes Semakin Buruk</strong></span>
+          </div>
+
+          <div class="cycle-loop-pill" aria-hidden="true">
+            <span>🔄</span>
+            <span>Kitaran berulang semula ke Langkah 1</span>
           </div>
         </div>
       </div>
@@ -2841,25 +3134,53 @@
         <ul class="visual-list">
           <li>
             <span class="visual-bullet">•</span>
-            <span>Paras gula darah tinggi melemahkan sistem imun, meningkatkan glukosa dalam air liur dan menggalakkan
-              pembiakan bakteria penyebab penyakit gusi.</span>
+            <span><strong class="t2-hl">Gula darah tinggi</strong> <strong class="t2-hl-rose">melemahkan sistem
+                imun</strong> dan meningkatkan <strong class="t2-hl">glukosa dalam air liur</strong> yang menggalakkan
+              <strong class="t2-hl-rose">pembiakan bakteria</strong>.</span>
           </li>
           <li>
             <span class="visual-bullet">•</span>
-            <span>Diabetes menjejaskan saluran dan aliran darah ke tisu gusi, melambatkan penyembuhan serta
-              meningkatkan risiko jangkitan.</span>
+            <span><strong class="t2-hl">Menjejaskan saluran dan aliran darah</strong> ke tisu gusi, <strong
+                class="t2-hl-rose">melambatkan penyembuhan</strong> serta meningkatkan <strong
+                class="t2-hl-rose">risiko jangkitan</strong>.</span>
           </li>
           <li>
             <span class="visual-bullet">•</span>
-            <span>Kebersihan mulut yang kurang baik dan tabiat merokok meningkatkan lagi risiko penyakit gusi, terutama
-              dalam kalangan pesakit diabetes.</span>
+            <span><strong class="t2-hl">Kebersihan mulut kurang baik</strong> dan <strong class="t2-hl-amber">tabiat
+                merokok</strong> meningkatkan lagi <strong class="t2-hl-rose">risiko penyakit gusi</strong>.</span>
           </li>
           <li>
             <span class="visual-bullet">•</span>
-            <span>Pesakit diabetes yang tidak terkawal berisiko <strong>3 kali ganda</strong> lebih tinggi mengalami
-              penyakit gusi teruk dan kehilangan tulang penyokong gigi berbanding individu tanpa diabetes.</span>
+            <span><strong class="t2-hl">Diabetes tidak terkawal</strong> berisiko <strong class="t2-hl-rose">3 kali
+                ganda lebih tinggi</strong> mengalami <strong class="t2-hl-rose">penyakit gusi teruk</strong> dan
+              <strong class="t2-hl-rose">kehilangan tulang penyokong gigi</strong>.</span>
           </li>
         </ul>
+
+        <!-- Poster Infografik 2 & 3: Faktor Diabetes & Manifestasi Oral -->
+        <div class="t2-posters-grid">
+          <button type="button" class="t2-poster-btn t2-zoomable" data-t2-index="1"
+            aria-label="Infografik Faktor-Faktor yang Mengaitkan Diabetes kepada Penyakit Gusi — sentuh untuk paparan gambar penuh">
+            <span class="t2-poster-frame">
+              <img src="kaitan-2-hala/faktor-diabetes-penyakit-gusi.png"
+                alt="Faktor-Faktor yang Mengaitkan Diabetes kepada Penyakit Gusi" width="1030" height="701"
+                loading="lazy" decoding="async" />
+              <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
+            </span>
+            <span class="t2-poster-cap">🔍 Faktor Diabetes kepada Penyakit Gusi</span>
+          </button>
+
+          <button type="button" class="t2-poster-btn t2-zoomable" data-t2-index="2"
+            aria-label="Infografik Manifestasi Oral untuk Pesakit Diabetes — sentuh untuk paparan gambar penuh">
+            <span class="t2-poster-frame">
+              <img src="kaitan-2-hala/manifestasi-oral.png"
+                alt="Manifestasi Oral untuk Pesakit Diabetes" width="1068" height="890"
+                loading="lazy" decoding="async" />
+              <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
+            </span>
+            <span class="t2-poster-cap">🦷 Manifestasi Oral Pesakit Diabetes</span>
+          </button>
+        </div>
       </article>
 
       <!-- Bahagian 2 -->
@@ -2868,24 +3189,28 @@
         <ul class="visual-list">
           <li>
             <span class="visual-bullet">•</span>
-            <span>Jangkitan gusi bukan sahaja berada di dalam mulut; bakteria berbahaya membebaskan keradangan
-              berterusan yang meresap ke dalam aliran darah anda.</span>
+            <span><strong class="t2-hl-rose">Jangkitan gusi</strong> membebaskan <strong class="t2-hl-rose">bakteria
+                berbahaya</strong> dan <strong class="t2-hl">keradangan berterusan</strong> yang meresap ke dalam
+              <strong class="t2-hl-teal">aliran darah</strong>.</span>
           </li>
           <li>
             <span class="visual-bullet">•</span>
-            <span>Keradangan ini menyebabkan badan sukar menggunakan insulin dengan berkesan, lalu melonjakkan paras
-              gula dalam darah anda.</span>
+            <span><strong class="t2-hl">Keradangan</strong> ini menyukarkan badan <strong
+                class="t2-hl-teal">menggunakan insulin dengan berkesan</strong>, lalu <strong
+                class="t2-hl-rose">melonjakkan paras gula dalam darah</strong>.</span>
           </li>
         </ul>
       </article>
 
       <!-- Bahagian 3 -->
       <article class="content-box"
-        style="border-left: 6px solid #f43f5e; background: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(255, 241, 242, 0.7));">
+        style="border-left: 6px solid #f43f5e; background: linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(255, 241, 242, 0.78));">
         <h2 style="color: #e11d48;">3. Risiko Jantung &amp; Buah Pinggang:</h2>
         <p style="font-size: 1.02rem; font-weight: 600;">
-          Mengalami kedua-dua diabetes tidak terkawal dan penyakit gusi teruk menggandakan risiko komplikasi jantung
-          serta meningkatkan bahaya kerosakan buah pinggang yang serius secara signifikan
+          Mengalami kedua-dua <strong class="t2-hl-rose">diabetes tidak terkawal</strong> dan <strong
+            class="t2-hl-rose">penyakit gusi teruk</strong> <strong class="t2-hl-rose">menggandakan risiko komplikasi
+            jantung</strong> serta meningkatkan bahaya <strong class="t2-hl-rose">kerosakan buah pinggang yang
+            serius</strong> secara signifikan.
         </p>
       </article>
 
@@ -2895,6 +3220,21 @@
       </nav>
     </div>
   </section>
+
+  <!-- Paparan Gambar Penuh Poster Infografik (Topik 2) -->
+  <dialog class="sign-lightbox" id="t2-lightbox" aria-labelledby="t2-lightbox-title">
+    <div class="sign-lightbox-img-wrap">
+      <img id="t2-lightbox-img" src="" alt="" />
+    </div>
+    <div class="sign-lightbox-bar">
+      <h3 class="sign-lightbox-title" id="t2-lightbox-title"></h3>
+      <div class="sign-lightbox-nav">
+        <button type="button" class="sign-lightbox-btn" id="t2-lb-prev" aria-label="Sebelumnya">←</button>
+        <button type="button" class="sign-lightbox-btn" id="t2-lb-next" aria-label="Seterusnya">→</button>
+        <button type="button" class="sign-lightbox-btn sign-lightbox-btn-close" id="t2-lb-close" aria-label="Tutup">✕ Tutup</button>
+      </div>
+    </div>
+  </dialog>
 
   <!-- ================================================================
        TOPIK 3: TANDA AMARAN
@@ -4535,6 +4875,61 @@
         });
       }
 
+    })();
+  </script>
+
+  <!-- JAVASCRIPT: INTERAKSI POSTER INFOGRAFIK HD (TOPIK 2) -->
+  <script>
+    (function () {
+      'use strict';
+      const view = document.getElementById('view-hubungan');
+      const lb = document.getElementById('t2-lightbox');
+      if (!view || !lb || typeof lb.showModal !== 'function') return;
+
+      const items = Array.from(view.querySelectorAll('.t2-zoomable'))
+        .sort((a, b) => Number(a.dataset.t2Index) - Number(b.dataset.t2Index));
+      const lbImg = document.getElementById('t2-lightbox-img');
+      const lbTitle = document.getElementById('t2-lightbox-title');
+      let current = 0;
+      let opener = null;
+
+      function show(i) {
+        current = (i + items.length) % items.length;
+        const img = items[current].querySelector('img');
+        lbImg.src = img.getAttribute('src');
+        lbImg.alt = img.alt;
+        lbTitle.textContent = img.alt;
+      }
+
+      items.forEach((item, i) => {
+        item.addEventListener('click', () => {
+          opener = item;
+          show(i);
+          lb.showModal();
+        });
+      });
+
+      document.getElementById('t2-lb-prev').addEventListener('click', () => show(current - 1));
+      document.getElementById('t2-lb-next').addEventListener('click', () => show(current + 1));
+      document.getElementById('t2-lb-close').addEventListener('click', () => lb.close());
+
+      lb.addEventListener('click', (e) => { if (e.target === lb) lb.close(); });
+      lb.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') show(current - 1);
+        if (e.key === 'ArrowRight') show(current + 1);
+      });
+
+      let startX = null;
+      lbImg.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, { passive: true });
+      lbImg.addEventListener('touchend', (e) => {
+        if (startX === null) return;
+        const dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) > 40) show(dx < 0 ? current + 1 : current - 1);
+        startX = null;
+      }, { passive: true });
+
+      lb.addEventListener('close', () => { if (opener) opener.focus({ preventScroll: true }); });
+      window.addEventListener('hashchange', () => { if (lb.open) lb.close(); });
     })();
   </script>
 
