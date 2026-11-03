@@ -134,7 +134,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       gap: 12px;
       width: 100%;
       margin-bottom: 18px;
@@ -158,6 +158,8 @@
       transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.25s var(--ease);
       user-select: none;
       -webkit-tap-highlight-color: transparent;
+      flex-shrink: 1;
+      min-width: 0;
     }
 
     .brand-logo-glass:hover {
@@ -184,7 +186,8 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
+      flex-shrink: 0;
       margin-left: auto;
     }
 
@@ -240,8 +243,15 @@
     }
 
     @keyframes gentleNoteFloat {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-2px) scale(1.1); }
+
+      0%,
+      100% {
+        transform: translateY(0) scale(1);
+      }
+
+      50% {
+        transform: translateY(-2px) scale(1.1);
+      }
     }
 
     .size-control-glass {
@@ -824,6 +834,129 @@
     /* ================================================================
        7. SUBTOPIC PAGES (LAYOUT & STYLING VISUAL)
        ================================================================ */
+    /* Gaya Teks Bold dengan Warna Aksen Tanpa Highlight Latar Belakang (Topik 1) */
+    .t1-hl,
+    .t1-hl-cyan,
+    .t1-hl-rose,
+    .t1-hl-amber,
+    .t1-hl-teal {
+      font-weight: 800;
+      background: none !important;
+      padding: 0 !important;
+      border-radius: 0 !important;
+      box-decoration-break: normal;
+      -webkit-box-decoration-break: normal;
+    }
+
+    .t1-hl,
+    .t1-hl-cyan {
+      color: #0891b2;
+    }
+
+    .t1-hl-rose {
+      color: #e11d48;
+    }
+
+    .t1-hl-amber {
+      color: #d97706;
+    }
+
+    .t1-hl-teal {
+      color: #0f766e;
+    }
+
+    /* Kad Poster Infografik Liquid Glass Topik 1 */
+    .t1-poster-hero {
+      max-width: 720px;
+      margin: 18px auto 6px;
+    }
+
+    .t1-posters-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    @media (min-width: 680px) {
+      .t1-posters-grid {
+        grid-template-columns: repeat(2, 1fr);
+        align-items: stretch;
+      }
+    }
+
+    .t1-poster-btn {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding: 10px;
+      margin: 0;
+      border: 1px solid rgba(255, 255, 255, 0.92);
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: var(--shadow-md), var(--edge-reflection);
+      cursor: zoom-in;
+      text-align: center;
+      font-family: inherit;
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s;
+      -webkit-tap-highlight-color: transparent;
+      overflow: hidden;
+    }
+
+    .t1-poster-btn:hover,
+    .t1-poster-btn:focus-visible {
+      transform: translateY(-3px);
+      border-color: #ffffff;
+      box-shadow: var(--shadow-lg), var(--edge-reflection);
+      outline: none;
+    }
+
+    .t1-poster-frame {
+      position: relative;
+      width: 100%;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      background: #ffffff;
+      border: 1px solid rgba(11, 34, 51, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .t1-poster-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      image-rendering: -webkit-optimize-contrast;
+      transition: transform 0.4s var(--ease);
+    }
+
+    .t1-poster-btn:hover .t1-poster-frame img {
+      transform: scale(1.02);
+    }
+
+    .t1-poster-cap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 8px 4px;
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.35;
+    }
+
+    @media (max-width: 640px) {
+      .t1-poster-btn {
+        padding: 8px;
+      }
+    }
+
     .subtopic-wrapper {
       max-width: 820px;
       margin: 0 auto;
@@ -985,14 +1118,15 @@
     }
 
     .cond-tag {
-      font-size: 0.76rem;
+      font-size: 0.72rem;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.05em;
       display: inline-block;
-      padding: 2px 10px;
+      padding: 2px 9px;
       border-radius: var(--radius-full);
-      margin-bottom: 8px;
+      margin-right: 6px;
+      vertical-align: middle;
     }
 
     .cond-gingivitis .cond-tag {
@@ -1006,15 +1140,15 @@
     }
 
     .cond-card strong {
-      font-size: 1.08rem;
+      font-size: 1rem;
       color: var(--ink);
-      display: block;
-      margin-bottom: 4px;
+      display: inline;
     }
 
     .cond-card p {
       color: var(--ink-soft);
-      font-size: 0.96rem;
+      font-size: 0.98rem;
+      line-height: 1.65;
       margin: 0;
     }
 
@@ -1492,8 +1626,15 @@
     }
 
     @keyframes signLbIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
     .sign-lightbox-img-wrap {
@@ -1768,11 +1909,25 @@
       outline: none;
     }
 
-    .t4-jump-btn.bpe-0 { background: linear-gradient(135deg, #10b981, #059669); }
-    .t4-jump-btn.bpe-1 { background: linear-gradient(135deg, #84cc16, #65a30d); }
-    .t4-jump-btn.bpe-2 { background: linear-gradient(135deg, #f59e0b, #d97706); }
-    .t4-jump-btn.bpe-3 { background: linear-gradient(135deg, #f97316, #ea580c); }
-    .t4-jump-btn.bpe-4 { background: linear-gradient(135deg, #ef4444, #dc2626); }
+    .t4-jump-btn.bpe-0 {
+      background: linear-gradient(135deg, #10b981, #059669);
+    }
+
+    .t4-jump-btn.bpe-1 {
+      background: linear-gradient(135deg, #84cc16, #65a30d);
+    }
+
+    .t4-jump-btn.bpe-2 {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+    }
+
+    .t4-jump-btn.bpe-3 {
+      background: linear-gradient(135deg, #f97316, #ea580c);
+    }
+
+    .t4-jump-btn.bpe-4 {
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+    }
 
     .bpe-list {
       display: flex;
@@ -1802,8 +1957,15 @@
     }
 
     @keyframes t4Flash {
-      0%, 100% { box-shadow: var(--shadow-sm); }
-      35% { box-shadow: 0 0 0 4px color-mix(in srgb, var(--t4-accent) 45%, transparent), var(--shadow-lg); }
+
+      0%,
+      100% {
+        box-shadow: var(--shadow-sm);
+      }
+
+      35% {
+        box-shadow: 0 0 0 4px color-mix(in srgb, var(--t4-accent) 45%, transparent), var(--shadow-lg);
+      }
     }
 
     .bpe-badge-col {
@@ -1861,11 +2023,30 @@
       font-size: 0.95rem;
     }
 
-    .bpe-0 { --t4-accent: #10b981; --t4-accent-ink: #047857; }
-    .bpe-1 { --t4-accent: #84cc16; --t4-accent-ink: #4d7c0f; }
-    .bpe-2 { --t4-accent: #f59e0b; --t4-accent-ink: #b45309; }
-    .bpe-3 { --t4-accent: #f97316; --t4-accent-ink: #c2410c; }
-    .bpe-4 { --t4-accent: #ef4444; --t4-accent-ink: #b91c1c; }
+    .bpe-0 {
+      --t4-accent: #10b981;
+      --t4-accent-ink: #047857;
+    }
+
+    .bpe-1 {
+      --t4-accent: #84cc16;
+      --t4-accent-ink: #4d7c0f;
+    }
+
+    .bpe-2 {
+      --t4-accent: #f59e0b;
+      --t4-accent-ink: #b45309;
+    }
+
+    .bpe-3 {
+      --t4-accent: #f97316;
+      --t4-accent-ink: #c2410c;
+    }
+
+    .bpe-4 {
+      --t4-accent: #ef4444;
+      --t4-accent-ink: #b91c1c;
+    }
 
     .bpe-0 .bpe-badge-col {
       background: linear-gradient(135deg, #10b981, #059669);
@@ -1965,6 +2146,7 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
+
       .t4-zoomable,
       .t4-zoomable img,
       .bpe-score-block,
@@ -2335,31 +2517,82 @@
       }
 
       .header-top-bar {
-        gap: 8px;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 6px;
         margin-bottom: 14px;
+        width: 100%;
       }
 
       .brand-logo-glass {
-        padding: 6px 14px;
+        padding: 5px 10px;
+        flex-shrink: 1;
+        min-width: 0;
       }
 
       .brand-logo-img {
-        height: clamp(22px, 5.8vw, 28px);
+        height: clamp(16px, 4.4vw, 22px);
+        width: auto;
       }
 
       .header-top-controls {
-        gap: 6px;
+        display: inline-flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: 5px;
+        flex-shrink: 0;
       }
 
       .audio-control-glass {
-        padding: 5px 10px;
-        min-height: 44px;
-        font-size: 0.72rem;
+        padding: 4px 8px;
+        height: 36px;
+        min-height: 36px;
+        font-size: 11px;
+        gap: 4px;
+        border-radius: 10px;
+        flex-shrink: 0;
+      }
+
+      .audio-icon-wave {
+        font-size: 13px;
       }
 
       .size-control-glass {
-        padding: 5px 10px;
-        gap: 6px;
+        padding: 4px 7px;
+        height: 36px;
+        gap: 5px;
+        border-radius: 10px;
+        flex-shrink: 0;
+      }
+
+      .size-control-label {
+        font-size: 10px;
+      }
+
+      .size-btn-group {
+        gap: 3px;
+      }
+
+      .btn-size-toggle {
+        width: 26px;
+        height: 26px;
+        min-width: 26px;
+        min-height: 26px;
+        border-radius: 7px;
+      }
+
+      .btn-size-toggle .symbol-a.a-sm {
+        font-size: 11px;
+      }
+
+      .btn-size-toggle .symbol-a.a-md {
+        font-size: 14px;
+      }
+
+      .btn-size-toggle .symbol-a.a-lg {
+        font-size: 17px;
       }
 
       .hero-glass-banner {
@@ -2451,6 +2684,47 @@
     }
 
     @media (max-width: 380px) {
+      .header-top-bar {
+        gap: 4px;
+      }
+
+      .brand-logo-glass {
+        padding: 4px 8px;
+      }
+
+      .brand-logo-img {
+        height: clamp(14px, 4vw, 17px);
+      }
+
+      .header-top-controls {
+        gap: 4px;
+      }
+
+      .audio-control-glass {
+        padding: 3px 6px;
+        height: 32px;
+        min-height: 32px;
+        font-size: 10px;
+        gap: 3px;
+      }
+
+      .size-control-glass {
+        padding: 3px 5px;
+        height: 32px;
+        gap: 4px;
+      }
+
+      .size-control-label {
+        font-size: 9px;
+      }
+
+      .btn-size-toggle {
+        width: 23px;
+        height: 23px;
+        min-width: 23px;
+        min-height: 23px;
+      }
+
       .topics-grid {
         gap: 8px;
       }
@@ -3064,8 +3338,8 @@
       <div class="stat-mega-card">
         <span class="stat-badge-top">🔎 TAHUKAH ANDA:</span>
         <p class="stat-highlight-text">
-          Kira-kira <strong>1 daripada 6 orang dewasa</strong> di Malaysia menghidap penyakit Diabetes Jenis 2 <span
-            class="stat-number-pill">(15.6%)</span>
+          Kira-kira <strong class="t1-hl">1 daripada 6 orang dewasa</strong> di Malaysia menghidap penyakit <strong
+            class="t1-hl-cyan">Diabetes Jenis 2</strong> <span class="stat-number-pill">(15.6%)</span>
         </p>
       </div>
 
@@ -3075,15 +3349,43 @@
         <ul class="visual-list">
           <li>
             <span class="visual-bullet">1</span>
-            <span>Penyakit kronik yang menyebabkan paras gula dalam darah meningkat apabila badan tidak dapat
-              menggunakan insulin dengan berkesan atau tidak menghasilkan insulin yang mencukupi.</span>
+            <span><strong class="t1-hl">Penyakit kronik</strong> yang menyebabkan <strong class="t1-hl-rose">paras gula
+                dalam darah meningkat</strong> apabila badan <strong class="t1-hl">tidak dapat menggunakan insulin
+                dengan berkesan</strong> atau <strong class="t1-hl-rose">tidak menghasilkan insulin yang
+                mencukupi</strong>.</span>
           </li>
           <li>
             <span class="visual-bullet">2</span>
-            <span>Jika tidak dikawal, diabetes boleh menjejaskan mata, buah pinggang, jantung dan kesihatan
-              mulut.</span>
+            <span>Jika tidak dikawal, <strong class="t1-hl-cyan">diabetes</strong> boleh menjejaskan <strong
+                class="t1-hl">mata</strong>, <strong class="t1-hl">buah pinggang</strong>, <strong
+                class="t1-hl-rose">jantung</strong> dan <strong class="t1-hl-teal">kesihatan mulut</strong>.</span>
           </li>
         </ul>
+
+        <!-- Poster Infografik Rasmi HD: Apa itu Diabetes & Komplikasi Diabetes -->
+        <div class="t1-posters-grid">
+          <!-- Poster 1: Apa itu Diabetes -->
+          <button type="button" class="t1-poster-btn t1-zoomable" data-t1-index="0"
+            aria-label="Poster Infografik: Apa itu Diabetes Jenis 2 — sentuh untuk paparan gambar penuh">
+            <span class="t1-poster-frame">
+              <img src="apa-itu-diabetes.png" alt="Infografik Apa itu Diabetes Jenis 2 (T2DM)" width="1480"
+                height="1262" loading="lazy" decoding="async" />
+              <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
+            </span>
+            <span class="t1-poster-cap">📊 Apa itu Diabetes Jenis 2</span>
+          </button>
+
+          <!-- Poster 2: Komplikasi Diabetes -->
+          <button type="button" class="t1-poster-btn t1-zoomable" data-t1-index="1"
+            aria-label="Poster Infografik: Komplikasi Diabetes pada Tubuh Badan — sentuh untuk paparan gambar penuh">
+            <span class="t1-poster-frame">
+              <img src="komplikasi-diabetes.png" alt="Infografik Komplikasi Diabetes Pada Tubuh Badan" width="1252"
+                height="1099" loading="lazy" decoding="async" />
+              <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
+            </span>
+            <span class="t1-poster-cap">🫀 Komplikasi Diabetes Pada Tubuh Badan</span>
+          </button>
+        </div>
       </article>
 
       <!-- Statistik 2: TAHUKAH ANDA -->
@@ -3091,11 +3393,13 @@
         style="background: linear-gradient(135deg, rgba(244, 63, 94, 0.12), rgba(245, 158, 11, 0.12)); border-color: rgba(244, 63, 94, 0.3);">
         <span class="stat-badge-top" style="color: #e11d48;">🔎 TAHUKAH ANDA:</span>
         <p class="stat-highlight-text">
-          <strong>9 daripada 20 orang dewasa</strong> di Malaysia mengalami masalah gusi <span class="stat-number-pill"
+          <strong class="t1-hl-rose">9 daripada 20 orang dewasa</strong> di Malaysia mengalami <strong
+            class="t1-hl-rose">masalah gusi</strong> <span class="stat-number-pill"
             style="background: #e11d48;">(94.5%)</span>
         </p>
         <p class="stat-highlight-text" style="margin-top: 4px;">
-          <strong>4 daripada 10 orang dewasa</strong> mengalami periodontitis <span class="stat-number-pill"
+          <strong class="t1-hl-amber">4 daripada 10 orang dewasa</strong> mengalami <strong
+            class="t1-hl-amber">periodontitis</strong> <span class="stat-number-pill"
             style="background: #d97706;">(38%)</span>
         </p>
       </div>
@@ -3103,21 +3407,56 @@
       <!-- Apa itu Penyakit Gusi -->
       <article class="content-box">
         <h2>Apa itu Penyakit Gusi?</h2>
-        <p>Penyakit gusi ialah jangkitan yang menjejaskan gusi dan tisu penyokong gigi akibat pengumpulan plak
-          bakteria.</p>
+        <p><strong class="t1-hl-rose">Penyakit gusi</strong> ialah <strong class="t1-hl">jangkitan yang menjejaskan gusi
+            dan tisu penyokong gigi</strong> akibat <strong class="t1-hl-amber">pengumpulan plak bakteria</strong>.</p>
+
+        <!-- Poster Infografik Rasmi HD: Tahap Penyakit Gusi (Banner Lebar) -->
+        <div class="t1-poster-hero">
+          <button type="button" class="t1-poster-btn t1-zoomable" data-t1-index="2"
+            aria-label="Poster Infografik: Tahap Penyakit Gusi — sentuh untuk paparan gambar penuh">
+            <span class="t1-poster-frame">
+              <img src="tahap-penyakit-gusi.png"
+                alt="Infografik Tahap Penyakit Gusi: Gusi Sihat, Gingivitis hingga Periodontitis" width="1557"
+                height="674" loading="lazy" decoding="async" />
+              <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
+            </span>
+            <span class="t1-poster-cap">🦷 Tahap Perkembangan Penyakit Gusi</span>
+          </button>
+        </div>
 
         <div class="condition-comparison">
           <div class="cond-card cond-gingivitis">
-            <span class="cond-tag">Peringkat Awal</span>
-            <strong>Gingivitis:</strong>
-            <p>Peringkat awal yang menyebabkan gusi merah, bengkak dan mudah berdarah.</p>
+            <p><span class="cond-tag">Peringkat Awal</span><strong class="t1-hl-amber">Gingivitis:</strong> <strong class="t1-hl-amber">Peringkat awal</strong> yang menyebabkan <strong class="t1-hl-rose">gusi merah, bengkak dan mudah berdarah</strong>.</p>
           </div>
           <div class="cond-card cond-periodontitis">
-            <span class="cond-tag">Peringkat Serius</span>
-            <strong>Periodontitis:</strong>
-            <p>Peringkat lebih serius yang merosakkan tisu dan tulang penyokong gigi sehingga gigi boleh menjadi longgar
-              atau tercabut.</p>
+            <p><span class="cond-tag">Peringkat Serius</span><strong class="t1-hl-rose">Periodontitis:</strong> <strong class="t1-hl-rose">Peringkat lebih serius</strong> yang <strong class="t1-hl-rose">merosakkan tisu dan tulang penyokong gigi</strong> sehingga <strong class="t1-hl-rose">gigi boleh menjadi longgar atau tercabut</strong>.</p>
           </div>
+        </div>
+
+        <!-- Poster Infografik Perbandingan Klinikal: Gingivitis vs Periodontitis -->
+        <div class="t1-posters-grid">
+          <!-- Poster 4: Gingivitis vs Periodontitis (Visual Garis Masa) -->
+          <button type="button" class="t1-poster-btn t1-zoomable" data-t1-index="3"
+            aria-label="Poster Infografik: Perbandingan Gingivitis vs Periodontitis — sentuh untuk paparan gambar penuh">
+            <span class="t1-poster-frame">
+              <img src="gingivitis-vs-periodontitis.png" alt="Perbandingan Klinikal Gingivitis vs Periodontitis"
+                width="1664" height="945" loading="lazy" decoding="async" />
+              <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
+            </span>
+            <span class="t1-poster-cap">🔍 Gingivitis vs Periodontitis </span>
+          </button>
+
+          <!-- Poster 5: Gingivitis vs Periodontitis 2 (Fokus Tisu Sokongan) -->
+          <button type="button" class="t1-poster-btn t1-zoomable" data-t1-index="4"
+            aria-label="Poster Infografik: Perbandingan Kerosakan Tisu Gingivitis vs Periodontitis — sentuh untuk paparan gambar penuh">
+            <span class="t1-poster-frame">
+              <img src="gingivitis-vs-periodontitis-2.png"
+                alt="Perbandingan Tisu Gusi dan Tulang: Gingivitis vs Periodontitis" width="1236" height="974"
+                loading="lazy" decoding="async" />
+              <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
+            </span>
+            <span class="t1-poster-cap">🔬 Kerosakan Tulang &amp; Tisu Sokongan</span>
+          </button>
         </div>
       </article>
 
@@ -3127,6 +3466,22 @@
       </nav>
     </div>
   </section>
+
+  <!-- DIALOG LIGHTBOX: PAPARAN GAMBAR PENUH TOPIK 1 -->
+  <dialog class="sign-lightbox" id="t1-lightbox" aria-labelledby="t1-lightbox-title">
+    <div class="sign-lightbox-img-wrap">
+      <img id="t1-lightbox-img" src="" alt="" />
+    </div>
+    <div class="sign-lightbox-bar">
+      <h3 class="sign-lightbox-title" id="t1-lightbox-title"></h3>
+      <div class="sign-lightbox-nav">
+        <button type="button" class="sign-lightbox-btn" id="t1-lb-prev" aria-label="Sebelumnya">←</button>
+        <button type="button" class="sign-lightbox-btn" id="t1-lb-next" aria-label="Seterusnya">→</button>
+        <button type="button" class="sign-lightbox-btn sign-lightbox-btn-close" id="t1-lb-close" aria-label="Tutup">✕
+          Tutup</button>
+      </div>
+    </div>
+  </dialog>
 
   <!-- ================================================================
        TOPIK 2: HUBUNGAN DUA HALA
@@ -3170,12 +3525,17 @@
           <!-- 1. Gula Darah Tinggi -->
           <div class="cycle-node-card">
             <span class="cycle-num">1</span>
-            <span class="cycle-icon-box" style="background: linear-gradient(135deg, #ffe4e6, #fecdd3); border-color: rgba(244, 63, 94, 0.28);" aria-hidden="true">
+            <span class="cycle-icon-box"
+              style="background: linear-gradient(135deg, #ffe4e6, #fecdd3); border-color: rgba(244, 63, 94, 0.28);"
+              aria-hidden="true">
               <svg viewBox="0 0 40 40" fill="none">
-                <path d="M20 5C20 5 10 16.5 10 24C10 29.52 14.48 34 20 34C25.52 34 30 29.52 30 24C30 16.5 20 5 20 5Z" fill="#e11d48" />
-                <path d="M14.5 23C14.5 19.5 16.8 16.5 18.5 14.5" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.8" />
+                <path d="M20 5C20 5 10 16.5 10 24C10 29.52 14.48 34 20 34C25.52 34 30 29.52 30 24C30 16.5 20 5 20 5Z"
+                  fill="#e11d48" />
+                <path d="M14.5 23C14.5 19.5 16.8 16.5 18.5 14.5" stroke="#ffffff" stroke-width="2"
+                  stroke-linecap="round" opacity="0.8" />
                 <rect x="17" y="21" width="6" height="6" rx="1.2" fill="#ffffff" />
-                <path d="M28 7V13M28 7L25 10M28 7L31 10" stroke="#be123c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M28 7V13M28 7L25 10M28 7L31 10" stroke="#be123c" stroke-width="2.2" stroke-linecap="round"
+                  stroke-linejoin="round" />
               </svg>
             </span>
             <span class="cycle-node-text"><strong class="t2-hl-rose">Gula Darah Tinggi</strong></span>
@@ -3186,11 +3546,17 @@
           <!-- 2. Merosakkan Gusi & Tulang -->
           <div class="cycle-node-card">
             <span class="cycle-num">2</span>
-            <span class="cycle-icon-box" style="background: linear-gradient(135deg, #fef3c7, #fde68a); border-color: rgba(245, 158, 11, 0.3);" aria-hidden="true">
+            <span class="cycle-icon-box"
+              style="background: linear-gradient(135deg, #fef3c7, #fde68a); border-color: rgba(245, 158, 11, 0.3);"
+              aria-hidden="true">
               <svg viewBox="0 0 40 40" fill="none">
-                <path d="M13 10C13 6.8 16 5.5 20 6.8C24 5.5 27 6.8 27 10C27 14 25.8 17.5 25.2 21.5L23.8 29.5C23.4 31 22.2 31.2 21.5 29L20 25L18.5 29C17.8 31.2 16.6 31 16.2 29.5L14.8 21.5C14.2 17.5 13 14 13 10Z" fill="#ffffff" stroke="#64748b" stroke-width="1.6" stroke-linejoin="round" />
-                <path d="M9 21C12 18.8 16 22 20 19.8C24 22 28 18.8 31 21V26C31 27.5 26 29 20 29C14 29 9 27.5 9 26V21Z" fill="#fb7185" />
-                <path d="M10 32.5H30" stroke="#d97706" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="3 3" />
+                <path
+                  d="M13 10C13 6.8 16 5.5 20 6.8C24 5.5 27 6.8 27 10C27 14 25.8 17.5 25.2 21.5L23.8 29.5C23.4 31 22.2 31.2 21.5 29L20 25L18.5 29C17.8 31.2 16.6 31 16.2 29.5L14.8 21.5C14.2 17.5 13 14 13 10Z"
+                  fill="#ffffff" stroke="#64748b" stroke-width="1.6" stroke-linejoin="round" />
+                <path d="M9 21C12 18.8 16 22 20 19.8C24 22 28 18.8 31 21V26C31 27.5 26 29 20 29C14 29 9 27.5 9 26V21Z"
+                  fill="#fb7185" />
+                <path d="M10 32.5H30" stroke="#d97706" stroke-width="2.2" stroke-linecap="round"
+                  stroke-dasharray="3 3" />
               </svg>
             </span>
             <span class="cycle-node-text"><strong class="t2-hl-amber">Merosakkan Gusi &amp; Tulang</strong></span>
@@ -3201,9 +3567,13 @@
           <!-- 3. Jangkitan Gusi Teruk -->
           <div class="cycle-node-card">
             <span class="cycle-num">3</span>
-            <span class="cycle-icon-box" style="background: linear-gradient(135deg, #fce7f3, #fbcfe8); border-color: rgba(219, 39, 119, 0.28);" aria-hidden="true">
+            <span class="cycle-icon-box"
+              style="background: linear-gradient(135deg, #fce7f3, #fbcfe8); border-color: rgba(219, 39, 119, 0.28);"
+              aria-hidden="true">
               <svg viewBox="0 0 40 40" fill="none">
-                <path d="M8 14C12 11.5 16 14.5 20 12.5C24 14.5 28 11.5 32 14V26C32 30 26.8 32 20 32C13.2 32 8 30 8 26V14Z" fill="#e11d48" />
+                <path
+                  d="M8 14C12 11.5 16 14.5 20 12.5C24 14.5 28 11.5 32 14V26C32 30 26.8 32 20 32C13.2 32 8 30 8 26V14Z"
+                  fill="#e11d48" />
                 <circle cx="15" cy="21" r="3" fill="#a3e635" stroke="#3f6212" stroke-width="1.2" />
                 <circle cx="24" cy="19.5" r="2.6" fill="#a3e635" stroke="#3f6212" stroke-width="1.2" />
                 <circle cx="21" cy="26" r="2.3" fill="#fde047" stroke="#854d0e" stroke-width="1.2" />
@@ -3218,14 +3588,17 @@
           <!-- 4. Bakteria Masuk Saluran Darah -->
           <div class="cycle-node-card">
             <span class="cycle-num">4</span>
-            <span class="cycle-icon-box" style="background: linear-gradient(135deg, #e0f2fe, #bae6fd); border-color: rgba(2, 132, 199, 0.28);" aria-hidden="true">
+            <span class="cycle-icon-box"
+              style="background: linear-gradient(135deg, #e0f2fe, #bae6fd); border-color: rgba(2, 132, 199, 0.28);"
+              aria-hidden="true">
               <svg viewBox="0 0 40 40" fill="none">
                 <rect x="6" y="15" width="28" height="14" rx="7" fill="#fecdd3" stroke="#e11d48" stroke-width="1.8" />
                 <circle cx="13" cy="22" r="2.8" fill="#e11d48" />
                 <circle cx="27" cy="22" r="2.8" fill="#e11d48" />
                 <circle cx="20" cy="9" r="2.6" fill="#65a30d" />
                 <circle cx="20" cy="21" r="2.4" fill="#65a30d" />
-                <path d="M20 12V17.5M20 17.5L17.8 15.3M20 17.5L22.2 15.3" stroke="#15803d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M20 12V17.5M20 17.5L17.8 15.3M20 17.5L22.2 15.3" stroke="#15803d" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </span>
             <span class="cycle-node-text"><strong class="t2-hl-teal">Bakteria Masuk Saluran Darah</strong></span>
@@ -3236,7 +3609,9 @@
           <!-- 5. Radang Merebak -->
           <div class="cycle-node-card">
             <span class="cycle-num">5</span>
-            <span class="cycle-icon-box" style="background: linear-gradient(135deg, #ede9fe, #ddd6fe); border-color: rgba(124, 58, 237, 0.28);" aria-hidden="true">
+            <span class="cycle-icon-box"
+              style="background: linear-gradient(135deg, #ede9fe, #ddd6fe); border-color: rgba(124, 58, 237, 0.28);"
+              aria-hidden="true">
               <svg viewBox="0 0 40 40" fill="none">
                 <circle cx="20" cy="20" r="14" stroke="#8b5cf6" stroke-width="1.8" stroke-dasharray="3 3" />
                 <circle cx="20" cy="20" r="9.5" stroke="#ef4444" stroke-width="1.8" opacity="0.75" />
@@ -3252,11 +3627,14 @@
           <!-- 6. Diabetes Semakin Buruk -->
           <div class="cycle-node-card" style="border-color: #f43f5e; background: rgba(255, 241, 242, 0.92);">
             <span class="cycle-num" style="background: linear-gradient(135deg, #f43f5e, #be123c);">6</span>
-            <span class="cycle-icon-box" style="background: linear-gradient(135deg, #ffe4e6, #fecdd3); border-color: rgba(244, 63, 94, 0.4);" aria-hidden="true">
+            <span class="cycle-icon-box"
+              style="background: linear-gradient(135deg, #ffe4e6, #fecdd3); border-color: rgba(244, 63, 94, 0.4);"
+              aria-hidden="true">
               <svg viewBox="0 0 40 40" fill="none">
                 <rect x="9" y="7" width="22" height="26" rx="5" fill="#ffffff" stroke="#e11d48" stroke-width="2" />
                 <rect x="12.5" y="10.5" width="15" height="10" rx="2.5" fill="#ffe4e6" />
-                <path d="M14.5 18L17.5 15L20.5 17L24.5 12.5" stroke="#be123c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M14.5 18L17.5 15L20.5 17L24.5 12.5" stroke="#be123c" stroke-width="2.2" stroke-linecap="round"
+                  stroke-linejoin="round" />
                 <circle cx="24.5" cy="12.5" r="1.6" fill="#be123c" />
                 <circle cx="20" cy="26.5" r="3" fill="#f43f5e" />
               </svg>
@@ -3284,8 +3662,8 @@
           <li>
             <span class="visual-bullet">•</span>
             <span><strong class="t2-hl">Menjejaskan saluran dan aliran darah</strong> ke tisu gusi, <strong
-                class="t2-hl-rose">melambatkan penyembuhan</strong> serta meningkatkan <strong
-                class="t2-hl-rose">risiko jangkitan</strong>.</span>
+                class="t2-hl-rose">melambatkan penyembuhan</strong> serta meningkatkan <strong class="t2-hl-rose">risiko
+                jangkitan</strong>.</span>
           </li>
           <li>
             <span class="visual-bullet">•</span>
@@ -3316,9 +3694,8 @@
           <button type="button" class="t2-poster-btn t2-zoomable" data-t2-index="2"
             aria-label="Infografik Manifestasi Oral untuk Pesakit Diabetes — sentuh untuk paparan gambar penuh">
             <span class="t2-poster-frame">
-              <img src="kaitan-2-hala/manifestasi-oral.png"
-                alt="Manifestasi Oral untuk Pesakit Diabetes" width="1068" height="890"
-                loading="lazy" decoding="async" />
+              <img src="kaitan-2-hala/manifestasi-oral.png" alt="Manifestasi Oral untuk Pesakit Diabetes" width="1068"
+                height="890" loading="lazy" decoding="async" />
               <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
             </span>
             <span class="t2-poster-cap">🦷 Manifestasi Oral Pesakit Diabetes</span>
@@ -3338,9 +3715,9 @@
           </li>
           <li>
             <span class="visual-bullet">•</span>
-            <span><strong class="t2-hl">Keradangan</strong> ini menyukarkan badan <strong
-                class="t2-hl-teal">menggunakan insulin dengan berkesan</strong>, lalu <strong
-                class="t2-hl-rose">melonjakkan paras gula dalam darah</strong>.</span>
+            <span><strong class="t2-hl">Keradangan</strong> ini menyukarkan badan <strong class="t2-hl-teal">menggunakan
+                insulin dengan berkesan</strong>, lalu <strong class="t2-hl-rose">melonjakkan paras gula dalam
+                darah</strong>.</span>
           </li>
         </ul>
       </article>
@@ -3374,7 +3751,8 @@
       <div class="sign-lightbox-nav">
         <button type="button" class="sign-lightbox-btn" id="t2-lb-prev" aria-label="Sebelumnya">←</button>
         <button type="button" class="sign-lightbox-btn" id="t2-lb-next" aria-label="Seterusnya">→</button>
-        <button type="button" class="sign-lightbox-btn sign-lightbox-btn-close" id="t2-lb-close" aria-label="Tutup">✕ Tutup</button>
+        <button type="button" class="sign-lightbox-btn sign-lightbox-btn-close" id="t2-lb-close" aria-label="Tutup">✕
+          Tutup</button>
       </div>
     </div>
   </dialog>
@@ -3398,7 +3776,8 @@
           sebarang tanda berikut:</p>
 
         <div class="signs-grid" id="t3-signs-grid">
-          <button type="button" class="sign-photo-card" data-index="0" aria-label="Gusi berdarah — sentuh untuk paparan gambar penuh">
+          <button type="button" class="sign-photo-card" data-index="0"
+            aria-label="Gusi berdarah — sentuh untuk paparan gambar penuh">
             <span class="sign-photo-frame">
               <img src="gambar-tanda/gusi-berdarah.jpg" alt="Gusi berdarah" loading="lazy" decoding="async" />
               <span class="sign-photo-num" aria-hidden="true">01</span>
@@ -3406,7 +3785,8 @@
             </span>
             <span class="sign-photo-label"><span class="sign-dot-alert" aria-hidden="true"></span>Gusi berdarah</span>
           </button>
-          <button type="button" class="sign-photo-card" data-index="1" aria-label="Gusi bengkak — sentuh untuk paparan gambar penuh">
+          <button type="button" class="sign-photo-card" data-index="1"
+            aria-label="Gusi bengkak — sentuh untuk paparan gambar penuh">
             <span class="sign-photo-frame">
               <img src="gambar-tanda/gusi-bengkak.jpg" alt="Gusi bengkak" loading="lazy" decoding="async" />
               <span class="sign-photo-num" aria-hidden="true">02</span>
@@ -3414,7 +3794,8 @@
             </span>
             <span class="sign-photo-label"><span class="sign-dot-alert" aria-hidden="true"></span>Gusi bengkak</span>
           </button>
-          <button type="button" class="sign-photo-card" data-index="2" aria-label="Gigi longgar — sentuh untuk paparan gambar penuh">
+          <button type="button" class="sign-photo-card" data-index="2"
+            aria-label="Gigi longgar — sentuh untuk paparan gambar penuh">
             <span class="sign-photo-frame">
               <img src="gambar-tanda/gigi-longgar.jpg" alt="Gigi longgar" loading="lazy" decoding="async" />
               <span class="sign-photo-num" aria-hidden="true">03</span>
@@ -3422,15 +3803,18 @@
             </span>
             <span class="sign-photo-label"><span class="sign-dot-alert" aria-hidden="true"></span>Gigi longgar</span>
           </button>
-          <button type="button" class="sign-photo-card" data-index="3" aria-label="Nafas berbau berterusan — sentuh untuk paparan gambar penuh">
+          <button type="button" class="sign-photo-card" data-index="3"
+            aria-label="Nafas berbau berterusan — sentuh untuk paparan gambar penuh">
             <span class="sign-photo-frame">
               <img src="gambar-tanda/nafas-berbau.jpeg" alt="Nafas berbau berterusan" loading="lazy" decoding="async" />
               <span class="sign-photo-num" aria-hidden="true">04</span>
               <span class="sign-photo-zoom" aria-hidden="true">⤢</span>
             </span>
-            <span class="sign-photo-label"><span class="sign-dot-alert" aria-hidden="true"></span>Nafas berbau berterusan</span>
+            <span class="sign-photo-label"><span class="sign-dot-alert" aria-hidden="true"></span>Nafas berbau
+              berterusan</span>
           </button>
-          <button type="button" class="sign-photo-card" data-index="4" aria-label="Gusi Menyusut — sentuh untuk paparan gambar penuh">
+          <button type="button" class="sign-photo-card" data-index="4"
+            aria-label="Gusi Menyusut — sentuh untuk paparan gambar penuh">
             <span class="sign-photo-frame">
               <img src="gambar-tanda/gusi-menyusut.png" alt="Gusi Menyusut" loading="lazy" decoding="async" />
               <span class="sign-photo-num" aria-hidden="true">05</span>
@@ -3438,31 +3822,40 @@
             </span>
             <span class="sign-photo-label"><span class="sign-dot-alert" aria-hidden="true"></span>Gusi Menyusut</span>
           </button>
-          <button type="button" class="sign-photo-card" data-index="5" aria-label="Ruang terbuka di percelahan gigi — sentuh untuk paparan gambar penuh">
+          <button type="button" class="sign-photo-card" data-index="5"
+            aria-label="Ruang terbuka di percelahan gigi — sentuh untuk paparan gambar penuh">
             <span class="sign-photo-frame">
-              <img src="gambar-tanda/ruang-celah-gigi.jpeg" alt="Ruang terbuka di percelahan gigi" loading="lazy" decoding="async" />
+              <img src="gambar-tanda/ruang-celah-gigi.jpeg" alt="Ruang terbuka di percelahan gigi" loading="lazy"
+                decoding="async" />
               <span class="sign-photo-num" aria-hidden="true">06</span>
               <span class="sign-photo-zoom" aria-hidden="true">⤢</span>
             </span>
-            <span class="sign-photo-label"><span class="sign-dot-alert" aria-hidden="true"></span>Ruang terbuka di percelahan gigi</span>
+            <span class="sign-photo-label"><span class="sign-dot-alert" aria-hidden="true"></span>Ruang terbuka di
+              percelahan gigi</span>
           </button>
-          <button type="button" class="sign-photo-card" data-index="6" aria-label="Gigi Longgar atau Goyang — sentuh untuk paparan gambar penuh">
+          <button type="button" class="sign-photo-card" data-index="6"
+            aria-label="Gigi Longgar atau Goyang — sentuh untuk paparan gambar penuh">
             <span class="sign-photo-frame">
               <img src="gambar-tanda/gigi-longgar.jpg" alt="Gigi Longgar atau Goyang" loading="lazy" decoding="async" />
               <span class="sign-photo-num" aria-hidden="true">07</span>
               <span class="sign-photo-zoom" aria-hidden="true">⤢</span>
             </span>
-            <span class="sign-photo-label"><span class="sign-dot-alert" aria-hidden="true"></span>Gigi Longgar atau Goyang</span>
+            <span class="sign-photo-label"><span class="sign-dot-alert" aria-hidden="true"></span>Gigi Longgar atau
+              Goyang</span>
           </button>
-          <button type="button" class="sign-photo-card" data-index="7" aria-label="Gigi palsu tidak muat dengan baik — sentuh untuk paparan gambar penuh">
+          <button type="button" class="sign-photo-card" data-index="7"
+            aria-label="Gigi palsu tidak muat dengan baik — sentuh untuk paparan gambar penuh">
             <span class="sign-photo-frame">
-              <img src="gambar-tanda/gigi-palsu-tak-muat.jpg" alt="Gigi palsu tidak muat dengan baik" loading="lazy" decoding="async" />
+              <img src="gambar-tanda/gigi-palsu-tak-muat.jpg" alt="Gigi palsu tidak muat dengan baik" loading="lazy"
+                decoding="async" />
               <span class="sign-photo-num" aria-hidden="true">08</span>
               <span class="sign-photo-zoom" aria-hidden="true">⤢</span>
             </span>
-            <span class="sign-photo-label"><span class="sign-dot-alert" aria-hidden="true"></span>Gigi palsu tidak muat dengan baik</span>
+            <span class="sign-photo-label"><span class="sign-dot-alert" aria-hidden="true"></span>Gigi palsu tidak muat
+              dengan baik</span>
           </button>
-          <button type="button" class="sign-photo-card" data-index="8" aria-label="Gusi Bernanah — sentuh untuk paparan gambar penuh">
+          <button type="button" class="sign-photo-card" data-index="8"
+            aria-label="Gusi Bernanah — sentuh untuk paparan gambar penuh">
             <span class="sign-photo-frame">
               <img src="gambar-tanda/gusi-bernanah.webp" alt="Gusi Bernanah" loading="lazy" decoding="async" />
               <span class="sign-photo-num" aria-hidden="true">09</span>
@@ -3490,7 +3883,8 @@
       <div class="sign-lightbox-nav">
         <button type="button" class="sign-lightbox-btn" id="t3-lb-prev" aria-label="Sebelumnya">←</button>
         <button type="button" class="sign-lightbox-btn" id="t3-lb-next" aria-label="Seterusnya">→</button>
-        <button type="button" class="sign-lightbox-btn sign-lightbox-btn-close" id="t3-lb-close" aria-label="Tutup">✕ Tutup</button>
+        <button type="button" class="sign-lightbox-btn sign-lightbox-btn-close" id="t3-lb-close" aria-label="Tutup">✕
+          Tutup</button>
       </div>
     </div>
   </dialog>
@@ -3513,7 +3907,8 @@
         <ul class="t4-bullets">
           <li>Apabila anda mengunjungi <strong class="t4-hl">Klinik Pergigian (KP)</strong>, pegawai pergigian akan
             menjalankan <strong class="t4-hl">saringan ringkas</strong> yang dikenali sebagai
-            <strong class="t4-hl">Basic Periodontal Examination (BPE)</strong>.</li>
+            <strong class="t4-hl">Basic Periodontal Examination (BPE)</strong>.
+          </li>
         </ul>
       </div>
 
@@ -3523,14 +3918,15 @@
         <div class="t4-tool">
           <button type="button" class="t4-zoomable t4-tool-figure" data-t4-index="0"
             aria-label="Prob periodontal — sentuh untuk paparan gambar penuh">
-            <img src="skor-bpe/prob-periodontal.jpg" alt="Prob periodontal" width="500" height="500"
-              loading="lazy" decoding="async" />
+            <img src="skor-bpe/prob-periodontal.jpg" alt="Prob periodontal" width="500" height="500" loading="lazy"
+              decoding="async" />
             <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
             <span class="t4-fig-cap">Prob Periodontal</span>
           </button>
           <ul class="t4-bullets">
             <li>Doktor gigi menggunakan <strong class="t4-hl">prob periodontal</strong>, iaitu
-              <strong class="t4-hl">alat kecil dengan hujung bulat</strong>.</li>
+              <strong class="t4-hl">alat kecil dengan hujung bulat</strong>.
+            </li>
             <li>Untuk <strong class="t4-hl">memeriksa keadaan gusi</strong>.</li>
             <li>Untuk <strong class="t4-hl">mengukur kedalaman ruang di antara gigi dengan gusi</strong>.</li>
           </ul>
@@ -3697,7 +4093,8 @@
       <div class="sign-lightbox-nav">
         <button type="button" class="sign-lightbox-btn" id="t4-lb-prev" aria-label="Sebelumnya">←</button>
         <button type="button" class="sign-lightbox-btn" id="t4-lb-next" aria-label="Seterusnya">→</button>
-        <button type="button" class="sign-lightbox-btn sign-lightbox-btn-close" id="t4-lb-close" aria-label="Tutup">✕ Tutup</button>
+        <button type="button" class="sign-lightbox-btn sign-lightbox-btn-close" id="t4-lb-close" aria-label="Tutup">✕
+          Tutup</button>
       </div>
     </div>
   </dialog>
@@ -4073,10 +4470,7 @@
         <div class="feedback-form-frame">
           <iframe
             src="https://docs.google.com/forms/d/e/1FAIpQLSezc6BaHUbHN-_79zC0EJS9Ir3uCPyXak60E2ZWTtaRnXzKSg/viewform?embedded=true"
-            title="Borang Maklum Balas Laman Web PerioDiabetes"
-            loading="lazy"
-            frameborder="0"
-            marginheight="0"
+            title="Borang Maklum Balas Laman Web PerioDiabetes" loading="lazy" frameborder="0" marginheight="0"
             marginwidth="0">Memuatkan…</iframe>
         </div>
         <p class="feedback-form-fallback">Borang tidak dipaparkan?
@@ -5018,6 +5412,61 @@
         });
       }
 
+    })();
+  </script>
+
+  <!-- JAVASCRIPT: INTERAKSI POSTER INFOGRAFIK HD (TOPIK 1) -->
+  <script>
+    (function () {
+      'use strict';
+      const view = document.getElementById('view-pengenalan');
+      const lb = document.getElementById('t1-lightbox');
+      if (!view || !lb || typeof lb.showModal !== 'function') return;
+
+      const items = Array.from(view.querySelectorAll('.t1-zoomable'))
+        .sort((a, b) => Number(a.dataset.t1Index) - Number(b.dataset.t1Index));
+      const lbImg = document.getElementById('t1-lightbox-img');
+      const lbTitle = document.getElementById('t1-lightbox-title');
+      let current = 0;
+      let opener = null;
+
+      function show(i) {
+        current = (i + items.length) % items.length;
+        const img = items[current].querySelector('img');
+        lbImg.src = img.getAttribute('src');
+        lbImg.alt = img.alt;
+        lbTitle.textContent = img.alt;
+      }
+
+      items.forEach((item, i) => {
+        item.addEventListener('click', () => {
+          opener = item;
+          show(i);
+          lb.showModal();
+        });
+      });
+
+      document.getElementById('t1-lb-prev').addEventListener('click', () => show(current - 1));
+      document.getElementById('t1-lb-next').addEventListener('click', () => show(current + 1));
+      document.getElementById('t1-lb-close').addEventListener('click', () => lb.close());
+
+      lb.addEventListener('click', (e) => { if (e.target === lb) lb.close(); });
+      lb.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') show(current - 1);
+        if (e.key === 'ArrowRight') show(current + 1);
+      });
+
+      let startX = null;
+      lbImg.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, { passive: true });
+      lbImg.addEventListener('touchend', (e) => {
+        if (startX === null) return;
+        const dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) > 40) show(dx < 0 ? current + 1 : current - 1);
+        startX = null;
+      }, { passive: true });
+
+      lb.addEventListener('close', () => { if (opener) opener.focus({ preventScroll: true }); });
+      window.addEventListener('hashchange', () => { if (lb.open) lb.close(); });
     })();
   </script>
 
