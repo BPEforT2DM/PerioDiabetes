@@ -1303,10 +1303,180 @@
     }
 
     /* BPE Skor Visual 0 - 4 (Topik 4) */
+    .t4-bullets {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .t4-bullets li {
+      position: relative;
+      padding-left: 26px;
+      color: var(--ink-soft);
+      font-size: 0.98rem;
+      line-height: 1.6;
+    }
+
+    .t4-bullets li::before {
+      content: "";
+      position: absolute;
+      left: 4px;
+      top: 0.55em;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--t4-accent, #f59e0b);
+      box-shadow: 0 0 0 4px color-mix(in srgb, var(--t4-accent, #f59e0b) 20%, transparent);
+    }
+
+    .t4-intro .t4-bullets li {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .t4-hl {
+      font-weight: 800;
+      color: var(--t4-accent-ink, #b45309);
+      background: linear-gradient(transparent 58%, color-mix(in srgb, var(--t4-accent, #f59e0b) 26%, transparent) 58%);
+      padding: 0 1px;
+      border-radius: 3px;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+    }
+
+    /* Butang imej boleh zum (Liquid Glass) */
+    .t4-zoomable {
+      position: relative;
+      display: block;
+      padding: 0;
+      margin: 0;
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      border-radius: var(--radius-md);
+      background: #ffffff;
+      overflow: hidden;
+      cursor: zoom-in;
+      box-shadow: var(--shadow-md), var(--edge-reflection);
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+      -webkit-tap-highlight-color: transparent;
+      font-family: inherit;
+    }
+
+    .t4-zoomable img {
+      display: block;
+      width: 100%;
+      height: auto;
+      image-rendering: -webkit-optimize-contrast;
+      transition: transform 0.45s var(--ease);
+    }
+
+    .t4-zoomable:hover,
+    .t4-zoomable:focus-visible {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg), var(--edge-reflection);
+      outline: none;
+    }
+
+    .t4-zoomable:focus-visible {
+      box-shadow: var(--shadow-lg), 0 0 0 3px rgba(245, 158, 11, 0.45);
+    }
+
+    .t4-zoomable:hover img {
+      transform: scale(1.03);
+    }
+
+    .t4-zoomable:active {
+      transform: scale(0.98);
+    }
+
+    .t4-zoom-ico {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      font-size: 0.95rem;
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      box-shadow: var(--shadow-sm);
+      pointer-events: none;
+    }
+
+    /* Alat pemeriksaan */
+    .t4-tool {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .t4-tool-figure .t4-fig-cap {
+      display: block;
+      padding: 8px 10px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-align: center;
+      color: #b45309;
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      letter-spacing: 0.02em;
+    }
+
+    /* Gambar keseluruhan */
+    .t4-overview {
+      width: 100%;
+      margin: 4px 0 18px;
+    }
+
+    /* Navigasi pantas skor */
+    .t4-jump {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 4px;
+    }
+
+    .t4-jump-btn {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.9);
+      color: #ffffff;
+      font-size: 1.15rem;
+      font-weight: 800;
+      font-family: inherit;
+      cursor: pointer;
+      box-shadow: var(--shadow-md), var(--edge-reflection);
+      transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .t4-jump-btn:hover,
+    .t4-jump-btn:focus-visible {
+      transform: translateY(-3px) scale(1.06);
+      box-shadow: var(--shadow-lg);
+      outline: none;
+    }
+
+    .t4-jump-btn.bpe-0 { background: linear-gradient(135deg, #10b981, #059669); }
+    .t4-jump-btn.bpe-1 { background: linear-gradient(135deg, #84cc16, #65a30d); }
+    .t4-jump-btn.bpe-2 { background: linear-gradient(135deg, #f59e0b, #d97706); }
+    .t4-jump-btn.bpe-3 { background: linear-gradient(135deg, #f97316, #ea580c); }
+    .t4-jump-btn.bpe-4 { background: linear-gradient(135deg, #ef4444, #dc2626); }
+
     .bpe-list {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 18px;
       margin-top: 16px;
     }
 
@@ -1317,6 +1487,22 @@
       overflow: hidden;
       border: 1px solid rgba(255, 255, 255, 0.8);
       box-shadow: var(--shadow-sm);
+      scroll-margin-top: 90px;
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    }
+
+    .bpe-score-block:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .bpe-score-block.t4-flash {
+      animation: t4Flash 1.2s var(--ease);
+    }
+
+    @keyframes t4Flash {
+      0%, 100% { box-shadow: var(--shadow-sm); }
+      35% { box-shadow: 0 0 0 4px color-mix(in srgb, var(--t4-accent) 45%, transparent), var(--shadow-lg); }
     }
 
     .bpe-badge-col {
@@ -1343,22 +1529,42 @@
     .bpe-text-col {
       background: rgba(255, 255, 255, 0.75);
       backdrop-filter: blur(14px);
-      padding: 16px 20px;
+      -webkit-backdrop-filter: blur(14px);
+      padding: 18px 20px;
+      min-width: 0;
     }
 
-    .bpe-text-col strong {
+    .bpe-text-col .bpe-title {
       display: block;
-      font-size: 1rem;
-      color: var(--ink);
-      margin-bottom: 4px;
+      font-size: 1.04rem;
+      font-weight: 800;
+      color: var(--t4-accent-ink);
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 2px dashed color-mix(in srgb, var(--t4-accent) 35%, transparent);
     }
 
-    .bpe-text-col p {
-      font-size: 0.92rem;
-      color: var(--ink-soft);
-      line-height: 1.55;
-      margin: 0;
+    .bpe-body {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 18px;
+      align-items: center;
     }
+
+    .bpe-fig {
+      width: 100%;
+      max-width: 150px;
+    }
+
+    .bpe-text-col .t4-bullets li {
+      font-size: 0.95rem;
+    }
+
+    .bpe-0 { --t4-accent: #10b981; --t4-accent-ink: #047857; }
+    .bpe-1 { --t4-accent: #84cc16; --t4-accent-ink: #4d7c0f; }
+    .bpe-2 { --t4-accent: #f59e0b; --t4-accent-ink: #b45309; }
+    .bpe-3 { --t4-accent: #f97316; --t4-accent-ink: #c2410c; }
+    .bpe-4 { --t4-accent: #ef4444; --t4-accent-ink: #b91c1c; }
 
     .bpe-0 .bpe-badge-col {
       background: linear-gradient(135deg, #10b981, #059669);
@@ -1378,6 +1584,96 @@
 
     .bpe-4 .bpe-badge-col {
       background: linear-gradient(135deg, #ef4444, #dc2626);
+    }
+
+    /* Mesra mudah alih (Topik 4) */
+    @media (max-width: 640px) {
+      #view-bpe .content-box {
+        padding: 22px 18px;
+      }
+
+      .t4-tool {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .t4-tool-figure {
+        width: 100%;
+        max-width: 220px;
+        margin: 0 auto;
+      }
+
+      #view-bpe .bpe-score-block {
+        grid-template-columns: 1fr;
+      }
+
+      #view-bpe .bpe-badge-col {
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        gap: 8px;
+        padding: 10px 18px;
+      }
+
+      #view-bpe .bpe-badge-col .score-digit {
+        font-size: 1.6rem;
+      }
+
+      .bpe-badge-col .score-label {
+        font-size: 0.8rem;
+      }
+
+      .bpe-text-col {
+        padding: 16px;
+      }
+
+      .bpe-body {
+        grid-template-columns: 112px 1fr;
+        gap: 14px;
+        align-items: start;
+      }
+
+      .bpe-fig {
+        max-width: 112px;
+      }
+
+      .t4-jump-btn {
+        width: 44px;
+        height: 44px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .t4-jump {
+        gap: 8px;
+      }
+
+      .t4-jump-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.05rem;
+      }
+
+      .bpe-body {
+        grid-template-columns: 1fr;
+      }
+
+      .bpe-fig {
+        max-width: 170px;
+        margin: 0 auto;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .t4-zoomable,
+      .t4-zoomable img,
+      .bpe-score-block,
+      .t4-jump-btn {
+        transition: none;
+      }
+
+      .bpe-score-block.t4-flash {
+        animation: none;
+      }
     }
 
     /* Aliran Rujukan KK -> KP (Topik 5) */
@@ -2734,86 +3030,172 @@
         <div class="subtopic-accent-bar" style="background: #f59e0b;"></div>
       </header>
 
-      <div class="content-box">
-        <p style="font-size: 1.05rem; font-weight: 600;">
-          Apabila anda mengunjungi Klinik Pergigian (KP), pegawai pergigian akan menjalankan saringan ringkas yang
-          dikenali sebagai Basic Periodontal Examination (BPE).
-        </p>
+      <!-- Pengenalan BPE -->
+      <div class="content-box t4-intro">
+        <ul class="t4-bullets">
+          <li>Apabila anda mengunjungi <strong class="t4-hl">Klinik Pergigian (KP)</strong>, pegawai pergigian akan
+            menjalankan <strong class="t4-hl">saringan ringkas</strong> yang dikenali sebagai
+            <strong class="t4-hl">Basic Periodontal Examination (BPE)</strong>.</li>
+        </ul>
       </div>
 
+      <!-- Alat Pemeriksaan + Imej Prob Periodontal -->
       <article class="content-box">
         <h2>Alat pemeriksaan:</h2>
-        <p>
-          Doktor gigi menggunakan prob periodontal, iaitu alat kecil dengan hujung bulat, untuk memeriksa keadaan gusi
-          dan mengukur kedalaman ruang di antara gigi dengan gusi.
-        </p>
+        <div class="t4-tool">
+          <button type="button" class="t4-zoomable t4-tool-figure" data-t4-index="0"
+            aria-label="Prob periodontal — sentuh untuk paparan gambar penuh">
+            <img src="skor-bpe/prob-periodontal.jpg" alt="Prob periodontal" width="500" height="500"
+              loading="lazy" decoding="async" />
+            <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
+            <span class="t4-fig-cap">Prob Periodontal</span>
+          </button>
+          <ul class="t4-bullets">
+            <li>Doktor gigi menggunakan <strong class="t4-hl">prob periodontal</strong>, iaitu
+              <strong class="t4-hl">alat kecil dengan hujung bulat</strong>.</li>
+            <li>Untuk <strong class="t4-hl">memeriksa keadaan gusi</strong>.</li>
+            <li>Untuk <strong class="t4-hl">mengukur kedalaman ruang di antara gigi dengan gusi</strong>.</li>
+          </ul>
+        </div>
       </article>
 
       <!-- Skor BPE Visual Meter 0 - 4 -->
       <article class="content-box">
         <h2>Memahami Skor BPE (0 hingga 4):</h2>
 
+        <!-- Gambar Rujukan Klinikal Keseluruhan Skor BPE -->
+        <button type="button" class="t4-zoomable t4-overview" data-t4-index="1"
+          aria-label="Gambar klinikal skor BPE 0 hingga 4 — sentuh untuk paparan gambar penuh">
+          <img src="skor-bpe/skor-bpe-keseluruhan.png" alt="Gambar klinikal skor BPE 0 hingga BPE 4 serta Furcation"
+            width="1406" height="973" loading="lazy" decoding="async" />
+          <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
+        </button>
+
+        <!-- Navigasi pantas skor -->
+        <div class="t4-jump" role="group" aria-label="Lompat ke skor BPE">
+          <button type="button" class="t4-jump-btn bpe-0" data-target="t4-skor-0">0</button>
+          <button type="button" class="t4-jump-btn bpe-1" data-target="t4-skor-1">1</button>
+          <button type="button" class="t4-jump-btn bpe-2" data-target="t4-skor-2">2</button>
+          <button type="button" class="t4-jump-btn bpe-3" data-target="t4-skor-3">3</button>
+          <button type="button" class="t4-jump-btn bpe-4" data-target="t4-skor-4">4</button>
+        </div>
+
         <div class="bpe-list">
 
           <!-- Skor 0 -->
-          <div class="bpe-score-block bpe-0">
+          <div class="bpe-score-block bpe-0" id="t4-skor-0">
             <div class="bpe-badge-col">
               <span class="score-digit">0</span>
               <span class="score-label">Skor</span>
             </div>
             <div class="bpe-text-col">
-              <strong>Tiada tanda penyakit periodontal berdasarkan saringan</strong>
-              <p>Tiada pendarahan, karang gigi atau faktor penahan plak yang dikesan. Teruskan penjagaan mulut yang
-                baik.</p>
+              <strong class="bpe-title">Tiada tanda penyakit periodontal berdasarkan saringan</strong>
+              <div class="bpe-body">
+                <button type="button" class="t4-zoomable bpe-fig" data-t4-index="2"
+                  aria-label="Skor 0 — sentuh untuk paparan gambar penuh">
+                  <img src="skor-bpe/skor-0.png" alt="Skor 0" width="608" height="812" loading="lazy"
+                    decoding="async" />
+                  <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
+                </button>
+                <ul class="t4-bullets">
+                  <li><strong class="t4-hl">Tiada pendarahan, karang gigi atau faktor penahan plak</strong> yang
+                    dikesan.</li>
+                  <li>Teruskan <strong class="t4-hl">penjagaan mulut yang baik</strong>.</li>
+                </ul>
+              </div>
             </div>
           </div>
 
           <!-- Skor 1 -->
-          <div class="bpe-score-block bpe-1">
+          <div class="bpe-score-block bpe-1" id="t4-skor-1">
             <div class="bpe-badge-col">
               <span class="score-digit">1</span>
               <span class="score-label">Skor</span>
             </div>
             <div class="bpe-text-col">
-              <strong>Gusi berdarah semasa pemeriksaan</strong>
-              <p>Memerlukan nasihat penjagaan mulut dan penambahbaikan teknik memberus gigi.</p>
+              <strong class="bpe-title">Gusi berdarah semasa pemeriksaan</strong>
+              <div class="bpe-body">
+                <button type="button" class="t4-zoomable bpe-fig" data-t4-index="3"
+                  aria-label="Skor 1 — sentuh untuk paparan gambar penuh">
+                  <img src="skor-bpe/skor-1.png" alt="Skor 1" width="600" height="812" loading="lazy"
+                    decoding="async" />
+                  <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
+                </button>
+                <ul class="t4-bullets">
+                  <li>Memerlukan <strong class="t4-hl">nasihat penjagaan mulut</strong>.</li>
+                  <li>Memerlukan <strong class="t4-hl">penambahbaikan teknik memberus gigi</strong>.</li>
+                </ul>
+              </div>
             </div>
           </div>
 
           <!-- Skor 2 -->
-          <div class="bpe-score-block bpe-2">
+          <div class="bpe-score-block bpe-2" id="t4-skor-2">
             <div class="bpe-badge-col">
               <span class="score-digit">2</span>
               <span class="score-label">Skor</span>
             </div>
             <div class="bpe-text-col">
-              <strong>Karang gigi atau faktor penahan plak dikesan</strong>
-              <p>Biasanya memerlukan penskaleran untuk membuang karang gigi dan plak yang terkumpul.</p>
+              <strong class="bpe-title">Karang gigi atau faktor penahan plak dikesan</strong>
+              <div class="bpe-body">
+                <button type="button" class="t4-zoomable bpe-fig" data-t4-index="4"
+                  aria-label="Skor 2 — sentuh untuk paparan gambar penuh">
+                  <img src="skor-bpe/skor-2.png" alt="Skor 2" width="600" height="812" loading="lazy"
+                    decoding="async" />
+                  <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
+                </button>
+                <ul class="t4-bullets">
+                  <li>Biasanya memerlukan <strong class="t4-hl">penskaleran</strong>.</li>
+                  <li>Untuk <strong class="t4-hl">membuang karang gigi dan plak yang terkumpul</strong>.</li>
+                </ul>
+              </div>
             </div>
           </div>
 
           <!-- Skor 3 -->
-          <div class="bpe-score-block bpe-3">
+          <div class="bpe-score-block bpe-3" id="t4-skor-3">
             <div class="bpe-badge-col">
               <span class="score-digit">3</span>
               <span class="score-label">Skor</span>
             </div>
             <div class="bpe-text-col">
-              <strong>Poket gusi sedalam 3.5–5.5 mm</strong>
-              <p>Menunjukkan keperluan penilaian lanjut dan rawatan periodontal yang sesuai dan kemungkinan rujukan
-                kepada pakar periodontik.</p>
+              <strong class="bpe-title">Poket gusi sedalam 3.5–5.5 mm</strong>
+              <div class="bpe-body">
+                <button type="button" class="t4-zoomable bpe-fig" data-t4-index="5"
+                  aria-label="Skor 3 — sentuh untuk paparan gambar penuh">
+                  <img src="skor-bpe/skor-3.png" alt="Skor 3" width="600" height="812" loading="lazy"
+                    decoding="async" />
+                  <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
+                </button>
+                <ul class="t4-bullets">
+                  <li>Menunjukkan keperluan <strong class="t4-hl">penilaian lanjut</strong>.</li>
+                  <li>Menunjukkan keperluan <strong class="t4-hl">rawatan periodontal yang sesuai</strong>.</li>
+                  <li>Kemungkinan <strong class="t4-hl">rujukan kepada pakar periodontik</strong>.</li>
+                </ul>
+              </div>
             </div>
           </div>
 
           <!-- Skor 4 -->
-          <div class="bpe-score-block bpe-4">
+          <div class="bpe-score-block bpe-4" id="t4-skor-4">
             <div class="bpe-badge-col">
               <span class="score-digit">4</span>
               <span class="score-label">Skor</span>
             </div>
             <div class="bpe-text-col">
-              <strong>Poket gusi melebihi 5.5 mm</strong>
-              <p>Menunjukkan masalah periodontal yang lebih serius dan rujukan kepada pakar periodontik.</p>
+              <strong class="bpe-title">Poket gusi melebihi 5.5 mm</strong>
+              <div class="bpe-body">
+                <button type="button" class="t4-zoomable bpe-fig" data-t4-index="6"
+                  aria-label="Skor 4 — sentuh untuk paparan gambar penuh">
+                  <img src="skor-bpe/skor-4.png" alt="Skor 4" width="600" height="812" loading="lazy"
+                    decoding="async" />
+                  <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
+                </button>
+                <ul class="t4-bullets">
+                  <li>Menunjukkan <strong class="t4-hl">masalah periodontal yang lebih serius</strong>.</li>
+                  <li><strong class="t4-hl">Rujukan kepada pakar periodontik</strong>.</li>
+                </ul>
+              </div>
             </div>
           </div>
 
@@ -2826,6 +3208,21 @@
       </nav>
     </div>
   </section>
+
+  <!-- Paparan Gambar Penuh Saringan BPE (Topik 4) -->
+  <dialog class="sign-lightbox" id="t4-lightbox" aria-labelledby="t4-lightbox-title">
+    <div class="sign-lightbox-img-wrap">
+      <img id="t4-lightbox-img" src="" alt="" />
+    </div>
+    <div class="sign-lightbox-bar">
+      <h3 class="sign-lightbox-title" id="t4-lightbox-title"></h3>
+      <div class="sign-lightbox-nav">
+        <button type="button" class="sign-lightbox-btn" id="t4-lb-prev" aria-label="Sebelumnya">←</button>
+        <button type="button" class="sign-lightbox-btn" id="t4-lb-next" aria-label="Seterusnya">→</button>
+        <button type="button" class="sign-lightbox-btn sign-lightbox-btn-close" id="t4-lb-close" aria-label="Tutup">✕ Tutup</button>
+      </div>
+    </div>
+  </dialog>
 
   <!-- ================================================================
        TOPIK 5: PROSES RUJUKAN KK KE KP
@@ -4189,6 +4586,77 @@
       });
 
       // Leret (swipe) pada peranti mudah alih
+      let startX = null;
+      lbImg.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, { passive: true });
+      lbImg.addEventListener('touchend', (e) => {
+        if (startX === null) return;
+        const dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) > 40) show(dx < 0 ? current + 1 : current - 1);
+        startX = null;
+      }, { passive: true });
+
+      lb.addEventListener('close', () => { if (opener) opener.focus({ preventScroll: true }); });
+      window.addEventListener('hashchange', () => { if (lb.open) lb.close(); });
+    })();
+  </script>
+
+  <!-- JAVASCRIPT: INTERAKSI GAMBAR & NAVIGASI SKOR BPE (TOPIK 4) -->
+  <script>
+    (function () {
+      'use strict';
+      const view = document.getElementById('view-bpe');
+      if (!view) return;
+
+      // Navigasi pantas ke setiap skor (tanpa menukar hash laluan)
+      view.querySelectorAll('.t4-jump-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const target = document.getElementById(btn.dataset.target);
+          if (!target) return;
+          const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+          target.classList.remove('t4-flash');
+          void target.offsetWidth;
+          target.classList.add('t4-flash');
+        });
+      });
+
+      // Paparan gambar penuh
+      const lb = document.getElementById('t4-lightbox');
+      if (!lb || typeof lb.showModal !== 'function') return;
+
+      const items = Array.from(view.querySelectorAll('.t4-zoomable'))
+        .sort((a, b) => Number(a.dataset.t4Index) - Number(b.dataset.t4Index));
+      const lbImg = document.getElementById('t4-lightbox-img');
+      const lbTitle = document.getElementById('t4-lightbox-title');
+      let current = 0;
+      let opener = null;
+
+      function show(i) {
+        current = (i + items.length) % items.length;
+        const img = items[current].querySelector('img');
+        lbImg.src = img.getAttribute('src');
+        lbImg.alt = img.alt;
+        lbTitle.textContent = img.alt;
+      }
+
+      items.forEach((item, i) => {
+        item.addEventListener('click', () => {
+          opener = item;
+          show(i);
+          lb.showModal();
+        });
+      });
+
+      document.getElementById('t4-lb-prev').addEventListener('click', () => show(current - 1));
+      document.getElementById('t4-lb-next').addEventListener('click', () => show(current + 1));
+      document.getElementById('t4-lb-close').addEventListener('click', () => lb.close());
+
+      lb.addEventListener('click', (e) => { if (e.target === lb) lb.close(); });
+      lb.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') show(current - 1);
+        if (e.key === 'ArrowRight') show(current + 1);
+      });
+
       let startX = null;
       lbImg.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, { passive: true });
       lbImg.addEventListener('touchend', (e) => {
