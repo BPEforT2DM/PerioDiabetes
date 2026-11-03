@@ -128,17 +128,120 @@
     }
 
     /* ================================================================
-       4. PELARAS "SAIZ TULISAN" LIQUID GLASS (Sudut Atas Kanan - Tidak Mengikut Skrol)
+       4. LOGO RASMI (SUDUT ATAS KIRI) & PELARAS "SAIZ TULISAN" (SUDUT ATAS KANAN)
        ================================================================ */
     .header-top-bar {
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
       width: 100%;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
       /* TIDAK MENGIKUT SKROL (Bukan position: fixed) */
       position: relative;
       z-index: 50;
+    }
+
+    /* Logo Rasmi BPEforT2DM (Eksklusif pada Halaman Utama / Home View sahaja) */
+    .brand-logo-glass {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.88) 0%, rgba(241, 245, 253, 0.82) 100%);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      padding: 8px 22px;
+      border-radius: var(--radius-full);
+      border: 1.5px solid rgba(255, 255, 255, 0.92);
+      box-shadow: 0 6px 20px rgba(11, 34, 51, 0.08), inset 0 1px 2px rgba(255, 255, 255, 0.98);
+      transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.25s var(--ease);
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .brand-logo-glass:hover {
+      transform: translateY(-2px);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(244, 248, 255, 0.90) 100%);
+      box-shadow: 0 10px 26px rgba(6, 182, 212, 0.16), inset 0 1px 2px rgba(255, 255, 255, 1);
+    }
+
+    .brand-logo-img {
+      height: clamp(28px, 4.2vw, 38px);
+      width: auto;
+      max-width: 100%;
+      object-fit: contain;
+      display: block;
+      image-rendering: -webkit-optimize-contrast;
+    }
+
+    #view-home:not(.active) .brand-logo-glass {
+      display: none !important;
+    }
+
+    /* Kumpulan Kawalan Atas Kanan (Audio Latar & Saiz Tulisan) */
+    .header-top-controls {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-left: auto;
+    }
+
+    .audio-control-glass {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(12px) saturate(180%);
+      -webkit-backdrop-filter: blur(12px) saturate(180%);
+      padding: 6px 14px;
+      min-height: 48px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      box-shadow: 0 4px 14px rgba(11, 34, 51, 0.07), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+      color: var(--ink-soft);
+      font-family: inherit;
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      transition: all 0.22s var(--ease);
+      -webkit-tap-highlight-color: transparent;
+      white-space: nowrap;
+    }
+
+    .audio-control-glass:hover {
+      background: rgba(255, 255, 255, 0.95);
+      border-color: rgba(6, 182, 212, 0.5);
+      color: var(--ink);
+      transform: translateY(-1px);
+    }
+
+    .audio-control-glass.playing {
+      background: linear-gradient(135deg, rgba(224, 249, 252, 0.92), rgba(209, 250, 229, 0.88));
+      border-color: rgba(6, 182, 212, 0.55);
+      color: #0891b2;
+      box-shadow: 0 4px 16px rgba(6, 182, 212, 0.22), inset 0 1px 1px rgba(255, 255, 255, 0.95);
+    }
+
+    .audio-control-glass:active {
+      transform: scale(0.94);
+    }
+
+    .audio-icon-wave {
+      font-size: 1rem;
+      line-height: 1;
+      display: inline-block;
+    }
+
+    .audio-control-glass.playing .audio-icon-wave {
+      animation: gentleNoteFloat 2.2s ease-in-out infinite;
+    }
+
+    @keyframes gentleNoteFloat {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-2px) scale(1.1); }
     }
 
     .size-control-glass {
@@ -959,30 +1062,27 @@
     .t2-hl-teal,
     .t2-hl-amber {
       font-weight: 800;
-      padding: 1px 6px;
-      border-radius: 6px;
-      box-decoration-break: clone;
-      -webkit-box-decoration-break: clone;
+      background: none !important;
+      padding: 0 !important;
+      border-radius: 0 !important;
+      box-decoration-break: normal;
+      -webkit-box-decoration-break: normal;
     }
 
     .t2-hl {
       color: #6d28d9;
-      background: rgba(139, 92, 246, 0.12);
     }
 
     .t2-hl-rose {
       color: #be123c;
-      background: rgba(244, 63, 94, 0.12);
     }
 
     .t2-hl-teal {
       color: #0e7490;
-      background: rgba(6, 182, 212, 0.13);
     }
 
     .t2-hl-amber {
       color: #b45309;
-      background: rgba(245, 158, 11, 0.15);
     }
 
     .cycle-diagram {
@@ -2234,6 +2334,34 @@
         padding: 16px 12px 60px;
       }
 
+      .header-top-bar {
+        gap: 8px;
+        margin-bottom: 14px;
+      }
+
+      .brand-logo-glass {
+        padding: 6px 14px;
+      }
+
+      .brand-logo-img {
+        height: clamp(22px, 5.8vw, 28px);
+      }
+
+      .header-top-controls {
+        gap: 6px;
+      }
+
+      .audio-control-glass {
+        padding: 5px 10px;
+        min-height: 44px;
+        font-size: 0.72rem;
+      }
+
+      .size-control-glass {
+        padding: 5px 10px;
+        gap: 6px;
+      }
+
       .hero-glass-banner {
         padding: 24px 16px;
         border-radius: var(--radius-md);
@@ -2752,25 +2880,40 @@
   <main id="view-home" class="view-container active" aria-label="Halaman Utama PerioDiabetes">
     <div class="landing-wrapper">
 
-      <!-- Pelaras Saiz Tulisan (Sudut Atas Kanan - Tidak Mengikut Skrol) -->
+      <!-- Bar Atas Halaman Utama: Logo Rasmi (Sudut Atas Kiri) & Kawalan Audio + Saiz Tulisan (Sudut Atas Kanan) -->
       <div class="header-top-bar">
-        <aside class="size-control-glass" role="region" aria-label="Pelaras Saiz Tulisan">
-          <span class="size-control-label">Saiz Tulisan</span>
-          <div class="size-btn-group" role="group" aria-label="Pilihan Saiz Tulisan">
-            <button type="button" class="btn-size-toggle active" data-size="14" id="btn-size-14" aria-pressed="true"
-              aria-label="Saiz Tulisan Asas (14px)" title="Saiz Asas (14px)">
-              <span class="symbol-a a-sm">A</span>
-            </button>
-            <button type="button" class="btn-size-toggle" data-size="16" id="btn-size-16" aria-pressed="false"
-              aria-label="Saiz Tulisan Besar (16px)" title="Saiz Besar (16px)">
-              <span class="symbol-a a-md">A</span>
-            </button>
-            <button type="button" class="btn-size-toggle" data-size="18" id="btn-size-18" aria-pressed="false"
-              aria-label="Saiz Tulisan Sangat Besar (18px)" title="Saiz Sangat Besar (18px)">
-              <span class="symbol-a a-lg">A</span>
-            </button>
-          </div>
-        </aside>
+        <!-- Logo Rasmi BPEforT2DM (Eksklusif pada Halaman Utama / Home View sahaja) -->
+        <div class="brand-logo-glass" role="img" aria-label="Logo Rasmi BPEforT2DM">
+          <img src="logo-bpefort2dm.png" alt="Logo Rasmi BPEforT2DM" class="brand-logo-img" width="803" height="141"
+            loading="eager" decoding="async" />
+        </div>
+
+        <!-- Kumpulan Kawalan Atas Kanan: Muzik Latar & Pelaras Saiz Tulisan -->
+        <div class="header-top-controls">
+          <button type="button" class="audio-control-glass playing" id="btn-audio-toggle" aria-pressed="true"
+            aria-label="Kawalan Muzik Latar dan Kesan Bunyi" title="Hidupkan / Matikan Muzik Latar &amp; Kesan Bunyi">
+            <span class="audio-icon-wave" id="audio-toggle-icon" aria-hidden="true">🎵</span>
+            <span id="audio-toggle-label">Muzik</span>
+          </button>
+
+          <aside class="size-control-glass" role="region" aria-label="Pelaras Saiz Tulisan">
+            <span class="size-control-label">Saiz Tulisan</span>
+            <div class="size-btn-group" role="group" aria-label="Pilihan Saiz Tulisan">
+              <button type="button" class="btn-size-toggle active" data-size="14" id="btn-size-14" aria-pressed="true"
+                aria-label="Saiz Tulisan Asas (14px)" title="Saiz Asas (14px)">
+                <span class="symbol-a a-sm">A</span>
+              </button>
+              <button type="button" class="btn-size-toggle" data-size="16" id="btn-size-16" aria-pressed="false"
+                aria-label="Saiz Tulisan Besar (16px)" title="Saiz Besar (16px)">
+                <span class="symbol-a a-md">A</span>
+              </button>
+              <button type="button" class="btn-size-toggle" data-size="18" id="btn-size-18" aria-pressed="false"
+                aria-label="Saiz Tulisan Sangat Besar (18px)" title="Saiz Sangat Besar (18px)">
+                <span class="symbol-a a-lg">A</span>
+              </button>
+            </div>
+          </aside>
+        </div>
       </div>
 
       <!-- Kad Berkembar Hero Gaya Liquid Glass (Side-by-Side Desktop / Stacked Mobile) -->
@@ -5058,6 +5201,395 @@
 
       lb.addEventListener('close', () => { if (opener) opener.focus({ preventScroll: true }); });
       window.addEventListener('hashchange', () => { if (lb.open) lb.close(); });
+    })();
+  </script>
+
+  <!-- ================================================================
+       JAVASCRIPT: MUZIK INSTRUMENTAL LATAR BELAKANG & KESAN BUNYI INTERAKTIF
+       (Web Audio API — Mesra Mudah Alih & Desktop, Tanpa Kebergantungan Luar)
+       ================================================================ -->
+  <script>
+    (function () {
+      'use strict';
+
+      const AUDIO_STORAGE_KEY = 'perio_audio_enabled';
+      const toggleBtn = document.getElementById('btn-audio-toggle');
+      const toggleIcon = document.getElementById('audio-toggle-icon');
+      const toggleLabel = document.getElementById('audio-toggle-label');
+
+      let audioEnabled = true;
+      try {
+        const saved = localStorage.getItem(AUDIO_STORAGE_KEY);
+        if (saved === 'false') audioEnabled = false;
+      } catch (e) { }
+
+      let ctx = null;
+      let bgmGain = null;
+      let sfxGain = null;
+      let reverbSend = null;
+      let bgmTimer = null;
+      let stepIndex = 0;
+      let isBgmRunning = false;
+
+      // Kord & Arpeggio Instrumental Menenangkan (F Major / C Major Ambient Healthcare Lounge)
+      const CHORD_PROGRESSION = [
+        // Fmaj7 (F3, A3, C4, E4) + Melodi lembut
+        { pad: [174.61, 220.00, 261.63, 329.63], arp: [349.23, 440.00, 523.25, 659.25, 587.33, 523.25, 440.00, 349.23] },
+        // Cadd9/E (E3, G3, C4, D4)
+        { pad: [164.81, 196.00, 261.63, 293.66], arp: [329.63, 392.00, 523.25, 587.33, 659.25, 587.33, 523.25, 392.00] },
+        // Dm7 (D3, F3, A3, C4)
+        { pad: [146.83, 174.61, 220.00, 261.63], arp: [293.66, 349.23, 440.00, 523.25, 587.33, 523.25, 440.00, 349.23] },
+        // Bbmaj7 (Bb2, F3, A3, D4)
+        { pad: [116.54, 174.61, 220.00, 293.66], arp: [233.08, 349.23, 440.00, 587.33, 523.25, 440.00, 349.23, 293.66] },
+        // Fmaj9 (F3, A3, C4, G4)
+        { pad: [174.61, 220.00, 261.63, 392.00], arp: [349.23, 440.00, 523.25, 783.99, 659.25, 587.33, 523.25, 440.00] },
+        // Am7 (A2, E3, G3, C4)
+        { pad: [110.00, 164.81, 196.00, 261.63], arp: [329.63, 392.00, 523.25, 659.25, 587.33, 523.25, 392.00, 329.63] },
+        // Gm7 (G2, F3, Bb3, D4)
+        { pad: [98.00, 174.61, 233.08, 293.66], arp: [293.66, 349.23, 466.16, 587.33, 523.25, 466.16, 392.00, 349.23] },
+        // C6sus4 -> C (C3, G3, A3, D4)
+        { pad: [130.81, 196.00, 220.00, 293.66], arp: [261.63, 392.00, 440.00, 523.25, 587.33, 523.25, 440.00, 392.00] }
+      ];
+
+      function updateToggleUI() {
+        if (!toggleBtn) return;
+        toggleBtn.classList.toggle('playing', audioEnabled);
+        toggleBtn.setAttribute('aria-pressed', audioEnabled ? 'true' : 'false');
+        if (toggleIcon) toggleIcon.textContent = audioEnabled ? '🎵' : '🔇';
+        if (toggleLabel) toggleLabel.textContent = audioEnabled ? 'Muzik' : 'Senyap';
+      }
+
+      function initAudioContext() {
+        if (ctx) return ctx;
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return null;
+
+        try {
+          ctx = new AudioCtx();
+
+          // Saluran Utama Muzik Latar (Lembut & Menenangkan)
+          bgmGain = ctx.createGain();
+          bgmGain.gain.setValueAtTime(0.0001, ctx.currentTime);
+          bgmGain.connect(ctx.destination);
+
+          // Saluran Utama Kesan Bunyi UI (SFX)
+          sfxGain = ctx.createGain();
+          sfxGain.gain.setValueAtTime(0.22, ctx.currentTime);
+          sfxGain.connect(ctx.destination);
+
+          // Rangkaian Gema / Reverb Lembut untuk Muzik Instrumental
+          const delay = ctx.createDelay(1.0);
+          delay.delayTime.setValueAtTime(0.34, ctx.currentTime);
+
+          const feedback = ctx.createGain();
+          feedback.gain.setValueAtTime(0.32, ctx.currentTime);
+
+          const dampFilter = ctx.createBiquadFilter();
+          dampFilter.type = 'lowpass';
+          dampFilter.frequency.setValueAtTime(1350, ctx.currentTime);
+
+          reverbSend = ctx.createGain();
+          reverbSend.gain.setValueAtTime(0.35, ctx.currentTime);
+
+          reverbSend.connect(delay);
+          delay.connect(dampFilter);
+          dampFilter.connect(feedback);
+          feedback.connect(delay);
+          dampFilter.connect(bgmGain);
+        } catch (e) {
+          ctx = null;
+        }
+        return ctx;
+      }
+
+      function unlockAndResumeContext() {
+        if (!initAudioContext()) return false;
+        if (ctx.state === 'suspended') {
+          ctx.resume().catch(() => { });
+        }
+        return true;
+      }
+
+      // Mainkan Kord Pad Hangat (Warm Ambient Pad)
+      function playWarmPadChord(freqs, duration) {
+        if (!ctx || !bgmGain || !audioEnabled || document.hidden) return;
+        const now = ctx.currentTime;
+        const filter = ctx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(580, now);
+
+        const chordGain = ctx.createGain();
+        chordGain.gain.setValueAtTime(0.0001, now);
+        chordGain.gain.linearRampToValueAtTime(0.032, now + 1.1);
+        chordGain.gain.setValueAtTime(0.028, now + duration - 1.4);
+        chordGain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+
+        filter.connect(chordGain);
+        chordGain.connect(bgmGain);
+        if (reverbSend) chordGain.connect(reverbSend);
+
+        freqs.forEach((f, idx) => {
+          const osc = ctx.createOscillator();
+          osc.type = idx % 2 === 0 ? 'sine' : 'triangle';
+          osc.frequency.setValueAtTime(f, now);
+          osc.detune.setValueAtTime((idx - 1.5) * 4, now);
+          osc.connect(filter);
+          osc.start(now);
+          osc.stop(now + duration + 0.05);
+        });
+      }
+
+      // Mainkan Nota Instrumental Piano / Harp Lembut
+      function playInstrumentalNote(freq, duration) {
+        if (!ctx || !bgmGain || !audioEnabled || document.hidden) return;
+        const now = ctx.currentTime;
+
+        const filter = ctx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(1650, now);
+        filter.frequency.exponentialRampToValueAtTime(520, now + duration);
+
+        const noteGain = ctx.createGain();
+        noteGain.gain.setValueAtTime(0.0001, now);
+        noteGain.gain.linearRampToValueAtTime(0.048, now + 0.03);
+        noteGain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+
+        const osc1 = ctx.createOscillator();
+        osc1.type = 'sine';
+        osc1.frequency.setValueAtTime(freq, now);
+
+        const osc2 = ctx.createOscillator();
+        osc2.type = 'triangle';
+        osc2.frequency.setValueAtTime(freq * 2, now);
+        const harmGain = ctx.createGain();
+        harmGain.gain.setValueAtTime(0.12, now);
+
+        osc1.connect(filter);
+        osc2.connect(harmGain);
+        harmGain.connect(filter);
+
+        filter.connect(noteGain);
+        noteGain.connect(bgmGain);
+        if (reverbSend) noteGain.connect(reverbSend);
+
+        osc1.start(now);
+        osc2.start(now);
+        osc1.stop(now + duration + 0.04);
+        osc2.stop(now + duration + 0.04);
+      }
+
+      function scheduleNextMusicStep() {
+        if (!audioEnabled || !ctx || document.hidden) return;
+        const chordIdx = Math.floor(stepIndex / 8) % CHORD_PROGRESSION.length;
+        const arpIdx = stepIndex % 8;
+        const currentChord = CHORD_PROGRESSION[chordIdx];
+
+        if (arpIdx === 0) {
+          playWarmPadChord(currentChord.pad, 5.2);
+        }
+        const noteFreq = currentChord.arp[arpIdx];
+        if (noteFreq) {
+          playInstrumentalNote(noteFreq, 1.75);
+        }
+        stepIndex = (stepIndex + 1) % (CHORD_PROGRESSION.length * 8);
+      }
+
+      function startBackgroundMusic() {
+        if (!audioEnabled) return;
+        if (!unlockAndResumeContext()) return;
+
+        const now = ctx.currentTime;
+        bgmGain.gain.cancelScheduledValues(now);
+        bgmGain.gain.setValueAtTime(Math.max(0.0001, bgmGain.gain.value), now);
+        bgmGain.gain.linearRampToValueAtTime(0.75, now + 0.8);
+
+        if (!isBgmRunning) {
+          isBgmRunning = true;
+          scheduleNextMusicStep();
+          bgmTimer = window.setInterval(scheduleNextMusicStep, 650);
+        }
+      }
+
+      function stopBackgroundMusic() {
+        if (bgmTimer) {
+          clearInterval(bgmTimer);
+          bgmTimer = null;
+        }
+        isBgmRunning = false;
+        if (ctx && bgmGain) {
+          const now = ctx.currentTime;
+          bgmGain.gain.cancelScheduledValues(now);
+          bgmGain.gain.setValueAtTime(Math.max(0.0001, bgmGain.gain.value), now);
+          bgmGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.25);
+        }
+      }
+
+      /* ----------------------------------------------------------------
+         KESAN BUNYI INTERAKTIF (UI SOUND EFFECTS)
+         ---------------------------------------------------------------- */
+      function playToneSequence(notes) {
+        if (!audioEnabled) return;
+        if (!unlockAndResumeContext()) return;
+        const baseNow = ctx.currentTime;
+
+        notes.forEach(n => {
+          const start = baseNow + (n.delay || 0);
+          const dur = n.duration || 0.085;
+          const vol = n.gain || 0.14;
+
+          const osc = ctx.createOscillator();
+          osc.type = n.type || 'sine';
+          osc.frequency.setValueAtTime(n.freq, start);
+          if (n.endFreq) {
+            osc.frequency.exponentialRampToValueAtTime(n.endFreq, start + dur);
+          }
+
+          const g = ctx.createGain();
+          g.gain.setValueAtTime(0.0001, start);
+          g.gain.linearRampToValueAtTime(vol, start + 0.012);
+          g.gain.exponentialRampToValueAtTime(0.0001, start + dur);
+
+          osc.connect(g);
+          g.connect(sfxGain);
+
+          osc.start(start);
+          osc.stop(start + dur + 0.015);
+        });
+      }
+
+      function playUiSound(kind, detail) {
+        if (!audioEnabled) return;
+        if (!isBgmRunning) startBackgroundMusic();
+
+        switch (kind) {
+          case 'nav':
+            // Bunyi lembut dua-nota apabila membuka topik / navigasi kad
+            playToneSequence([
+              { freq: 523.25, endFreq: 540, duration: 0.075, gain: 0.12, delay: 0, type: 'sine' },
+              { freq: 659.25, endFreq: 680, duration: 0.11, gain: 0.14, delay: 0.045, type: 'sine' }
+            ]);
+            break;
+
+          case 'fontsize': {
+            // Bunyi kristal mengikut tahap saiz fon (14px -> 16px -> 18px)
+            const freqMap = { '14': 440.00, '16': 523.25, '18': 659.25 };
+            const baseF = freqMap[String(detail)] || 523.25;
+            playToneSequence([
+              { freq: baseF, endFreq: baseF * 1.06, duration: 0.09, gain: 0.15, delay: 0, type: 'triangle' },
+              { freq: baseF * 1.5, duration: 0.11, gain: 0.09, delay: 0.03, type: 'sine' }
+            ]);
+            break;
+          }
+
+          case 'quiz-correct':
+            // Kord harmoni ceria apabila jawapan kuiz betul
+            playToneSequence([
+              { freq: 523.25, duration: 0.11, gain: 0.13, delay: 0, type: 'sine' },
+              { freq: 659.25, duration: 0.12, gain: 0.13, delay: 0.055, type: 'sine' },
+              { freq: 783.99, duration: 0.18, gain: 0.15, delay: 0.11, type: 'sine' }
+            ]);
+            break;
+
+          case 'quiz-wrong':
+            // Nada lembut dua-ketukan apabila jawapan kuiz kurang tepat
+            playToneSequence([
+              { freq: 349.23, duration: 0.10, gain: 0.11, delay: 0, type: 'triangle' },
+              { freq: 293.66, duration: 0.15, gain: 0.11, delay: 0.07, type: 'triangle' }
+            ]);
+            break;
+
+          default:
+            // Ketukan kaca lembut (glass tap) untuk butang / tab / gambar interaktif lain
+            playToneSequence([
+              { freq: 587.33, endFreq: 620, duration: 0.065, gain: 0.11, delay: 0, type: 'sine' }
+            ]);
+            break;
+        }
+      }
+
+      // Kawalan Butang Muzik Latar & Kesan Bunyi (Sudut Atas Kanan)
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          audioEnabled = !audioEnabled;
+          try {
+            localStorage.setItem(AUDIO_STORAGE_KEY, String(audioEnabled));
+          } catch (err) { }
+          updateToggleUI();
+
+          if (audioEnabled) {
+            startBackgroundMusic();
+            playUiSound('nav');
+          } else {
+            stopBackgroundMusic();
+          }
+        });
+      }
+
+      // Hidupkan muzik latar secara automatik pada sentuhan/interaksi pertama pengguna
+      function onFirstUserGesture() {
+        if (audioEnabled && !isBgmRunning) {
+          startBackgroundMusic();
+        }
+      }
+      ['pointerdown', 'touchstart', 'keydown'].forEach(evtName => {
+        document.addEventListener(evtName, onFirstUserGesture, { once: true, passive: true });
+      });
+
+      // Delegasi Kesan Bunyi Interaktif untuk Semua Elemen UI Laman Web
+      document.addEventListener('click', (e) => {
+        const target = e.target;
+        if (!target || typeof target.closest !== 'function') return;
+
+        // Abaikan butang toggle audio sendiri kerana sudah dikendalikan di atas
+        if (target.closest('#btn-audio-toggle')) return;
+
+        // 1. Pelaras "Saiz Tulisan"
+        const sizeBtn = target.closest('.btn-size-toggle');
+        if (sizeBtn) {
+          playUiSound('fontsize', sizeBtn.getAttribute('data-size'));
+          return;
+        }
+
+        // 2. Pilihan Jawapan Kuiz Interaktif
+        const quizOpt = target.closest('.kuiz-pilihan-btn');
+        if (quizOpt) {
+          window.setTimeout(() => {
+            if (quizOpt.classList.contains('betul')) {
+              playUiSound('quiz-correct');
+            } else if (quizOpt.classList.contains('salah')) {
+              playUiSound('quiz-wrong');
+            } else {
+              playUiSound('ui');
+            }
+          }, 15);
+          return;
+        }
+
+        // 3. Kad Topik Menu Utama, Butang Navigasi, Tahap Kuiz & Tab
+        const navEl = target.closest('.topic-btn-card, .btn-back-home, .btn-next-step, .kuiz-level-btn, a[href^="#"]');
+        if (navEl) {
+          playUiSound('nav');
+          return;
+        }
+
+        // 4. Elemen Interaktif Lain (Butang, Gambar Zoomable Lightbox, Skor BPE, Borang Maklum Balas)
+        const interactiveEl = target.closest('button, [role="button"], .t2-zoomable, .sign-photo-card, .t4-zoomable, .t4-jump-btn, summary, input[type="radio"], input[type="checkbox"], select');
+        if (interactiveEl) {
+          playUiSound('ui');
+        }
+      });
+
+      // Jeda muzik secara pintar apabila tab pelayar disembunyikan (jimat bateri peranti mudah alih)
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          if (isBgmRunning) stopBackgroundMusic();
+        } else if (audioEnabled && ctx) {
+          startBackgroundMusic();
+        }
+      });
+
+      updateToggleUI();
     })();
   </script>
 </body>
