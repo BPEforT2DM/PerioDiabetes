@@ -2257,6 +2257,199 @@
       margin: 0;
     }
 
+
+    /* Topik 5: teks tebal berwarna seragam (tanpa latar), imej HD & ikon */
+    .t5-hl {
+      font-weight: 800;
+      background: none;
+    }
+
+    .t5-c-blue {
+      color: #0369a1;
+    }
+
+    .t5-c-green {
+      color: #047857;
+    }
+
+    .t5-c-purple {
+      color: #6d28d9;
+    }
+
+    .t5-c-orange {
+      color: #c2410c;
+    }
+
+    .t5-c-red {
+      color: #b91c1c;
+    }
+
+    .t5-bullet {
+      width: 34px;
+      height: 34px;
+      font-size: 1.1rem;
+      margin-top: 0;
+      box-shadow: 0 3px 8px rgba(2, 132, 199, 0.25);
+    }
+
+    .t5-bullet-blue {
+      background: linear-gradient(135deg, #bae6fd, #7dd3fc);
+    }
+
+    .t5-step-ico {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #bbf7d0, #86efac);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .stepper-item {
+      align-items: center;
+    }
+
+    .stepper-item .stepper-num {
+      margin-top: 0;
+    }
+
+    .t5-img-link {
+      display: block;
+      width: 100%;
+      padding: 0;
+      margin: 18px 0 4px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      box-shadow: var(--shadow-md);
+      background: rgba(255, 255, 255, 0.6);
+    }
+
+    .t5-img {
+      display: block;
+      width: 100%;
+      height: auto;
+      image-rendering: auto;
+    }
+
+    .t5-img-tall {
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .t5-img-link:has(.t5-img-tall) {
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .t5-img-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .t5-img-grid .t5-img-link {
+      margin: 14px 0 0;
+    }
+
+    @media (min-width: 768px) {
+      .t5-img-grid {
+        grid-template-columns: 1.3fr 1fr;
+      }
+    }
+
+    /* Topik 5: warna tajuk lokasi & kemasan kad peringatan */
+    .flow-header-pill.pill-kk {
+      color: #1e3a8a;
+      font-weight: 800;
+    }
+
+    .flow-header-pill.pill-kp {
+      color: #14532d;
+      font-weight: 800;
+    }
+
+    .stepper-kp .stepper-item {
+      gap: 12px;
+    }
+
+    .golden-rule-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 22px;
+      border-radius: var(--radius-lg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      box-shadow: 0 6px 20px rgba(245, 158, 11, 0.2), var(--edge-reflection);
+    }
+
+    .golden-ico {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .golden-body {
+      min-width: 0;
+    }
+
+    .golden-rule-card .golden-body>strong {
+      margin-bottom: 6px;
+    }
+
+    .golden-rule-card p {
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+
+    .golden-rule-card .golden-text {
+      display: block;
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.7;
+      font-weight: 700;
+      text-wrap: pretty;
+      overflow-wrap: break-word;
+    }
+
+    .golden-rule-card .golden-title {
+      display: inline;
+      color: #92400e;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .golden-rule-card .golden-text .t5-hl {
+      display: inline;
+    }
+
+    @media (max-width: 480px) {
+      .golden-rule-card {
+        gap: 12px;
+        padding: 16px;
+      }
+
+      .golden-ico {
+        width: 40px;
+        height: 40px;
+        font-size: 1.25rem;
+      }
+    }
+
     /* 4 Langkah Rawatan Visual (Topik 6) */
     .step-treatment-card {
       background: var(--glass-bg);
@@ -3426,10 +3619,15 @@
 
         <div class="condition-comparison">
           <div class="cond-card cond-gingivitis">
-            <p><span class="cond-tag">Peringkat Awal</span><strong class="t1-hl-amber">Gingivitis:</strong> <strong class="t1-hl-amber">Peringkat awal</strong> yang menyebabkan <strong class="t1-hl-rose">gusi merah, bengkak dan mudah berdarah</strong>.</p>
+            <p><span class="cond-tag">Peringkat Awal</span><strong class="t1-hl-amber">Gingivitis:</strong> <strong
+                class="t1-hl-amber">Peringkat awal</strong> yang menyebabkan <strong class="t1-hl-rose">gusi merah,
+                bengkak dan mudah berdarah</strong>.</p>
           </div>
           <div class="cond-card cond-periodontitis">
-            <p><span class="cond-tag">Peringkat Serius</span><strong class="t1-hl-rose">Periodontitis:</strong> <strong class="t1-hl-rose">Peringkat lebih serius</strong> yang <strong class="t1-hl-rose">merosakkan tisu dan tulang penyokong gigi</strong> sehingga <strong class="t1-hl-rose">gigi boleh menjadi longgar atau tercabut</strong>.</p>
+            <p><span class="cond-tag">Peringkat Serius</span><strong class="t1-hl-rose">Periodontitis:</strong> <strong
+                class="t1-hl-rose">Peringkat lebih serius</strong> yang <strong class="t1-hl-rose">merosakkan tisu dan
+                tulang penyokong gigi</strong> sehingga <strong class="t1-hl-rose">gigi boleh menjadi longgar atau
+                tercabut</strong>.</p>
           </div>
         </div>
 
@@ -4114,9 +4312,18 @@
 
       <div class="content-box">
         <p style="font-size: 1.05rem; font-weight: 600;">
-          Melalui pendekatan penjagaan bersepadu Kementerian Kesihatan Malaysia (KKM), Klinik Kesihatan dan Klinik
-          Pergigian bekerjasama untuk membantu pesakit diabetes menjaga kesihatan gusi.
+          Melalui pendekatan <strong class="t5-hl t5-c-blue">penjagaan bersepadu Kementerian Kesihatan Malaysia
+            (KKM)</strong>,
+          <strong class="t5-hl t5-c-green">Klinik Kesihatan dan Klinik Pergigian bekerjasama</strong> untuk membantu
+          <strong class="t5-hl t5-c-purple">pesakit diabetes menjaga kesihatan gusi</strong>.
         </p>
+        <button type="button" class="t4-zoomable t5-zoomable t5-img-link" data-t5-index="0"
+          aria-label="proses rujukan KK ke KP — sentuh untuk paparan gambar penuh">
+          <img class="t5-img t5-img-tall" src="rujukan-proses-kk.png"
+            alt="Proses Rujukan Pesakit T2DM untuk Saringan BPE" width="1145" height="1374" loading="lazy"
+            decoding="async" />
+          <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
+        </button>
       </div>
 
       <!-- Aliran Perjalanan Penjagaan Bersepadu -->
@@ -4127,17 +4334,36 @@
           <span class="flow-header-pill pill-kk">🏢 Di Klinik Kesihatan (KK):</span>
           <ul class="visual-list">
             <li>
-              <span class="visual-bullet">•</span>
-              <span>Semasa lawatan susulan diabetes, doktor atau jururawat menyemak sama ada pesakit telah menjalani
-                saringan gusi.</span>
+              <span class="visual-bullet t5-bullet t5-bullet-blue" aria-hidden="true">🩺</span>
+              <span>Semasa <strong class="t5-hl t5-c-blue">lawatan susulan diabetes</strong>, doktor atau jururawat
+                <strong class="t5-hl t5-c-purple">menyemak</strong> sama ada pesakit telah menjalani
+                <strong class="t5-hl t5-c-green">saringan gusi</strong>.</span>
             </li>
             <li>
-              <span class="visual-bullet">•</span>
-              <span>Jika belum menjalani saringan dalam tempoh yang ditetapkan, pesakit boleh diberikan rujukan ke
-                Klinik Pergigian melalui Buku Rekod Penyakit Tidak Berjangkit (NCD) atau slip rujukan yang berkaitan,
-                seperti Slip 1/BPE mengikut amalan setempat.</span>
+              <span class="visual-bullet t5-bullet t5-bullet-blue" aria-hidden="true">📝</span>
+              <span>Jika <strong class="t5-hl t5-c-orange">belum menjalani saringan</strong> dalam tempoh yang
+                ditetapkan,
+                pesakit boleh diberikan <strong class="t5-hl t5-c-blue">rujukan ke Klinik Pergigian</strong> melalui
+                <strong class="t5-hl t5-c-green">Buku Rekod Penyakit Tidak Berjangkit (NCD)</strong> atau
+                <strong class="t5-hl t5-c-purple">slip rujukan</strong> yang berkaitan, seperti
+                <strong class="t5-hl t5-c-orange">Slip 1/BPE</strong> mengikut amalan setempat.</span>
             </li>
           </ul>
+          <div class="t5-img-grid">
+            <button type="button" class="t4-zoomable t5-zoomable t5-img-link" data-t5-index="1"
+              aria-label="Buku Rekod NCD — sentuh untuk paparan gambar penuh">
+              <img class="t5-img" src="rujukan-buku-rekod-ncd.png" alt="Buku Rekod Penyakit Tidak Berjangkit (NCD)"
+                width="1445" height="1089" loading="lazy" decoding="async" />
+              <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
+            </button>
+            <button type="button" class="t4-zoomable t5-zoomable t5-img-link" data-t5-index="2"
+              aria-label="Slip 1/BPE — sentuh untuk paparan gambar penuh">
+              <img class="t5-img" src="rujukan-slip-bpe.png"
+                alt="Borang rujukan Slip 1/BPE, Slip 1a/BPE dan Slip 1b/BPE" width="1065" height="1477" loading="lazy"
+                decoding="async" />
+              <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
+            </button>
+          </div>
         </article>
 
         <!-- Klinik Pergigian -->
@@ -4145,33 +4371,48 @@
           <span class="flow-header-pill pill-kp">🦷 Di Klinik Pergigian (KP):</span>
           <ul class="stepper-kp">
             <li class="stepper-item">
-              <span class="stepper-num">1</span>
-              <span class="stepper-text">Pegawai pergigian menjalankan pemeriksaan BPE.</span>
+              <span class="t5-step-ico" aria-hidden="true">🦷</span>
+              <span class="stepper-text">Pegawai pergigian menjalankan <strong class="t5-hl t5-c-green">pemeriksaan
+                  BPE</strong>.</span>
             </li>
             <li class="stepper-item">
-              <span class="stepper-num">2</span>
-              <span class="stepper-text">Skor dan hasil pemeriksaan direkodkan.</span>
+              <span class="t5-step-ico" aria-hidden="true">📋</span>
+              <span class="stepper-text"><strong class="t5-hl t5-c-blue">Skor dan hasil pemeriksaan</strong>
+                direkodkan.</span>
             </li>
             <li class="stepper-item">
-              <span class="stepper-num">3</span>
-              <span class="stepper-text">Pesakit diberikan rawatan yang diperlukan serta panduan penjagaan mulut di
-                rumah.</span>
+              <span class="t5-step-ico" aria-hidden="true">🪥</span>
+              <span class="stepper-text">Pesakit diberikan <strong class="t5-hl t5-c-purple">rawatan yang
+                  diperlukan</strong> serta
+                <strong class="t5-hl t5-c-orange">panduan penjagaan mulut di rumah</strong>.</span>
             </li>
             <li class="stepper-item">
-              <span class="stepper-num">4</span>
-              <span class="stepper-text">Jika terdapat tanda penyakit periodontal yang serius, pemeriksaan lanjut atau
-                rujukan ke pakar periodontik akan dibuat.</span>
+              <span class="t5-step-ico" aria-hidden="true">⚠️</span>
+              <span class="stepper-text">Jika terdapat <strong class="t5-hl t5-c-red">tanda penyakit periodontal yang
+                  serius</strong>,
+                <strong class="t5-hl t5-c-blue">pemeriksaan lanjut</strong> atau
+                <strong class="t5-hl t5-c-green">rujukan ke pakar periodontik</strong> akan dibuat.</span>
             </li>
           </ul>
+          <button type="button" class="t4-zoomable t5-zoomable t5-img-link" data-t5-index="3"
+            aria-label="keputusan saringan BPE — sentuh untuk paparan gambar penuh">
+            <img class="t5-img t5-img-tall" src="rujukan-selepas-saringan-bpe.png" alt="Selepas Saringan BPE"
+              width="1199" height="1312" loading="lazy" decoding="async" />
+            <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
+          </button>
         </article>
 
       </div>
 
       <!-- Kad Penting KKM -->
       <div class="golden-rule-card">
-        <strong>⭐ Peringatan Penting KKM</strong>
-        <p>Setiap pesakit diabetes disarankan menjalani pemeriksaan gusi sekurang-kurangnya sekali setahun, walaupun
-          tidak mengalami sebarang gejala.</p>
+        <span class="golden-ico" aria-hidden="true">⭐</span>
+        <div class="golden-body">
+          <p class="golden-text"><span class="golden-title">PERINGATAN PENTING KKM:</span> Setiap <span
+              class="t5-hl t5-c-red">pesakit diabetes</span> disarankan menjalani <span
+              class="t5-hl t5-c-red">pemeriksaan gusi sekurang-kurangnya sekali setahun</span>, walaupun tidak mengalami
+            sebarang gejala.</p>
+        </div>
       </div>
 
       <nav class="bottom-nav-bar">
@@ -4180,6 +4421,23 @@
       </nav>
     </div>
   </section>
+
+
+  <!-- DIALOG LIGHTBOX: PAPARAN GAMBAR PENUH TOPIK 5 -->
+  <dialog class="sign-lightbox" id="t5-lightbox" aria-labelledby="t5-lightbox-title">
+    <div class="sign-lightbox-img-wrap">
+      <img id="t5-lightbox-img" src="" alt="" />
+    </div>
+    <div class="sign-lightbox-bar">
+      <h3 class="sign-lightbox-title" id="t5-lightbox-title"></h3>
+      <div class="sign-lightbox-nav">
+        <button type="button" class="sign-lightbox-btn" id="t5-lb-prev" aria-label="Sebelumnya">←</button>
+        <button type="button" class="sign-lightbox-btn" id="t5-lb-next" aria-label="Seterusnya">→</button>
+        <button type="button" class="sign-lightbox-btn sign-lightbox-btn-close" id="t5-lb-close"
+          aria-label="Tutup">✕</button>
+      </div>
+    </div>
+  </dialog>
 
   <!-- ================================================================
        TOPIK 6: RAWATAN (CARA PENJAGAAN GUSI)
@@ -5653,6 +5911,61 @@
     })();
   </script>
 
+  <!-- JAVASCRIPT: PAPARAN GAMBAR PENUH (TOPIK 5) -->
+  <script>
+    (function () {
+      'use strict';
+      const view = document.getElementById('view-rujukan');
+      const lb = document.getElementById('t5-lightbox');
+      if (!view || !lb || typeof lb.showModal !== 'function') return;
+
+      const items = Array.from(view.querySelectorAll('.t5-zoomable'))
+        .sort((a, b) => Number(a.dataset.t5Index) - Number(b.dataset.t5Index));
+      const lbImg = document.getElementById('t5-lightbox-img');
+      const lbTitle = document.getElementById('t5-lightbox-title');
+      let current = 0;
+      let opener = null;
+
+      function show(i) {
+        current = (i + items.length) % items.length;
+        const img = items[current].querySelector('img');
+        lbImg.src = img.getAttribute('src');
+        lbImg.alt = img.alt;
+        lbTitle.textContent = img.alt;
+      }
+
+      items.forEach((item, i) => {
+        item.addEventListener('click', () => {
+          opener = item;
+          show(i);
+          lb.showModal();
+        });
+      });
+
+      document.getElementById('t5-lb-prev').addEventListener('click', () => show(current - 1));
+      document.getElementById('t5-lb-next').addEventListener('click', () => show(current + 1));
+      document.getElementById('t5-lb-close').addEventListener('click', () => lb.close());
+
+      lb.addEventListener('click', (e) => { if (e.target === lb) lb.close(); });
+      lb.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') show(current - 1);
+        if (e.key === 'ArrowRight') show(current + 1);
+      });
+
+      let startX = null;
+      lbImg.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, { passive: true });
+      lbImg.addEventListener('touchend', (e) => {
+        if (startX === null) return;
+        const dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) > 40) show(dx < 0 ? current + 1 : current - 1);
+        startX = null;
+      }, { passive: true });
+
+      lb.addEventListener('close', () => { if (opener) opener.focus({ preventScroll: true }); });
+      window.addEventListener('hashchange', () => { if (lb.open) lb.close(); });
+    })();
+  </script>
+
   <!-- ================================================================
        JAVASCRIPT: MUZIK INSTRUMENTAL LATAR BELAKANG & KESAN BUNYI INTERAKTIF
        (Web Audio API — Mesra Mudah Alih & Desktop, Tanpa Kebergantungan Luar)
@@ -6023,7 +6336,7 @@
         }
 
         // 4. Elemen Interaktif Lain (Butang, Gambar Zoomable Lightbox, Skor BPE, Borang Maklum Balas)
-        const interactiveEl = target.closest('button, [role="button"], .t2-zoomable, .sign-photo-card, .t4-zoomable, .t4-jump-btn, summary, input[type="radio"], input[type="checkbox"], select');
+        const interactiveEl = target.closest('button, [role="button"], .t2-zoomable, .sign-photo-card, .t4-zoomable, .t5-zoomable, .t4-jump-btn, summary, input[type="radio"], input[type="checkbox"], select');
         if (interactiveEl) {
           playUiSound('ui');
         }
