@@ -2578,19 +2578,51 @@
       line-height: 1;
     }
 
-    .t6-jump1 { background: #dbeafe; color: #1d4ed8; border-color: #3b82f6; }
-    .t6-jump2 { background: #d1fae5; color: #047857; border-color: #10b981; }
-    .t6-jump3 { background: #ffedd5; color: #c2410c; border-color: #f97316; }
-    .t6-jump4 { background: #ede9fe; color: #6d28d9; border-color: #8b5cf6; }
+    .t6-jump1 {
+      background: #dbeafe;
+      color: #1d4ed8;
+      border-color: #3b82f6;
+    }
+
+    .t6-jump2 {
+      background: #d1fae5;
+      color: #047857;
+      border-color: #10b981;
+    }
+
+    .t6-jump3 {
+      background: #ffedd5;
+      color: #c2410c;
+      border-color: #f97316;
+    }
+
+    .t6-jump4 {
+      background: #ede9fe;
+      color: #6d28d9;
+      border-color: #8b5cf6;
+    }
 
     .step-treatment-card {
       scroll-margin-top: 90px;
     }
 
-    .st-step1 { border-left-color: #3b82f6; }
-    .st-step1 .step-pill-badge { background: #dbeafe; color: #1d4ed8; }
-    .st-step3 { border-left-color: #f97316; }
-    .st-step3 .step-pill-badge { background: #ffedd5; color: #c2410c; }
+    .st-step1 {
+      border-left-color: #3b82f6;
+    }
+
+    .st-step1 .step-pill-badge {
+      background: #dbeafe;
+      color: #1d4ed8;
+    }
+
+    .st-step3 {
+      border-left-color: #f97316;
+    }
+
+    .st-step3 .step-pill-badge {
+      background: #ffedd5;
+      color: #c2410c;
+    }
 
     .step-treatment-card .t6-intro {
       color: var(--ink-soft);
@@ -2602,10 +2634,32 @@
       padding: 0;
     }
 
-    .st-step1 li strong, .st-step1 .t6-intro strong { color: #1d4ed8; }
-    .st-step2 li strong, .st-step2 .t6-intro strong { color: #047857; }
-    .st-step3 li strong, .st-step3 .t6-intro strong { color: #c2410c; }
-    .st-step4 li strong, .st-step4 .t6-intro strong { color: #6d28d9; }
+    .st-step1 li strong,
+    .st-step1 .t6-intro strong {
+      color: #1d4ed8;
+    }
+
+    .st-step2 li strong,
+    .st-step2 .t6-intro strong {
+      color: #047857;
+    }
+
+    .st-step3 li strong,
+    .st-step3 .t6-intro strong {
+      color: #c2410c;
+    }
+
+    .st-step4 li strong,
+    .st-step4 .t6-intro strong {
+      color: #6d28d9;
+    }
+
+    .t6-syarat {
+      margin-top: 16px;
+      font-size: 0.98rem;
+      line-height: 1.6;
+      color: var(--ink-soft);
+    }
 
     .t6-bullet {
       background: rgba(255, 255, 255, 0.9);
@@ -2616,8 +2670,14 @@
     }
 
     @media (max-width: 480px) {
-      .t6-jump-nav { gap: 8px; }
-      .t6-jump { font-size: 0.8rem; padding: 10px 4px; }
+      .t6-jump-nav {
+        gap: 8px;
+      }
+
+      .t6-jump {
+        font-size: 0.8rem;
+        padding: 10px 4px;
+      }
     }
 
     /* Placeholder Kad Kuiz & Maklum Balas */
@@ -4523,21 +4583,22 @@
 
       <header class="subtopic-header">
         <div class="subtopic-icon-hero" style="background: linear-gradient(135deg, #dbeafe, #bfdbfe);">💊</div>
-        <h1>Rawatan: Cara Penjagaan Gusi</h1>
+        <h1>Rawatan & Cara Penjagaan Gusi</h1>
         <div class="subtopic-accent-bar" style="background: #3b82f6;"></div>
       </header>
 
       <!-- Navigasi Pintas Langkah -->
       <nav class="t6-jump-nav" aria-label="Navigasi pintas langkah rawatan">
-        <a href="#t6-langkah1" class="t6-jump t6-jump1" data-t6-jump="t6-langkah1"><span class="t6-jump-ico" aria-hidden="true">🪥</span><span>Langkah 1</span></a>
-        <a href="#t6-langkah2" class="t6-jump t6-jump2" data-t6-jump="t6-langkah2"><span class="t6-jump-ico" aria-hidden="true">🦷</span><span>Langkah 2</span></a>
-        <a href="#t6-langkah3" class="t6-jump t6-jump3" data-t6-jump="t6-langkah3"><span class="t6-jump-ico" aria-hidden="true">🩺</span><span>Langkah 3</span></a>
-        <a href="#t6-langkah4" class="t6-jump t6-jump4" data-t6-jump="t6-langkah4"><span class="t6-jump-ico" aria-hidden="true">📅</span><span>Langkah 4</span></a>
+        <a href="#t6-langkah1" class="t6-jump t6-jump1" data-t6-jump="t6-langkah1"><span>Langkah 1</span></a>
+        <a href="#t6-langkah2" class="t6-jump t6-jump2" data-t6-jump="t6-langkah2"><span>Langkah 2</span></a>
+        <a href="#t6-langkah3" class="t6-jump t6-jump3" data-t6-jump="t6-langkah3"><span>Langkah 3</span></a>
+        <a href="#t6-langkah4" class="t6-jump t6-jump4" data-t6-jump="t6-langkah4"><span>Langkah 4</span></a>
       </nav>
 
       <div class="content-box">
         <p style="font-size: 1.05rem; font-weight: 600;">
-          Penyakit gusi atau <strong>periodontitis</strong> ialah masalah <strong>keradangan gusi</strong> dan <strong>tulang penyokong gigi</strong> yang serius. Namun,
+          Penyakit gusi atau <strong>periodontitis</strong> ialah masalah <strong>keradangan gusi</strong> dan
+          <strong>tulang penyokong gigi</strong> yang serius. Namun,
           ia boleh <strong>dirawat dan dikawal</strong> melalui <strong>4 langkah utama</strong>:
         </p>
       </div>
@@ -4545,21 +4606,26 @@
       <article id="t6-langkah1" class="step-treatment-card st-step1">
         <span class="step-pill-badge">Langkah 1</span>
         <h2>Penjagaan Kendiri &amp; Sokongan Profesional</h2>
-        <p class="t6-intro">Langkah pertama ini <strong>wajib untuk semua pesakit</strong> bagi menghentikan kerosakan daripada terus berlaku:</p>
+        <p class="t6-intro">Langkah pertama ini <strong>wajib untuk semua pesakit</strong> bagi menghentikan kerosakan
+          daripada terus berlaku:</p>
 
         <h3 class="step-subheading">Apa yang boleh anda lakukan?</h3>
         <ul class="visual-list">
           <li>
             <span class="visual-bullet t6-bullet" aria-hidden="true">📅</span>
-            <span><strong>Pemeriksaan gigi berkala:</strong> Jumpa doktor gigi sekurang-kurangnya <strong>2 kali setahun</strong>.</span>
+            <span><strong>Pemeriksaan gigi berkala:</strong> Jumpa doktor gigi sekurang-kurangnya <strong>2 kali
+                setahun</strong>.</span>
           </li>
           <li>
             <span class="visual-bullet t6-bullet" aria-hidden="true">🪥</span>
-            <span><strong>Berus gigi dengan betul:</strong> Berus gigi <strong>2 kali sehari</strong> selama sekurang-kurangnya <strong>3 minit</strong> menggunakan berus berbulu lembut dan ubat gigi berfluorida.</span>
+            <span><strong>Berus gigi dengan betul:</strong> Berus gigi <strong>2 kali sehari</strong> selama
+              sekurang-kurangnya <strong>3 minit</strong> menggunakan berus berbulu lembut dan ubat gigi
+              berfluorida.</span>
           </li>
           <li>
             <span class="visual-bullet t6-bullet" aria-hidden="true">🧵</span>
-            <span><strong>Bersihkan celah gigi setiap hari:</strong> Gunakan flos atau berus interdental (interdental brush) untuk membuang plak di celah gigi.</span>
+            <span><strong>Bersihkan celah gigi setiap hari:</strong> Gunakan flos atau berus interdental (interdental
+              brush) untuk membuang plak di celah gigi.</span>
           </li>
           <li>
             <span class="visual-bullet t6-bullet" aria-hidden="true">🚭</span>
@@ -4567,11 +4633,13 @@
           </li>
           <li>
             <span class="visual-bullet t6-bullet" aria-hidden="true">🩸</span>
-            <span><strong>Kawal paras gula/kencing manis:</strong> Kencing manis yang tidak terkawal boleh memburukkan lagi masalah gusi.</span>
+            <span><strong>Kawal paras gula/kencing manis:</strong> Kencing manis yang tidak terkawal boleh memburukkan
+              lagi masalah gusi.</span>
           </li>
           <li>
             <span class="visual-bullet t6-bullet" aria-hidden="true">🦷</span>
-            <span><strong>Jaga gigi palsu</strong> – Bersihkan setiap hari, tanggalkan pada waktu malam dan dapatkan pelarasan jika longgar atau tidak selesa.</span>
+            <span><strong>Jaga gigi palsu</strong> – Bersihkan setiap hari, tanggalkan pada waktu malam dan dapatkan
+              pelarasan jika longgar atau tidak selesa.</span>
           </li>
         </ul>
 
@@ -4579,92 +4647,112 @@
         <ul class="visual-list">
           <li>
             <span class="visual-bullet t6-bullet" aria-hidden="true">🧼</span>
-            <span>Melakukan <strong>pembersihan profesional</strong> untuk membuang plak dan kalkulus (karang gigi).</span>
+            <span>Melakukan <strong>pembersihan profesional</strong> untuk membuang plak dan kalkulus (karang
+              gigi).</span>
           </li>
           <li>
             <span class="visual-bullet t6-bullet" aria-hidden="true">💬</span>
-            <span>Memberikan <strong>nasihat khusus</strong> tentang teknik memberus gigi dan perubahan gaya hidup bagi mengurangkan risiko penyakit gusi.</span>
+            <span>Memberikan <strong>nasihat khusus</strong> tentang teknik memberus gigi dan perubahan gaya hidup bagi
+              mengurangkan risiko penyakit gusi.</span>
           </li>
         </ul>
 
         <div class="why-important-box">
           <strong>Mengapa langkah ini penting?</strong>
-          <p>Kebersihan mulut yang baik dan pengurangan faktor risiko membantu mengelakkan penyakit gusi daripada menjadi semakin teruk serta menyokong penyembuhan gusi.</p>
+          <p>Kebersihan mulut yang baik dan pengurangan faktor risiko membantu mengelakkan penyakit gusi daripada
+            menjadi semakin teruk serta menyokong penyembuhan gusi.</p>
         </div>
       </article>
 
       <article id="t6-langkah2" class="step-treatment-card st-step2">
         <span class="step-pill-badge">Langkah 2</span>
         <h2>Pembersihan Mendalam di Bawah Gusi</h2>
-        <p class="t6-intro">Langkah ini bertujuan membuang <strong>kuman dan karang gigi</strong> yang terperangkap di dalam <strong>poket gusi</strong> (bawah garisan gusi).</p>
+        <p class="t6-intro">Langkah ini bertujuan membuang <strong>kuman dan karang gigi</strong> yang terperangkap di
+          dalam <strong>poket gusi</strong> (bawah garisan gusi).</p>
 
         <h3 class="step-subheading">Apa yang berlaku semasa rawatan?</h3>
         <ul class="visual-list">
           <li>
             <span class="visual-bullet t6-bullet" aria-hidden="true">🔧</span>
-            <span><strong>Pembersihan Akar Gigi (Subgingival Scaling):</strong> Doktor gigi menggunakan alat khas, sama ada alat manual atau alat bermotor, untuk membersihkan kawasan di bawah gusi.</span>
+            <span><strong>Pembersihan Akar Gigi (Subgingival Scaling):</strong> Doktor gigi menggunakan alat khas, sama
+              ada alat manual atau alat bermotor, untuk membersihkan kawasan di bawah gusi.</span>
           </li>
           <li>
             <span class="visual-bullet t6-bullet" aria-hidden="true">💊</span>
-            <span><strong>Ubat Tambahan:</strong> Dalam sesetengah kes, rawatan antibiotik atau kumuran antiseptik mungkin diberi mengikut keperluan.</span>
+            <span><strong>Ubat Tambahan:</strong> Dalam sesetengah kes, rawatan antibiotik atau kumuran antiseptik
+              mungkin diberi mengikut keperluan.</span>
           </li>
           <li>
             <span class="visual-bullet t6-bullet" aria-hidden="true">🔍</span>
-            <span><strong>Pemeriksaan Semula:</strong> Doktor akan memeriksa semula keadaan gusi selepas tempoh penyembuhan untuk melihat sama ada bengkak dan poket gusi semakin mengecil.</span>
+            <span><strong>Pemeriksaan Semula:</strong> Doktor akan memeriksa semula keadaan gusi selepas tempoh
+              penyembuhan untuk melihat sama ada bengkak dan poket gusi semakin mengecil.</span>
           </li>
         </ul>
 
         <div class="why-important-box">
           <strong>Mengapa langkah ini penting?</strong>
-          <p>Pembersihan mendalam membantu mengurangkan keradangan dan kedalaman poket gusi serta menghentikan kerosakan lanjut pada tisu penyokong gigi.</p>
+          <p>Pembersihan mendalam membantu mengurangkan keradangan dan kedalaman poket gusi serta menghentikan kerosakan
+            lanjut pada tisu penyokong gigi.</p>
         </div>
       </article>
 
       <article id="t6-langkah3" class="step-treatment-card st-step3">
         <span class="step-pill-badge">Langkah 3</span>
         <h2>Rawatan Lanjutan / Pembedahan Gusi (Jika Perlu)</h2>
-        <p class="t6-intro">Jika gusi masih bermasalah, bengkak, atau mempunyai poket yang sangat dalam selepas Langkah 2, <strong>rawatan lanjutan oleh pakar</strong> mungkin diperlukan.</p>
+        <p class="t6-intro">Jika gusi masih bermasalah, bengkak, atau mempunyai poket yang sangat dalam selepas Langkah
+          2, <strong>rawatan lanjutan oleh pakar</strong> mungkin diperlukan.</p>
 
         <h3 class="step-subheading">Apakah rawatan lanjut yang mungkin dilakukan?</h3>
         <ul class="visual-list">
           <li>
             <span class="visual-bullet t6-bullet" aria-hidden="true">🏥</span>
-            <span><strong>Pembedahan Kecil Gusi (Flap Surgery):</strong> Gusi dibuka sedikit untuk membolehkan doktor membersihkan bahagian dalam yang sukar dicapai.</span>
+            <span><strong>Pembedahan Flap Gusi (Flap Surgery):</strong> Prosedur untuk membersihkan karang gigi dan
+              bakteria di bawah gusi.</span>
           </li>
           <li>
             <span class="visual-bullet t6-bullet" aria-hidden="true">🦴</span>
-            <span><strong>Rawatan Pemulihan Tulang (Regeneration):</strong> Menggunakan bahan khas untuk membantu membina semula tulang gigi yang telah rosak.</span>
+            <span><strong>Pembedahan Regeneratif (Regenerative Surgery):</strong> Prosedur untuk membantu pertumbuhan
+              semula tulang dan tisu penyokong gigi yang rosak.</span>
           </li>
           <li>
-            <span class="visual-bullet t6-bullet" aria-hidden="true">⚠️</span>
-            <span><strong>Syarat Penting:</strong> Pembedahan hanya akan dilakukan sekiranya pesakit <strong>rajin dan berdisiplin</strong> menjaga kebersihan gigi di rumah.</span>
+            <span class="visual-bullet t6-bullet" aria-hidden="true">🩹</span>
+            <span><strong>Pembedahan Cantuman Gusi (Gum graft Surgery):</strong> Prosedur untuk menutupi akar gigi yang
+              terdedah menggunakan tisu gusi baharu.</span>
           </li>
         </ul>
 
+        <p class="t6-syarat"><span aria-hidden="true">⚠️</span> <strong>Syarat Penting:</strong> Pembedahan hanya akan
+          dilakukan sekiranya pesakit <strong>rajin dan berdisiplin</strong> menjaga kebersihan gigi di rumah.</p>
+
         <div class="why-important-box">
           <strong>Mengapa langkah ini penting?</strong>
-          <p>Rawatan lanjutan membantu menangani kawasan yang tidak pulih dengan rawatan biasa. Rawatan ini juga boleh membantu memulihkan tisu yang hilang dan melindungi gigi dalam jangka panjang.</p>
+          <p>Rawatan lanjutan membantu menangani kawasan yang tidak pulih dengan rawatan biasa. Rawatan ini juga boleh
+            membantu memulihkan tisu yang hilang dan melindungi gigi dalam jangka panjang.</p>
         </div>
       </article>
 
       <article id="t6-langkah4" class="step-treatment-card st-step4">
         <span class="step-pill-badge">Langkah 4</span>
         <h2>Penjagaan &amp; Pemeliharaan Berterusan</h2>
-        <p class="t6-intro">Setelah rawatan selesai dan gusi kembali sihat, <strong>rawatan susulan</strong> amat penting supaya penyakit tidak berulang.</p>
+        <p class="t6-intro">Setelah rawatan selesai dan gusi kembali sihat, <strong>rawatan susulan</strong> amat
+          penting supaya penyakit tidak berulang.</p>
 
         <h3 class="step-subheading">Apa yang berlaku semasa lawatan susulan?</h3>
         <ul class="visual-list">
           <li>
             <span class="visual-bullet t6-bullet" aria-hidden="true">🧼</span>
-            <span><strong>Pembersihan profesional</strong> dilakukan untuk membuang pengumpulan plak dan kalkulus.</span>
+            <span><strong>Pembersihan profesional</strong> dilakukan untuk membuang pengumpulan plak dan
+              kalkulus.</span>
           </li>
           <li>
             <span class="visual-bullet t6-bullet" aria-hidden="true">💬</span>
-            <span><strong>Nasihat</strong> diberikan bagi membantu mengekalkan kebersihan mulut yang baik di rumah.</span>
+            <span><strong>Nasihat</strong> diberikan bagi membantu mengekalkan kebersihan mulut yang baik di
+              rumah.</span>
           </li>
           <li>
             <span class="visual-bullet t6-bullet" aria-hidden="true">🗓️</span>
-            <span><strong>Kekerapan lawatan</strong> bergantung pada keperluan individu, lazimnya setiap <strong>3 hingga 12 bulan</strong>.</span>
+            <span><strong>Kekerapan lawatan</strong> bergantung pada keperluan individu, lazimnya setiap <strong>3
+                hingga 12 bulan</strong>.</span>
           </li>
         </ul>
 
