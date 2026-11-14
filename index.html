@@ -1092,6 +1092,36 @@
       font-weight: 800;
     }
 
+    /* Visual Infografik dalam Kotak Tahukah Anda */
+    .stat-visual-banner {
+      margin-top: 6px;
+      background: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      border-radius: var(--radius-md);
+      padding: 10px 14px;
+      box-shadow: 0 4px 14px rgba(11, 34, 51, 0.06), inset 0 1px 0 rgba(255, 255, 255, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .stat-visual-banner img {
+      display: block;
+      width: 100%;
+      max-width: 680px;
+      height: auto;
+      object-fit: contain;
+      image-rendering: -webkit-optimize-contrast;
+    }
+
+    @media (max-width: 640px) {
+      .stat-visual-banner {
+        padding: 8px 10px;
+        border-radius: var(--radius-sm);
+      }
+    }
+
     /* Perbandingan Visual Gingivitis vs Periodontitis */
     .condition-comparison {
       display: grid;
@@ -3669,6 +3699,11 @@
           Kira-kira <strong class="t1-hl">1 daripada 6 orang dewasa</strong> di Malaysia menghidap penyakit <strong
             class="t1-hl-cyan">Diabetes Jenis 2</strong>
         </p>
+        <div class="stat-visual-banner">
+          <img src="tahukah-anda-diabetes-15-6.png"
+            alt="Infografik 15.6% (1 daripada 6 orang dewasa menghidap Diabetes Jenis 2 — Sumber: NHMS 2023, KKM)"
+            width="1024" height="344" loading="eager" decoding="async" />
+        </div>
       </div>
 
       <!-- Apa itu Diabetes Jenis 2 -->
@@ -3696,17 +3731,18 @@
           <button type="button" class="t1-poster-btn t1-zoomable" data-t1-index="0"
             aria-label="Poster Infografik: Apa itu Diabetes Jenis 2 — sentuh untuk paparan gambar penuh">
             <span class="t1-poster-frame">
-              <img src="apa-itu-diabetes.png" alt height="1262" loading="lazy" decoding="async" />
+              <img src="apa-itu-diabetes.png" alt="Infografik Apa itu Diabetes Jenis 2 (T2DM)" width="1480" height="1262" loading="lazy" decoding="async" />
               <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
-              <span class="t1-poster-cap"></span>
+            </span>
           </button>
 
           <!-- Poster 2: Komplikasi Diabetes -->
           <button type="button" class="t1-poster-btn t1-zoomable" data-t1-index="1"
             aria-label="Poster Infografik: Komplikasi Diabetes pada Tubuh Badan — sentuh untuk paparan gambar penuh">
             <span class="t1-poster-frame">
-              <img src="komplikasi-diabetes.png" alt height="1099" loading="lazy" decoding="async" />
+              <img src="komplikasi-diabetes.png" alt="Infografik Komplikasi Diabetes Pada Tubuh Badan" width="1252" height="1099" loading="lazy" decoding="async" />
               <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
+            </span>
           </button>
         </div>
       </article>
@@ -3718,6 +3754,12 @@
         <p class="stat-highlight-text" style="margin-top: 4px;">
           <strong class="t1-hl-amber">4 daripada 10 orang dewasa</strong> di Malaysia menghidap penyakit <strong
             class="t1-hl-amber">Periodontitis</strong>
+        </p>
+        <div class="stat-visual-banner">
+          <img src="tahukah-anda-periodontitis-38-2.png"
+            alt="Infografik 38.2% (4 daripada 10 orang dewasa menghidap Periodontitis — Sumber: NHMS 2020, KKM)"
+            width="1024" height="341" loading="lazy" decoding="async" />
+        </div>
       </div>
 
       <!-- Apa itu Penyakit Gusi -->
@@ -3754,17 +3796,17 @@
           </div>
         </div>
 
-        <!-- Poster Infografik Perbandingan Klinikal: Gingivitis vs Periodontitis -->
+        <!-- Poster Infografik Perbandingan Klinikal: Peringkat Penyakit Gusi & Kerosakan Tisu -->
         <div class="t1-posters-grid">
-          <!-- Poster 4: Gingivitis vs Periodontitis (Visual Garis Masa) -->
+          <!-- Poster 4: Peringkat-Peringkat Penyakit Gusi -->
           <button type="button" class="t1-poster-btn t1-zoomable" data-t1-index="3"
-            aria-label="Poster Infografik: Perbandingan Gingivitis vs Periodontitis — sentuh untuk paparan gambar penuh">
+            aria-label="Poster Infografik: Peringkat-Peringkat Penyakit Gusi — sentuh untuk paparan gambar penuh">
             <span class="t1-poster-frame">
-              <img src="gingivitis-vs-periodontitis.png" alt="Perbandingan Klinikal Gingivitis vs Periodontitis"
-                width="1664" height="945" loading="lazy" decoding="async" />
+              <img src="peringkat-penyakit-gusi-3d.jpg" alt="Infografik Peringkat-Peringkat Penyakit Gusi: Gusi Sihat, Gingivitis dan Periodontitis"
+                width="1024" height="813" loading="lazy" decoding="async" />
               <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
             </span>
-            <span class="t1-poster-cap">🔍 Gingivitis vs Periodontitis </span>
+            <span class="t1-poster-cap">🔍 Peringkat-Peringkat Penyakit Gusi</span>
           </button>
 
           <!-- Poster 5: Gingivitis vs Periodontitis 2 (Fokus Tisu Sokongan) -->
