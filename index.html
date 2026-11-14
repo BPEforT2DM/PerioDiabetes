@@ -2881,13 +2881,6 @@
       color: var(--ink-soft);
     }
 
-    .t6-bullet {
-      background: rgba(255, 255, 255, 0.9);
-      font-size: 1.15rem;
-      width: 34px;
-      height: 34px;
-      box-shadow: 0 1px 4px rgba(11, 34, 51, 0.15);
-    }
 
     @media (max-width: 480px) {
       .t6-jump-nav {
@@ -2897,6 +2890,199 @@
       .t6-jump {
         font-size: 0.8rem;
         padding: 10px 4px;
+      }
+    }
+
+    /* Topik 6: Senarai bergambar, galeri & lightbox HD */
+    .step-treatment-card .step-subheading {
+      margin-top: 26px;
+      margin-bottom: 14px;
+    }
+
+    .visual-list.t6-list {
+      gap: 14px;
+    }
+
+    .visual-list li.t6-item {
+      display: grid;
+      grid-template-columns: 136px minmax(0, 1fr);
+      align-items: center;
+      gap: 20px;
+      padding: 14px 18px 14px 14px;
+      background: rgba(255, 255, 255, 0.62);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm), var(--edge-reflection);
+    }
+
+    .visual-list li.t6-item-gallery {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 14px;
+      padding: 18px;
+    }
+
+    .t6-text {
+      line-height: 1.65;
+    }
+
+    .t6-media {
+      display: grid;
+      gap: 12px;
+    }
+
+    .t6-media-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      max-width: 340px;
+    }
+
+    .t6-media-4 {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      max-width: 680px;
+    }
+
+    .t6-zoomable {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      width: 100%;
+      padding: 6px;
+      margin: 0;
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      border-radius: var(--radius-md);
+      background: #ffffff;
+      cursor: zoom-in;
+      font-family: inherit;
+      box-shadow: var(--shadow-sm), var(--edge-reflection);
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .t6-thumb {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: calc(var(--radius-md) - 6px);
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    .t6-thumb img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      image-rendering: -webkit-optimize-contrast;
+      transition: transform 0.45s var(--ease);
+    }
+
+    .t6-zoomable:hover,
+    .t6-zoomable:focus-visible {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg), var(--edge-reflection);
+      outline: none;
+    }
+
+    .t6-zoomable:focus-visible {
+      box-shadow: var(--shadow-lg), 0 0 0 3px rgba(59, 130, 246, 0.45);
+    }
+
+    .t6-zoomable:hover .t6-thumb img {
+      transform: scale(1.04);
+    }
+
+    .t6-zoomable:active {
+      transform: scale(0.98);
+    }
+
+    .t6-zoom-ico {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--ink);
+      font-size: 0.85rem;
+      font-weight: 800;
+      box-shadow: var(--shadow-sm);
+      pointer-events: none;
+    }
+
+    .t6-cap {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--ink-soft);
+      text-align: center;
+      padding: 0 2px 2px;
+    }
+
+    .visual-list li.t6-item-wide {
+      grid-template-columns: 220px minmax(0, 1fr);
+    }
+
+    .t6-item-wide .t6-thumb {
+      aspect-ratio: 16 / 10;
+    }
+
+    .t6-lightbox {
+      width: min(94vw, 960px);
+    }
+
+    .t6-lightbox img {
+      max-height: min(72vh, 72dvh);
+    }
+
+    @media (max-width: 640px) {
+      .visual-list li.t6-item {
+        grid-template-columns: 92px minmax(0, 1fr);
+        gap: 14px;
+        padding: 12px;
+      }
+
+      .visual-list li.t6-item-gallery {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 14px;
+      }
+
+      .visual-list li.t6-item-wide {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .t6-item-wide .t6-media {
+        max-width: 360px;
+      }
+
+      .t6-media-2,
+      .t6-media-4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        max-width: none;
+      }
+
+      .t6-zoom-ico {
+        width: 22px;
+        height: 22px;
+        top: 8px;
+        right: 8px;
+        font-size: 0.75rem;
+      }
+
+      .t6-lightbox img {
+        max-height: min(60vh, 60dvh);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .t6-zoomable,
+      .t6-thumb img {
+        transition: none;
       }
     }
 
@@ -3979,13 +4165,13 @@
 
         <div class="condition-comparison">
           <div class="cond-card cond-gingivitis">
-            <p><span class="cond-tag">Peringkat Awal</span><strong class="t1-hl-black">Gingivitis:</strong> <strong
+            <p><span class="cond-tag">Peringkat Awal</span><strong class="t1-hl-black">GINGIVITIS:</strong> <strong
                 class="t1-hl-dark-orange">Peringkat awal</strong> yang menyebabkan <strong
                 class="t1-hl-dark-orange">gusi merah,
                 bengkak dan mudah berdarah</strong>.</p>
           </div>
           <div class="cond-card cond-periodontitis">
-            <p><span class="cond-tag">Peringkat Serius</span><strong class="t1-hl-black">Periodontitis:</strong> <strong
+            <p><span class="cond-tag">Peringkat Serius</span><strong class="t1-hl-black">PERIODONTITIS:</strong> <strong
                 class="t1-hl-dark-red">Peringkat lebih serius</strong> yang <strong class="t1-hl-dark-red">merosakkan
                 tisu dan
                 tulang penyokong gigi</strong> sehingga <strong class="t1-hl-dark-red">gigi boleh menjadi longgar atau
@@ -4841,50 +5027,151 @@
           daripada terus berlaku:</p>
 
         <h3 class="step-subheading">Apa yang boleh anda lakukan?</h3>
-        <ul class="visual-list">
-          <li>
-            <span class="visual-bullet t6-bullet" aria-hidden="true">📅</span>
-            <span><strong>Pemeriksaan gigi berkala:</strong> Jumpa doktor gigi sekurang-kurangnya <strong>2 kali
-                setahun</strong>.</span>
+        <ul class="visual-list t6-list">
+          <li class="t6-item">
+            <div class="t6-media t6-media-1">
+              <button type="button" class="t6-zoomable" data-full="rawatan-gusi/pemeriksaan-gigi-berkala.png"
+                data-title="Pemeriksaan gigi berkala"
+                aria-label="Pemeriksaan gigi berkala — sentuh untuk paparan gambar penuh">
+                <span class="t6-thumb"><img src="rawatan-gusi/thumb/pemeriksaan-gigi-berkala.jpg"
+                    alt="Pemeriksaan gigi berkala" width="520" height="482" loading="lazy" decoding="async" /></span>
+                <span class="t6-zoom-ico" aria-hidden="true">⤢</span>
+              </button>
+            </div>
+            <div class="t6-text"><strong>Pemeriksaan gigi berkala:</strong> Jumpa doktor gigi sekurang-kurangnya
+              <strong>1 kali
+                setahun</strong>.</div>
           </li>
-          <li>
-            <span class="visual-bullet t6-bullet" aria-hidden="true">🪥</span>
-            <span><strong>Berus gigi dengan betul:</strong> Berus gigi <strong>2 kali sehari</strong> selama
+          <li class="t6-item t6-item-gallery">
+            <div class="t6-text"><strong>Berus gigi dengan betul:</strong> Berus gigi <strong>2 kali sehari</strong>
+              selama
               sekurang-kurangnya <strong>3 minit</strong> menggunakan berus berbulu lembut dan ubat gigi
-              berfluorida.</span>
+              berfluorida.</div>
+            <div class="t6-media t6-media-2">
+              <button type="button" class="t6-zoomable" data-full="rawatan-gusi/berus-gigi-dengan-betul-1.png"
+                data-title="Berus gigi dengan betul (1)"
+                aria-label="Berus gigi dengan betul (1) — sentuh untuk paparan gambar penuh">
+                <span class="t6-thumb"><img src="rawatan-gusi/thumb/berus-gigi-dengan-betul-1.jpg"
+                    alt="Berus gigi dengan betul (1)" width="385" height="520" loading="lazy" decoding="async" /></span>
+                <span class="t6-zoom-ico" aria-hidden="true">⤢</span>
+                <span class="t6-cap">Berus gigi dengan betul (1)</span>
+              </button>
+              <button type="button" class="t6-zoomable" data-full="rawatan-gusi/berus-gigi-dengan-betul-2.png"
+                data-title="Berus gigi dengan betul (2)"
+                aria-label="Berus gigi dengan betul (2) — sentuh untuk paparan gambar penuh">
+                <span class="t6-thumb"><img src="rawatan-gusi/thumb/berus-gigi-dengan-betul-2.jpg"
+                    alt="Berus gigi dengan betul (2)" width="520" height="520" loading="lazy" decoding="async" /></span>
+                <span class="t6-zoom-ico" aria-hidden="true">⤢</span>
+                <span class="t6-cap">Berus gigi dengan betul (2)</span>
+              </button>
+            </div>
           </li>
-          <li>
-            <span class="visual-bullet t6-bullet" aria-hidden="true">🧵</span>
-            <span><strong>Bersihkan celah gigi setiap hari:</strong> Gunakan flos atau berus interdental (interdental
-              brush) untuk membuang plak di celah gigi.</span>
+          <li class="t6-item t6-item-gallery">
+            <div class="t6-text"><strong>Bersihkan celah gigi setiap hari:</strong> Gunakan flos atau berus interdental
+              (interdental
+              brush) untuk membuang plak di celah gigi.</div>
+            <div class="t6-media t6-media-4">
+              <button type="button" class="t6-zoomable" data-full="rawatan-gusi/floss-1.png" data-title="Flos (1)"
+                aria-label="Flos (1) — sentuh untuk paparan gambar penuh">
+                <span class="t6-thumb"><img src="rawatan-gusi/thumb/floss-1.jpg" alt="Flos (1)" width="495" height="520"
+                    loading="lazy" decoding="async" /></span>
+                <span class="t6-zoom-ico" aria-hidden="true">⤢</span>
+                <span class="t6-cap">Flos (1)</span>
+              </button>
+              <button type="button" class="t6-zoomable" data-full="rawatan-gusi/floss-2.png" data-title="Flos (2)"
+                aria-label="Flos (2) — sentuh untuk paparan gambar penuh">
+                <span class="t6-thumb"><img src="rawatan-gusi/thumb/floss-2.jpg" alt="Flos (2)" width="416" height="520"
+                    loading="lazy" decoding="async" /></span>
+                <span class="t6-zoom-ico" aria-hidden="true">⤢</span>
+                <span class="t6-cap">Flos (2)</span>
+              </button>
+              <button type="button" class="t6-zoomable" data-full="rawatan-gusi/interdental-brush-1.png"
+                data-title="Berus interdental (1)"
+                aria-label="Berus interdental (1) — sentuh untuk paparan gambar penuh">
+                <span class="t6-thumb"><img src="rawatan-gusi/thumb/interdental-brush-1.jpg" alt="Berus interdental (1)"
+                    width="520" height="292" loading="lazy" decoding="async" /></span>
+                <span class="t6-zoom-ico" aria-hidden="true">⤢</span>
+                <span class="t6-cap">Berus interdental (1)</span>
+              </button>
+              <button type="button" class="t6-zoomable" data-full="rawatan-gusi/interdental-brush-2.png"
+                data-title="Berus interdental (2)"
+                aria-label="Berus interdental (2) — sentuh untuk paparan gambar penuh">
+                <span class="t6-thumb"><img src="rawatan-gusi/thumb/interdental-brush-2.jpg" alt="Berus interdental (2)"
+                    width="396" height="520" loading="lazy" decoding="async" /></span>
+                <span class="t6-zoom-ico" aria-hidden="true">⤢</span>
+                <span class="t6-cap">Berus interdental (2)</span>
+              </button>
+            </div>
           </li>
-          <li>
-            <span class="visual-bullet t6-bullet" aria-hidden="true">🚭</span>
-            <span><strong>Berhenti merokok:</strong> Merokok menjejaskan proses penyembuhan gusi.</span>
+          <li class="t6-item">
+            <div class="t6-media t6-media-1">
+              <button type="button" class="t6-zoomable" data-full="rawatan-gusi/faedah-berhenti-merokok.png"
+                data-title="Faedah berhenti merokok"
+                aria-label="Faedah berhenti merokok — sentuh untuk paparan gambar penuh">
+                <span class="t6-thumb"><img src="rawatan-gusi/thumb/faedah-berhenti-merokok.jpg"
+                    alt="Faedah berhenti merokok" width="416" height="520" loading="lazy" decoding="async" /></span>
+                <span class="t6-zoom-ico" aria-hidden="true">⤢</span>
+              </button>
+            </div>
+            <div class="t6-text"><strong>Berhenti merokok:</strong> Merokok menjejaskan proses penyembuhan gusi.</div>
           </li>
-          <li>
-            <span class="visual-bullet t6-bullet" aria-hidden="true">🩸</span>
-            <span><strong>Kawal paras gula/kencing manis:</strong> Kencing manis yang tidak terkawal boleh memburukkan
-              lagi masalah gusi.</span>
+          <li class="t6-item">
+            <div class="t6-media t6-media-1">
+              <button type="button" class="t6-zoomable" data-full="rawatan-gusi/kawal-kencing-manis.png"
+                data-title="Kawal kencing manis" aria-label="Kawal kencing manis — sentuh untuk paparan gambar penuh">
+                <span class="t6-thumb"><img src="rawatan-gusi/thumb/kawal-kencing-manis.jpg" alt="Kawal kencing manis"
+                    width="520" height="430" loading="lazy" decoding="async" /></span>
+                <span class="t6-zoom-ico" aria-hidden="true">⤢</span>
+              </button>
+            </div>
+            <div class="t6-text"><strong>Kawal paras gula/kencing manis:</strong> Kencing manis yang tidak terkawal
+              boleh memburukkan
+              lagi masalah gusi.</div>
           </li>
-          <li>
-            <span class="visual-bullet t6-bullet" aria-hidden="true">🦷</span>
-            <span><strong>Jaga gigi palsu</strong> – Bersihkan setiap hari, tanggalkan pada waktu malam dan dapatkan
-              pelarasan jika longgar atau tidak selesa.</span>
+          <li class="t6-item">
+            <div class="t6-media t6-media-1">
+              <button type="button" class="t6-zoomable" data-full="rawatan-gusi/cara-penjagaan-gigi-palsu.png"
+                data-title="Cara penjagaan gigi palsu"
+                aria-label="Cara penjagaan gigi palsu — sentuh untuk paparan gambar penuh">
+                <span class="t6-thumb"><img src="rawatan-gusi/thumb/cara-penjagaan-gigi-palsu.jpg"
+                    alt="Cara penjagaan gigi palsu" width="441" height="520" loading="lazy" decoding="async" /></span>
+                <span class="t6-zoom-ico" aria-hidden="true">⤢</span>
+              </button>
+            </div>
+            <div class="t6-text"><strong>Jaga gigi palsu</strong> – Bersihkan setiap hari, tanggalkan pada waktu malam
+              dan dapatkan
+              pelarasan jika longgar atau tidak selesa.</div>
           </li>
         </ul>
 
         <h3 class="step-subheading">Apa yang akan dilakukan oleh pasukan pergigian?</h3>
-        <ul class="visual-list">
-          <li>
-            <span class="visual-bullet t6-bullet" aria-hidden="true">🧼</span>
-            <span>Melakukan <strong>pembersihan profesional</strong> untuk membuang plak dan kalkulus (karang
-              gigi).</span>
+        <ul class="visual-list t6-list">
+          <li class="t6-item">
+            <div class="t6-media t6-media-1">
+              <button type="button" class="t6-zoomable" data-full="rawatan-gusi/penskaleran-gigi.png"
+                data-title="Penskaleran gigi" aria-label="Penskaleran gigi — sentuh untuk paparan gambar penuh">
+                <span class="t6-thumb"><img src="rawatan-gusi/thumb/penskaleran-gigi.jpg" alt="Penskaleran gigi"
+                    width="416" height="520" loading="lazy" decoding="async" /></span>
+                <span class="t6-zoom-ico" aria-hidden="true">⤢</span>
+              </button>
+            </div>
+            <div class="t6-text">Melakukan <strong>pembersihan profesional</strong> untuk membuang plak dan kalkulus
+              (karang
+              gigi).</div>
           </li>
-          <li>
-            <span class="visual-bullet t6-bullet" aria-hidden="true">💬</span>
-            <span>Memberikan <strong>nasihat khusus</strong> tentang teknik memberus gigi dan perubahan gaya hidup bagi
-              mengurangkan risiko penyakit gusi.</span>
+          <li class="t6-item">
+            <div class="t6-media t6-media-1">
+              <button type="button" class="t6-zoomable" data-full="rawatan-gusi/nasihat-penjagaan-mulut.png"
+                data-title="Nasihat penjagaan mulut"
+                aria-label="Nasihat penjagaan mulut — sentuh untuk paparan gambar penuh">
+                <span class="t6-thumb"><img src="rawatan-gusi/thumb/nasihat-penjagaan-mulut.jpg"
+                    alt="Nasihat penjagaan mulut" width="520" height="520" loading="lazy" decoding="async" /></span>
+                <span class="t6-zoom-ico" aria-hidden="true">⤢</span>
+              </button>
+            </div>
+            <div class="t6-text">Memberikan <strong>nasihat khusus</strong> tentang teknik memberus gigi dan perubahan
+              gaya hidup bagi
+              mengurangkan risiko penyakit gusi.</div>
           </li>
         </ul>
 
@@ -4902,21 +5189,48 @@
           dalam <strong>poket gusi</strong> (bawah garisan gusi).</p>
 
         <h3 class="step-subheading">Apa yang berlaku semasa rawatan?</h3>
-        <ul class="visual-list">
-          <li>
-            <span class="visual-bullet t6-bullet" aria-hidden="true">🔧</span>
-            <span><strong>Pembersihan Akar Gigi (Subgingival Scaling):</strong> Doktor gigi menggunakan alat khas, sama
-              ada alat manual atau alat bermotor, untuk membersihkan kawasan di bawah gusi.</span>
+        <ul class="visual-list t6-list">
+          <li class="t6-item">
+            <div class="t6-media t6-media-1">
+              <button type="button" class="t6-zoomable"
+                data-full="rawatan-gusi/penskaleran-vs-pembersihan-akar-gigi.png"
+                data-title="Penskaleran gigi dan pembersihan akar gigi"
+                aria-label="Penskaleran gigi dan pembersihan akar gigi — sentuh untuk paparan gambar penuh">
+                <span class="t6-thumb"><img src="rawatan-gusi/thumb/penskaleran-vs-pembersihan-akar-gigi.jpg"
+                    alt="Penskaleran gigi dan pembersihan akar gigi" width="520" height="449" loading="lazy"
+                    decoding="async" /></span>
+                <span class="t6-zoom-ico" aria-hidden="true">⤢</span>
+              </button>
+            </div>
+            <div class="t6-text"><strong>Pembersihan Akar Gigi (Subgingival Scaling):</strong> Doktor gigi menggunakan
+              alat khas, sama
+              ada alat manual atau alat bermotor, untuk membersihkan kawasan di bawah gusi.</div>
           </li>
-          <li>
-            <span class="visual-bullet t6-bullet" aria-hidden="true">💊</span>
-            <span><strong>Ubat Tambahan:</strong> Dalam sesetengah kes, rawatan antibiotik atau kumuran antiseptik
-              mungkin diberi mengikut keperluan.</span>
+          <li class="t6-item">
+            <div class="t6-media t6-media-1">
+              <button type="button" class="t6-zoomable" data-full="rawatan-gusi/ubat-tambahan.png"
+                data-title="Ubat tambahan" aria-label="Ubat tambahan — sentuh untuk paparan gambar penuh">
+                <span class="t6-thumb"><img src="rawatan-gusi/thumb/ubat-tambahan.jpg" alt="Ubat tambahan" width="520"
+                    height="520" loading="lazy" decoding="async" /></span>
+                <span class="t6-zoom-ico" aria-hidden="true">⤢</span>
+              </button>
+            </div>
+            <div class="t6-text"><strong>Ubat Tambahan:</strong> Dalam sesetengah kes, rawatan antibiotik atau kumuran
+              antiseptik
+              mungkin diberi mengikut keperluan.</div>
           </li>
-          <li>
-            <span class="visual-bullet t6-bullet" aria-hidden="true">🔍</span>
-            <span><strong>Pemeriksaan Semula:</strong> Doktor akan memeriksa semula keadaan gusi selepas tempoh
-              penyembuhan untuk melihat sama ada bengkak dan poket gusi semakin mengecil.</span>
+          <li class="t6-item">
+            <div class="t6-media t6-media-1">
+              <button type="button" class="t6-zoomable" data-full="rawatan-gusi/pemeriksaan-semula.png"
+                data-title="Pemeriksaan semula" aria-label="Pemeriksaan semula — sentuh untuk paparan gambar penuh">
+                <span class="t6-thumb"><img src="rawatan-gusi/thumb/pemeriksaan-semula.jpg" alt="Pemeriksaan semula"
+                    width="520" height="520" loading="lazy" decoding="async" /></span>
+                <span class="t6-zoom-ico" aria-hidden="true">⤢</span>
+              </button>
+            </div>
+            <div class="t6-text"><strong>Pemeriksaan Semula:</strong> Doktor akan memeriksa semula keadaan gusi selepas
+              tempoh
+              penyembuhan untuk melihat sama ada bengkak dan poket gusi semakin mengecil.</div>
           </li>
         </ul>
 
@@ -4934,21 +5248,47 @@
           2, <strong>rawatan lanjutan oleh pakar</strong> mungkin diperlukan.</p>
 
         <h3 class="step-subheading">Apakah rawatan lanjut yang mungkin dilakukan?</h3>
-        <ul class="visual-list">
-          <li>
-            <span class="visual-bullet t6-bullet" aria-hidden="true">🏥</span>
-            <span><strong>Pembedahan Flap Gusi (Flap Surgery):</strong> Prosedur untuk membersihkan karang gigi dan
-              bakteria di bawah gusi.</span>
+        <ul class="visual-list t6-list">
+          <li class="t6-item t6-item-wide">
+            <div class="t6-media t6-media-1">
+              <button type="button" class="t6-zoomable" data-full="rawatan-gusi/pembedahan-flap-gusi.png"
+                data-title="Pembedahan flap gusi" aria-label="Pembedahan flap gusi — sentuh untuk paparan gambar penuh">
+                <span class="t6-thumb"><img src="rawatan-gusi/thumb/pembedahan-flap-gusi.jpg" alt="Pembedahan flap gusi"
+                    width="520" height="302" loading="lazy" decoding="async" /></span>
+                <span class="t6-zoom-ico" aria-hidden="true">⤢</span>
+              </button>
+            </div>
+            <div class="t6-text"><strong>Pembedahan Flap Gusi (Flap Surgery):</strong> Prosedur untuk membersihkan
+              karang gigi dan
+              bakteria di bawah gusi.</div>
           </li>
-          <li>
-            <span class="visual-bullet t6-bullet" aria-hidden="true">🦴</span>
-            <span><strong>Pembedahan Regeneratif (Regenerative Surgery):</strong> Prosedur untuk membantu pertumbuhan
-              semula tulang dan tisu penyokong gigi yang rosak.</span>
+          <li class="t6-item t6-item-wide">
+            <div class="t6-media t6-media-1">
+              <button type="button" class="t6-zoomable" data-full="rawatan-gusi/pembedahan-regeneratif.png"
+                data-title="Pembedahan regeneratif"
+                aria-label="Pembedahan regeneratif — sentuh untuk paparan gambar penuh">
+                <span class="t6-thumb"><img src="rawatan-gusi/thumb/pembedahan-regeneratif.jpg"
+                    alt="Pembedahan regeneratif" width="520" height="464" loading="lazy" decoding="async" /></span>
+                <span class="t6-zoom-ico" aria-hidden="true">⤢</span>
+              </button>
+            </div>
+            <div class="t6-text"><strong>Pembedahan Regeneratif (Regenerative Surgery):</strong> Prosedur untuk membantu
+              pertumbuhan
+              semula tulang dan tisu penyokong gigi yang rosak.</div>
           </li>
-          <li>
-            <span class="visual-bullet t6-bullet" aria-hidden="true">🩹</span>
-            <span><strong>Pembedahan Cantuman Gusi (Gum graft Surgery):</strong> Prosedur untuk menutupi akar gigi yang
-              terdedah menggunakan tisu gusi baharu.</span>
+          <li class="t6-item t6-item-wide">
+            <div class="t6-media t6-media-1">
+              <button type="button" class="t6-zoomable" data-full="rawatan-gusi/pembedahan-cantuman-gusi.png"
+                data-title="Pembedahan cantuman gusi"
+                aria-label="Pembedahan cantuman gusi — sentuh untuk paparan gambar penuh">
+                <span class="t6-thumb"><img src="rawatan-gusi/thumb/pembedahan-cantuman-gusi.jpg"
+                    alt="Pembedahan cantuman gusi" width="520" height="240" loading="lazy" decoding="async" /></span>
+                <span class="t6-zoom-ico" aria-hidden="true">⤢</span>
+              </button>
+            </div>
+            <div class="t6-text"><strong>Pembedahan Cantuman Gusi (Gum graft Surgery):</strong> Prosedur untuk menutupi
+              akar gigi yang
+              terdedah menggunakan tisu gusi baharu.</div>
           </li>
         </ul>
 
@@ -4969,21 +5309,46 @@
           penting supaya penyakit tidak berulang.</p>
 
         <h3 class="step-subheading">Apa yang berlaku semasa lawatan susulan?</h3>
-        <ul class="visual-list">
-          <li>
-            <span class="visual-bullet t6-bullet" aria-hidden="true">🧼</span>
-            <span><strong>Pembersihan profesional</strong> dilakukan untuk membuang pengumpulan plak dan
-              kalkulus.</span>
+        <ul class="visual-list t6-list">
+          <li class="t6-item">
+            <div class="t6-media t6-media-1">
+              <button type="button" class="t6-zoomable" data-full="rawatan-gusi/penskaleran-gigi.png"
+                data-title="Penskaleran gigi" aria-label="Penskaleran gigi — sentuh untuk paparan gambar penuh">
+                <span class="t6-thumb"><img src="rawatan-gusi/thumb/penskaleran-gigi.jpg" alt="Penskaleran gigi"
+                    width="416" height="520" loading="lazy" decoding="async" /></span>
+                <span class="t6-zoom-ico" aria-hidden="true">⤢</span>
+              </button>
+            </div>
+            <div class="t6-text"><strong>Pembersihan profesional</strong> dilakukan untuk membuang pengumpulan plak dan
+              kalkulus.</div>
           </li>
-          <li>
-            <span class="visual-bullet t6-bullet" aria-hidden="true">💬</span>
-            <span><strong>Nasihat</strong> diberikan bagi membantu mengekalkan kebersihan mulut yang baik di
-              rumah.</span>
+          <li class="t6-item">
+            <div class="t6-media t6-media-1">
+              <button type="button" class="t6-zoomable" data-full="rawatan-gusi/nasihat-penjagaan-mulut.png"
+                data-title="Nasihat penjagaan mulut"
+                aria-label="Nasihat penjagaan mulut — sentuh untuk paparan gambar penuh">
+                <span class="t6-thumb"><img src="rawatan-gusi/thumb/nasihat-penjagaan-mulut.jpg"
+                    alt="Nasihat penjagaan mulut" width="520" height="520" loading="lazy" decoding="async" /></span>
+                <span class="t6-zoom-ico" aria-hidden="true">⤢</span>
+              </button>
+            </div>
+            <div class="t6-text"><strong>Nasihat</strong> diberikan bagi membantu mengekalkan kebersihan mulut yang baik
+              di
+              rumah.</div>
           </li>
-          <li>
-            <span class="visual-bullet t6-bullet" aria-hidden="true">🗓️</span>
-            <span><strong>Kekerapan lawatan</strong> bergantung pada keperluan individu, lazimnya setiap <strong>3
-                hingga 12 bulan</strong>.</span>
+          <li class="t6-item">
+            <div class="t6-media t6-media-1">
+              <button type="button" class="t6-zoomable" data-full="rawatan-gusi/pemeriksaan-gigi-berkala.png"
+                data-title="Pemeriksaan gigi berkala"
+                aria-label="Pemeriksaan gigi berkala — sentuh untuk paparan gambar penuh">
+                <span class="t6-thumb"><img src="rawatan-gusi/thumb/pemeriksaan-gigi-berkala.jpg"
+                    alt="Pemeriksaan gigi berkala" width="520" height="482" loading="lazy" decoding="async" /></span>
+                <span class="t6-zoom-ico" aria-hidden="true">⤢</span>
+              </button>
+            </div>
+            <div class="t6-text"><strong>Kekerapan lawatan</strong> bergantung pada keperluan individu, lazimnya setiap
+              <strong>3
+                hingga 12 bulan</strong>.</div>
           </li>
         </ul>
 
@@ -5000,6 +5365,22 @@
       </nav>
     </div>
   </section>
+
+  <!-- Lightbox Gambar HD Topik 6 (dalam halaman) -->
+  <dialog class="sign-lightbox t6-lightbox" id="t6-lightbox" aria-labelledby="t6-lightbox-title">
+    <div class="sign-lightbox-img-wrap">
+      <img id="t6-lightbox-img" src="" alt="" decoding="async" />
+    </div>
+    <div class="sign-lightbox-bar">
+      <h3 class="sign-lightbox-title" id="t6-lightbox-title"></h3>
+      <div class="sign-lightbox-nav">
+        <button type="button" class="sign-lightbox-btn" id="t6-lb-prev" aria-label="Sebelumnya">←</button>
+        <button type="button" class="sign-lightbox-btn" id="t6-lb-next" aria-label="Seterusnya">→</button>
+        <button type="button" class="sign-lightbox-btn sign-lightbox-btn-close" id="t6-lb-close"
+          aria-label="Tutup">✕</button>
+      </div>
+    </div>
+  </dialog>
 
   <!-- ================================================================
        7. SESI KUIZ (KAD KHAS / PLACEHOLDER)
@@ -6790,6 +7171,62 @@
         if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
+  </script>
+
+  <!-- JAVASCRIPT: LIGHTBOX GAMBAR HD (TOPIK 6) -->
+  <script>
+    (function () {
+      'use strict';
+      const view = document.getElementById('view-rawatan');
+      const lb = document.getElementById('t6-lightbox');
+      if (!view || !lb || typeof lb.showModal !== 'function') return;
+
+      const items = Array.from(view.querySelectorAll('.t6-zoomable'));
+      const lbImg = document.getElementById('t6-lightbox-img');
+      const lbTitle = document.getElementById('t6-lightbox-title');
+      let current = 0;
+      let opener = null;
+
+      function show(i) {
+        current = (i + items.length) % items.length;
+        const item = items[current];
+        lbImg.src = item.dataset.full;
+        lbImg.alt = item.dataset.title;
+        lbTitle.textContent = item.dataset.title;
+        const next = items[(current + 1) % items.length];
+        if (next) { const pre = new Image(); pre.src = next.dataset.full; }
+      }
+
+      items.forEach((item, i) => {
+        item.addEventListener('click', () => {
+          opener = item;
+          show(i);
+          lb.showModal();
+        });
+      });
+
+      document.getElementById('t6-lb-prev').addEventListener('click', () => show(current - 1));
+      document.getElementById('t6-lb-next').addEventListener('click', () => show(current + 1));
+      document.getElementById('t6-lb-close').addEventListener('click', () => lb.close());
+
+      lb.addEventListener('click', (e) => { if (e.target === lb) lb.close(); });
+      lb.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') show(current - 1);
+        if (e.key === 'ArrowRight') show(current + 1);
+      });
+
+      let startX = null;
+      lbImg.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, { passive: true });
+      lbImg.addEventListener('touchend', (e) => {
+        if (startX === null) return;
+        const dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) > 40) show(dx < 0 ? current + 1 : current - 1);
+        startX = null;
+      }, { passive: true });
+
+      lb.addEventListener('close', () => { if (opener) opener.focus({ preventScroll: true }); });
+      window.addEventListener('hashchange', () => { if (lb.open) lb.close(); });
+    })();
   </script>
 </body>
 
