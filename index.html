@@ -1094,16 +1094,15 @@
 
     /* Visual Infografik dalam Kotak Tahukah Anda */
     .stat-visual-banner {
-      margin-top: 6px;
-      background: #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.95);
-      border-radius: var(--radius-md);
-      padding: 10px 14px;
-      box-shadow: 0 4px 14px rgba(11, 34, 51, 0.06), inset 0 1px 0 rgba(255, 255, 255, 1);
+      margin-top: 10px;
+      background: transparent;
+      border: none;
+      box-shadow: none;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
+      padding: 4px 0;
     }
 
     .stat-visual-banner img {
@@ -1113,12 +1112,12 @@
       height: auto;
       object-fit: contain;
       image-rendering: -webkit-optimize-contrast;
+      filter: drop-shadow(0 4px 12px rgba(15, 23, 42, 0.08));
     }
 
     @media (max-width: 640px) {
       .stat-visual-banner {
-        padding: 8px 10px;
-        border-radius: var(--radius-sm);
+        padding: 4px 0;
       }
     }
 
