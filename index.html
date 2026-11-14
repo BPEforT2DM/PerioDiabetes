@@ -1883,16 +1883,13 @@
       width: 100%;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-end;
       gap: 12px;
       padding: 4px 4px 0;
     }
 
     .sign-lightbox-title {
-      margin: 0;
-      font-size: 1.05rem;
-      font-weight: 800;
-      line-height: 1.35;
+      display: none !important;
     }
 
     .sign-lightbox-nav {
@@ -1943,24 +1940,22 @@
 
     @media (max-width: 560px) {
       .sign-lightbox {
-        width: calc(100vw - 24px);
+        width: calc(100vw - 16px);
         padding: 12px;
         border-radius: var(--radius-md);
       }
 
       .sign-lightbox img {
-        max-height: min(56vh, 56dvh);
+        max-height: min(68vh, 68dvh);
       }
 
       .sign-lightbox-bar {
-        flex-wrap: wrap;
+        justify-content: center;
         gap: 10px;
       }
 
       .sign-lightbox-title {
-        width: 100%;
-        text-align: center;
-        font-size: 0.98rem;
+        display: none !important;
       }
 
       .sign-lightbox-nav {
@@ -3896,6 +3891,132 @@
         font-size: 1rem;
       }
     }
+  
+    /* ================================================================
+       SAIZ OPTIMUM IMEJ PADA MOD PAPARAN MUDAH ALIH (MOBILE VIEW)
+       ================================================================ */
+    @media (max-width: 768px) {
+      /* Topik 1 & 2: Kad Poster Lebar & Selesa */
+      .t1-poster-hero,
+      .t2-poster-hero {
+        max-width: 100%;
+        width: 100%;
+        margin: 14px 0 6px;
+      }
+
+      .t1-poster-btn,
+      .t2-poster-btn {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .t1-poster-frame img,
+      .t2-poster-frame img {
+        width: 100%;
+        height: auto;
+      }
+
+      /* Topik 3: Kad Foto Tanda Amaran (1 Kolum Lebar Penuh) */
+      .signs-grid {
+        grid-template-columns: 1fr !important;
+        gap: 18px;
+      }
+
+      .sign-photo-card {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .sign-photo-frame {
+        aspect-ratio: 16 / 10;
+        width: 100%;
+      }
+
+      /* Topik 4: BPE Card Layout - Imej di atas, saiz selesa dan jelas */
+      .bpe-body {
+        grid-template-columns: 1fr !important;
+        gap: 16px;
+      }
+
+      .bpe-fig {
+        max-width: 100% !important;
+        width: min(100%, 280px);
+        margin: 0 auto 4px;
+      }
+
+      .bpe-fig img {
+        width: 100%;
+        height: auto;
+      }
+
+      .t4-overview {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .t4-overview img {
+        width: 100%;
+        height: auto;
+      }
+
+      /* Topik 5: Imej Aliran Rujukan KK ke KP */
+      .t5-img-link {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .t5-img-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .t5-img {
+        width: 100%;
+        height: auto;
+      }
+
+      /* Topik 6: Susun atur bergambar Langkah Rawatan */
+      .visual-list li.t6-item {
+        grid-template-columns: 1fr !important;
+        gap: 12px;
+        padding: 16px 14px;
+      }
+
+      .t6-media {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .t6-media-1 {
+        max-width: min(100%, 260px);
+        margin: 0 auto;
+      }
+
+      .t6-media-2,
+      .t6-media-4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        width: 100%;
+        max-width: 100% !important;
+      }
+
+      .visual-list li.t6-item-wide {
+        grid-template-columns: 1fr !important;
+      }
+
+      .t6-item-wide .t6-media {
+        max-width: min(100%, 320px);
+        margin: 0 auto;
+      }
+
+      .t6-item-wide .t6-thumb {
+        aspect-ratio: 16 / 10;
+      }
+
+      .t6-thumb {
+        width: 100%;
+      }
+    }
+
   </style>
 </head>
 
