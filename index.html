@@ -4811,7 +4811,6 @@
             <img src="skor-bpe/prob-periodontal.jpg" alt="Prob periodontal" width="500" height="500" loading="lazy"
               decoding="async" />
             <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
-            <span class="t4-fig-cap">Prob Periodontal</span>
           </button>
           <ul class="t4-bullets">
             <li>Doktor gigi menggunakan <strong class="t4-hl">prob periodontal</strong>, iaitu
@@ -4857,7 +4856,7 @@
               <div class="bpe-body">
                 <button type="button" class="t4-zoomable bpe-fig" data-t4-index="2"
                   aria-label="Skor 0 — sentuh untuk paparan gambar penuh">
-                  <img src="skor-bpe/skor-0.png" alt="Skor 0" width="608" height="812" loading="lazy"
+                  <img src="skor-bpe/skor-0.png" alt="Skor 0" width="1838" height="2400" loading="lazy"
                     decoding="async" />
                   <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
                 </button>
@@ -4881,7 +4880,7 @@
               <div class="bpe-body">
                 <button type="button" class="t4-zoomable bpe-fig" data-t4-index="3"
                   aria-label="Skor 1 — sentuh untuk paparan gambar penuh">
-                  <img src="skor-bpe/skor-1.png" alt="Skor 1" width="600" height="812" loading="lazy"
+                  <img src="skor-bpe/skor-1.png" alt="Skor 1" width="1771" height="2400" loading="lazy"
                     decoding="async" />
                   <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
                 </button>
@@ -4904,7 +4903,7 @@
               <div class="bpe-body">
                 <button type="button" class="t4-zoomable bpe-fig" data-t4-index="4"
                   aria-label="Skor 2 — sentuh untuk paparan gambar penuh">
-                  <img src="skor-bpe/skor-2.png" alt="Skor 2" width="600" height="812" loading="lazy"
+                  <img src="skor-bpe/skor-2.png" alt="Skor 2" width="1771" height="2400" loading="lazy"
                     decoding="async" />
                   <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
                 </button>
@@ -4927,7 +4926,7 @@
               <div class="bpe-body">
                 <button type="button" class="t4-zoomable bpe-fig" data-t4-index="5"
                   aria-label="Skor 3 — sentuh untuk paparan gambar penuh">
-                  <img src="skor-bpe/skor-3.png" alt="Skor 3" width="600" height="812" loading="lazy"
+                  <img src="skor-bpe/skor-3.png" alt="Skor 3" width="1779" height="2400" loading="lazy"
                     decoding="async" />
                   <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
                 </button>
@@ -4951,7 +4950,7 @@
               <div class="bpe-body">
                 <button type="button" class="t4-zoomable bpe-fig" data-t4-index="6"
                   aria-label="Skor 4 — sentuh untuk paparan gambar penuh">
-                  <img src="skor-bpe/skor-4.png" alt="Skor 4" width="600" height="812" loading="lazy"
+                  <img src="skor-bpe/skor-4.png" alt="Skor 4" width="1737" height="2400" loading="lazy"
                     decoding="async" />
                   <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
                 </button>
@@ -6546,8 +6545,8 @@
         current = (i + items.length) % items.length;
         const img = items[current].querySelector('img');
         lbImg.src = img.getAttribute('src');
-        lbImg.alt = img.alt;
-        lbTitle.textContent = img.alt;
+        lbImg.alt = img.alt || '';
+        if (lbTitle) lbTitle.textContent = '';
       }
 
       items.forEach((item, i) => {
@@ -6642,8 +6641,8 @@
         current = (i + items.length) % items.length;
         const img = items[current].querySelector('img');
         lbImg.src = img.getAttribute('src');
-        lbImg.alt = img.alt;
-        lbTitle.textContent = img.alt;
+        lbImg.alt = img.alt || '';
+        if (lbTitle) lbTitle.textContent = '';
       }
 
       items.forEach((item, i) => {
@@ -6770,8 +6769,8 @@
         current = (i + items.length) % items.length;
         const img = items[current].querySelector('img');
         lbImg.src = img.getAttribute('src');
-        lbImg.alt = img.alt;
-        lbTitle.textContent = img.alt;
+        lbImg.alt = img.alt || '';
+        if (lbTitle) lbTitle.textContent = '';
       }
 
       items.forEach((item, i) => {
@@ -6825,8 +6824,8 @@
         current = (i + items.length) % items.length;
         const img = items[current].querySelector('img');
         lbImg.src = img.getAttribute('src');
-        lbImg.alt = img.alt;
-        lbTitle.textContent = img.alt;
+        lbImg.alt = img.alt || '';
+        if (lbTitle) lbTitle.textContent = '';
       }
 
       items.forEach((item, i) => {
