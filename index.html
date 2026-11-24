@@ -4508,7 +4508,6 @@
                 loading="lazy" decoding="async" />
               <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
             </span>
-            <span class="t2-poster-cap">🔍 Faktor Diabetes kepada Penyakit Gusi</span>
           </button>
 
           <button type="button" class="t2-poster-btn t2-zoomable" data-t2-index="2"
@@ -4518,7 +4517,6 @@
                 height="890" loading="lazy" decoding="async" />
               <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
             </span>
-            <span class="t2-poster-cap">🦷 Manifestasi Oral Pesakit Diabetes</span>
           </button>
         </div>
       </article>
@@ -4552,6 +4550,14 @@
             </span>
           </button>
         </div>
+        <div class="t2-poster-hero">
+          <button type="button" class="t2-poster-btn t2-zoomable" aria-label="Poster Kaitan Kesihatan Pergigian dan Diabetes — sentuh untuk paparan gambar penuh">
+            <span class="t2-poster-frame">
+              <img src="kaitan-2-hala/kesihatan-pergigian-diabetes.png" alt="Poster Kaitan Kesihatan Pergigian dan Diabetes" width="1158" height="1359" loading="lazy" decoding="async" />
+              <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
+            </span>
+          </button>
+        </div>
       </article>
 
       <!-- Bahagian 3 -->
@@ -4564,6 +4570,22 @@
             jantung</strong> serta meningkatkan bahaya <strong class="t2-hl-rose">kerosakan buah pinggang yang
             serius</strong> secara signifikan.
         </p>
+        <div class="t2-poster-hero">
+          <button type="button" class="t2-poster-btn t2-zoomable" aria-label="Poster Gula Tinggi dan Masalah Jantung — sentuh untuk paparan gambar penuh">
+            <span class="t2-poster-frame">
+              <img src="kaitan-2-hala/diabetes-jantung.png" alt="Poster Gula Tinggi dan Masalah Jantung" width="1254" height="1254" loading="lazy" decoding="async" />
+              <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
+            </span>
+          </button>
+        </div>
+        <div class="t2-poster-hero">
+          <button type="button" class="t2-poster-btn t2-zoomable" aria-label="Poster Diabetes dan Buah Pinggang — sentuh untuk paparan gambar penuh">
+            <span class="t2-poster-frame">
+              <img src="kaitan-2-hala/diabetes-buah-pinggang.png" alt="Poster Diabetes dan Buah Pinggang" width="1198" height="965" loading="lazy" decoding="async" />
+              <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
+            </span>
+          </button>
+        </div>
       </article>
 
       <nav class="bottom-nav-bar">
@@ -4574,12 +4596,11 @@
   </section>
 
   <!-- Paparan Gambar Penuh Poster Infografik (Topik 2) -->
-  <dialog class="sign-lightbox" id="t2-lightbox" aria-labelledby="t2-lightbox-title">
+  <dialog class="sign-lightbox" id="t2-lightbox" aria-label="Paparan gambar penuh">
     <div class="sign-lightbox-img-wrap">
       <img id="t2-lightbox-img" src="" alt="" />
     </div>
     <div class="sign-lightbox-bar">
-      <h3 class="sign-lightbox-title" id="t2-lightbox-title"></h3>
       <div class="sign-lightbox-nav">
         <button type="button" class="sign-lightbox-btn" id="t2-lb-prev" aria-label="Sebelumnya">←</button>
         <button type="button" class="sign-lightbox-btn" id="t2-lb-next" aria-label="Seterusnya">→</button>
@@ -6573,7 +6594,7 @@
       if (!view || !lb || typeof lb.showModal !== 'function') return;
 
       const items = Array.from(view.querySelectorAll('.t2-zoomable'))
-        .sort((a, b) => Number(a.dataset.t2Index) - Number(b.dataset.t2Index));
+        ;
       const lbImg = document.getElementById('t2-lightbox-img');
       const lbTitle = document.getElementById('t2-lightbox-title');
       let current = 0;
