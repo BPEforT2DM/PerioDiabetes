@@ -3543,6 +3543,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
+      text-align: center;
       gap: 8px;
       padding: 28px 30px;
       border: 2px solid transparent;
@@ -3553,6 +3555,7 @@
       box-shadow: var(--shadow-md), var(--edge-reflection);
       cursor: pointer;
       min-width: 140px;
+      box-sizing: border-box;
       transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), border-color 0.25s var(--ease), background 0.25s var(--ease);
       -webkit-tap-highlight-color: transparent;
       font-family: inherit;
@@ -3907,18 +3910,33 @@
       .kuiz-level-btns {
         flex-direction: column;
         align-items: center;
+        gap: 14px;
+        width: 100%;
       }
 
       .kuiz-level-btn {
         width: 100%;
         max-width: 320px;
+        min-width: 0;
+        min-height: 64px;
+        padding: 18px 20px;
         flex-direction: row;
-        justify-content: flex-start;
-        gap: 16px;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 12px;
       }
 
       .lvl-icon {
-        font-size: 2rem;
+        font-size: 1.8rem;
+        line-height: 1;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .lvl-name {
+        line-height: 1.2;
       }
 
       .kuiz-soalan-card {
@@ -4629,8 +4647,9 @@
 
       <article class="content-box">
         <h2>Tanda-Tanda Amaran &amp; Gejala yang Perlu Diperhatikan:</h2>
-        <p style="margin-bottom: 20px;">Sila periksa gigi dan gusi anda. Ambil tindakan segera sekiranya anda mengalami
-          sebarang tanda berikut:</p>
+        <p style="margin-bottom: 20px;">Sila periksa <strong class="t1-hl-teal">gigi dan gusi</strong> anda. <strong
+            class="t1-hl-rose">Ambil tindakan segera</strong> sekiranya anda mengalami
+          sebarang <strong class="t1-hl">tanda berikut</strong>:</p>
 
         <div class="signs-grid" id="t3-signs-grid">
           <button type="button" class="sign-photo-card" data-index="0"
@@ -4652,13 +4671,14 @@
             <span class="sign-photo-label"><span class="sign-dot-alert" aria-hidden="true"></span>Gusi bengkak</span>
           </button>
           <button type="button" class="sign-photo-card" data-index="2"
-            aria-label="Gigi longgar — sentuh untuk paparan gambar penuh">
+            aria-label="Gigi longgar atau goyang — sentuh untuk paparan gambar penuh">
             <span class="sign-photo-frame">
-              <img src="gambar-tanda/gigi-longgar.jpg" alt="Gigi longgar" loading="lazy" decoding="async" />
+              <img src="gambar-tanda/gigi-longgar.jpg" alt="Gigi longgar atau goyang" loading="lazy" decoding="async" />
               <span class="sign-photo-num" aria-hidden="true">03</span>
               <span class="sign-photo-zoom" aria-hidden="true">⤢</span>
             </span>
-            <span class="sign-photo-label"><span class="sign-dot-alert" aria-hidden="true"></span>Gigi longgar</span>
+            <span class="sign-photo-label"><span class="sign-dot-alert" aria-hidden="true"></span>Gigi longgar atau
+              goyang</span>
           </button>
           <button type="button" class="sign-photo-card" data-index="3"
             aria-label="Nafas berbau berterusan — sentuh untuk paparan gambar penuh">
@@ -4691,14 +4711,15 @@
               percelahan gigi</span>
           </button>
           <button type="button" class="sign-photo-card" data-index="6"
-            aria-label="Gigi Longgar atau Goyang — sentuh untuk paparan gambar penuh">
+            aria-label="Sakit ketika mengunyah — sentuh untuk paparan gambar penuh">
             <span class="sign-photo-frame">
-              <img src="gambar-tanda/gigi-longgar.jpg" alt="Gigi Longgar atau Goyang" loading="lazy" decoding="async" />
+              <img src="gambar-tanda/sakit-ketika-mengunyah.jpg" alt="Sakit ketika mengunyah" loading="lazy"
+                decoding="async" />
               <span class="sign-photo-num" aria-hidden="true">07</span>
               <span class="sign-photo-zoom" aria-hidden="true">⤢</span>
             </span>
-            <span class="sign-photo-label"><span class="sign-dot-alert" aria-hidden="true"></span>Gigi Longgar atau
-              Goyang</span>
+            <span class="sign-photo-label"><span class="sign-dot-alert" aria-hidden="true"></span>Sakit ketika
+              mengunyah</span>
           </button>
           <button type="button" class="sign-photo-card" data-index="7"
             aria-label="Gigi palsu tidak muat dengan baik — sentuh untuk paparan gambar penuh">
@@ -4731,17 +4752,17 @@
   </section>
 
   <!-- Paparan Gambar Penuh Tanda Amaran (Topik 3) -->
-  <dialog class="sign-lightbox" id="t3-lightbox" aria-labelledby="t3-lightbox-title">
+  <dialog class="sign-lightbox" id="t3-lightbox" aria-label="Paparan Gambar Penuh">
     <div class="sign-lightbox-img-wrap">
-      <img id="t3-lightbox-img" src="" alt="" />
+      <img id="t3-lightbox-img" src="" alt="" decoding="async" />
     </div>
     <div class="sign-lightbox-bar">
       <h3 class="sign-lightbox-title" id="t3-lightbox-title"></h3>
       <div class="sign-lightbox-nav">
         <button type="button" class="sign-lightbox-btn" id="t3-lb-prev" aria-label="Sebelumnya">←</button>
         <button type="button" class="sign-lightbox-btn" id="t3-lb-next" aria-label="Seterusnya">→</button>
-        <button type="button" class="sign-lightbox-btn sign-lightbox-btn-close" id="t3-lb-close" aria-label="Tutup">✕
-          Tutup</button>
+        <button type="button" class="sign-lightbox-btn sign-lightbox-btn-close" id="t3-lb-close"
+          aria-label="Tutup">✕</button>
       </div>
     </div>
   </dialog>
@@ -6412,27 +6433,20 @@
         const nextWrap = document.getElementById('kuiz-next-wrap');
 
         if (betul) {
-          // BETUL: tepukan + bunyi, kemudian bergerak automatik ke soalan seterusnya
+          // BETUL: tepukan + bunyi + maklum balas, tunggu pengguna tekan butang Seterusnya
           kuizMarkah++;
           bunyiTepukan();
           tunjukAnimasiTepukan();
           tunjukFeedback(true, soalan.a[soalan.j], null);
-          nextWrap.style.display = 'none';
-          const indeksSemasa = kuizIndeks;
-          const setSemasa = kuizSoalanSet;
-          setTimeout(() => {
-            // Pastikan pengguna masih pada soalan yang sama (tidak tukar tahap / ulang)
-            if (kuizSoalanSet === setSemasa && kuizIndeks === indeksSemasa && kuizDijawab) kuizSoalanSeterusnya();
-          }, 1800);
         } else {
           // SALAH: buzzer + alasan pilihan salah + jawapan betul
           bunyiBuzzer();
           tunjukFeedback(false, soalan.a[pilihanIdx], huruf[soalan.j] + '. ' + soalan.p[soalan.j], soalan.a[soalan.j]);
-
-          nextWrap.style.display = 'block';
-          const nextBtn = nextWrap.querySelector('.kuiz-btn-next');
-          nextBtn.textContent = (kuizIndeks + 1 >= kuizSoalanSet.length) ? '📊 Lihat Keputusan' : 'Seterusnya →';
         }
+
+        nextWrap.style.display = 'block';
+        const nextBtn = nextWrap.querySelector('.kuiz-btn-next');
+        nextBtn.textContent = (kuizIndeks + 1 >= kuizSoalanSet.length) ? '📊 Lihat Keputusan' : 'Seterusnya →';
       }
 
       function tunjukFeedback(betul, alasanPilihan, jawapanBetulTeks, alasanBetul) {
@@ -6662,8 +6676,8 @@
         current = (i + cards.length) % cards.length;
         const img = cards[current].querySelector('img');
         lbImg.src = img.getAttribute('src');
-        lbImg.alt = img.alt;
-        lbTitle.textContent = (current + 1) + '. ' + img.alt;
+        lbImg.alt = img.alt || '';
+        if (lbTitle) lbTitle.textContent = '';
       }
 
       cards.forEach((card, i) => {
