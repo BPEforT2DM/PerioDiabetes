@@ -1598,6 +1598,10 @@
       margin: 16px auto 0;
     }
 
+    .t2-posters-grid > * {
+      min-width: 0;
+    }
+
     .t2-posters-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -1639,6 +1643,10 @@
       border-color: #ffffff;
       box-shadow: var(--shadow-lg), var(--edge-reflection);
       outline: none;
+    }
+
+    .t2-poster-btn .t2-poster-frame {
+      flex: 1;
     }
 
     .t2-poster-frame {
@@ -4540,23 +4548,21 @@
         </ul>
 
         <!-- Poster Infografik: Kaitan 2 Hala -->
-        <div class="t2-poster-hero">
-          <button type="button" class="t2-poster-btn t2-zoomable" data-t2-index="0"
-            aria-label="Poster Kaitan 2 Hala — sentuh untuk paparan gambar penuh">
-            <span class="t2-poster-frame">
-              <img src="kaitan-2-hala/kaitan-2-hala.png" alt="Poster Kaitan 2 Hala" width="1228" height="1136"
-                loading="lazy" decoding="async" />
-              <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
-            </span>
-          </button>
-        </div>
-        <div class="t2-poster-hero">
-          <button type="button" class="t2-poster-btn t2-zoomable" aria-label="Poster Kaitan Kesihatan Pergigian dan Diabetes — sentuh untuk paparan gambar penuh">
-            <span class="t2-poster-frame">
-              <img src="kaitan-2-hala/kesihatan-pergigian-diabetes.png" alt="Poster Kaitan Kesihatan Pergigian dan Diabetes" width="1158" height="1359" loading="lazy" decoding="async" />
-              <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
-            </span>
-          </button>
+        <div class="t2-posters-grid">
+            <button type="button" class="t2-poster-btn t2-zoomable" data-t2-index="0"
+              aria-label="Poster Kaitan 2 Hala — sentuh untuk paparan gambar penuh">
+              <span class="t2-poster-frame">
+                <img src="kaitan-2-hala/kaitan-2-hala.png" alt="Poster Kaitan 2 Hala" width="1228" height="1136"
+                  loading="lazy" decoding="async" />
+                <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
+              </span>
+            </button>
+            <button type="button" class="t2-poster-btn t2-zoomable" aria-label="Poster Kaitan Kesihatan Pergigian dan Diabetes — sentuh untuk paparan gambar penuh">
+              <span class="t2-poster-frame">
+                <img src="kaitan-2-hala/kesihatan-pergigian-diabetes.png" alt="Poster Kaitan Kesihatan Pergigian dan Diabetes" width="1158" height="1359" loading="lazy" decoding="async" />
+                <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
+              </span>
+            </button>
         </div>
       </article>
 
@@ -4570,21 +4576,19 @@
             jantung</strong> serta meningkatkan bahaya <strong class="t2-hl-rose">kerosakan buah pinggang yang
             serius</strong> secara signifikan.
         </p>
-        <div class="t2-poster-hero">
-          <button type="button" class="t2-poster-btn t2-zoomable" aria-label="Poster Gula Tinggi dan Masalah Jantung — sentuh untuk paparan gambar penuh">
-            <span class="t2-poster-frame">
-              <img src="kaitan-2-hala/diabetes-jantung.png" alt="Poster Gula Tinggi dan Masalah Jantung" width="1254" height="1254" loading="lazy" decoding="async" />
-              <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
-            </span>
-          </button>
-        </div>
-        <div class="t2-poster-hero">
-          <button type="button" class="t2-poster-btn t2-zoomable" aria-label="Poster Diabetes dan Buah Pinggang — sentuh untuk paparan gambar penuh">
-            <span class="t2-poster-frame">
-              <img src="kaitan-2-hala/diabetes-buah-pinggang.png" alt="Poster Diabetes dan Buah Pinggang" width="1198" height="965" loading="lazy" decoding="async" />
-              <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
-            </span>
-          </button>
+        <div class="t2-posters-grid">
+            <button type="button" class="t2-poster-btn t2-zoomable" aria-label="Poster Gula Tinggi dan Masalah Jantung — sentuh untuk paparan gambar penuh">
+              <span class="t2-poster-frame">
+                <img src="kaitan-2-hala/diabetes-jantung.png" alt="Poster Gula Tinggi dan Masalah Jantung" width="1254" height="1254" loading="lazy" decoding="async" />
+                <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
+              </span>
+            </button>
+            <button type="button" class="t2-poster-btn t2-zoomable" aria-label="Poster Diabetes dan Buah Pinggang — sentuh untuk paparan gambar penuh">
+              <span class="t2-poster-frame">
+                <img src="kaitan-2-hala/diabetes-buah-pinggang.png" alt="Poster Diabetes dan Buah Pinggang" width="1198" height="965" loading="lazy" decoding="async" />
+                <span class="t4-zoom-ico" aria-hidden="true">⤢</span>
+              </span>
+            </button>
         </div>
       </article>
 
